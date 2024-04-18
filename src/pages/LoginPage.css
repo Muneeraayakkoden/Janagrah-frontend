@@ -1,0 +1,135 @@
+
+/* LoginPage.css*/
+/* Global Styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+}
+
+/* LoginPage Container */
+.LoginPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Login Container */
+.login-container {
+  background-color: white;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 400px;
+}
+
+/* Logo Container */
+.logo-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.logo-container img {
+  width: 150px;
+  height: 150px;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.tab {
+  flex: 1;
+  text-align: center;
+  padding: 15px 0;
+  cursor: pointer;
+  background-color: #f2f2f2;
+  border-radius: 10px 10px 0 0;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.tab.active {
+  background-color: #007bff;
+  color: white;
+}
+
+/* Login Form */
+.login-form {
+  padding: 20px;
+  border-radius: 0 0 10px 10px;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+}
+
+/* Input Group */
+.input-group {
+  margin-bottom: 20px;
+}
+
+input[type='email'],
+input[type='password'] {
+  width: 100%;
+  margin: 8px 0;
+  padding: 12px;
+  display: inline-block;
+  border: 0.5px solid #66afd6;
+  border-radius: 5px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+/* Submit Button */
+button[type='submit'],
+button.register-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  margin: 10px 0;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type='submit']:hover,
+button.register-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Forgot Password Link */
+.forgot-password {
+  text-align: center;
+  color: #007bff;
+  cursor: pointer;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.forgot-password:hover {
+  color: #0056b3;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 600px) {
+  .LoginPage {
+    padding: 20px;
+  }
+
+  .login-container {
+    width: 100%;
+  }
+}
+

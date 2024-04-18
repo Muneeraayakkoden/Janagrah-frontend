@@ -1,0 +1,41 @@
+.Notification {
+    margin-top: 50px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .Notification p {
+    font-size: 1.2rem;
+    color: #333;
+    text-align: center;
+  }
+  
+  .Notification .notification-list {
+    margin-top: 20px;
+    list-style: none;
+    padding: 0;
+  }
+  
+  .Notification .notification-list li {
+    margin-bottom: 10px;
+  }
+  
+  .Notification .notification-list li:last-child {
+    margin-bottom: 0;
+  }
+  
+  .Notification .notification-list li .notification-item {
+    background-color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .Notification .notification-list li .notification-item p {
+    margin: 0;
+    font-size: 1rem;
+    color: #666;
+  }
+  
