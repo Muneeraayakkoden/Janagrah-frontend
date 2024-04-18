@@ -1,5 +1,7 @@
+// Notification.js
+
 import React from 'react';
-import './Notification.css'; // Import CSS file for styling
+import './Notification.css'; 
 
 const notifications = [
   "New feature added: Introducing dark mode for improved readability at night.",
@@ -12,7 +14,7 @@ const notifications = [
 function Notification() {
   return (
     <div className="Notification">
-      <h2>Notifications</h2>
+      <h2>NOTIFICATIONS</h2>
       <div className="notification-container">
         {notifications.map((notification, index) => (
           <div className="notification" key={index}>

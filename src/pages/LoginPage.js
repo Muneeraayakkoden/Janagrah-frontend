@@ -1,44 +1,67 @@
-// LoginPage.js
 import React, { useState } from 'react';
 import './LoginPage.css';
 import logo from '../assets/logo.png';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 
-function ResidentLogin() {
+function ResidentLoginForm({ onRegisterClick }) {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin = () => {
+    console.log('Resident login with email:', email, 'and password:', password);
+    // Implement login logic
+  };
+
   return (
     <div>
       <div className="input-group">
-        <input type="email" placeholder="Email" className="input-field" />
+        <input type="email" placeholder="Email" className="input-field" value={email} onChange={(e) => setEmail(e.target.value)} />
       </div>
       <div className="input-group">
-        <input type="password" placeholder="Password" className="input-field" />
+        <input type="password" placeholder="Password" className="input-field" value={password} onChange={(e) => setPassword(e.target.value)} />
       </div>
-      <button type="submit" className="login-btn">Resident Login</button>
+      <button type="submit" className="login-btn" onClick={handleLogin}>Resident Login</button>
       <div className="forgot-password">Forgot Password?</div>
-      <button className="register-btn">Register Now</button>
-      <Link to="/signup/resident">Register Now</Link>
+      <button className="register-btn" onClick={onRegisterClick}>Register Now</button>
     </div>
   );
 }
 
-function OfficialLogin() {
+function OfficialLoginForm({ onRegisterClick }) {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin = () => {
+    console.log('Official login with email:', email, 'and password:', password);
+    // Implement login logic
+  };
+
   return (
     <div>
       <div className="input-group">
-        <input type="email" placeholder="Email" className="input-field" />
+        <input type="email" placeholder="Email" className="input-field" value={email} onChange={(e) => setEmail(e.target.value)} />
       </div>
       <div className="input-group">
-        <input type="password" placeholder="Password" className="input-field" />
+        <input type="password" placeholder="Password" className="input-field" value={password} onChange={(e) => setPassword(e.target.value)} />
       </div>
-      <button type="submit" className="login-btn">Official Login</button>
+      <button type="submit" className="login-btn" onClick={handleLogin}>Official Login</button>
       <div className="forgot-password">Forgot Password?</div>
-      <button className="register-btn">Register Now</button>
+      <button className="register-btn" onClick={onRegisterClick}>Register Now</button>
     </div>
   );
 }
 
 function LoginPage() {
-  const [isResident, setIsResident] = useState(true);
+  const [selectedTab, setSelectedTab] = useState('resident');
+
+  const handleResidentRegisterClick = () => {
+    console.log('Redirect to resident registration');
+    // Implement redirection logic
+  };
+
+  const handleOfficialRegisterClick = () => {
+    console.log('Redirect to official registration');
+    // Implement redirection logic
+  };
 
   return (
     <div className="LoginPage">
@@ -47,18 +70,16 @@ function LoginPage() {
           <img src={logo} alt="Janagrah Logo" className="logo" />
         </div>
         <div className="tabs">
-          <div className={`tab ${isResident ? 'active' : ''}`} onClick={() => setIsResident(true)}>
+          <div className={`tab ${selectedTab === 'resident' ? 'active' : ''}`} onClick={() => setSelectedTab('resident')}>
             Resident Login
           </div>
-          <div className={`tab ${isResident ? '' : 'active'}`} onClick={() => setIsResident(false)}>
+          <div className={`tab ${selectedTab === 'official' ? 'active' : ''}`} onClick={() => setSelectedTab('official')}>
             Official Login
           </div>
         </div>
         <div className="login-form">
-          <h2>{isResident ? 'Resident Login' : 'Official Login'}</h2>
-          <form>
-            {isResident ? <ResidentLogin /> : <OfficialLogin />}
-          </form>
+          <h2>{selectedTab === 'resident' ? 'Resident Login' : 'Official Login'}</h2>
+          {selectedTab === 'resident' ? <ResidentLoginForm onRegisterClick={handleResidentRegisterClick} /> : <OfficialLoginForm onRegisterClick={handleOfficialRegisterClick} />}
         </div>
       </div>
     </div>

@@ -1,45 +1,65 @@
-/* ContactPage.css */
-/* ContactPage.css */
-
+/* Contact Page */
 .ContactPage {
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-  }
-  
-  .contact-container {
-    max-width: 600px;
-    margin: 0 auto;
-    text-align: center;
-  }
-  
-  .Direct-Communication {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .Direct-Communication p {
-    font-size: 20px;
-    color: #333;
-  }
-  
-  /* Button styles */
-  .contact-button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .contact-button:hover {
-    background-color: #0056b3;
-  }
-  
+  padding: 50px 20px; /* Added padding for better spacing */
+}
+
+.contact-container {
+  max-width: 800px; /* Set max-width for better content alignment */
+  margin: 0 auto; /* Center align content */
+}
+
+.Direct-Communication {
+  background-color: #f9f9f9; /* Light background color */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Added box shadow for depth */
+}
+
+.Direct-Communication h2 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #333; /* Dark text color */
+}
+
+.Direct-Communication textarea {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ddd; /* Light border */
+  border-radius: 5px;
+  resize: vertical; /* Allow vertical resizing */
+}
+
+.anonymous-option {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.anonymous-option input[type="radio"] {
+  margin-right: 10px;
+}
+
+.anonymous-option label {
+  font-size: 1.2rem;
+  color: #555; /* Medium text color */
+}
+
+.anonymous-option label:last-child {
+  margin-left: 10px;
+}
+
+button[type="submit"] {
+  padding: 12px 20px;
+  background-color: #007bff; /* Button color */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3; /* Darker button color on hover */
+}

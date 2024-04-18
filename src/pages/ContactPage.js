@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './ContactPage.css'; // Assuming you have a CSS file for ContactPage styling
+import './ContactPage.css'; 
 
 function ContactPage() {
   const [message, setMessage] = useState('');

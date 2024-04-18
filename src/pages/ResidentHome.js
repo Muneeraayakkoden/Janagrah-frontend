@@ -4,24 +4,17 @@ import Services from './Services';
 import ContactPage from './ContactPage';
 import NewsSection from './NewsSection';
 import Notification from './Notification';
-import SurveyPage from './SurveyPage'; 
+import SurveyPage from './SurveyPage';
 import './ResidentHome.css';
-
 
 const ResidentHome = () => {
   return (
     <div className="resident-home">
-      <header className="header">
-          <Header/>
-        <nav className="navbar">
-          <ul>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#news">News</a></li>
-            <li><a href="#notifications">Notifications</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </nav>
+      <header>
+        <Header />
       </header>
+
+      <main className="main-content">
         <section id="services" className="services-section">
           <Services />
         </section>
@@ -34,13 +27,14 @@ const ResidentHome = () => {
           <Notification />
         </section>
 
-        <section id="contact" className="contact-section">
-          <ContactPage />
-        </section>
-
         <section id="survey" className="survey-section">
           <SurveyPage />
         </section>
+
+        <section id="contact" className="contact-section">
+          <ContactPage />
+        </section>
+      </main>
     </div>
   );
 };

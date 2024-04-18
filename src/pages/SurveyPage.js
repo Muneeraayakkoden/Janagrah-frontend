@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './SurveyPage.css'; // Import CSS file for styling
+import './SurveyPage.css'; 
 
 const SurveyPage = () => {
   const [surveyData, setSurveyData] = useState({
@@ -32,7 +32,7 @@ const SurveyPage = () => {
 
   return (
     <div className="SurveyPage">
-        <h2>Survey</h2>
+      <h2>Survey</h2>
       <form onSubmit={handleSubmit}>
         <div className="question">{surveyData.question}</div>
         <div className="options">
@@ -50,11 +50,12 @@ const SurveyPage = () => {
           ))}
         </div>
         <textarea
+          className="comments"
           placeholder="Any additional comments?"
           value={surveyData.comments}
           onChange={handleCommentsChange}
         ></textarea>
-        <button type="submit">Submit</button>
+        <button type="submit" className="submit-button">Submit</button>
       </form>
     </div>
   );

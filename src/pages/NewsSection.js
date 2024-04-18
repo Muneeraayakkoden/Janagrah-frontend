@@ -1,3 +1,5 @@
+// NewsSection.jsx
+
 import React from 'react';
 import './NewsSection.css';
 
@@ -29,7 +31,7 @@ const NewsSection = () => {
   return (
     <section className="news-section">
       <div className="container">
-        <h2>Latest News</h2>
+        <h2>NEWS BOARD</h2>
         <div className="news-container">
           {newsData.map(newsItem => (
             <div key={newsItem.id} className="news-item">
