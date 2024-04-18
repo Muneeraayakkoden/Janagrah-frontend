@@ -2,9 +2,12 @@
 import React, { useState } from 'react';
 import './LoginPage.css';
 import logo from '../assets/logo.png';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import { Link } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom"; // Import Link from react-router-dom
 
 function ResidentLogin() {
+  const navigate = useNavigate()
+
   return (
     <div>
       <div className="input-group">
@@ -16,12 +19,13 @@ function ResidentLogin() {
       <button type="submit" className="login-btn">Resident Login</button>
       <div className="forgot-password">Forgot Password?</div>
       <button className="register-btn">Register Now</button>
-      <Link to="/signup/resident">Register Now</Link>
+      <Link to="/ResidentSignup">Register Now</Link>
     </div>
   );
 }
 
 function OfficialLogin() {
+  const navigate = useNavigate()
   return (
     <div>
       <div className="input-group">
@@ -38,6 +42,7 @@ function OfficialLogin() {
 }
 
 function LoginPage() {
+  const navigate = useNavigate()
   const [isResident, setIsResident] = useState(true);
 
   return (

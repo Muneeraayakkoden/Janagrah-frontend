@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import './ResidentSignup.css';
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 
 const ResidentSignup = () => {
+  const navigate = useNavigate()
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [formData, setFormData] = useState({
@@ -30,35 +32,67 @@ const ResidentSignup = () => {
     setFormData({ ...formData, state: value, district: '' });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+
+    // Check if passwords match
     if (password !== confirmPassword) {
       setErrorMessage('Passwords do not match.');
       return;
     }
-    if (!formData.name || !formData.email || !formData.username || !formData.password || !confirmPassword) {
+
+    // Check if required fields are filled
+    if (!formData.name || !formData.email || !formData.username || !password || !confirmPassword) {
       setErrorMessage('Please fill in all required fields.');
       return;
     }
-    
-    // Reset form data and show success message
-    setFormData({
-      state: '',
-      district: '',
-      gramaPanchayat: '',
-      wardNo: '',
-      name: '',
-      age: '',
-      job: '',
-      address: '',
-      email: '',
-      username: '',
-      annualIncome: '',
-    });
-    setPassword('');
-    setConfirmPassword('');
-    setErrorMessage('Registration successful!');
-  };
+
+    // Add password to form data
+    formData.password = password;
+
+    // Convert form data to a URL-encoded string
+    const formDataString = Object.keys(formData)
+      .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(formData[key]))
+      .join('&');
+
+    try {
+      // Send form data to the backend
+      const response = await fetch('http://localhost:4000/user/request-user', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: formDataString
+      });
+      navigate("/ResidentSignupSuccess")
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      // Reset form data and show success message
+      setFormData({
+        state: '',
+        district: '',
+        gramaPanchayat: '',
+        wardNo: '',
+        name: '',
+        age: '',
+        job: '',
+        address: '',
+        email: '',
+        username: '',
+        annualIncome: '',
+      });
+      setPassword('');
+      setConfirmPassword('');
+      setErrorMessage('Registration successful!');
+    } catch (error) {
+      // Handle fetch error
+      console.error('There was a problem with your fetch operation:', error);
+    }
+};
+
 
   const states = [
     "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh",
