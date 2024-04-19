@@ -55,8 +55,9 @@ const ResidentSignup = () => {
       .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(formData[key]))
       .join('&');
 
-    try {
-      // Send form data to the backend
+   try {
+       
+       // Send form data to the backend
       const response = await fetch('http://localhost:4000/user/request-user', {
         method: 'POST',
         headers: {
@@ -69,7 +70,7 @@ const ResidentSignup = () => {
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
-
+    
       // Reset form data and show success message
       setFormData({
         state: '',
@@ -87,7 +88,8 @@ const ResidentSignup = () => {
       setPassword('');
       setConfirmPassword('');
       setErrorMessage('Registration successful!');
-    } catch (error) {
+    } 
+    catch (error) {
       // Handle fetch error
       console.error('There was a problem with your fetch operation:', error);
     }
@@ -110,6 +112,28 @@ const ResidentSignup = () => {
     ]
   };
 
+  const localAuthorities = {
+    "Palakkad": [
+      "AGALI", "AKATHETHARA", "ALANALLUR", "ALATHUR", "AMBALAPARA", "ANAKKARA", "ANANGANADI", "AYILUR", "CHALAVARA", "CHALISSERI",
+      "COYALAMMANAM", "ELAPPULLY", "ELEVANCHERY", "ERIMAYUR", "ERUTHEMPATHY", "KADAMPAZHIPURAM", "KANHIRAPUZHA", "KANNADI", "KANNAMBRA",
+      "KAPPUR", "KARAKURUSSI", "KARIMPUZHA", "KAVASSERI", "KERALASSERY", "KIZHAKKANCHERY", "KODUMBA", "KODUVAYUR", "KOLLENGODE", "KONGAD",
+      "KOPPAM", "KOTTOPPADAM", "KOTTAYI", "KOZHINJAMPARA", "KARIMBA", "KULUKKALLUR", "KUMARAMPUTHUR", "KUTHANUR", "LAKKIDI PERUR", "MALAMPUZHA",
+      "MANKARA", "MANNUR", "MARUTHARODE", "MATHUR", "MUTHUTHALA", "MELARCODE", "MUNDUR", "MUTHALAMADA", "NAGALASSERI", "NALLEPPILLY", "NELLAYA",
+      "NELLIAMPATHY", "NEMMARA", "ONGALLUR", "PALLASSANA", "POOKKOTTUKAVU", "PARUTHUR", "PARALI", "PATTITHARA", "PATTANCHERY", "PERUMATTY",
+      "PERUNGOTTUKURUSSI", "PERUVEMBA", "PIRAYIRI", "POLPULLY", "PUDUCODE", "PUDUNAGARAM","PUDUPPARIYARM", "PUDUR", "PUDUSSERI",  "SHOLAYUR",
+      "SREEKRISHNAPURAM", "TARUR", "THACHAMPARA", "THACHANATTUKARA", "THENKURUSSI", "THIRUMITTACODE", "THIRUVEGAPURA", "TRIKKADIRI", "THRITHALA",
+      "VADAKKANCHERY", "VADAKARAPATHY","VADAVANNUR", "VALLAPUZHA", "VANDAZHY", "VANIAMKULAM", "VELLINEZHI", "VILAYUR",  "PALAKKAD", "CHITTUR-TATTAMANGALAM", 
+      "MANNARKKAD", "CHERPULASSERY", "OTTAPPALAM", "SHORANUR", "PATTAMBI"
+    ]
+  };
+
+  const Ward = {
+    "SREEKRISHNAPURAM": [
+      "Valambilimangalam", "Valambilimangalam East", "Easwaramangalam", "Sreekrishnapuram", "Mannampatta", "Poozhiyaparambu", "Kulakkattukurssi", 
+      "Punnamparambu", "Thalayinakkadu", "Parthala", "Mangalamkunnu", "Ragamcorner", "Chanthapura", "Perumangode"
+    ]
+  };
+  
   return (
     <div className="signup-page">
       <h1>RESIDENT REGISTRATION</h1>
@@ -134,9 +158,29 @@ const ResidentSignup = () => {
             <input type="text" name="district" placeholder="District" value={formData.district} onChange={handleChange} required />
           )}
           <br /><br />
-          <input type="text" name="LocalGovernment" placeholder="Local Government" value={formData.LocalGovernment} onChange={handleChange} />
+
+          {formData.district === 'Palakkad' ? (
+            <select name="localAuthority" value={formData.localAuthority} onChange={handleChange} required>
+              <option value="">Select Local-Authority</option>
+              {localAuthorities['Palakkad'].map(localAuthority => (
+                <option key={localAuthority} value={localAuthority}>{localAuthority}</option>
+              ))}
+            </select>
+          ) : (
+            <input type="text" name="localAuthority" placeholder="Local-Authority" value={formData.localAuthority} onChange={handleChange} required />
+          )}
           <br /><br />
-          <input type="number" name="wardNo" placeholder="Ward No." value={formData.wardNo} onChange={handleChange} required />
+
+          {formData.localAuthority === 'SREEKRISHNAPURAM' ? (
+            <select name="ward" value={formData.ward} onChange={handleChange} required>
+              <option value="">Select Ward</option>
+              {Ward['SREEKRISHNAPURAM'].map(ward => (
+                <option key={ward} value={ward}>{ward}</option>
+              ))}
+            </select>
+          ) : (
+            <input type="text" name="ward" placeholder="Ward" value={formData.ward} onChange={handleChange} required />
+          )}
           <br /><br />
         </div>
         <div className="form-section">
@@ -147,7 +191,25 @@ const ResidentSignup = () => {
           <br /><br />
           <input type="number" name="phone" placeholder="Phone No." value={formData.phone} onChange={handleChange} required />
           <br /><br />
-          <input type="text" name="job" placeholder="Job" value={formData.job} onChange={handleChange} />
+          <select name="job" id="job" placeholder="Job" value={formData.job} onchange="handleChange()">
+            <option value="">Select a Job</option>
+            <option value="student">Student</option>
+            <option value="farmer">Farmer</option>
+            <option value="teacher">Teacher</option>
+            <option value="doctor">Doctor</option>
+            <option value="housewife">Housewife</option>
+            <option value="fisherman">Fisherman</option>
+            <option value="engineer">Engineer</option>
+            <option value="nurse">Nurse</option>
+            <option value="sportsman">Sportsman</option>
+            <option value="coach">Coach</option>
+            <option value="business">Business</option>
+            <option value="sales officer">Sales Officer</option>
+            <option value="manager">Manager</option>
+            <option value="bike rider">Bike Rider</option>
+            <option value="receptionist">Receptionist</option>
+            <option value="pharmacist">Pharmacist</option>
+          </select>
           <br /><br />
           <input type="number" name="annualIncome" placeholder="Annual Income" value={formData.annualIncome} onChange={handleChange} />
           <br /><br />
@@ -174,5 +236,3 @@ const ResidentSignup = () => {
 }
 
 export default ResidentSignup;
-
-

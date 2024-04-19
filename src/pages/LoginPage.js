@@ -21,7 +21,6 @@ function ResidentLoginForm({ onRegisterClick }) {
       </div>
       <button type="submit" className="login-btn" onClick={handleLogin}>Resident Login</button>
       <div className="forgot-password">Forgot Password?</div>
-      <button className="register-btn" onClick={onRegisterClick}>Register Now</button>
     </div>
   );
 }
