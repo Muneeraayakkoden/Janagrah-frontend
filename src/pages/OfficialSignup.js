@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './OfficialSignup.css';
+import axios from 'axios';
 
 import React, { useState } from 'react';
 
@@ -10,13 +11,13 @@ const OfficialSignup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('/wardmemberlogin', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ username, password }),
+      const response = await axios.post('http://localhost:4000/wardmemberlogin', {
+        username,
+        password
       });
+        console.log(response.data)
+        body: JSON.stringify({ username, password }),
+      
       // Handle response, maybe redirect on success
     } catch (error) {
       console.error('Error:', error);
