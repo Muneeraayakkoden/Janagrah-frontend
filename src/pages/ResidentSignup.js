@@ -48,12 +48,10 @@ const ResidentSignup = () => {
     }
 
     // Add password to form data
-    formData.password = password;
+  
 
     // Convert form data to a URL-encoded string
-    const formDataString = Object.keys(formData)
-      .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(formData[key]))
-      .join('&');
+    
 
    try {
        
@@ -61,9 +59,25 @@ const ResidentSignup = () => {
       const response = await fetch('http://localhost:4000/user/request-user', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
+          'Content-Type':'application/json'
         },
-        body: formDataString
+        body: JSON.stringify({
+          state:formData.state,
+          district:formData.district,
+          localgovernment:formData.LocalGovernment,
+          wardNo:formData.wardNo,
+          name:formData.name,
+          age:formData.age,
+          phone:formData.phone,
+          job:formData.job,
+          address:formData.address,
+          email:formData.email,
+          username:formData.state,
+          password:password,
+          annualIncome:formData.annualIncome
+          
+        }),
+        
       });
       navigate("/ResidentSignupSuccess")
 
@@ -75,10 +89,11 @@ const ResidentSignup = () => {
       setFormData({
         state: '',
         district: '',
-        gramaPanchayat: '',
+        LocalGovernment: '',
         wardNo: '',
         name: '',
         age: '',
+        phone:'',
         job: '',
         address: '',
         email: '',
