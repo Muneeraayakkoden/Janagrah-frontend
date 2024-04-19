@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './ContactPage.css'; // Assuming you have a CSS file for ContactPage styling
+import './ContactPage.css'; 
 
 function ContactPage() {
   const [message, setMessage] = useState('');
@@ -10,7 +10,7 @@ function ContactPage() {
   };
 
   const handleAnonymousChange = (event) => {
-    setIsAnonymous(event.target.checked);
+    setIsAnonymous(event.target.id === 'anonymous');
   };
 
   const handleSubmit = (event) => {
@@ -39,7 +39,7 @@ function ContactPage() {
                 type="radio"
                 id="nonAnonymous"
                 name="messageType"
-                value="nonAnonymous"
+                value="s"
                 checked={!isAnonymous}
                 onChange={handleAnonymousChange}
               />
@@ -48,7 +48,7 @@ function ContactPage() {
                 type="radio"
                 id="anonymous"
                 name="messageType"
-                value="anonymous"
+                value="s"
                 checked={isAnonymous}
                 onChange={handleAnonymousChange}
               />

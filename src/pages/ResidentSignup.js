@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import './ResidentSignup.css';
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 
 const ResidentSignup = () => {
+  const navigate = useNavigate()
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [formData, setFormData] = useState({
@@ -30,35 +32,67 @@ const ResidentSignup = () => {
     setFormData({ ...formData, state: value, district: '' });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+
+    // Check if passwords match
     if (password !== confirmPassword) {
       setErrorMessage('Passwords do not match.');
       return;
     }
-    if (!formData.name || !formData.email || !formData.username || !formData.password || !confirmPassword) {
+
+    // Check if required fields are filled
+    if (!formData.name || !formData.email || !formData.username || !password || !confirmPassword) {
       setErrorMessage('Please fill in all required fields.');
       return;
     }
-    
-    // Reset form data and show success message
-    setFormData({
-      state: '',
-      district: '',
-      gramaPanchayat: '',
-      wardNo: '',
-      name: '',
-      age: '',
-      job: '',
-      address: '',
-      email: '',
-      username: '',
-      annualIncome: '',
-    });
-    setPassword('');
-    setConfirmPassword('');
-    setErrorMessage('Registration successful!');
-  };
+
+    // Add password to form data
+    formData.password = password;
+
+    // Convert form data to a URL-encoded string
+    const formDataString = Object.keys(formData)
+      .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(formData[key]))
+      .join('&');
+
+    try {
+      // Send form data to the backend
+      const response = await fetch('http://localhost:4000/user/request-user', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: formDataString
+      });
+      navigate("/ResidentSignupSuccess")
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      // Reset form data and show success message
+      setFormData({
+        state: '',
+        district: '',
+        gramaPanchayat: '',
+        wardNo: '',
+        name: '',
+        age: '',
+        job: '',
+        address: '',
+        email: '',
+        username: '',
+        annualIncome: '',
+      });
+      setPassword('');
+      setConfirmPassword('');
+      setErrorMessage('Registration successful!');
+    } catch (error) {
+      // Handle fetch error
+      console.error('There was a problem with your fetch operation:', error);
+    }
+};
+
 
   const states = [
     "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh",
@@ -80,7 +114,7 @@ const ResidentSignup = () => {
     <div className="signup-page">
       <h1>RESIDENT REGISTRATION</h1>
       <form onSubmit={handleSubmit}>
-        <section className="location-details">
+        <div className="form-section">
           <h2>Location Details</h2>
           <select name="state" value={formData.state} onChange={handleStateChange} required>
             <option value="">Select State</option>
@@ -104,8 +138,8 @@ const ResidentSignup = () => {
           <br /><br />
           <input type="number" name="wardNo" placeholder="Ward No." value={formData.wardNo} onChange={handleChange} required />
           <br /><br />
-        </section>
-        <section className="personal-details">
+        </div>
+        <div className="form-section">
           <h2>Personal Details</h2>
           <input type="text" name="name" placeholder="Name" value={formData.name} onChange={handleChange} required />
           <br /><br />
@@ -118,8 +152,8 @@ const ResidentSignup = () => {
           <input type="number" name="annualIncome" placeholder="Annual Income" value={formData.annualIncome} onChange={handleChange} />
           <br /><br />
           <textarea name="address" placeholder="Address" value={formData.address} onChange={handleChange} />
-        </section>
-        <section className="account-details">
+        </div>
+        <div className="form-section">
           <h2>Account Details</h2>
           <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
           <br /><br />
@@ -127,11 +161,11 @@ const ResidentSignup = () => {
           <br /><br />
           <input type="password" name="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
           <br /><br />
-          <input type="password" name="confirm_password" placeholder="Re-enter Password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required/> 
+          <input type="password" name="confirm_password" placeholder="Re-enter Password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required /> 
           <br /><br />
           <label>Upload image : </label>
           <input type="file" />
-        </section>
+        </div>
         <button type="submit">Register</button>
         {errorMessage && <p className="error-message">{errorMessage}</p>}
       </form>
@@ -140,3 +174,5 @@ const ResidentSignup = () => {
 }
 
 export default ResidentSignup;
+
+

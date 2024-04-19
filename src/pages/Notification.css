@@ -1,41 +1,32 @@
+/* Notification.css */
+
 .Notification {
-    margin-top: 50px;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .Notification p {
-    font-size: 1.2rem;
-    color: #333;
-    text-align: center;
-  }
-  
-  .Notification .notification-list {
-    margin-top: 20px;
-    list-style: none;
-    padding: 0;
-  }
-  
-  .Notification .notification-list li {
-    margin-bottom: 10px;
-  }
-  
-  .Notification .notification-list li:last-child {
-    margin-bottom: 0;
-  }
-  
-  .Notification .notification-list li .notification-item {
-    background-color: #fff;
-    padding: 10px 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .Notification .notification-list li .notification-item p {
-    margin: 0;
-    font-size: 1rem;
-    color: #666;
-  }
-  
+  background-color: #f8f9fa; /* Light background color */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+}
+
+.Notification h2 {
+  font-size: 1.5rem;
+  color: #3e65e2; /* Blue color for heading */
+  margin-bottom: 15px;
+}
+
+.notification-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.notification {
+  background-color: #fff; /* White background color for notifications */
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 15px; /* Add space between notifications */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+}
+
+.notification p {
+  font-size: 1rem;
+  color: #333; /* Text color */
+}

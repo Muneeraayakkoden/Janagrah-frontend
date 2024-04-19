@@ -1,15 +1,16 @@
 
 import React from 'react';
-import Footer from './components/Footer';
 import ResidentHome from './pages/ResidentHome';
+//import LoginPage from './pages/LoginPage';
+//import ResidentSignup from './pages/ResidentSignup';
 
 function App() {
   return (
     <div className="App">
       <ResidentHome />
-      <Footer />
+      {/* <LoginPage /> */}
+      {/* <ResidentSignup /> */}
     </div>
   );
 }
-
-export default App;
+export default App; 
