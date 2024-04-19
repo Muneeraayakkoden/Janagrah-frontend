@@ -27,26 +27,43 @@ function ResidentLoginForm({ onRegisterClick }) {
 }
 
 function OfficialLoginForm({ onRegisterClick }) {
-  const [email, setEmail] = useState('');
+  const [username, setusername] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = () => {
-    console.log('Official login with email:', email, 'and password:', password);
-    // Implement login logic
-  };
+ 
+  const handleLogin = async (event) => {
+    event.preventDefault();
+
+    try {
+      // Send form data to the backend
+      const response = await fetch('http://localhost:4000/wlogin/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type':'application/json'
+        },
+        
+        body: JSON.stringify({ username, password })
+      })   
+    } catch (error) {
+      // Handle fetch error
+      console.error('There was a problem with your fetch operation:', error);
+    }
+};
+
 
   return (
-    <div>
+    <form>
+      
       <div className="input-group">
-        <input type="email" placeholder="Email" className="input-field" value={email} onChange={(e) => setEmail(e.target.value)} />
+        <input type="text" placeholder="username" className="input-field" value={username} onChange={(e) => setusername(e.target.value)} />
       </div>
       <div className="input-group">
         <input type="password" placeholder="Password" className="input-field" value={password} onChange={(e) => setPassword(e.target.value)} />
       </div>
       <button type="submit" className="login-btn" onClick={handleLogin}>Official Login</button>
       <div className="forgot-password">Forgot Password?</div>
-      <button className="register-btn" onClick={onRegisterClick}>Register Now</button>
-    </div>
+
+    </form>
   );
 }
 
