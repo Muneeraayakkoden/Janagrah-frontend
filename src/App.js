@@ -1,25 +1,16 @@
 
 import React from 'react';
-import Footer from './components/Footer';
-import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
-import  LoginPage from './pages/LoginPage.js';
-import ResidentSignup from './pages/ResidentSignup.js';
-import ResidentSignupSuccess from './pages/ResidentSignupSuccess.js';
+// ResidentHome from './pages/ResidentHome';
+import LoginPage from './pages/LoginPage';
+//import ResidentSignup from './pages/ResidentSignup';
 
 function App() {
   return (
-    <>
-
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" Component={LoginPage} />
-          <Route path="/ResidentSignup" Component={ResidentSignup} />
-          <Route path="/ResidentSignupSuccess" Component={ResidentSignupSuccess} />
-        </Routes>
-      </BrowserRouter>
-    
-    </>
+    <div className="App">
+      {/*<ResidentHome /> */}
+      <LoginPage /> 
+      {/* <ResidentSignup /> */}
+    </div>
   );
 }
-
-export default App;
+export default App; 
