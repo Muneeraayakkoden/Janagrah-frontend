@@ -16,7 +16,7 @@ const OfficialSignup = () => {
         password
       });
         console.log(response.data)
-        body: JSON.stringify({ username, password }),
+        body: JSON.stringify({ username, password })
       
       // Handle response, maybe redirect on success
     } catch (error) {
