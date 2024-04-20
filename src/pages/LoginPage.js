@@ -33,35 +33,47 @@ function ResidentLoginForm({ onRegisterClick }) {
       <div className="input-group">
         <input type="password" placeholder="Password" className="input-field" value={password} onChange={(e) => setPassword(e.target.value)} />
       </div>
-      <button  className="login-btn" onClick={handleLogin}>Resident Login</button>
+      <button type='submit'  className="login-btn" onClick={handleLogin}>Resident Login</button>
       <div className="forgot-password">Forgot Password?</div>
     </div>
   );
 }
 
-function OfficialLoginForm({ onRegisterClick }) {
+
+function OfficialLoginForm() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   const handleLogin = async (event) => {
     event.preventDefault();
-
+  
     // Send form data to the backend
     const response = await fetch('http://localhost:4000/login/wardlogin', {
       method: 'POST',
       headers: {
-        'Content-Type':'application/json'
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({ username, password })
     });
-
+  
     if (response.status === 200) {
       const data = await response.json();
-      navigate('/OfficialHome', { state: { user: data } }); 
+      console.log(data);
+      Object.entries(data.data).forEach(([key, value]) => {
+        localStorage.setItem(key, JSON.stringify(value));
+      });
+    
+      navigate('/OfficialHome');
       // If login successful, navigate to the dashboard route and send user data
+    } else {
+      // If login failed, show error message
+      const responseData = await response.json();
+      setError(responseData.message || 'Login failed');
     }
   };
+  
 
   return (
     <form>
@@ -71,11 +83,15 @@ function OfficialLoginForm({ onRegisterClick }) {
       <div className="input-group">
         <input type="password" placeholder="Password" className="input-field" value={password} onChange={(e) => setPassword(e.target.value)} />
       </div>
-      <button type="submit" className="login-btn" onClick={handleLogin}>Official Login</button>
+      <button  className="login-btn" onClick={handleLogin}>Official Login</button>
       <div className="forgot-password">Forgot Password?</div>
+      {error && <p className="error-message">{error}</p>}
     </form>
   );
 }
+
+
+
 
 function LoginPage() {
   const [selectedTab, setSelectedTab] = useState('resident');

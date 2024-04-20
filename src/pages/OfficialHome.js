@@ -1,19 +1,21 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Header from '../components/Header.js';
 
+const OfficialHome = () => {
 
-
-//import Notification from './Notification.js';
-
-const OfficialHome = (props) => {
-  const userData = props.location?.state?.user;
 
   return (
     <div>
       <Header />
+      <Link
+        to={{
+          pathname: '/UserRequests',}}
+      >
+        RESIDENT REQUEST
+      </Link>
     </div>
   );
 };
 
 export default OfficialHome;
-
