@@ -1,14 +1,14 @@
 
 import React from 'react';
 import ResidentHome from './pages/ResidentHome';
-//import LoginPage from './pages/LoginPage';
+import LoginPage from './pages/LoginPage';
 //import ResidentSignup from './pages/ResidentSignup';
 
 function App() {
   return (
     <div className="App">
-      <ResidentHome />
-      {/* <LoginPage /> */}
+      {/*<ResidentHome />*/}
+       <LoginPage /> 
       {/* <ResidentSignup /> */}
     </div>
   );

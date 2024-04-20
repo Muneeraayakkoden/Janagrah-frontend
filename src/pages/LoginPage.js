@@ -3,18 +3,18 @@ import './LoginPage.css';
 import logo from '../assets/logo.png';
 
 function ResidentLoginForm({ onRegisterClick }) {
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   const handleLogin = () => {
-    console.log('Resident login with email:', email, 'and password:', password);
+    console.log('Resident login with username:', username, 'and password:', password);
     // Implement login logic
   };
 
   return (
     <div>
       <div className="input-group">
-        <input type="email" placeholder="Email" className="input-field" value={email} onChange={(e) => setEmail(e.target.value)} />
+        <input type="text" placeholder="Username" className="input-field" value={username} onChange={(e) => setUsername(e.target.value)} />
       </div>
       <div className="input-group">
         <input type="password" placeholder="Password" className="input-field" value={password} onChange={(e) => setPassword(e.target.value)} />
