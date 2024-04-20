@@ -26,9 +26,10 @@ function ResidentLoginForm() {
       if (response.ok) {
         const data = await response.json();
         // Assuming the server returns a token upon successful login
-        const token = data.token; // Adjust this based on your server response
-        
-        if (token) {
+        //const token = data.token; // Adjust this based on your server response
+        //console.log(token);
+        console.log(data);
+        if (data.success) {
           // Login successful, navigate to ResidentHome
           navigate('/ResidentHome');
         } else {
@@ -82,12 +83,12 @@ function OfficialLoginForm() {
         
         body: JSON.stringify({ username, password })
       })   
-      const data = await response.json();
+      //const data = await response.json();
       console.log(response);
       if (response.ok) {
         const data = await response.json();
-        const token = data.token; // Assuming the server returns a token upon successful login 
-        if (token) {
+         // Assuming the server returns a token upon successful login 
+        if (data.success) {
           // Login successful, navigate to OfficialHome
           navigate('/OfficialHome');
         } else {
