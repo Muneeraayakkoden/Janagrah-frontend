@@ -9,6 +9,9 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
   }
   
   .header {
@@ -34,23 +37,34 @@ body {
     padding: 2rem;
   }
   
+  .logo img {
+    width: 150px;
+    height: auto;
+  
+  }  
+
   .section {
     margin-bottom: 2rem;
   }
   
   .survey-section h2,
-  .updates-section h2 {
+  .updates-section h2,
+  .news-section h2 {
     margin-bottom: 1rem;
     font-weight: bold;
   }
   
-  .survey-cards {
+  .survey-cards,
+  .updates-card,
+  .news-card {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
   }
   
-  .survey-card {
+  .survey-card,
+  .updates-card,
+  .news-card {
     background-color: #f5f5f5;
     padding: 1rem;
     border-radius: 5px;
@@ -59,11 +73,15 @@ body {
     transition: all 0.2s ease-in-out;
   }
   
-  .survey-card:hover {
+  .survey-card:hover,
+  .updates-card:hover,
+  .news-card:hover { 
     background-color: #e0e0e0;
   }
   
-  .survey-card h3 {
+  .survey-card h3,
+  .updates-card h3, 
+  .news-card h3 {
     font-size: 1.2rem;
     margin-bottom: 0.5rem;
   }
@@ -73,54 +91,7 @@ body {
     color: #666;
   }
   
-  .updates-section form {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-  
-  .updates-section label {
-    font-weight: bold;
-  }
-  
-  .updates-section textarea {
-    resize: vertical;
-    padding: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .upload-options {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-  
-  .upload-options label {
-    font-size: 0.8rem;
-    color: #888;
-  }
-  
-  .updates-section button {
-    background-color: #007bff;
-    color: #fff;
-    padding: 0.7rem 1rem;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-top: 1rem;
-  }
-  
-  .news-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .news-list li {
-    margin-bottom: 0.5rem;
-  }
-  
+
   .footer {
     padding: 1rem 2rem;
     text-align: center;
@@ -129,7 +100,7 @@ body {
   
   .notification-bell {
     position: fixed;
-    bottom: 20px;
+    top: 20px;
     right: 20px;
     width: 60px;
     height: 60px;

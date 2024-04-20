@@ -16,18 +16,22 @@ const ResidentHome = () => {
       </header>
 
       <main className="main-content">
+        <section className="survey-section">
+          <div className="survey-card">
+            <a href="#" onClick={(e) => e.navigate('/SurveyPage')}>
+              <h3>SURVEYS</h3>
+            </a>
+          </div>
+        </section>
 
-      <div className="survey-section">
-          <button className="survey-btn" onClick={() => {
-            navigate('/SurveyPage');
-          }}>Survey</button>
-        </div>
-
-        <div>
-          <button className="contact-btn" onClick={() => {
-            navigate('/ContactPage');
-          }}>Contact</button>
-        </div>
+        <section className="Contact-section">
+          <div className="contact-card">
+            <a href="#" onClick={(e) => e.navigate('/ContactPage')}>
+              <h3>CONTACT</h3>
+              <p>Message the ward member</p>
+            </a>
+          </div>
+        </section>
 
         <section id="services" className="services-section">
           <Services />

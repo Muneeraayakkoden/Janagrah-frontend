@@ -9,6 +9,10 @@ import SurveyPage from './pages/SurveyPage.js';
 import Notification from './pages/Notification.js';
 import LoginRejected from './pages/LoginRejected.js'
 import OfficialHome from './pages/OfficialHome.js'
+import CreateUpdates from './pages/CreateUpdates.js';
+import Results from './pages/Results.js';
+import CreateSurveys from './pages/CreateSurveys.js';
+import News from './pages/CreateNews.js';
 
 function App() {
   return (
@@ -23,7 +27,11 @@ function App() {
           <Route path="/ResidentSignupSuccess" Component={ResidentSignupSuccess} />
           <Route path="/Notification" Component={Notification} />
           <Route path="/LoginRejected" Component={LoginRejected} />
-          <Route path='/OfficialHome' Component={OfficialHome} />
+          <Route path="/OfficialHome" Component={OfficialHome} />
+          <Route path="/CreateUpdates" Component={CreateUpdates} />
+          <Route path="/CreateSurveys" Component={CreateSurveys} />
+          <Route path="/Results" Component={Results} />
+          <Route path="/CreateNews" Component={News} />
         </Routes>
       </BrowserRouter>
     </div>

@@ -39,14 +39,31 @@ body {
 .notifications-section {
   margin-bottom: 20px;
 }
-
-/* Survey section styles */
-.survey-section {
-  margin-bottom: 20px;
-}
-
-/* Contact section styles */
-.contact-section {
-  margin-bottom: 20px;
-}
+  
+  .survey-card,
+  .contact-card {
+    background-color: #f5f5f5;
+    padding: 1rem;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .survey-card:hover,
+  .contact-card:hover{
+    background-color: #e0e0e0;
+  }
+  
+  .survey-card h3,
+  .contact-card h3{
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .contact-card p {
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
 

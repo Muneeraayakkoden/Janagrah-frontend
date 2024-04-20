@@ -205,11 +205,11 @@ const ResidentSignup = () => {
           <h2>Personal Details</h2>
           <input type="text" name="name" placeholder="Name" value={formData.name} onChange={handleChange} required />
           <br /><br />
-          <input type="number" name="age" placeholder="Age" value={formData.age} onChange={handleChange} />
+          <input type="number" name="age" placeholder="Age" value={formData.age} onChange={handleChange} required />
           <br /><br />
           <input type="number" name="phone" placeholder="Phone No." value={formData.phone} onChange={handleChange} required />
           <br /><br />
-          <select name="job" id="job">
+          <select name="job" id="job" required>
             <option value="">Select a Job</option>
             <option value="student">Student</option>
             <option value="farmer">Farmer</option>
@@ -248,7 +248,7 @@ const ResidentSignup = () => {
           <input type="file" />
         </div>
         <button type="submit" onClick={handleSubmit}>Register</button>
-        {errorMessage && <p className="error-message">{errorMessage}</p>}
+        {errorMessage && <p className="error-message">{errorMessage}</p>} 
       </form>
     </div>
   );
