@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './ResidentSignup.css';
-import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const ResidentSignup = () => {
   const navigate = useNavigate()
@@ -24,6 +24,7 @@ const ResidentSignup = () => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
+    console.log(event.target)
     setFormData({ ...formData, [name]: value });
   };
 
@@ -34,6 +35,8 @@ const ResidentSignup = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    navigate("/ResidentSignupSuccess")
+
 
     // Check if passwords match
     if (password !== confirmPassword) {
@@ -54,6 +57,7 @@ const ResidentSignup = () => {
     
 
    try {
+    console.log(JSON.stringify(formData));
        
        // Send form data to the backend
       const response = await fetch('http://localhost:4000/user/request-user', {
@@ -79,7 +83,6 @@ const ResidentSignup = () => {
         }),
         
       });
-      navigate("/ResidentSignupSuccess")
 
       if (!response.ok) {
         throw new Error('Network response was not ok');
@@ -144,8 +147,8 @@ const ResidentSignup = () => {
 
   const Ward = {
     "SREEKRISHNAPURAM": [
-      "Valambilimangalam", "Valambilimangalam East", "Easwaramangalam", "Sreekrishnapuram", "Mannampatta", "Poozhiyaparambu", "Kulakkattukurssi", 
-      "Punnamparambu", "Thalayinakkadu", "Parthala", "Mangalamkunnu", "Ragamcorner", "Chanthapura", "Perumangode"
+      "1", "2", "3", "4", "5", "6", "7", 
+      "8", "9", "10", "11", "12", "13", "14"
     ]
   };
   
@@ -194,7 +197,7 @@ const ResidentSignup = () => {
               ))}
             </select>
           ) : (
-            <input type="text" name="ward" placeholder="Ward" value={formData.ward} onChange={handleChange} required />
+            <input type="text" name="ward" placeholder="Ward No." value={formData.ward} onChange={handleChange} required />
           )}
           <br /><br />
         </div>
@@ -202,11 +205,11 @@ const ResidentSignup = () => {
           <h2>Personal Details</h2>
           <input type="text" name="name" placeholder="Name" value={formData.name} onChange={handleChange} required />
           <br /><br />
-          <input type="number" name="age" placeholder="Age" value={formData.age} onChange={handleChange} />
+          <input type="number" name="age" placeholder="Age" value={formData.age} onChange={handleChange} required />
           <br /><br />
           <input type="number" name="phone" placeholder="Phone No." value={formData.phone} onChange={handleChange} required />
           <br /><br />
-          <select name="job" id="job" placeholder="Job" value={formData.job} onchange="handleChange()">
+          <select name="job" id="job" required>
             <option value="">Select a Job</option>
             <option value="student">Student</option>
             <option value="farmer">Farmer</option>
@@ -224,6 +227,7 @@ const ResidentSignup = () => {
             <option value="bike rider">Bike Rider</option>
             <option value="receptionist">Receptionist</option>
             <option value="pharmacist">Pharmacist</option>
+            <option value="others">Others</option>
           </select>
           <br /><br />
           <input type="number" name="annualIncome" placeholder="Annual Income" value={formData.annualIncome} onChange={handleChange} />
@@ -243,8 +247,8 @@ const ResidentSignup = () => {
           <label>Upload image : </label>
           <input type="file" />
         </div>
-        <button type="submit">Register</button>
-        {errorMessage && <p className="error-message">{errorMessage}</p>}
+        <button type="submit" onClick={handleSubmit}>Register</button>
+        {errorMessage && <p className="error-message">{errorMessage}</p>} 
       </form>
     </div>
   );

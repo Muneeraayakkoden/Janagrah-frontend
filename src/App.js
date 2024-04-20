@@ -1,25 +1,43 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ResidentHome from './pages/ResidentHome';
 import LoginPage from './pages/LoginPage.js';
 import ResidentSignup from './pages/ResidentSignup.js';
 import ResidentSignupSuccess from './pages/ResidentSignupSuccess.js';
-import OfficialHome from './pages/OfficialHome.js';
-import UserRequests from './pages/UserRequests.js';
-
+import ContactPage from './pages/ContactPage.js';
+import SurveyPage from './pages/SurveyPage.js';
+import Notification from './pages/Notification.js';
+import LoginRejected from './pages/LoginRejected.js'
+import OfficialHome from './pages/OfficialHome.js'
+import CreateUpdates from './pages/CreateUpdates.js';
+import Results from './pages/Results.js';
+import CreateSurveys from './pages/CreateSurveys.js';
+import News from './pages/CreateNews.js';
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<LoginPage />} />
-        <Route path="/ResidentSignup" element={<ResidentSignup />} />
-        <Route path="/ResidentSignupSuccess" element={<ResidentSignupSuccess />} />
-        <Route path="/OfficialHome" element={<OfficialHome />} />
-        <Route path="/UserRequests" element={<UserRequests />} />
-
-      </Routes>
-    </BrowserRouter>
+    <div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/ContactPage" Component={ContactPage} />
+          <Route path="/SurveyPage" Component={SurveyPage} />
+          <Route path="/ResidentHome" Component={ResidentHome}/> 
+          <Route path="/" Component={LoginPage} />
+          <Route path="/ResidentSignup" Component={ResidentSignup} />
+          <Route path="/ResidentSignupSuccess" Component={ResidentSignupSuccess} />
+          <Route path="/Notification" Component={Notification} />
+          <Route path="/LoginRejected" Component={LoginRejected} />
+          <Route path="/OfficialHome" Component={OfficialHome} />
+          <Route path="/CreateUpdates" Component={CreateUpdates} />
+          <Route path="/CreateSurveys" Component={CreateSurveys} />
+          <Route path="/Results" Component={Results} />
+          <Route path="/CreateNews" Component={News} />
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 }
 
 export default App;
+
+    

@@ -1,6 +1,6 @@
 /* Contact Page */
 .ContactPage {
-  padding: 50px 20px; /* Added padding for better spacing */
+  padding: 50px 20px; 
 }
 
 .contact-container {
@@ -57,7 +57,7 @@ button[type="submit"] {
   border-radius: 5px;
   font-size: 1.2rem;
   cursor: pointer;
-  transition: background-color 0.3s ease; /* Smooth transition */
+  transition: background-color 0.3s ease;
 }
 
 button[type="submit"]:hover {

@@ -1,13 +1,14 @@
 import React from 'react';
 import Header from '../components/Header';
 import Services from './Services';
-import ContactPage from './ContactPage';
 import NewsSection from './NewsSection';
-import Notification from './Notification';
-import SurveyPage from './SurveyPage';
 import './ResidentHome.css';
+import { useNavigate } from 'react-router-dom';
+
 
 const ResidentHome = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="resident-home">
       <header>
@@ -15,6 +16,23 @@ const ResidentHome = () => {
       </header>
 
       <main className="main-content">
+        <section className="survey-section">
+          <div className="survey-card">
+            <a href="#" onClick={(e) => e.navigate('/SurveyPage')}>
+              <h3>SURVEYS</h3>
+            </a>
+          </div>
+        </section>
+
+        <section className="Contact-section">
+          <div className="contact-card">
+            <a href="#" onClick={(e) => e.navigate('/ContactPage')}>
+              <h3>CONTACT</h3>
+              <p>Message the ward member</p>
+            </a>
+          </div>
+        </section>
+
         <section id="services" className="services-section">
           <Services />
         </section>
@@ -23,17 +41,6 @@ const ResidentHome = () => {
           <NewsSection />
         </section>
 
-        <section id="notifications" className="notifications-section">
-          <Notification />
-        </section>
-
-        <section id="survey" className="survey-section">
-          <SurveyPage />
-        </section>
-
-        <section id="contact" className="contact-section">
-          <ContactPage />
-        </section>
       </main>
     </div>
   );

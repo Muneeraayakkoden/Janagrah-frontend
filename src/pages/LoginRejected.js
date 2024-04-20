@@ -1,11 +1,11 @@
-
 import React from 'react';
 
-function ResidentSignupSuccess() {
+function LoginRejected() {
   return (
     <div style={containerStyle}>
-      <h2 style={headingStyle}>Registration Successful!</h2>
-      <p style={paragraphStyle}>Your account has been created successfully. It will be verified by the official ward member.</p><p style={warningText}>Please wait for approval.</p>
+      <h2 style={headingStyle}>Login Request Rejected</h2>
+      <p style={paragraphStyle}>Sorry, Your request for login has been rejected by your ward member.</p>
+      <p style={warningText}>Please contact your ward member for further information.</p>
     </div>
   );
 }
@@ -36,4 +36,4 @@ const paragraphStyle = {
   fontSize: '18px',
 };
 
-export default ResidentSignupSuccess;
+export default LoginRejected;
