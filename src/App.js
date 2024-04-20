@@ -1,5 +1,5 @@
 import React from 'react';
-import Footer from './components/Footer';
+//import ResidentHome from './pages/ResidentHome';
 import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import  LoginPage from './pages/LoginPage.js';
 import ResidentSignup from './pages/ResidentSignup.js';
