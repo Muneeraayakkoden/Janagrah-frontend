@@ -1,5 +1,4 @@
 /* LoginPage.css*/
-/* Global Styles */
 body {
   margin: 0;
   padding: 0; 
@@ -7,7 +6,7 @@ body {
   background-color: #f9f9f9;
 }
 
-/* LoginPage Container */
+
 .LoginPage {
   display: flex;
   justify-content: center;
@@ -15,7 +14,7 @@ body {
   height: 100vh;
 }
 
-/* Login Container */
+
 .login-container {
   background-color: white;
   padding: 40px;
@@ -25,7 +24,7 @@ body {
   max-width: 400px;
 }
 
-/* Logo Container */
+
 .logo-container {
   text-align: center;
   margin-bottom: 20px;
@@ -36,7 +35,7 @@ body {
   height: 150px;
 }
 
-/* Tabs */
+
 .tabs {
   display: flex;
   margin-bottom: 20px;
@@ -58,7 +57,7 @@ body {
   color: white;
 }
 
-/* Login Form */
+
 .login-form {
   padding: 20px;
   border-radius: 0 0 10px 10px;
@@ -71,7 +70,6 @@ h2 {
   text-align: center;
 }
 
-/* Input Group */
 .input-group {
   margin-bottom: 20px;
 }
@@ -88,7 +86,7 @@ input[type='password'] {
   box-sizing: border-box;
 }
 
-/* Submit Button */
+
 button[type='submit'],
 button.register-btn {
   width: 100%;
@@ -108,7 +106,7 @@ button.register-btn:hover {
   background-color: #2a76c7;
 }
 
-/* Forgot Password Link */
+
 .forgot-password {
   text-align: center;
   color: #294d74;
@@ -121,7 +119,7 @@ button.register-btn:hover {
   color: #2a76c7;
 }
 
-/* Responsive Styles */
+
 @media screen and (max-width: 600px) {
   .LoginPage {
     padding: 20px;
@@ -131,4 +129,3 @@ button.register-btn:hover {
     width: 100%;
   }
 }
-
