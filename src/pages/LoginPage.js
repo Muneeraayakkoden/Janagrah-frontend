@@ -6,20 +6,36 @@ import { useNavigate } from 'react-router-dom';
 
 
 function ResidentLoginForm({ onRegisterClick }) {
+
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
+
   const [password, setPassword] = useState('');
 
-  const handleLogin = () => {
-    console.log('Resident login with email:', email, 'and password:', password);
-    // Implement login logic
+  const handleLogin = async (event) => {
+    event.preventDefault();
+
+    try {
+      // Send form data to the backend
+      const response = await fetch('http://localhost:4000/login/userlogin', {
+        method: 'POST',
+        headers: {
+          'Content-Type':'application/json'
+        },
+        
+        body: JSON.stringify({ username, password })
+      })   
+    } catch (error) {
+      // Handle fetch error
+      console.error('There was a problem with your fetch operation:', error);
+    }
   };
 
   return (
     <div>
       <div className="input-group">
-        <input type="email" placeholder="Email" className="input-field" value={email} onChange={(e) => setEmail(e.target.value)} />
+        <input type="text" placeholder="Username" className="input-field" value={username} onChange={(e) => setUsername(e.target.value)} />
       </div>
       <div className="input-group">
         <input type="password" placeholder="Password" className="input-field" value={password} onChange={(e) => setPassword(e.target.value)} />
@@ -37,25 +53,42 @@ function ResidentLoginForm({ onRegisterClick }) {
 }
 
 function OfficialLoginForm({ onRegisterClick }) {
-  const [email, setEmail] = useState('');
+  const [username, setusername] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = () => {
-    console.log('Official login with email:', email, 'and password:', password);
-    // Implement login logic
+ 
+  const handleLogin = async (event) => {
+    event.preventDefault();
+
+    try {
+      // Send form data to the backend
+      const response = await fetch('http://localhost:4000/login/wardlogin', {
+        method: 'POST',
+        headers: {
+          'Content-Type':'application/json'
+        },
+        
+        body: JSON.stringify({ username, password })
+      })   
+    } catch (error) {
+      // Handle fetch error
+      console.error('There was a problem with your fetch operation:', error);
+    }
   };
 
   return (
-    <div>
+    <form>
+      
       <div className="input-group">
-        <input type="email" placeholder="Email" className="input-field" value={email} onChange={(e) => setEmail(e.target.value)} />
+        <input type="text" placeholder="username" className="input-field" value={username} onChange={(e) => setusername(e.target.value)} />
       </div>
       <div className="input-group">
         <input type="password" placeholder="Password" className="input-field" value={password} onChange={(e) => setPassword(e.target.value)} />
       </div>
       <button type="submit" className="login-btn" onClick={handleLogin}>Official Login</button>
       <div className="forgot-password">Forgot Password?</div>
-    </div>
+
+    </form>
   );
 }
 
