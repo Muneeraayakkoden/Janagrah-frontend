@@ -20,13 +20,21 @@ function ResidentLoginForm() {
         method: 'POST',
         headers: {
           'Content-Type':'application/json'
-        },
-        
+        },   
         body: JSON.stringify({ username, password })
       })   
       if (response.ok) {
-        // Login successful, navigate to ResidentHome
-        navigate('/ResidentHome');
+        const data = await response.json();
+        // Assuming the server returns a token upon successful login
+        const token = data.token; // Adjust this based on your server response
+        
+        if (token) {
+          // Login successful, navigate to ResidentHome
+          navigate('/ResidentHome');
+        } else {
+          // Handle other cases of successful response without a token
+          console.error('Login failed:', data.message); // Adjust based on server response
+        }
       } else {
         // Login failed, handle error
         console.error('Login failed:', response.statusText);
@@ -77,8 +85,15 @@ function OfficialLoginForm() {
       const data = await response.json();
       console.log(response);
       if (response.ok) {
-        // Login successful, navigate to ResidentHome
-        navigate('/OfficialHome');
+        const data = await response.json();
+        const token = data.token; // Assuming the server returns a token upon successful login 
+        if (token) {
+          // Login successful, navigate to OfficialHome
+          navigate('/OfficialHome');
+        } else {
+          // Handle other cases of successful response without a token
+          console.error('Login failed:', data.message); // Adjust based on server response
+        }
       } else {
         // Login failed, handle error
         console.error('Login failed:', response.statusText);
