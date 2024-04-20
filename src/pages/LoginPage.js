@@ -5,12 +5,11 @@ import { useNavigate } from 'react-router-dom';
 
 
 
-function ResidentLoginForm({ onRegisterClick }) {
+function ResidentLoginForm() {
 
   const navigate = useNavigate();
 
   const [username, setUsername] = useState('');
-
   const [password, setPassword] = useState('');
 
   const handleLogin = async (event) => {
@@ -37,13 +36,14 @@ function ResidentLoginForm({ onRegisterClick }) {
       <button className="register-btn" onClick={() => {
         navigate('/ResidentSignup');
       }}>Register Now</button>
-
     </div>
   );
 }
 
-function OfficialLoginForm({ onRegisterClick }) {
-  const [username, setusername] = useState('');
+function OfficialLoginForm() {
+  const navigate = useNavigate();
+  
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
  
@@ -51,7 +51,7 @@ function OfficialLoginForm({ onRegisterClick }) {
     event.preventDefault();
 
     try {
-      // Send form data to the backend
+      navigate('/OfficialHome')
     } catch (error) {
       // Handle fetch error
       console.error('There was a problem with your fetch operation:', error);
@@ -60,16 +60,14 @@ function OfficialLoginForm({ onRegisterClick }) {
 
   return (
     <form>
-      
       <div className="input-group">
-        <input type="text" placeholder="username" className="input-field" value={username} onChange={(e) => setusername(e.target.value)} required/>
+        <input type="text" placeholder="username" className="input-field" value={username} onChange={(e) => setUsername(e.target.value)} required/>
       </div>
       <div className="input-group">
         <input type="password" placeholder="Password" className="input-field" value={password} onChange={(e) => setPassword(e.target.value)} required />
       </div>
       <button type="submit" className="login-btn" onClick={handleLogin}>Official Login</button>
       <div className="forgot-password">Forgot Password?</div>
-
     </form>
   );
 }
