@@ -1,13 +1,14 @@
 import React from 'react';
 import Header from '../components/Header';
 import Services from './Services';
-import ContactPage from './ContactPage';
 import NewsSection from './NewsSection';
-import Notification from './Notification';
-import SurveyPage from './SurveyPage';
 import './ResidentHome.css';
+import { useNavigate } from 'react-router-dom';
+
 
 const ResidentHome = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="resident-home">
       <header>
@@ -15,6 +16,19 @@ const ResidentHome = () => {
       </header>
 
       <main className="main-content">
+
+      <div className="survey-section">
+          <button className="survey-btn" onClick={() => {
+            navigate('/SurveyPage');
+          }}>Survey</button>
+        </div>
+
+        <div>
+          <button className="contact-btn" onClick={() => {
+            navigate('/ContactPage');
+          }}>Contact</button>
+        </div>
+
         <section id="services" className="services-section">
           <Services />
         </section>
@@ -23,17 +37,6 @@ const ResidentHome = () => {
           <NewsSection />
         </section>
 
-        <section id="notifications" className="notifications-section">
-          <Notification />
-        </section>
-
-        <section id="survey" className="survey-section">
-          <SurveyPage />
-        </section>
-
-        <section id="contact" className="contact-section">
-          <ContactPage />
-        </section>
       </main>
     </div>
   );
