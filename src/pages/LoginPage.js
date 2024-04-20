@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './LoginPage.css';
 import logo from '../assets/logo.png';
+import { useNavigate } from 'react-router-dom';
 
 function ResidentLoginForm({ onRegisterClick }) {
   const [username, setUsername] = useState('');
@@ -16,9 +17,8 @@ function ResidentLoginForm({ onRegisterClick }) {
         headers: {
           'Content-Type':'application/json'
         },
-        
         body: JSON.stringify({ username, password })
-      })   
+      });  
     } catch (error) {
       // Handle fetch error
       console.error('There was a problem with your fetch operation:', error);
@@ -33,49 +33,46 @@ function ResidentLoginForm({ onRegisterClick }) {
       <div className="input-group">
         <input type="password" placeholder="Password" className="input-field" value={password} onChange={(e) => setPassword(e.target.value)} />
       </div>
-      <button type="submit" className="login-btn" onClick={handleLogin}>Resident Login</button>
+      <button  className="login-btn" onClick={handleLogin}>Resident Login</button>
       <div className="forgot-password">Forgot Password?</div>
     </div>
   );
 }
 
 function OfficialLoginForm({ onRegisterClick }) {
-  const [username, setusername] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
- 
   const handleLogin = async (event) => {
     event.preventDefault();
 
-    try {
-      // Send form data to the backend
-      const response = await fetch('http://localhost:4000/login/wardlogin', {
-        method: 'POST',
-        headers: {
-          'Content-Type':'application/json'
-        },
-        
-        body: JSON.stringify({ username, password })
-      })   
-    } catch (error) {
-      // Handle fetch error
-      console.error('There was a problem with your fetch operation:', error);
-    }
-};
+    // Send form data to the backend
+    const response = await fetch('http://localhost:4000/login/wardlogin', {
+      method: 'POST',
+      headers: {
+        'Content-Type':'application/json'
+      },
+      body: JSON.stringify({ username, password })
+    });
 
+    if (response.status === 200) {
+      const data = await response.json();
+      navigate('/OfficialHome', { state: { user: data } }); 
+      // If login successful, navigate to the dashboard route and send user data
+    }
+  };
 
   return (
     <form>
-      
       <div className="input-group">
-        <input type="text" placeholder="username" className="input-field" value={username} onChange={(e) => setusername(e.target.value)} />
+        <input type="text" placeholder="Username" className="input-field" value={username} onChange={(e) => setUsername(e.target.value)} />
       </div>
       <div className="input-group">
         <input type="password" placeholder="Password" className="input-field" value={password} onChange={(e) => setPassword(e.target.value)} />
       </div>
       <button type="submit" className="login-btn" onClick={handleLogin}>Official Login</button>
       <div className="forgot-password">Forgot Password?</div>
-
     </form>
   );
 }
