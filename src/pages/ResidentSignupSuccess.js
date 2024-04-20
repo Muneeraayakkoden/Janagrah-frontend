@@ -5,7 +5,7 @@ function ResidentSignupSuccess() {
   return (
     <div style={containerStyle}>
       <h2 style={headingStyle}>Registration Successful!</h2>
-      <p style={paragraphStyle}>Your account has been created successfully. It will be verified by the official manually.</p><p style={warningText}>Please wait for approval.</p>
+      <p style={paragraphStyle}>Your account has been created successfully. It will be verified by the official ward member.</p><p style={warningText}>Please wait for approval.</p>
     </div>
   );
 }

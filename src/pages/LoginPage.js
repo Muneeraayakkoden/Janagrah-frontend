@@ -35,15 +35,18 @@ function ResidentLoginForm() {
         } else {
           // Handle other cases of successful response without a token
           console.error('Login failed:', data.message); // Adjust based on server response
+          navigate('/LoginRejected');
         }
       } else {
         // Login failed, handle error
         console.error('Login failed:', response.statusText);
+        navigate('/LoginRejected');
       }
 
     } catch (error) {
       // Handle fetch error
       console.error('There was a problem with your fetch operation:', error);
+      navigate('/LoginRejected');
     }
   };
 
@@ -58,7 +61,7 @@ function ResidentLoginForm() {
       <button type="submit" className="login-btn" onClick={handleLogin}>Resident Login</button>
       <div className="forgot-password">Forgot Password?</div>
       <button className="register-btn" onClick={() => {
-        
+        navigate('/ResidentSignup')
       }}>Register Now</button>
     </div>
   );
@@ -98,11 +101,13 @@ function OfficialLoginForm() {
       } else {
         // Login failed, handle error
         console.error('Login failed:', response.statusText);
+       
       }
 
     } catch (error) {
       // Handle fetch error
       console.error('There was a problem with your fetch operation:', error);
+     
     }
   };
 
