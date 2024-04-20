@@ -147,8 +147,8 @@ const ResidentSignup = () => {
 
   const Ward = {
     "SREEKRISHNAPURAM": [
-      "Valambilimangalam", "Valambilimangalam East", "Easwaramangalam", "Sreekrishnapuram", "Mannampatta", "Poozhiyaparambu", "Kulakkattukurssi", 
-      "Punnamparambu", "Thalayinakkadu", "Parthala", "Mangalamkunnu", "Ragamcorner", "Chanthapura", "Perumangode"
+      "1", "2", "3", "4", "5", "6", "7", 
+      "8", "9", "10", "11", "12", "13", "14"
     ]
   };
   
@@ -197,7 +197,7 @@ const ResidentSignup = () => {
               ))}
             </select>
           ) : (
-            <input type="text" name="ward" placeholder="Ward" value={formData.ward} onChange={handleChange} required />
+            <input type="text" name="ward" placeholder="Ward No." value={formData.ward} onChange={handleChange} required />
           )}
           <br /><br />
         </div>
