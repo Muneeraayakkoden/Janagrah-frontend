@@ -5,7 +5,7 @@ function ResidentSignupSuccess() {
   return (
     <div style={containerStyle}>
       <h2 style={headingStyle}>Registration Successful!</h2>
-      <p style={paragraphStyle}>Your account has been created successfully. It will be verified by the official manually. Please wait for approval.</p>
+      <p style={paragraphStyle}>Your account has been created successfully. It will be verified by the official manually.</p><p style={warningText}>Please wait for approval.</p>
     </div>
   );
 }
@@ -20,6 +20,10 @@ const containerStyle = {
   margin: 'auto',
   marginTop: '50px',
 };
+
+const warningText = {
+  color:'red'
+}
 
 const headingStyle = {
   color: '#3e65e2',

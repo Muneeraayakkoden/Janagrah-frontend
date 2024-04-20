@@ -24,6 +24,7 @@ const ResidentSignup = () => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
+    console.log(event.target)
     setFormData({ ...formData, [name]: value });
   };
 
@@ -34,6 +35,8 @@ const ResidentSignup = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    navigate("/ResidentSignupSuccess")
+
 
     // Check if passwords match
     if (password !== confirmPassword) {
@@ -54,6 +57,7 @@ const ResidentSignup = () => {
     
 
    try {
+    console.log(JSON.stringify(formData));
        
        // Send form data to the backend
       const response = await fetch('http://localhost:4000/user/request-user', {
@@ -79,7 +83,6 @@ const ResidentSignup = () => {
         }),
         
       });
-      navigate("/ResidentSignupSuccess")
 
       if (!response.ok) {
         throw new Error('Network response was not ok');
@@ -206,7 +209,7 @@ const ResidentSignup = () => {
           <br /><br />
           <input type="number" name="phone" placeholder="Phone No." value={formData.phone} onChange={handleChange} required />
           <br /><br />
-          <select name="job" id="job" placeholder="Job" value={formData.job} onchange="handleChange()">
+          <select name="job" id="job">
             <option value="">Select a Job</option>
             <option value="student">Student</option>
             <option value="farmer">Farmer</option>
@@ -224,6 +227,7 @@ const ResidentSignup = () => {
             <option value="bike rider">Bike Rider</option>
             <option value="receptionist">Receptionist</option>
             <option value="pharmacist">Pharmacist</option>
+            <option value="others">Others</option>
           </select>
           <br /><br />
           <input type="number" name="annualIncome" placeholder="Annual Income" value={formData.annualIncome} onChange={handleChange} />
@@ -243,7 +247,7 @@ const ResidentSignup = () => {
           <label>Upload image : </label>
           <input type="file" />
         </div>
-        <button type="submit">Register</button>
+        <button type="submit" onClick={handleSubmit}>Register</button>
         {errorMessage && <p className="error-message">{errorMessage}</p>}
       </form>
     </div>

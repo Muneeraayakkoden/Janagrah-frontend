@@ -1,11 +1,13 @@
 import React from 'react';
-//import ResidentHome from './pages/ResidentHome';
+import ResidentHome from './pages/ResidentHome';
 import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import  LoginPage from './pages/LoginPage.js';
 import ResidentSignup from './pages/ResidentSignup.js';
 import ResidentSignupSuccess from './pages/ResidentSignupSuccess.js';
 
+
 function App() {
+  
   return (
     <>
 
@@ -14,6 +16,7 @@ function App() {
           <Route path="/" Component={LoginPage} />
           <Route path="/ResidentSignup" Component={ResidentSignup} />
           <Route path="/ResidentSignupSuccess" Component={ResidentSignupSuccess} />
+          <Route path="/ResidentHome" Component={ResidentHome}/>
         </Routes>
       </BrowserRouter>
     

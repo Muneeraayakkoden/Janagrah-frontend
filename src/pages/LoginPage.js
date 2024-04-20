@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
 import './LoginPage.css';
 import logo from '../assets/logo.png';
+import { useNavigate } from 'react-router-dom';
+
+
 
 function ResidentLoginForm({ onRegisterClick }) {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -21,6 +26,12 @@ function ResidentLoginForm({ onRegisterClick }) {
       </div>
       <button type="submit" className="login-btn" onClick={handleLogin}>Resident Login</button>
       <div className="forgot-password">Forgot Password?</div>
+      <button className="register-btn" onClick={() => {
+        navigate('/ResidentSignup');
+
+
+      }}>Register Now</button>
+
     </div>
   );
 }
@@ -44,7 +55,6 @@ function OfficialLoginForm({ onRegisterClick }) {
       </div>
       <button type="submit" className="login-btn" onClick={handleLogin}>Official Login</button>
       <div className="forgot-password">Forgot Password?</div>
-      <button className="register-btn" onClick={onRegisterClick}>Register Now</button>
     </div>
   );
 }
