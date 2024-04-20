@@ -16,7 +16,22 @@ function ResidentLoginForm() {
     event.preventDefault();
 
     try {
-      // Send form data to the backend
+      const response = await fetch('http://localhost:4000/login/userlogin', {
+        method: 'POST',
+        headers: {
+          'Content-Type':'application/json'
+        },
+        
+        body: JSON.stringify({ username, password })
+      })   
+      if (response.ok) {
+        // Login successful, navigate to ResidentHome
+        navigate('/ResidentHome');
+      } else {
+        // Login failed, handle error
+        console.error('Login failed:', response.statusText);
+      }
+
     } catch (error) {
       // Handle fetch error
       console.error('There was a problem with your fetch operation:', error);
@@ -34,7 +49,7 @@ function ResidentLoginForm() {
       <button type="submit" className="login-btn" onClick={handleLogin}>Resident Login</button>
       <div className="forgot-password">Forgot Password?</div>
       <button className="register-btn" onClick={() => {
-        navigate('/ResidentHome');
+        
       }}>Register Now</button>
     </div>
   );
@@ -51,7 +66,24 @@ function OfficialLoginForm() {
     event.preventDefault();
 
     try {
-      navigate('/OfficialHome')
+      const response = await fetch('http://localhost:4000/login/wardlogin', {
+        method: 'POST',
+        headers: {
+          'Content-Type':'application/json'
+        },
+        
+        body: JSON.stringify({ username, password })
+      })   
+      const data = await response.json();
+      console.log(response);
+      if (response.ok) {
+        // Login successful, navigate to ResidentHome
+        navigate('/OfficialHome');
+      } else {
+        // Login failed, handle error
+        console.error('Login failed:', response.statusText);
+      }
+
     } catch (error) {
       // Handle fetch error
       console.error('There was a problem with your fetch operation:', error);
@@ -75,10 +107,10 @@ function OfficialLoginForm() {
 function LoginPage() {
   const [selectedTab, setSelectedTab] = useState('resident');
 
-  const handleResidentRegisterClick = () => {
+  const handleResidentRegisterClick = async () => {
     console.log('Redirect to resident registration');
-    // Implement redirection logic
-  };
+    
+  }
 
   return (
     <div className="LoginPage">
