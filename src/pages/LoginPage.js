@@ -6,9 +6,23 @@ function ResidentLoginForm({ onRegisterClick }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = () => {
-    console.log('Resident login with username:', username, 'and password:', password);
-    // Implement login logic
+  const handleLogin = async (event) => {
+    event.preventDefault();
+
+    try {
+      // Send form data to the backend
+      const response = await fetch('http://localhost:4000/login/userlogin', {
+        method: 'POST',
+        headers: {
+          'Content-Type':'application/json'
+        },
+        
+        body: JSON.stringify({ username, password })
+      })   
+    } catch (error) {
+      // Handle fetch error
+      console.error('There was a problem with your fetch operation:', error);
+    }
   };
 
   return (
@@ -35,7 +49,7 @@ function OfficialLoginForm({ onRegisterClick }) {
 
     try {
       // Send form data to the backend
-      const response = await fetch('http://localhost:4000/wlogin/login', {
+      const response = await fetch('http://localhost:4000/login/wardlogin', {
         method: 'POST',
         headers: {
           'Content-Type':'application/json'
