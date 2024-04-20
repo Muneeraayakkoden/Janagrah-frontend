@@ -8,8 +8,9 @@ import ContactPage from './pages/ContactPage.js';
 import SurveyPage from './pages/SurveyPage.js';
 import Notification from './pages/Notification.js';
 import LoginRejected from './pages/LoginRejected.js'
+import OfficialHome from './pages/OfficialHome.js'
+
 function App() {
-  
   return (
     <div>
       <BrowserRouter>
@@ -22,6 +23,7 @@ function App() {
           <Route path="/ResidentSignupSuccess" Component={ResidentSignupSuccess} />
           <Route path="/Notification" Component={Notification} />
           <Route path="/LoginRejected" Component={LoginRejected} />
+          <Route path='/OfficialHome' Component={OfficialHome} />
         </Routes>
       </BrowserRouter>
     </div>
