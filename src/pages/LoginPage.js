@@ -34,7 +34,7 @@ function ResidentLoginForm() {
       <button type="submit" className="login-btn" onClick={handleLogin}>Resident Login</button>
       <div className="forgot-password">Forgot Password?</div>
       <button className="register-btn" onClick={() => {
-        navigate('/ResidentSignup');
+        navigate('/ResidentHome');
       }}>Register Now</button>
     </div>
   );
