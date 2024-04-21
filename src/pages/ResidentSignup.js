@@ -43,7 +43,7 @@ const ResidentSignup = () => {
     }
 
     // Check if required fields are filled
-    const requiredFields = ['name', 'email', 'username', 'password', 'confirm_password'];
+    const requiredFields = ['name', 'email', 'username', 'password', 'confirmPassword'];
     const hasEmptyFields = requiredFields.some(field => !formData[field]);
     if (hasEmptyFields) {
       setErrorMessage('Please fill in all required fields.');
@@ -236,7 +236,7 @@ const ResidentSignup = () => {
           <br /><br />
           <input type="password" name="password" placeholder="Password*" value={password} onChange={(e) => setPassword(e.target.value)} required />
           <br /><br />
-          <input type="password" name="confirm_password" placeholder="Re-enter Password*" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required /> 
+          <input type="password" name="confirmPassword" placeholder="Re-enter Password*" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required /> 
           <br /><br />
           <label>Upload image : </label>
           <input type="file" />
