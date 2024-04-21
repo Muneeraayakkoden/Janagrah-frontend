@@ -1,11 +1,13 @@
-// NotificationPage.js seen by the official
+// OfficialNotificationPage.js
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import './OfficialNotification.css';
 
-const OfficialNotification = () => {
+const OfficialNotificationPage = () => {
+  const navigate = useNavigate();
   const [notifications, setNotifications] = useState([]);
 
   useEffect(() => {
-    // Fetch notifications from the backend when the component mounts
     fetchNotifications();
   }, []);
 
@@ -22,25 +24,40 @@ const OfficialNotification = () => {
     }
   };
 
+  const handleApprove = (notificationId) => {
+    // Handle approval logic
+    console.log('Approved notification:', notificationId);
+  };
+
+  const handleReject = (notificationId) => {
+    // Handle rejection logic
+    console.log('Rejected notification:', notificationId);
+  };
+
   return (
     <div className="notification-page">
       <h1>Notifications</h1>
-      <ul>
-        {notifications.map((notification, index) => (
-          <NotificationItem key={index} notification={notification} />
-        ))}
-      </ul>
+      {notifications.length > 0 ? (
+        <ul>
+          {notifications.map((notification, index) => (
+            <NotificationItem key={index} notification={notification} onApprove={handleApprove} onReject={handleReject} />
+          ))}
+        </ul>
+      ) : (
+        <p>No notifications available.</p>
+      )}
+      <a href="#" className="notification-link" onClick={() => navigate('/OfficialNotificationPage')}>View All Notifications</a>
     </div>
   );
 };
 
-const NotificationItem = ({ notification }) => {
-  const handleApprove = () => {
-    // Handle approval logic
+const NotificationItem = ({ notification, onApprove, onReject }) => {
+  const handleApproveClick = () => {
+    onApprove(notification.id);
   };
 
-  const handleReject = () => {
-    // Handle rejection logic
+  const handleRejectClick = () => {
+    onReject(notification.id);
   };
 
   return (
@@ -48,8 +65,8 @@ const NotificationItem = ({ notification }) => {
       {notification.type === 'login' ? (
         <>
           <span>Resident requested login:</span>
-          <button onClick={handleApprove}>Approve</button>
-          <button onClick={handleReject}>Reject</button>
+          <button onClick={handleApproveClick}>Approve</button>
+          <button onClick={handleRejectClick}>Reject</button>
         </>
       ) : (
         <span>Resident sent a contact message: "{notification.message}"</span>
@@ -58,28 +75,4 @@ const NotificationItem = ({ notification }) => {
   );
 };
 
-export default OfficialNotification;
-
-{/*
-{showNotifications && (
-        <div className="notification-content">
-          <h2>Notifications</h2>
-          {notifications.length > 0 ? (
-            <ul>
-              
-              {notifications.map((notification) => (                <li key={notification.id}>
-                
-                <h3>{notification.title}</h3>
-                <p>{notification.description}</p>
-               
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p>No notifications available.</p>
-        )}
-      </div>
-    )}
-    <a href="#" className="notification-link" onClick={() => navigate('/OfficialNotification')}>View All Notifications</a>
-  </div>
-  */}
+export default OfficialNotificationPage;

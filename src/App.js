@@ -33,7 +33,7 @@ function App() {
           <Route path="/CreateSurveys" Component={CreateSurveys} />
           <Route path="/Results" Component={Results} />
           <Route path="/ForgotPasswordPage" Component={ForgotPasswordPage} />
-          <Route path="./OfficialNotification" Component={OfficialNotification} />
+          <Route path="/OfficialNotification" Component={OfficialNotification} />
         </Routes>
       </BrowserRouter>
     </div>
