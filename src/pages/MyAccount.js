@@ -4,23 +4,48 @@ import './MyAccount.css';
 
 const ResidentProfilePage = () => {
   const [userData, setUserData] = useState(null);
-  const [surveysCompleted, setSurveysCompleted] = useState([]);
+  //const [surveysCompleted, setSurveysCompleted] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
     // Fetch user data and surveys completed when the component mounts
     fetchUserData();
-    fetchSurveysCompleted();
+    //fetchSurveysCompleted();
   }, []);
 
   const fetchUserData = async () => {
     try {
       // Fetch user data from the backend
-      const response = await fetch('http://localhost:4000/user/profile', {
+      const response = await fetch('http://localhost:4000/login/profile', {
         method: 'GET',
         headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}` // Assuming you're using JWT for authentication
-        }
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({username,password}),
+      });
+      
+      if (!response.ok) {
+        throw new Error('Failed to fetch user data');
+      }
+      const data = await response.json();
+      if (data && data.success && data.user) {
+        // Set the user data to state
+        setUserData(data.user);
+       
+      } else {
+        throw new Error('No user data found in response');
+      }
+    } catch (error) {
+      console.error('Error fetching data:', error.message);
+    }
+  };
+
+  /*const fetchUserData = async () => {
+    try {
+      // Fetch user data from the backend
+      const response = await fetch('http://localhost:4000/login/profile', {
+        method: 'GET',
+        credentials: 'include', // Include cookies
       });
       if (!response.ok) {
         throw new Error('Failed to fetch user data');
@@ -30,9 +55,10 @@ const ResidentProfilePage = () => {
     } catch (error) {
       console.error('Error fetching user data:', error.message);
     }
-  };
+  };*/
+  
 
-  const fetchSurveysCompleted = async () => {
+  /*const fetchSurveysCompleted = async () => {
     try {
       // Fetch surveys completed by the user from the backend
       // Adjust the endpoint URL and headers as needed
@@ -50,7 +76,7 @@ const ResidentProfilePage = () => {
     } catch (error) {
       console.error('Error fetching surveys completed:', error.message);
     }
-  };
+  };*/
 
   const handleLogout = () => {
     // Clear user data from local storage
@@ -70,20 +96,12 @@ const ResidentProfilePage = () => {
       {userData && (
         <div className="user-info">
           <h2>Personal Information</h2>
-          <p>Name: {userData.name}</p>
-          <p>Age: {userData.age}</p>
+          <p>Username: {userData.username}</p>
+          <p>Password: {userData.password}</p>
           {/* Display other user details here */}
           <button onClick={handleEditProfile}>Edit Profile</button>
         </div>
       )}
-      <div className="surveys-completed">
-        <h2>Surveys Completed</h2>
-        <ul>
-          {surveysCompleted.map((survey, index) => (
-            <li key={index}>{survey.title} - Completed on: {survey.completionDate}</li>
-          ))}
-        </ul>
-      </div>
       <button onClick={handleLogout}>Logout</button>
     </div>
   );
