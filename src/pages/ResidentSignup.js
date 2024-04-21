@@ -167,7 +167,7 @@ const ResidentSignup = () => {
               ))}
             </select>
           ) : (
-            <input type="text" name="district" placeholder="District" value={formData.district} onChange={handleChange} required />
+            <input type="text" name="district" placeholder="District*" value={formData.district} onChange={handleChange} required />
           )}
           <br /><br />
 
@@ -179,7 +179,7 @@ const ResidentSignup = () => {
               ))}
             </select>
           ) : (
-            <input type="text" name="localAuthority" placeholder="Local-Authority" value={formData.localAuthority} onChange={handleChange} required />
+            <input type="text" name="localAuthority" placeholder="Local-Authority*" value={formData.localAuthority} onChange={handleChange} required />
           )}
           <br /><br />
 
@@ -191,17 +191,17 @@ const ResidentSignup = () => {
               ))}
             </select>
           ) : (
-            <input type="text" name="ward" placeholder="Ward No." value={formData.ward} onChange={handleChange} required />
+            <input type="text" name="ward" placeholder="Ward No.*" value={formData.ward} onChange={handleChange} required />
           )}
           <br /><br />
         </div>
         <div className="form-section">
           <h2>Personal Details</h2>
-          <input type="text" name="name" placeholder="Name" value={formData.name} onChange={handleChange} required />
+          <input type="text" name="name" placeholder="Name*" value={formData.name} onChange={handleChange} required />
           <br /><br />
-          <input type="number" name="age" placeholder="Age" value={formData.age} onChange={handleChange} required />
+          <input type="number" name="age" placeholder="Age*" value={formData.age} onChange={handleChange} required />
           <br /><br />
-          <input type="number" name="phone" placeholder="Phone No." value={formData.phone} onChange={handleChange} required />
+          <input type="number" name="phone" placeholder="Phone No.*" value={formData.phone} onChange={handleChange} required />
           <br /><br />
           <select name="job" id="job" required>
             <option value="">Select a Job</option>
@@ -230,13 +230,13 @@ const ResidentSignup = () => {
         </div>
         <div className="form-section">
           <h2>Account Details</h2>
-          <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
+          <input type="email" name="email" placeholder="Email*" value={formData.email} onChange={handleChange} required />
           <br /><br />
-          <input type="text" name="username" placeholder="Username" value={formData.username} onChange={handleChange} required />
+          <input type="text" name="username" placeholder="Username*" value={formData.username} onChange={handleChange} required />
           <br /><br />
-          <input type="password" name="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+          <input type="password" name="password" placeholder="Password*" value={password} onChange={(e) => setPassword(e.target.value)} required />
           <br /><br />
-          <input type="password" name="confirm_password" placeholder="Re-enter Password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required /> 
+          <input type="password" name="confirm_password" placeholder="Re-enter Password*" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required /> 
           <br /><br />
           <label>Upload image : </label>
           <input type="file" />

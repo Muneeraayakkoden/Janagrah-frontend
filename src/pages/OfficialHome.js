@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.png';
 
 
-
 // Replace with your actual API endpoint and data fetching logic
 const API_ENDPOINT = '/api/official/notifications';
 
@@ -14,9 +13,7 @@ function OfficialHome() {
   const navigate = useNavigate();
 
   const handleNotificationClick = () => {
-    setShowNotifications(!showNotifications);
-    // Fetch notifications on click (optional)
-    fetchNotifications();
+    navigate('/OfficialNotification');
   };
 
   const fetchNotifications = async () => {
@@ -49,15 +46,14 @@ function OfficialHome() {
       </header>
 
       <main className="main">
-
         <section className="survey-section">
           <h2>SURVEY SECTION</h2>
           <div className="survey-cards">
-            <a href="#" className="survey-card" onClick={(e) => e.navigate('/CreateSurveys')}>
+            <a href="#" className="survey-card" onClick={(e) => {e.preventDefault(); navigate('/CreateSurveys');}}>
               <h3>Create Survey</h3>
               <p>Design and launch surveys to gather resident feedback.</p>
             </a>
-            <a href="#" className="survey-card" onClick={(e) => e.navigate('/Results')}>
+            <a href="#" className="survey-card" onClick={(e) => navigate('/Results', e)}>
               <h3>View Results</h3>
               <p>Analyze resident responses and gain valuable insights.</p>
             </a>
@@ -77,30 +73,12 @@ function OfficialHome() {
       <footer className="footer">
         <p>&copy; Janagrah 2024</p>
       </footer>
+
       <div className="notification-bell" onClick={handleNotificationClick}>
-        <i className="fas fa-bell"></i>
+      <i className="fas fa-bell"></i>
       </div>
-      {showNotifications && (
-        <div className="notification-content">
-          <h2>Notifications</h2>
-          {notifications.length > 0 ? (
-            <ul>
-              {/* Map through notifications and display content */}
-              {notifications.map((notification) => (                <li key={notification.id}>
-                  {/* Display notification title, description, etc. */}
-                  <h3>{notification.title}</h3>
-                  <p>{notification.description}</p>
-                  {/* Add buttons or links for further actions (optional) */}
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p>No notifications available.</p>
-          )}
-        </div>
-      )}
     </div>
   );
-}
+};
 
 export default OfficialHome;

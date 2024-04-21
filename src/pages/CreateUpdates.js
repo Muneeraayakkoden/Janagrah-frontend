@@ -41,19 +41,20 @@ function CreateUpdates() {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <label htmlFor="title">Announcement Title:</label>
-            <input type="text" id="title" required value={formData.title} onChange={handleChange} />
-            <label htmlFor="description">Description:</label>
-            <textarea id="description" required value={formData.description} onChange={handleChange}></textarea>
-            <div className="upload-options">
-                <label htmlFor="upload-event">Upload Event (optional):</label>
-                <input type="file" id="upload-event" accept=".jpg,.jpeg,.png" onChange={handleChange} />
-                <label htmlFor="upload-service">Upload Service (optional):</label>
-                <input type="file" id="upload-service" accept=".jpg,.jpeg,.png" onChange={handleChange} />
-            </div>
-            <button type="submit">Publish</button>
-        </form>
+        <div>
+            <h1>Create Event</h1>
+            <form onSubmit={handleSubmit}>
+                <label htmlFor="title">Announcement Title:</label>
+                <input type="text" id="title" required value={formData.title} onChange={handleChange} />
+                <label htmlFor="description">Description:</label>
+                <textarea id="description" required value={formData.description} onChange={handleChange}></textarea>
+                <div className="upload-options">
+                    <label htmlFor="upload-event">Upload Event (optional):</label>
+                    <input type="file" id="upload-event" accept=".jpg,.jpeg,.png" onChange={handleChange} />
+                </div>
+                <button type="submit">Publish</button>
+            </form>
+        </div>
     );
 }
 

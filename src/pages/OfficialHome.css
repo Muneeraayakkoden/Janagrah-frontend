@@ -104,7 +104,6 @@ body {
     right: 20px;
     width: 60px;
     height: 60px;
-    background-color: yellow;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -115,7 +114,7 @@ body {
   
   .notification-bell i {
     font-size: 2rem;
-    color: black;
+    color: goldenrod;
   }
   
   /* Notification content styles */
