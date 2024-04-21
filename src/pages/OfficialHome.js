@@ -47,11 +47,11 @@ function OfficialHome() {
         <section className="survey-section">
           <h2>SURVEY SECTION</h2>
           <div className="survey-cards">
-            <a href="#" className="survey-card" onClick={(e) => e.navigate('/CreateSurveys')}>
+            <a href="#" className="survey-card" onClick={(e) => {e.preventDefault(); navigate('/CreateSurveys');}}>
               <h3>Create Survey</h3>
               <p>Design and launch surveys to gather resident feedback.</p>
             </a>
-            <a href="#" className="survey-card" onClick={(e) => e.navigate('/Results')}>
+            <a href="#" className="survey-card" onClick={(e) => navigate('/Results', e)}>
               <h3>View Results</h3>
               <p>Analyze resident responses and gain valuable insights.</p>
             </a>
@@ -71,8 +71,8 @@ function OfficialHome() {
       <footer className="footer">
         <p>&copy; Janagrah 2024</p>
       </footer>
-      <div className="notification-bell" onClick={handleNotificationClick}>
-        <i className="fas fa-bell"></i>
+      <div className="notification-bell" onClick={(e) => { e.preventDefault(); navigate('/Notifications', e); }}>
+      <i className="fas fa-bell"></i>
       </div>
       {showNotifications && (
         <div className="notification-content">
