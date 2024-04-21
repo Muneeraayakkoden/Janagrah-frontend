@@ -3,6 +3,7 @@ import './OfficialHome.css';
 import { useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.png';
 
+const OfficialHome = () => {
 
 // Replace with your actual API endpoint and data fetching logic
 const API_ENDPOINT = '/api/official/notifications';
@@ -99,4 +100,3 @@ function OfficialHome() {
 }
 
 export default OfficialHome;
-
