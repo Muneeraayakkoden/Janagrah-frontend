@@ -67,36 +67,22 @@ function ResidentLoginForm() {
       <div className="input-group">
         <input type="password" placeholder="Password*" className="input-field" value={password} onChange={(e) => setPassword(e.target.value)} required/>
       </div>
-<<<<<<< HEAD
-      <button type="submit" className="login-btn" onClick={handleLogin}>Resident Login</button>
-      <div className="error-message">{error}</div>
-      <div><a href="#" className="forgot-password" onClick={handleForgotPasswordClick}>Forgot Password?</a></div>
-      <button className="register-btn" onClick={() => {navigate('/ResidentSignup')}}>Register Now</button>
-=======
       <button type='submit'  className="login-btn" onClick={handleLogin}>Resident Login</button>
       <div className="forgot-password">Forgot Password?</div>
       <button className="register-btn" onClick={() => {
         navigate('/ResidentSignup')
       }}>Register Now</button>
->>>>>>> 76f4b1dd98af21cafa6cbfa3abee5e0ad51d8543
     </div>
   );
 }
 
 
 function OfficialLoginForm() {
-<<<<<<< HEAD
-  const navigate = useNavigate();
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-=======
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
->>>>>>> 76f4b1dd98af21cafa6cbfa3abee5e0ad51d8543
  
   const handleForgotPasswordClick = () => {
     navigate('/ForgotPasswordPage');
@@ -104,7 +90,6 @@ function OfficialLoginForm() {
 
   const handleLogin = async (event) => {
     event.preventDefault();
-<<<<<<< HEAD
 
     if (!username || !password) {
       setError('Please fill in all fields.');
@@ -146,31 +131,6 @@ function OfficialLoginForm() {
     } catch (error) {
       // Handle fetch error
       console.error('There was a problem with your fetch operation:', error); 
-=======
-  
-    // Send form data to the backend
-    const response = await fetch('http://localhost:4000/login/wardlogin', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ username, password })
-    });
-  
-    if (response.status === 200) {
-      const data = await response.json();
-      console.log(data);
-      Object.entries(data.data).forEach(([key, value]) => {
-        localStorage.setItem(key, JSON.stringify(value));
-      });
-    
-      navigate('/OfficialHome');
-      // If login successful, navigate to the dashboard route and send user data
-    } else {
-      // If login failed, show error message
-      const responseData = await response.json();
-      setError(responseData.message || 'Login failed');
->>>>>>> 76f4b1dd98af21cafa6cbfa3abee5e0ad51d8543
     }
   };
   
@@ -183,15 +143,9 @@ function OfficialLoginForm() {
       <div className="input-group">
         <input type="password" placeholder="Password*" className="input-field" value={password} onChange={(e) => setPassword(e.target.value)} required />
       </div>
-<<<<<<< HEAD
-      <button type="submit" className="login-btn" onClick={handleLogin}>Official Login</button>
-      <div className="error-message">{error}</div>
-      <div className="forgot-password" onClick={handleForgotPasswordClick}>Forgot Password?</div>
-=======
       <button  className="login-btn" onClick={handleLogin}>Official Login</button>
       <div className="forgot-password">Forgot Password?</div>
       {error && <p className="error-message">{error}</p>}
->>>>>>> 76f4b1dd98af21cafa6cbfa3abee5e0ad51d8543
     </form>
   );
 }
