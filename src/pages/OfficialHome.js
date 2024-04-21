@@ -59,10 +59,10 @@ function OfficialHome() {
         </section>
 
         <section className="updates-section">
-          <h2>SEND UPDATES</h2>
+          <h2>SEND ANNOUNCEMENTS</h2>
           <div className="updates-cards">
             <a href="#" className="updates-card" onClick={(e) => e.navigate('/CreateUpdates')}>
-              <h3>Create an update</h3>
+              <h3>Announce an event</h3>
             </a>
           </div>
         </section>
