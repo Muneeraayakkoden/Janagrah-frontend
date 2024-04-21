@@ -21,6 +21,12 @@ function ResidentLoginForm() {
       return;
     }
 
+    const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/;
+    if (!passwordRegex.test(password)) {
+      setError('Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.');
+      return;
+    }
+
     try {
       const response = await fetch('http://localhost:4000/login/userlogin', {
         method: 'POST',
@@ -31,9 +37,7 @@ function ResidentLoginForm() {
       })   
       if (response.ok) {
         const data = await response.json();
-        // Assuming the server returns a token upon successful login
-        //const token = data.token; // Adjust this based on your server response
-        //console.log(token);
+        
         console.log(data);
         if (data.success) {
           // Login successful, navigate to ResidentHome
@@ -84,6 +88,12 @@ function OfficialLoginForm() {
   const handleLogin = async (event) => {
     event.preventDefault();
 
+    const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/;
+    if (!passwordRegex.test(password)) {
+      setError('Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.');
+      return;
+    }
+    
     try {
       const response = await fetch('http://localhost:4000/login/wardlogin', {
         method: 'POST',
