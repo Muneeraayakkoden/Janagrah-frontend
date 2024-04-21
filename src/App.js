@@ -12,7 +12,6 @@ import OfficialHome from './pages/OfficialHome.js'
 import CreateUpdates from './pages/CreateUpdates.js';
 import Results from './pages/Results.js';
 import CreateSurveys from './pages/CreateSurveys.js';
-import News from './pages/CreateNews.js';
 
 function App() {
   return (
@@ -31,7 +30,6 @@ function App() {
           <Route path="/CreateUpdates" Component={CreateUpdates} />
           <Route path="/CreateSurveys" Component={CreateSurveys} />
           <Route path="/Results" Component={Results} />
-          <Route path="/CreateNews" Component={News} />
         </Routes>
       </BrowserRouter>
     </div>

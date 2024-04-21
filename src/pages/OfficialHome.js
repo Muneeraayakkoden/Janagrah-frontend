@@ -67,15 +67,6 @@ function OfficialHome() {
           </div>
         </section>
 
-        <section className="news-section">
-          <h3>NEWS</h3>
-          <div className="news-cards">
-            <a href="#" className="news-card" onClick={(e) => e.navigate('/CreateNews')}>
-              <h3>Add News</h3>
-            </a>
-          </div>
-        </section>
-
       </main>
       <footer className="footer">
         <p>&copy; Janagrah 2024</p>
