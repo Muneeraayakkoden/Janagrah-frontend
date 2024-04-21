@@ -31,8 +31,13 @@ function OfficialHome() {
 
   useEffect(() => {
     fetchNotifications();
-  }, []); // Fetch notifications on initial render
-
+  }, []);
+  
+  // Fetch notifications on initial render
+  const handleAnnounceEvent = () => {
+    navigate('/CreateUpdates');
+  };
+  
   return (
     <div className="official-homepage">
        <div className="logo">
@@ -61,7 +66,7 @@ function OfficialHome() {
         <section className="updates-section">
           <h2>SEND ANNOUNCEMENTS</h2>
           <div className="updates-cards">
-            <a href="#" className="updates-card" onClick={(e) => e.navigate('/CreateUpdates')}>
+            <a href="#" className="updates-card" onClick={handleAnnounceEvent}>
               <h3>Announce an event</h3>
             </a>
           </div>
@@ -81,8 +86,7 @@ function OfficialHome() {
           {notifications.length > 0 ? (
             <ul>
               {/* Map through notifications and display content */}
-              {notifications.map((notification) => (
-                <li key={notification.id}>
+              {notifications.map((notification) => (                <li key={notification.id}>
                   {/* Display notification title, description, etc. */}
                   <h3>{notification.title}</h3>
                   <p>{notification.description}</p>

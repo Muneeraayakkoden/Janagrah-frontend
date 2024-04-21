@@ -5,16 +5,13 @@ import { useNavigate } from 'react-router-dom';
 
 
 function ResidentLoginForm() {
-
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-
   const handleForgotPasswordClick = () => {
     navigate('/ForgotPasswordPage');
   };
-
   const handleLogin = async (event) => {
     event.preventDefault();
     if (!username || !password) {
@@ -51,9 +48,7 @@ function ResidentLoginForm() {
         console.error('Login failed:', response.statusText);
         navigate('/LoginRejected');
       }
-
     } catch (error) {
-      // Handle fetch error
       console.error('There was a problem with your fetch operation:', error);
       navigate('/LoginRejected');
     }
@@ -78,10 +73,10 @@ function ResidentLoginForm() {
 
 function OfficialLoginForm() {
 
+  const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const navigate = useNavigate();
 
   const handleForgotPasswordClick = () => {
     navigate('/ForgotPasswordPage');
@@ -126,9 +121,8 @@ function OfficialLoginForm() {
       // Handle fetch error
       console.error('There was a problem with your fetch operation:', error); 
     }
+  };
   
-  }
-
   return (
     <form>
       <div className="input-group">
@@ -137,25 +131,19 @@ function OfficialLoginForm() {
       <div className="input-group">
         <input type="password" placeholder="Password*" className="input-field" value={password} onChange={(e) => setPassword(e.target.value)} required />
       </div>
-
       <button type="submit" className="login-btn" onClick={handleLogin}>Official Login</button>
       <div className="error-message">{error}</div>
       <div className="forgot-password" onClick={handleForgotPasswordClick}>Forgot Password?</div>
-
+      <button type="submit" className="login-btn" onClick={handleLogin}>Official Login</button>
     </form>
   );
 }
 
-
-
-
 function LoginPage() {
   const [selectedTab, setSelectedTab] = useState('resident');
-
   const handleResidentRegisterClick = async () => {
     console.log('Redirect to resident registration'); 
   }
-
   return (
     <div className="LoginPage">
       <div className="login-container">
@@ -180,27 +168,3 @@ function LoginPage() {
 }
 
 export default LoginPage;
-
-
-
- {/*const data = await response.json();
-      console.log(response);
-      if (response.ok) {
-        const data = await response.json();
-         // Assuming the server returns a token upon successful login 
-        if (data.success) {
-          // Login successful, navigate to OfficialHome
-          navigate('/OfficialHome');
-        } else {
-          // Handle other cases of successful response without a token
-          console.error('Login failed:', data.message); // Adjust based on server response
-          setError('Invalid username or password.');
-        }
-      } else {
-        // Login failed, handle error
-        console.error('Login failed:', response.statusText);
-      }
-
-    } catch (error) {
-      // Handle fetch error
-    console.error('There was a problem with your fetch operation:', error); */}
