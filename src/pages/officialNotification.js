@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import './NotificationPage.css';
 
-const NotificationPage = () => {
+const OfficialNotification = () => {
   const [notifications, setNotifications] = useState([]);
 
   useEffect(() => {
@@ -59,4 +59,4 @@ const NotificationItem = ({ notification }) => {
   );
 };
 
-export default NotificationPage;
+export default OfficialNotification;

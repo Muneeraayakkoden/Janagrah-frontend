@@ -44,7 +44,6 @@ function OfficialHome() {
       </header>
 
       <main className="main">
-
         <section className="survey-section">
           <h2>SURVEY SECTION</h2>
           <div className="survey-cards">
@@ -72,7 +71,8 @@ function OfficialHome() {
       <footer className="footer">
         <p>&copy; Janagrah 2024</p>
       </footer>
-      <div className="notification-bell" onClick={(e) => { e.preventDefault(); navigate('/Notifications', e); }}>
+
+      <div className="notification-bell" onClick={handleNotificationClick}>
       <i className="fas fa-bell"></i>
       </div>
       {showNotifications && (
@@ -95,6 +95,9 @@ function OfficialHome() {
           )}
         </div>
       )}
+      <a href="#" className="notification-link" onClick={() => navigate('/OfficialNotification')}>
+        View All Notifications
+      </a>
     </div>
   );
 }
