@@ -11,9 +11,15 @@ function ResidentLoginForm() {
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
   const handleLogin = async (event) => {
     event.preventDefault();
+
+    if (!username || !password) {
+      setError('Please fill in all fields.');
+      return;
+    }
 
     try {
       const response = await fetch('http://localhost:4000/login/userlogin', {
@@ -35,7 +41,7 @@ function ResidentLoginForm() {
         } else {
           // Handle other cases of successful response without a token
           console.error('Login failed:', data.message); // Adjust based on server response
-          navigate('/LoginRejected');
+          setError('Invalid username or password.');
         }
       } else {
         // Login failed, handle error
@@ -59,6 +65,7 @@ function ResidentLoginForm() {
         <input type="password" placeholder="Password" className="input-field" value={password} onChange={(e) => setPassword(e.target.value)} required/>
       </div>
       <button type="submit" className="login-btn" onClick={handleLogin}>Resident Login</button>
+      <div className="error-message">{error}</div>
       <div className="forgot-password">Forgot Password?</div>
       <button className="register-btn" onClick={() => {
         navigate('/ResidentSignup')
@@ -72,7 +79,7 @@ function OfficialLoginForm() {
   
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
+  const [error, setError] = useState('');
  
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -97,6 +104,7 @@ function OfficialLoginForm() {
         } else {
           // Handle other cases of successful response without a token
           console.error('Login failed:', data.message); // Adjust based on server response
+          setError('Invalid username or password.');
         }
       } else {
         // Login failed, handle error
@@ -120,6 +128,7 @@ function OfficialLoginForm() {
         <input type="password" placeholder="Password" className="input-field" value={password} onChange={(e) => setPassword(e.target.value)} required />
       </div>
       <button type="submit" className="login-btn" onClick={handleLogin}>Official Login</button>
+      <div className="error-message">{error}</div>
       <div className="forgot-password">Forgot Password?</div>
     </form>
   );

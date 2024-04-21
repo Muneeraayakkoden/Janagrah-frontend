@@ -4,9 +4,9 @@ import './CreateUpdates.css';
 function CreateUpdates() {
     return (
         <form action="#">
-        <label htmlFor="title">Update Title:</label>
+        <label htmlFor="title">Announcement Title:</label>
         <input type="text" id="title" required />
-        <label htmlFor="description">Update Description:</label>
+        <label htmlFor="description">Description:</label>
         <textarea id="description" required></textarea>
         <div className="upload-options">
             <label htmlFor="upload-event">Upload Event (optional):</label>
@@ -14,7 +14,7 @@ function CreateUpdates() {
             <label htmlFor="upload-service">Upload Service (optional):</label>
             <input type="file" id="upload-service" accept=".jpg,.jpeg,.png" />
         </div>
-        <button type="submit">Publish Update</button>
+        <button type="submit">Publish</button>
     </form>
     );
   }

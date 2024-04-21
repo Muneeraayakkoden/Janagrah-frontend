@@ -37,7 +37,6 @@ const ResidentSignup = () => {
     event.preventDefault();
     navigate("/ResidentSignupSuccess")
 
-
     // Check if passwords match
     if (password !== confirmPassword) {
       setErrorMessage('Passwords do not match.');
@@ -45,20 +44,16 @@ const ResidentSignup = () => {
     }
 
     // Check if required fields are filled
-    if (!formData.name || !formData.email || !formData.username || !password || !confirmPassword) {
+    const requiredFields = ['name', 'email', 'username', 'password', 'confirm_password'];
+    const hasEmptyFields = requiredFields.some(field => !formData[field]);
+    if (hasEmptyFields) {
       setErrorMessage('Please fill in all required fields.');
       return;
     }
-
-    // Add password to form data
-  
-
-    // Convert form data to a URL-encoded string
     
 
-   try {
-    console.log(JSON.stringify(formData));
-       
+    try {
+      console.log(JSON.stringify(formData));
        // Send form data to the backend
       const response = await fetch('http://localhost:4000/user/request-user', {
         method: 'POST',
