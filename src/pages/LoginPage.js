@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './LoginPage.css';
 import logo from '../assets/logo.png';
 import { useNavigate } from 'react-router-dom';
+import ForgotPasswordPage from './ForgotPasswordPage';
 
 
 
@@ -70,10 +71,8 @@ function ResidentLoginForm() {
       </div>
       <button type="submit" className="login-btn" onClick={handleLogin}>Resident Login</button>
       <div className="error-message">{error}</div>
-      <div className="forgot-password">Forgot Password?</div>
-      <button className="register-btn" onClick={() => {
-        navigate('/ResidentSignup')
-      }}>Register Now</button>
+      <div className="forgot-password" onClick={navigate('/ForgotPasswordPage')}>Forgot Password?</div>
+      <button className="register-btn" onClick={() => {navigate('/ResidentSignup')}}>Register Now</button>
     </div>
   );
 }
@@ -93,7 +92,7 @@ function OfficialLoginForm() {
       setError('Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.');
       return;
     }
-    
+
     try {
       const response = await fetch('http://localhost:4000/login/wardlogin', {
         method: 'POST',
@@ -139,7 +138,7 @@ function OfficialLoginForm() {
       </div>
       <button type="submit" className="login-btn" onClick={handleLogin}>Official Login</button>
       <div className="error-message">{error}</div>
-      <div className="forgot-password">Forgot Password?</div>
+      <div className="forgot-password" onClick={navigate('/ForgotPasswordPage')}>Forgot Password?</div>
     </form>
   );
 }
