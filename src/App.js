@@ -12,7 +12,7 @@ import CreateUpdates from './pages/CreateUpdates.js';
 import Results from './pages/Results.js';
 import CreateSurveys from './pages/CreateSurveys.js';
 import ForgotPasswordPage from './pages/ForgotPasswordPage.js';
-import officialNotification from './pages/officialNotification.js';
+import OfficialNotification from './pages/OfficialNotification.js';
 import MyAccount from './pages/MyAccount.js';
 import EditProfile from './pages/EditProfile.js';
 
@@ -34,7 +34,7 @@ function App() {
           <Route path="/CreateSurveys" Component={CreateSurveys} />
           <Route path="/Results" Component={Results} />
           <Route path="/ForgotPasswordPage" Component={ForgotPasswordPage} />
-          <Route path="/officialNotification" Component={officialNotification} />
+          <Route path="/OfficialNotification" Component={OfficialNotification} />
           <Route path="/MyAccount" Component={MyAccount} />
           <Route path="/EditProfile" Component={EditProfile} />
         </Routes>
