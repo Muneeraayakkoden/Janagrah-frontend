@@ -13,9 +13,6 @@ const SurveyPage = () => {
     setSurveyData({ ...surveyData, selectedOption: event.target.value });
   };
 
-  const handleCommentsChange = (event) => {
-    setSurveyData({ ...surveyData, comments: event.target.value });
-  };
 
   const handleSubmit = (event) => {
     event.preventDefault();

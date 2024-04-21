@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import './OfficialHome.css';
 import { useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.png';
@@ -8,19 +8,20 @@ import logo from '../assets/logo.png';
 const API_ENDPOINT = '/api/official/notifications';
 
 function OfficialHome() {
-  const [showNotifications, setShowNotifications] = useState(false);
-  const [notifications, setNotifications] = useState([]);
   const navigate = useNavigate();
-
   const handleNotificationClick = () => {
     navigate('/OfficialNotification');
   };
 
   const fetchNotifications = async () => {
+    
     try {
       const response = await fetch(API_ENDPOINT);
-      const data = await response.json();
-      setNotifications(data);
+      if (response.ok) {
+        console.log('Notifications fetched successfully');
+      } else {
+        console.error('Failed to fetch notifications:', response.statusText);
+      }
     } catch (error) {
       console.error('Error fetching notifications:', error);
     }
