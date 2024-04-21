@@ -56,7 +56,7 @@ const ResidentProfilePage = () => {
     // Clear user data from local storage
     localStorage.removeItem('token');
     // Navigate to the login page
-    navigate('/loginPage');
+    navigate('/LoginPage');
   };
   
   const handleEditProfile = () => {

@@ -13,11 +13,6 @@ const Header = () => {
   return (
     <header className="header">
       <div className="container">
-        <div className="profile">
-          <i class="fa-solid fa-bell"></i>
-          <button className="profile-btn" onClick={() => {
-            navigate('/Notification');}}>Notification</button>
-        </div>
         <div className="logo">
           <img src={logo} alt="Janagrah Logo" />
         </div>
