@@ -145,6 +145,13 @@ const ResidentSignup = () => {
       "8", "9", "10", "11", "12", "13", "14"
     ]
   };
+
+  const job = [
+    "Student", "Farmer", "Teacher", "Doctor", "Housewife", "Fisherman", "Engineer", "Nurse", "Sportsman", "Coach", "Business", "Sales Officer",
+    "Manager", "Bike Rider", "Receptionist", "Pharmacist", "Others"
+  ];
+
+
   
   return (
     <div className="signup-page">
@@ -152,8 +159,8 @@ const ResidentSignup = () => {
       <form onSubmit={handleSubmit}>
         <div className="form-section">
           <h2>Location Details</h2>
-          <select name="state" value={formData.state} onChange={handleStateChange} required>
-            <option value="">Select State</option>
+          <select name="state" value={formData.state}  onChange={handleStateChange} required>
+            <option value="">Select State*</option>
             {states.map(state => (
               <option key={state} value={state}>{state}</option>
             ))}
@@ -203,25 +210,12 @@ const ResidentSignup = () => {
           <br /><br />
           <input type="number" name="phone" placeholder="Phone No.*" value={formData.phone} onChange={handleChange} required />
           <br /><br />
-          <select name="job" id="job" required>
-            <option value="">Select a Job</option>
-            <option value="student">Student</option>
-            <option value="farmer">Farmer</option>
-            <option value="teacher">Teacher</option>
-            <option value="doctor">Doctor</option>
-            <option value="housewife">Housewife</option>
-            <option value="fisherman">Fisherman</option>
-            <option value="engineer">Engineer</option>
-            <option value="nurse">Nurse</option>
-            <option value="sportsman">Sportsman</option>
-            <option value="coach">Coach</option>
-            <option value="business">Business</option>
-            <option value="sales officer">Sales Officer</option>
-            <option value="manager">Manager</option>
-            <option value="bike rider">Bike Rider</option>
-            <option value="receptionist">Receptionist</option>
-            <option value="pharmacist">Pharmacist</option>
-            <option value="others">Others</option>
+
+          <select name="job" value={formData.job}  onChange={handleChange} required>
+            <option value="">Job*</option>
+            {job.map(job => (
+              <option key={job} value={job}>{job}</option>
+            ))}
           </select>
           <br /><br />
           <input type="number" name="annualIncome" placeholder="Annual Income" value={formData.annualIncome} onChange={handleChange} />
