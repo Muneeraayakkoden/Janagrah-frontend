@@ -13,9 +13,7 @@ function OfficialHome() {
   const navigate = useNavigate();
 
   const handleNotificationClick = () => {
-    setShowNotifications(!showNotifications);
-    // Fetch notifications on click (optional)
-    fetchNotifications();
+    navigate('/OfficialNotification');
   };
 
   const fetchNotifications = async () => {
@@ -79,28 +77,8 @@ function OfficialHome() {
       <div className="notification-bell" onClick={handleNotificationClick}>
       <i className="fas fa-bell"></i>
       </div>
-      {showNotifications && (
-        <div className="notification-content">
-          <h2>Notifications</h2>
-          {notifications.length > 0 ? (
-            <ul>
-              {/* Map through notifications and display content */}
-              {notifications.map((notification) => (                <li key={notification.id}>
-                  {/* Display notification title, description, etc. */}
-                  <h3>{notification.title}</h3>
-                  <p>{notification.description}</p>
-                  {/* Add buttons or links for further actions (optional) */}
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p>No notifications available.</p>
-          )}
-        </div>
-      )}
-      <a href="#" className="notification-link" onClick={() => navigate('/OfficialNotification')}>View All Notifications</a>
     </div>
   );
-}
+};
 
 export default OfficialHome;

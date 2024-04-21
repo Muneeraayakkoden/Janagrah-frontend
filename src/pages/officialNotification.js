@@ -59,3 +59,27 @@ const NotificationItem = ({ notification }) => {
 };
 
 export default OfficialNotification;
+
+{/*
+{showNotifications && (
+        <div className="notification-content">
+          <h2>Notifications</h2>
+          {notifications.length > 0 ? (
+            <ul>
+              
+              {notifications.map((notification) => (                <li key={notification.id}>
+                
+                <h3>{notification.title}</h3>
+                <p>{notification.description}</p>
+               
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p>No notifications available.</p>
+        )}
+      </div>
+    )}
+    <a href="#" className="notification-link" onClick={() => navigate('/OfficialNotification')}>View All Notifications</a>
+  </div>
+  */}
