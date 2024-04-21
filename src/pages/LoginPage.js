@@ -2,26 +2,25 @@ import React, { useState } from 'react';
 import './LoginPage.css';
 import logo from '../assets/logo.png';
 import { useNavigate } from 'react-router-dom';
-import ForgotPasswordPage from './ForgotPasswordPage';
-
 
 
 function ResidentLoginForm() {
 
   const navigate = useNavigate();
-
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
+  const handleForgotPasswordClick = () => {
+    navigate('/ForgotPasswordPage');
+  };
+
   const handleLogin = async (event) => {
     event.preventDefault();
-
     if (!username || !password) {
       setError('Please fill in all fields.');
       return;
     }
-
     const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/;
     if (!passwordRegex.test(password)) {
       setError('Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.');
@@ -38,7 +37,6 @@ function ResidentLoginForm() {
       })   
       if (response.ok) {
         const data = await response.json();
-        
         console.log(data);
         if (data.success) {
           // Login successful, navigate to ResidentHome
@@ -64,14 +62,14 @@ function ResidentLoginForm() {
   return (
     <div>
       <div className="input-group">
-        <input type="text" placeholder="Username" className="input-field" value={username} onChange={(e) => setUsername(e.target.value)} required />
+        <input type="text" placeholder="Username*" className="input-field" value={username} onChange={(e) => setUsername(e.target.value)} required />
       </div>
       <div className="input-group">
-        <input type="password" placeholder="Password" className="input-field" value={password} onChange={(e) => setPassword(e.target.value)} required/>
+        <input type="password" placeholder="Password*" className="input-field" value={password} onChange={(e) => setPassword(e.target.value)} required/>
       </div>
       <button type="submit" className="login-btn" onClick={handleLogin}>Resident Login</button>
       <div className="error-message">{error}</div>
-      <div className="forgot-password" onClick={navigate('/ForgotPasswordPage')}>Forgot Password?</div>
+      <div><a href="#" className="forgot-password" onClick={handleForgotPasswordClick}>Forgot Password?</a></div>
       <button className="register-btn" onClick={() => {navigate('/ResidentSignup')}}>Register Now</button>
     </div>
   );
@@ -79,14 +77,21 @@ function ResidentLoginForm() {
 
 function OfficialLoginForm() {
   const navigate = useNavigate();
-  
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
  
+  const handleForgotPasswordClick = () => {
+    navigate('/ForgotPasswordPage');
+  };
+
   const handleLogin = async (event) => {
     event.preventDefault();
 
+    if (!username || !password) {
+      setError('Please fill in all fields.');
+      return;
+    }
     const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/;
     if (!passwordRegex.test(password)) {
       setError('Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.');
@@ -118,27 +123,25 @@ function OfficialLoginForm() {
       } else {
         // Login failed, handle error
         console.error('Login failed:', response.statusText);
-       
       }
 
     } catch (error) {
       // Handle fetch error
-      console.error('There was a problem with your fetch operation:', error);
-     
+      console.error('There was a problem with your fetch operation:', error); 
     }
   };
 
   return (
     <form>
       <div className="input-group">
-        <input type="text" placeholder="username" className="input-field" value={username} onChange={(e) => setUsername(e.target.value)} required/>
+        <input type="text" placeholder="Username*" className="input-field" value={username} onChange={(e) => setUsername(e.target.value)} required/>
       </div>
       <div className="input-group">
-        <input type="password" placeholder="Password" className="input-field" value={password} onChange={(e) => setPassword(e.target.value)} required />
+        <input type="password" placeholder="Password*" className="input-field" value={password} onChange={(e) => setPassword(e.target.value)} required />
       </div>
       <button type="submit" className="login-btn" onClick={handleLogin}>Official Login</button>
       <div className="error-message">{error}</div>
-      <div className="forgot-password" onClick={navigate('/ForgotPasswordPage')}>Forgot Password?</div>
+      <div className="forgot-password" onClick={handleForgotPasswordClick}>Forgot Password?</div>
     </form>
   );
 }
@@ -147,8 +150,7 @@ function LoginPage() {
   const [selectedTab, setSelectedTab] = useState('resident');
 
   const handleResidentRegisterClick = async () => {
-    console.log('Redirect to resident registration');
-    
+    console.log('Redirect to resident registration'); 
   }
 
   return (

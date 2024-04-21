@@ -1,10 +1,9 @@
 // ForgotPasswordPage.js
 
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import './ForgotPasswordPage.css';
 
 function ForgotPasswordPage() {
-  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
 

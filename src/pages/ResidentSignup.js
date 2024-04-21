@@ -35,7 +35,6 @@ const ResidentSignup = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    navigate("/ResidentSignupSuccess")
 
     // Check if passwords match
     if (password !== confirmPassword) {
@@ -50,8 +49,7 @@ const ResidentSignup = () => {
       setErrorMessage('Please fill in all required fields.');
       return;
     }
-    
-
+    navigate("/ResidentSignupSuccess")
     try {
       console.log(JSON.stringify(formData));
        // Send form data to the backend
@@ -81,6 +79,7 @@ const ResidentSignup = () => {
 
       if (!response.ok) {
         throw new Error('Network response was not ok');
+       // navigate("/ResidentSignupSuccess")
       }
     
       // Reset form data and show success message
