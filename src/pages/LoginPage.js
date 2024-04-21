@@ -134,7 +134,6 @@ function OfficialLoginForm() {
       <button type="submit" className="login-btn" onClick={handleLogin}>Official Login</button>
       <div className="error-message">{error}</div>
       <div className="forgot-password" onClick={handleForgotPasswordClick}>Forgot Password?</div>
-      <button type="submit" className="login-btn" onClick={handleLogin}>Official Login</button>
     </form>
   );
 }

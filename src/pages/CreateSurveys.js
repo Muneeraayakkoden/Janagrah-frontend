@@ -131,7 +131,7 @@ const CreateSurvey = () => {
                   Add Option
                 </button>
               )}
-              {index > 0 && (
+              {index === options.length - 1 && (
                 <button type="button" className="remove-option" onClick={() => handleRemoveOption(option.id)}>
                   Remove
                   </button>

@@ -49,12 +49,6 @@ const SurveyPage = () => {
             </div>
           ))}
         </div>
-        <textarea
-          className="comments"
-          placeholder="Any additional comments?"
-          value={surveyData.comments}
-          onChange={handleCommentsChange}
-        ></textarea>
         <button type="submit" className="submit-button">Submit</button>
       </form>
     </div>

@@ -1,6 +1,5 @@
 // NotificationPage.js seen by the official
 import React, { useState, useEffect } from 'react';
-import './NotificationPage.css';
 
 const OfficialNotification = () => {
   const [notifications, setNotifications] = useState([]);

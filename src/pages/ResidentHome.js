@@ -18,7 +18,7 @@ const ResidentHome = () => {
       <main className="main-content">
         <section className="survey-section">
           <div className="survey-card">
-            <a href="#" onClick={(e) => e.navigate('/SurveyPage')}>
+            <a href="#" onClick={() => navigate('/SurveyPage')}>
               <h3>SURVEYS</h3>
             </a>
           </div>
@@ -26,7 +26,7 @@ const ResidentHome = () => {
 
         <section className="Contact-section">
           <div className="contact-card">
-            <a href="#" onClick={(e) => e.navigate('/ContactPage')}>
+            <a href="#" onClick={() => navigate('/ContactPage')}>
               <h3>CONTACT</h3>
               <p>Message the ward member</p>
             </a>
