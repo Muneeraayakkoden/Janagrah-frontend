@@ -6,7 +6,6 @@ function CreateUpdates() {
         title: "",
         description: "",
         uploadEvent: null,
-       // uploadService: null
     });
 
     const handleChange = (e) => {
@@ -52,10 +51,11 @@ function CreateUpdates() {
                     console.log("Failed to create announcement");
                 // setAnnouncementSent(false);
                  }
-        } else {
+            } else {
             console.error("Required data from local storage is missing.");
-        }
-        } catch (error) {
+            }
+        }catch{
+
             console.error("Error submitting form:", error);
         }
     };
