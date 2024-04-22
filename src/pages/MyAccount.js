@@ -7,7 +7,7 @@ const ResidentProfilePage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Fetch user data and surveys completed when the component mounts
+    // Fetch user data when the component mounts
     fetchUserData();
   }, []);
 
@@ -26,8 +26,6 @@ const ResidentProfilePage = () => {
       console.error('Error fetching data:', error.message);
     }
   };
-
-
   const handleLogout = () => {
     // Clear user data from local storage
     localStorage.removeItem('token');
