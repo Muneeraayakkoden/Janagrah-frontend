@@ -125,10 +125,17 @@ function OfficialLoginForm() {
         console.error('Login failed:', response.statusText);
         setError('Failed to log in. Please try again later.');
       }
+<<<<<<< Updated upstream
   
     } catch (error) {
       console.error('Error during login:', error);
       setError('Failed to log in. Please try again later.');
+=======
+    }catch (error) {
+      // Handle fetch error
+      console.error('There was a problem with your fetch operation:', error); 
+      setError('There was a problem with your fetch operation: ' + error.message);
+>>>>>>> Stashed changes
     }
   };
   
