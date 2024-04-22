@@ -25,7 +25,7 @@ function App() {
           <Route path="/ContactPage" Component={ContactPage} />
           <Route path="/SurveyPage" Component={SurveyPage} />
           <Route path="/ResidentHome" Component={ResidentHome}/> 
-          <Route path="/LoginPage" Component={LoginPage} />
+          <Route path="/" Component={LoginPage} />
           <Route path="/ResidentSignup" Component={ResidentSignup} />
           <Route path="/ResidentSignupSuccess" Component={ResidentSignupSuccess} />
           <Route path="/LoginRejected" Component={LoginRejected} />

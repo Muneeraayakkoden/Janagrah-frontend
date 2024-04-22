@@ -4,13 +4,11 @@ import './MyAccount.css';
 
 const ResidentProfilePage = () => {
   const [userData, setUserData] = useState(null);
-
   const navigate = useNavigate();
 
   useEffect(() => {
     // Fetch user data when the component mounts
     fetchUserData();
-
   }, []);
 
   const fetchUserData = async () => {

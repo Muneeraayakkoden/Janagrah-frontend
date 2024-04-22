@@ -6,7 +6,6 @@ function CreateUpdates() {
         title: "",
         description: "",
         uploadEvent: null,
-        uploadService: null
     });
 
     const handleChange = (e) => {
@@ -24,8 +23,6 @@ function CreateUpdates() {
             formDataToSend.append("title", formData.title);
             formDataToSend.append("description", formData.description);
             formDataToSend.append("uploadEvent", formData.uploadEvent);
-            formDataToSend.append("uploadService", formData.uploadService);
-
             const response = await fetch("http://localhost:4000/announcement/create", {
                 method: "POST",
                 body: formDataToSend
