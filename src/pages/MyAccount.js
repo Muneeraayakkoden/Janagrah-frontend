@@ -4,19 +4,11 @@ import './MyAccount.css';
 
 const ResidentProfilePage = () => {
   const [userData, setUserData] = useState(null);
-<<<<<<< HEAD
-  //const [surveysCompleted, setSurveysCompleted] = useState([]);
-=======
->>>>>>> b2b7f1bd82a1e6779f7f4849116fb2b68f9f41de
   const navigate = useNavigate();
 
   useEffect(() => {
     // Fetch user data and surveys completed when the component mounts
     fetchUserData();
-<<<<<<< HEAD
-    //fetchSurveysCompleted();
-=======
->>>>>>> b2b7f1bd82a1e6779f7f4849116fb2b68f9f41de
   }, []);
 
   const fetchUserData = async () => {
@@ -34,11 +26,8 @@ const ResidentProfilePage = () => {
       console.error('Error fetching data:', error.message);
     }
   };
-<<<<<<< HEAD
-=======
 
 
->>>>>>> b2b7f1bd82a1e6779f7f4849116fb2b68f9f41de
   const handleLogout = () => {
     // Clear user data from local storage
     localStorage.removeItem('token');
