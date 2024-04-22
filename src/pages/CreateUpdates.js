@@ -22,18 +22,12 @@ function CreateUpdates() {
         e.preventDefault();
         try {
 
-            const state = JSON.parse(localStorage.getItem('state'));
-            const district = JSON.parse(localStorage.getItem('district'));
-            const localgovernment = JSON.parse(localStorage.getItem('local_government'));
-            const wardNo = JSON.parse(localStorage.getItem('wardNo'));
+            const wardNo = JSON.parse(localStorage.getItem('username'));
 
              // Check if all required data is available
             if (state && district && localgovernment && wardNo) {
                 const formDataToSend = new FormData();
-                formDataToSend.append("state", state);
-                formDataToSend.append("district", district);
-                formDataToSend.append("localgovernment", localgovernment);
-                formDataToSend.append("wardNo", wardNo);
+                formDataToSend.append("wardNo", username);
                 formDataToSend.append("title", formData.title);
                 formDataToSend.append("description", formData.description);
                 formDataToSend.append("uploadEvent", formData.uploadEvent);
