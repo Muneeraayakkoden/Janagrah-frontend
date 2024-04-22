@@ -7,7 +7,7 @@ const ResidentProfilePage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Fetch user data and surveys completed when the component mounts
+    // Fetch user data when the component mounts
     fetchUserData();
   }, []);
 
