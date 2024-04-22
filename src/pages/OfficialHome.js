@@ -9,6 +9,7 @@ import logo from '../assets/logo.png';
 
 function OfficialHome() {
   const navigate = useNavigate();
+  
   const handleNotificationClick = () => {
     navigate('/OfficialNotification');
   };
