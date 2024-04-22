@@ -73,35 +73,41 @@ function OfficialLoginForm() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
-
- 
   const handleLogin = async (event) => {
     event.preventDefault();
   
-    // Send form data to the backend
-    const response = await fetch('http://localhost:4000/login/wardlogin', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ username, password })
-    });
-  
-    if (response.status === 200) {
-      const data = await response.json();
-      console.log(data);
-      Object.entries(data.data).forEach(([key, value]) => {
-        localStorage.setItem(key, JSON.stringify(value));
+    try {
+      const response = await fetch('http://localhost:4000/login/wardlogin', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ username, password })
       });
-    
-      navigate('/OfficialHome');
-      // If login successful, navigate to the dashboard route and send user data
-    } else {
-      // If login failed, show error message
-      const responseData = await response.json();
-      setError(responseData.message || 'Login failed');
+  
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data);
+        if (data.success) {
+          Object.entries(data.data).forEach(([key, value]) => {
+            localStorage.setItem(key, JSON.stringify(value));
+          });
+          navigate('/OfficialHome');
+        } else {
+          console.error('Login failed:', data.message);
+          setError(data.message || 'Login failed');
+        }
+      } else {
+        console.error('Login failed:', response.statusText);
+        setError('Failed to log in. Please try again later.');
+      }
+  
+    } catch (error) {
+      console.error('Error during login:', error);
+      setError('Failed to log in. Please try again later.');
     }
   };
+  
   
 
   return (
