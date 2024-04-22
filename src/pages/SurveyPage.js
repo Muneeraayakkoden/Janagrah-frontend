@@ -13,7 +13,6 @@ const SurveyPage = () => {
     setSurveyData({ ...surveyData, selectedOption: event.target.value });
   };
 
-
   const handleSubmit = (event) => {
     event.preventDefault();
     // Send survey data to backend or perform further actions
