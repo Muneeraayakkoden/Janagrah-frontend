@@ -16,6 +16,21 @@ function ContactPage() {
   const handleSubmit = (event) => {
     event.preventDefault();
     // Here you can handle the submission of the message, considering the 'message' and 'isAnonymous' states
+    try {
+      fetch('http://localhost:4000/official/notifications', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          type: 'contact',
+          message: message,
+        }),
+      });
+      // Reset message input
+    } catch (error) {
+      console.error('Error sending notification:', error.message);
+    }
     console.log("Message:", message);
     console.log("Is Anonymous:", isAnonymous);
     // Reset the message input after submission
@@ -63,3 +78,4 @@ function ContactPage() {
 }
 
 export default ContactPage;
+

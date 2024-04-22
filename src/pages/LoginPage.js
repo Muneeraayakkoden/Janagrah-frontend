@@ -4,16 +4,25 @@ import logo from '../assets/logo.png';
 import { useNavigate } from 'react-router-dom';
 
 
-
 function ResidentLoginForm() {
-
   const navigate = useNavigate();
-
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
+  const [error, setError] = useState('');
+  const handleForgotPasswordClick = () => {
+    navigate('/ForgotPasswordPage');
+  };
   const handleLogin = async (event) => {
     event.preventDefault();
+    if (!username || !password) {
+      setError('Please fill in all fields.');
+      return;
+    }
+    const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/;
+    if (!passwordRegex.test(password)) {
+      setError('Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.');
+      return;
+    }
 
     try {
       const response = await fetch('http://localhost:4000/login/userlogin', {
@@ -25,26 +34,26 @@ function ResidentLoginForm() {
       })   
       if (response.ok) {
         const data = await response.json();
-        // Assuming the server returns a token upon successful login
-        //const token = data.token; // Adjust this based on your server response
-        //console.log(token);
         console.log(data);
+        console.log(data.user.username);
         if (data.success) {
+         
+          localStorage.setItem('userId', JSON.stringify(data.user._id));
+          localStorage.setItem('username', JSON.stringify(data.user.username));
+          localStorage.setItem('password', JSON.stringify(data.user.password));
           // Login successful, navigate to ResidentHome
           navigate('/ResidentHome');
         } else {
           // Handle other cases of successful response without a token
           console.error('Login failed:', data.message); // Adjust based on server response
-          navigate('/LoginRejected');
+          setError('Invalid username or password.');
         }
       } else {
         // Login failed, handle error
         console.error('Login failed:', response.statusText);
         navigate('/LoginRejected');
       }
-
     } catch (error) {
-      // Handle fetch error
       console.error('There was a problem with your fetch operation:', error);
       navigate('/LoginRejected');
     }
@@ -53,29 +62,44 @@ function ResidentLoginForm() {
   return (
     <div>
       <div className="input-group">
-        <input type="text" placeholder="Username" className="input-field" value={username} onChange={(e) => setUsername(e.target.value)} required />
+        <input type="text" placeholder="Username*" className="input-field" value={username} onChange={(e) => setUsername(e.target.value)} required />
       </div>
       <div className="input-group">
-        <input type="password" placeholder="Password" className="input-field" value={password} onChange={(e) => setPassword(e.target.value)} required/>
+        <input type="password" placeholder="Password*" className="input-field" value={password} onChange={(e) => setPassword(e.target.value)} required/>
       </div>
-      <button type='submit'  className="login-btn" onClick={handleLogin}>Resident Login</button>
-      <div className="forgot-password">Forgot Password?</div>
-      <button className="register-btn" onClick={() => {
-        navigate('/ResidentSignup')
-      }}>Register Now</button>
+      <button type="submit" className="login-btn" onClick={handleLogin}>Resident Login</button>
+      <div className="error-message">{error}</div>
+      <div><a href="#" className="forgot-password" onClick={handleForgotPasswordClick}>Forgot Password?</a></div>
+      <button className="register-btn" onClick={() => {navigate('/ResidentSignup')}}>Register Now</button>
     </div>
   );
 }
 
 
 function OfficialLoginForm() {
+
+  const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const navigate = useNavigate();
+
+  const handleForgotPasswordClick = () => {
+    navigate('/ForgotPasswordPage');
+  };
+
   const handleLogin = async (event) => {
     event.preventDefault();
-  
+
+    if (!username || !password) {
+      setError('Please fill in all fields.');
+      return;
+    }
+    const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/;
+    if (!passwordRegex.test(password)) {
+      setError('Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.');
+      return;
+    }
+
     try {
       const response = await fetch('http://localhost:4000/login/wardlogin', {
         method: 'POST',
@@ -113,29 +137,23 @@ function OfficialLoginForm() {
   return (
     <form>
       <div className="input-group">
-        <input type="text" placeholder="username" className="input-field" value={username} onChange={(e) => setUsername(e.target.value)} required/>
+        <input type="text" placeholder="Username*" className="input-field" value={username} onChange={(e) => setUsername(e.target.value)} required/>
       </div>
       <div className="input-group">
-        <input type="password" placeholder="Password" className="input-field" value={password} onChange={(e) => setPassword(e.target.value)} required />
+        <input type="password" placeholder="Password*" className="input-field" value={password} onChange={(e) => setPassword(e.target.value)} required />
       </div>
-      <button  className="login-btn" onClick={handleLogin}>Official Login</button>
-      <div className="forgot-password">Forgot Password?</div>
-      {error && <p className="error-message">{error}</p>}
+      <button type="submit" className="login-btn" onClick={handleLogin}>Official Login</button>
+      <div className="error-message">{error}</div>
+      <div className="forgot-password" onClick={handleForgotPasswordClick}>Forgot Password?</div>
     </form>
   );
 }
 
-
-
-
 function LoginPage() {
   const [selectedTab, setSelectedTab] = useState('resident');
-
   const handleResidentRegisterClick = async () => {
-    console.log('Redirect to resident registration');
-    
+    console.log('Redirect to resident registration'); 
   }
-
   return (
     <div className="LoginPage">
       <div className="login-container">

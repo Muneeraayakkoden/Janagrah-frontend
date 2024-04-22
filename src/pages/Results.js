@@ -2,7 +2,7 @@ import React from "react";
 
 const Results = () => {
     return (
-      <h3>create surveys</h3>
+      <h3>Results</h3>
     );
   };
   

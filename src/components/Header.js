@@ -1,38 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
 import logo from '../assets/logo.png';
 import { useNavigate } from 'react-router-dom';
 import './Header.css';
 
 const Header = () => {
   const navigate = useNavigate();
-
-  const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
-
-  const toggleProfileDropdown = () => {
-    setIsProfileDropdownOpen(!isProfileDropdownOpen);
+  const handleProfileClick = () => {
+    // Navigate to MyAccount page
+    navigate('/MyAccount');
   };
 
   return (
     <header className="header">
       <div className="container">
-        <div className="profile">
-          <i class="fa-solid fa-bell"></i>
-          <button className="profile-btn" onClick={() => {
-            navigate('/Notification');}}>Notification</button>
-        </div>
         <div className="logo">
           <img src={logo} alt="Janagrah Logo" />
         </div>
         <div className="profile">
-          <i class="fa-solid fa-user"></i>
-          <button className="profile-btn" onClick={toggleProfileDropdown}>Profile</button>
-          {isProfileDropdownOpen && (
-            <ul className="profile-dropdown-menu">
-              <li><a href="#">My Account</a></li>
-              <li><a href="#">Logout</a></li>
-              <li><a href="#">Surveys Done</a></li>
-            </ul>
-          )}
+          <i class="fa-solid fa-user" onClick={handleProfileClick}></i>
         </div>
       </div>
       <div className="hero">

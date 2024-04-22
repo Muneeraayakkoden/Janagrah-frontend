@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+import './CreateSurveys.css'
+const MAX_OPTIONS = 5; // Maximum allowed survey options
 
 const CreateSurvey = () => {
   const [surveyNumber, setSurveyNumber] = useState('');
   const [surveyName, setSurveyName] = useState('');
+  const [targetedSection, setTargetedSection] = useState('Everyone');
   const [surveyDescription, setSurveyDescription] = useState('');
   const [options, setOptions] = useState([
     { id: 1, text: '' },
@@ -16,12 +19,20 @@ const CreateSurvey = () => {
     setSurveyName(event.target.value);
   };
 
+ const handleTargetedSectionChange = (event) => {
+    setTargetedSection(event.target.value);
+  };
+
   const handleSurveyDescriptionChange = (event) => {
     setSurveyDescription(event.target.value);
   };
 
   const handleAddOption = () => {
-    setOptions([...options, { id: options.length + 1, text: '' }]);
+    if (options.length < MAX_OPTIONS) {
+      setOptions([...options, { id: options.length + 1, text: '' }]);
+    } else {
+      alert('Maximum of 5 options allowed!');
+    }
   };
 
   const handleRemoveOption = (id) => {
@@ -36,18 +47,51 @@ const CreateSurvey = () => {
     );
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // Implement logic to submit survey data (e.g., sending data to a server)
-    console.log('Survey data:', {
+  
+    // Retrieve the username from local storage
+    const username = JSON.parse(localStorage.getItem('username'));
+  
+    const formData = {
       surveyNumber,
       surveyName,
+      targetedSection,
       surveyDescription,
-      options,
-    });
-    // Reset form after submission (optional)
+      options: options.map(option => option.text),
+      username: username
+    };
+    console.log(formData);
+  
+    try {
+      const response = await fetch('http://localhost:4000/poll/createpoll', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+  
+      if (!response.ok) {
+        throw new Error('Failed to create survey');
+      }
+  
+      // Handle success response
+      const responseData = await response.json();
+      console.log('Survey created successfully:', responseData);
+  
+      // Optionally reset form fields after successful submission
+      setSurveyNumber('');
+      setSurveyName('');
+      setTargetedSection('Everyone');
+      setSurveyDescription('');
+      setOptions([{ id: 1, text: '' }]);
+    } catch (error) {
+      console.error('Error creating survey:', error);
+      // Handle error
+    }
   };
-
+  
   return (
     <div>
       <h1>Create Survey</h1>
@@ -75,6 +119,23 @@ const CreateSurvey = () => {
           />
         </div>
         <div className="form-group">
+          <label htmlFor="targeted-section">Targeted Section:</label>
+          <select
+            id="targeted-section"
+            name="targetedSection"
+            value={targetedSection}
+            onChange={handleTargetedSectionChange}
+          >
+            <option value="Everyone">Everyone</option>
+            <option value="student">Student</option>
+            <option value="farmer">Farmer</option>
+            <option value="teacher">Teacher</option>
+            <option value="doctor">Doctor</option>
+            <option value="housewife">Housewife</option>
+            <option value="business">Business</option>
+          </select>
+        </div>
+        <div className="form-group">
           <label htmlFor="survey-description">Survey Description:</label>
           <textarea
             id="survey-description"
@@ -85,33 +146,35 @@ const CreateSurvey = () => {
             required
           />
         </div>
-        <div className="survey-options">
+      <div className="survey-options">
           <h2>Survey Options</h2>
-          {options.map((option) => (
+          {options.map((option, index) => (
             <div className="option-group" key={option.id}>
-              <label htmlFor={`option-${option.id}`}>Option {option.id}:</label>
+              <label htmlFor={`option-${option.id}`}>Option {index + 1}:</label>
               <input
                 type="text"
                 id={`option-${option.id}`}
-                name="options[]"
+                name="options[]" // Include options[] for array submission
                 value={option.text}
                 onChange={(event) => handleOptionChange(option.id, event)}
                 required
               />
-              <button type="button" className="remove-option" onClick={() => handleRemoveOption(option.id)}>
-                Remove
-              </button>
+              {index < MAX_OPTIONS - 1 && (
+                <button type="button" className="add-option" onClick={handleAddOption}>
+                  Add Option
+                </button>
+              )}
+              {index === options.length - 1 && (
+                <button type="button" className="remove-option" onClick={() => handleRemoveOption(option.id)}>
+                  Remove
+                  </button>
+              )}
             </div>
           ))}
-          <div id="option-container"></div>
-          <button type="button" id="add-option" onClick={handleAddOption}>
-            Add Option
-          </button>
         </div>
         <button type="submit">Create Survey</button>
       </form>
     </div>
   );
 };
-
 export default CreateSurvey;
