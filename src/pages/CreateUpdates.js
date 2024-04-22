@@ -21,24 +21,30 @@ function CreateUpdates() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-
-            const wardNo = JSON.parse(localStorage.getItem('username'));
-
+            console.log(JSON.stringify(formData));
+            const wardid = JSON.parse(localStorage.getItem('username'));
+            console.log(wardid)
              // Check if all required data is available
-            if (state && district && localgovernment && wardNo) {
-                const formDataToSend = new FormData();
-                formDataToSend.append("wardNo", username);
-                formDataToSend.append("title", formData.title);
-                formDataToSend.append("description", formData.description);
-                formDataToSend.append("uploadEvent", formData.uploadEvent);
+            if ( wardid) {
+                //yformDataToSend.append("uploadEvent", formData.uploadEvent);
                 console.log(formData);
                 const response = await fetch("http://localhost:4000/announcement/create", {
                     method: "POST",
-                    body: formDataToSend
+                    headers: {
+                        'Content-Type': 'application/json'
+                      },
+                      body: JSON.stringify({
+                        wardid:wardid,
+                        title:formData.title,
+                        description:formData.description
+                      }),
                 });
                 console.log(response);
                 if (response.ok) {
                     // Handle success
+                    const responseData = await response.json();
+                    console.log("Response Data:", responseData); // Log response data
+                
                     setAnnouncementSent(true);
                 } else {
                     // Handle error
@@ -50,7 +56,7 @@ function CreateUpdates() {
             }
         }catch{
 
-            console.error("Error submitting form:", error);
+            console.log("Error submitting form:");
         }
     };
 
