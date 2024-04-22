@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './CreateSurveys.css'
+
 const MAX_OPTIONS = 5; // Maximum allowed survey options
 
 const CreateSurvey = () => {
@@ -7,9 +8,8 @@ const CreateSurvey = () => {
   const [surveyName, setSurveyName] = useState('');
   const [targetedSection, setTargetedSection] = useState('Everyone');
   const [surveyDescription, setSurveyDescription] = useState('');
-  const [options, setOptions] = useState([
-    { id: 1, text: '' },
-  ]); // Initial option with empty text
+  const [options, setOptions] = useState([{ id: 1, text: '' }]);
+  const [successMessage, setSuccessMessage] = useState('');
 
   const handleSurveyNumberChange = (event) => {
     setSurveyNumber(event.target.value);
@@ -19,7 +19,7 @@ const CreateSurvey = () => {
     setSurveyName(event.target.value);
   };
 
- const handleTargetedSectionChange = (event) => {
+  const handleTargetedSectionChange = (event) => {
     setTargetedSection(event.target.value);
   };
 
@@ -47,21 +47,48 @@ const CreateSurvey = () => {
     );
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // Implement logic to submit survey data (e.g., sending data to a server)
-    console.log('Survey data:', {
+
+    const formData = {
       surveyNumber,
       surveyName,
+      targetedSection,
       surveyDescription,
-      options,
-    });
-    // Reset form after submission (optional)
+      options: options.map(option => option.text),
+      username: localStorage.getItem('username')
+    };
+
+    try {
+      const response = await fetch('http://localhost:4000/poll/createpoll', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to create survey');
+      }
+
+      const responseData = await response.json();
+      setSuccessMessage(responseData.message); // Set the success message
+      // Reset form fields after successful submission
+      setSurveyNumber('');
+      setSurveyName('');
+      setTargetedSection('Everyone');
+      setSurveyDescription('');
+      setOptions([{ id: 1, text: '' }]);
+    } catch (error) {
+      console.error('Error creating survey:', error);
+    }
   };
 
   return (
     <div>
       <h1>Create Survey</h1>
+       {/* Display success message if available */}
       <form id="survey-form" onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="survey-number">Survey Number:</label>
@@ -113,7 +140,7 @@ const CreateSurvey = () => {
             required
           />
         </div>
-      <div className="survey-options">
+        <div className="survey-options">
           <h2>Survey Options</h2>
           {options.map((option, index) => (
             <div className="option-group" key={option.id}>
@@ -134,14 +161,16 @@ const CreateSurvey = () => {
               {index === options.length - 1 && (
                 <button type="button" className="remove-option" onClick={() => handleRemoveOption(option.id)}>
                   Remove
-                  </button>
+                </button>
               )}
             </div>
           ))}
         </div>
         <button type="submit">Create Survey</button>
       </form>
+      {successMessage && <p>{successMessage}</p>} 
     </div>
   );
 };
+
 export default CreateSurvey;

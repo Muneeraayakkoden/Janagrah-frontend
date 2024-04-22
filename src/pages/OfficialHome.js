@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.png';
 
 
-// Replace with your actual API endpoint and data fetching logic
-const API_ENDPOINT = '/api/official/notifications';
+  // Replace with your actual API endpoint and data fetching logic
+  const API_ENDPOINT = '/api/official/notifications';
 
 function OfficialHome() {
   const navigate = useNavigate();
@@ -38,9 +38,9 @@ function OfficialHome() {
   
   return (
     <div className="official-homepage">
-       <div className="logo">
-          <img src={logo} alt="Janagrah Logo" />
-        </div>
+      <div className="logo">
+        <img src={logo} alt="Janagrah Logo" />
+      </div>
       <header className="header">
         <h1>Janagrah</h1>
         <p>Empowering Our Community</p>

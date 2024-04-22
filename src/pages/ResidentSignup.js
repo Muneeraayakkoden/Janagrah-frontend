@@ -3,7 +3,7 @@ import './ResidentSignup.css';
 import { useNavigate } from "react-router-dom";
 
 const ResidentSignup = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [formData, setFormData] = useState({
@@ -79,7 +79,7 @@ const ResidentSignup = () => {
       const response = await fetch('https://localhost:4000/user/request-user', {
         method: 'POST',
         headers: {
-          'Content-Type':'application/json'
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           state:formData.state,
@@ -95,16 +95,20 @@ const ResidentSignup = () => {
           email:formData.email,
           username:formData.username,
           password:formData.password,
-          confirmPassword:formData.confirmPassword,
+
           annualIncome:formData.annualIncome
         }),
         
       });
-
+  
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
-    
+  
+      // Handle success response
+      const responseData = await response.json();
+      console.log("Response Data:", responseData); // Log response data
+  
       // Reset form data and show success message
       setFormData({
         state: '',
@@ -126,13 +130,11 @@ const ResidentSignup = () => {
       setPassword('');
       setConfirmPassword('');
       setErrorMessage('Registration successful!');
-    } 
-    catch (error) {
+    } catch (error) {
       // Handle fetch error
       console.error('There was a problem with your fetch operation:', error);
     }
-};
-
+  };
 
   const states = [
     "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh",
@@ -165,7 +167,7 @@ const ResidentSignup = () => {
     ]
   };
 
-  const Ward = {
+  const wardNo = {
     "SREEKRISHNAPURAM": [
       "1", "2", "3", "4", "5", "6", "7", 
       "8", "9", "10", "11", "12", "13", "14"
@@ -214,10 +216,10 @@ const ResidentSignup = () => {
           <br /><br />
 
           {formData.localAuthority === 'SREEKRISHNAPURAM' ? (
-            <select name="ward" value={formData.ward} onChange={handleChange} required>
+            <select name="ward" value={formData.wardNo} onChange={handleChange} required>
               <option value="">Select Ward</option>
-              {Ward['SREEKRISHNAPURAM'].map(ward => (
-                <option key={ward} value={ward}>{ward}</option>
+              {wardNo['SREEKRISHNAPURAM'].map(wardNo => (
+                <option key={wardNo} value={wardNo}>{wardNo}</option>
               ))}
             </select>
           ) : (
@@ -252,12 +254,12 @@ const ResidentSignup = () => {
           <br /><br />
           <input type="text" name="username" placeholder="Username*" value={formData.username} onChange={handleChange} required />
           <br /><br />
-          <input type="password" name="password" placeholder="Password*" value={formData.password} onChange={(e) => setPassword(e.target.value)} required />
+          <input type="password" name="password" placeholder="Password*" value={password} onChange={(e) => setPassword(e.target.value)} required />
           <br /><br />
-          <input type="password" name="confirmPassword" placeholder="Re-enter Password*" value={formData.confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required /> 
+          <input type="password" name="confirmPassword" placeholder="Re-enter Password*" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required /> 
           <br /><br />
         </div>
-        <button type="submit" onClick={handleSubmit}>Register</button>
+        <button type="submit">Register</button>
         {errorMessage && <p className="error-message">{errorMessage}</p>} 
       </form>
     </div>
