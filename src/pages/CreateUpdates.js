@@ -6,7 +6,7 @@ function CreateUpdates() {
         title: "",
         description: "",
         uploadEvent: null,
-        uploadService: null
+       // uploadService: null
     });
 
     const handleChange = (e) => {
@@ -17,24 +17,44 @@ function CreateUpdates() {
         }));
     };
 
+    const [announcementSent, setAnnouncementSent] = useState(false)
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const formDataToSend = new FormData();
-            formDataToSend.append("title", formData.title);
-            formDataToSend.append("description", formData.description);
-            formDataToSend.append("uploadEvent", formData.uploadEvent);
-            formDataToSend.append("uploadService", formData.uploadService);
 
-            const response = await fetch("http://localhost:4000/announcement/create", {
-                method: "POST",
-                body: formDataToSend
-            });
-            if (response.ok) {
-                // Handle success
-            } else {
-                // Handle error
-            }
+            const state = JSON.parse(localStorage.getItem('state'));
+            const district = JSON.parse(localStorage.getItem('district'));
+            const localgovernment = JSON.parse(localStorage.getItem('local_government'));
+            const wardNo = JSON.parse(localStorage.getItem('wardNo'));
+
+             // Check if all required data is available
+            if (state && district && localgovernment && wardNo) {
+                const formDataToSend = new FormData();
+                formDataToSend.append("state", state);
+                formDataToSend.append("district", district);
+                formDataToSend.append("localgovernment", localgovernment);
+                formDataToSend.append("wardNo", wardNo);
+                formDataToSend.append("title", formData.title);
+                formDataToSend.append("description", formData.description);
+                formDataToSend.append("uploadEvent", formData.uploadEvent);
+                console.log(formData);
+                const response = await fetch("http://localhost:4000/announcement/create", {
+                    method: "POST",
+                    body: formDataToSend
+                });
+                console.log(response);
+                if (response.ok) {
+                    // Handle success
+                    setAnnouncementSent(true);
+                } else {
+                    // Handle error
+                    console.log("Failed to create announcement");
+                // setAnnouncementSent(false);
+                 }
+        } else {
+            console.error("Required data from local storage is missing.");
+        }
         } catch (error) {
             console.error("Error submitting form:", error);
         }
@@ -53,6 +73,7 @@ function CreateUpdates() {
                     <input type="file" id="upload-event" accept=".jpg,.jpeg,.png" onChange={handleChange} />
                 </div>
                 <button type="submit">Publish</button>
+                {announcementSent && <p>Announcement sent successfully!</p>} {/* Display success message if announcementSent state is true */}
             </form>
         </div>
     );
