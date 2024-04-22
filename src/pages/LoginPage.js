@@ -35,8 +35,12 @@ function ResidentLoginForm() {
       if (response.ok) {
         const data = await response.json();
         console.log(data);
+        console.log(data.user.username);
         if (data.success) {
-          localStorage.setItem('userData', JSON.stringify(data.user));
+         
+          localStorage.setItem('userId', JSON.stringify(data.user._id));
+          localStorage.setItem('username', JSON.stringify(data.user.username));
+          localStorage.setItem('password', JSON.stringify(data.user.password));
           // Login successful, navigate to ResidentHome
           navigate('/ResidentHome');
         } else {

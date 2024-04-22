@@ -15,69 +15,19 @@ const ResidentProfilePage = () => {
 
   const fetchUserData = async () => {
     try {
-      // Fetch user data from the backend
-      const response = await fetch('http://localhost:4000/login/profile', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({username,password}),
-      });
-      
-      if (!response.ok) {
-        throw new Error('Failed to fetch user data');
-      }
-      const data = await response.json();
-      if (data && data.success && data.user) {
-        // Set the user data to state
-        setUserData(data.user);
-       
-      } else {
-        throw new Error('No user data found in response');
-      }
+      // Retrieve the user ID from local storage
+      const userID = JSON.parse(localStorage.getItem('userId'));
+      const username = JSON.parse(localStorage.getItem('username'));
+      const password = JSON.parse(localStorage.getItem('password'));
+      console.log(userID)
+      console.log(username);
+      console.log(password);
+      const data ={username,password}
+      setUserData(data);
     } catch (error) {
       console.error('Error fetching data:', error.message);
     }
   };
-
-  /*const fetchUserData = async () => {
-    try {
-      // Fetch user data from the backend
-      const response = await fetch('http://localhost:4000/login/profile', {
-        method: 'GET',
-        credentials: 'include', // Include cookies
-      });
-      if (!response.ok) {
-        throw new Error('Failed to fetch user data');
-      }
-      const data = await response.json();
-      setUserData(data);
-    } catch (error) {
-      console.error('Error fetching user data:', error.message);
-    }
-  };*/
-  
-
-  /*const fetchSurveysCompleted = async () => {
-    try {
-      // Fetch surveys completed by the user from the backend
-      // Adjust the endpoint URL and headers as needed
-      const response = await fetch('http://localhost:4000/user/surveys', {
-        method: 'GET',
-        headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
-        }
-      });
-      if (!response.ok) {
-        throw new Error('Failed to fetch surveys completed');
-      }
-      const data = await response.json();
-      setSurveysCompleted(data);
-    } catch (error) {
-      console.error('Error fetching surveys completed:', error.message);
-    }
-  };*/
-
   const handleLogout = () => {
     // Clear user data from local storage
     localStorage.removeItem('token');
