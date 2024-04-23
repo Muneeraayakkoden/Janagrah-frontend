@@ -1,78 +1,85 @@
-// OfficialNotificationPage.js
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import './OfficialNotification.css';
 
-const OfficialNotificationPage = () => {
-  const navigate = useNavigate();
-  const [notifications, setNotifications] = useState([]);
+const OfficialNotification = () => {
+  const [loginRequests, setLoginRequests] = useState([]);
+  const [messages, setMessages] = useState([]);
 
+  // Fetch login requests and messages from backend
   useEffect(() => {
-    fetchNotifications();
+    const fetchData = async () => {
+      try {
+        const response1 = await fetch('/api/login-requests');
+        const loginRequestsData = await response1.json();
+        setLoginRequests(loginRequestsData);
+
+        const response2 = await fetch('/api/messages');
+        const messagesData = await response2.json();
+        setMessages(messagesData);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
   }, []);
 
-  const fetchNotifications = async () => {
-    try {
-      const response = await fetch('http://localhost:4000/official/notifications');
-      if (!response.ok) {
-        throw new Error('Failed to fetch notifications');
-      }
-      const data = await response.json();
-      setNotifications(data.notifications);
-    } catch (error) {
-      console.error('Error fetching notifications:', error.message);
-    }
+  const handleApproval = (userId) => {
+    // Implement logic to send approval to backend for specific userId
+    console.log('Approve user:', userId); // Replace with actual backend call
   };
 
-  const handleApprove = (notificationId) => {
-    // Handle approval logic
-    console.log('Approved notification:', notificationId);
-  };
-
-  const handleReject = (notificationId) => {
-    // Handle rejection logic
-    console.log('Rejected notification:', notificationId);
+  const handleRejection = (userId) => {
+    // Implement logic to send rejection to backend for specific userId
+    console.log('Reject user:', userId); // Replace with actual backend call
   };
 
   return (
     <div className="notification-page">
-      <h1>Notifications</h1>
-      {notifications.length > 0 ? (
-        <ul>
-          {notifications.map((notification, index) => (
-            <NotificationItem key={index} notification={notification} onApprove={handleApprove} onReject={handleReject} />
-          ))}
-        </ul>
-      ) : (
-        <p>No notifications available.</p>
-      )}
-      <a href="#" className="notification-link" onClick={() => navigate('/OfficialNotificationPage')}>View All Notifications</a>
+      <div className="login">
+        <h2>Login Requests</h2>
+        {loginRequests.length > 0 ? (
+          <ul>
+            {loginRequests.map((request) => (
+              <li key={request.id}>
+                <p>
+                  Name: {request.name} (Details hidden for privacy)
+                </p>
+                <button  className="approve" onClick={() => handleApproval(request.id)}>
+                  Approve
+                </button>
+                <button className="reject" onClick={() => handleRejection(request.id)}>
+                  Reject
+                </button>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="empty">No login requests found.</p>
+        )}
+      </div>
+      <div className="message">
+        <h2>Messages</h2>
+        {messages.length > 0 ? (
+          <ul>
+            {messages.map((message) => (
+              <li key={message.id}>
+                {message.isAnonymous ? (
+                  <p>Anonymous Message: {message.content}</p>
+                ) : (
+                  <p>
+                    {message.name}: {message.content}
+                  </p>
+                )}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="empty">No messages found.</p>
+        )}
+      </div>
     </div>
   );
 };
 
-const NotificationItem = ({ notification, onApprove, onReject }) => {
-  const handleApproveClick = () => {
-    onApprove(notification.id);
-  };
-
-  const handleRejectClick = () => {
-    onReject(notification.id);
-  };
-
-  return (
-    <li>
-      {notification.type === 'login' ? (
-        <>
-          <span>Resident requested login:</span>
-          <button onClick={handleApproveClick}>Approve</button>
-          <button onClick={handleRejectClick}>Reject</button>
-        </>
-      ) : (
-        <span>Resident sent a contact message: "{notification.message}"</span>
-      )}
-    </li>
-  );
-};
-
-export default OfficialNotificationPage;
+export default OfficialNotification;

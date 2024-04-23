@@ -131,8 +131,6 @@ function OfficialLoginForm() {
       setError('Failed to log in. Please try again later.');
     }
   };
-  
-  
 
   return (
     <form>

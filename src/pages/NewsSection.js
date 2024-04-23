@@ -2,7 +2,6 @@
 
 import React from 'react';
 import './NewsSection.css';
-
 const newsData = [
   {
     id: 1,
@@ -27,7 +26,12 @@ const newsData = [
   },
 ];
 
+
+
 const NewsSection = () => {
+  
+
+
   return (
     <section className="news-section">
       <div className="container">
@@ -44,7 +48,7 @@ const NewsSection = () => {
             </div>
           ))}
         </div>
-        <button className="load-more">Load More</button>
+        <button type="submit"className="load-more" >Load More</button>
       </div>
     </section>
   );
