@@ -48,7 +48,7 @@ const NewsSection = () => {
             </div>
           ))}
         </div>
-        <button type="submit"className="load-more" onClick={handleButtonClick}>Load More</button>
+        <button type="submit"className="load-more" >Load More</button>
       </div>
     </section>
   );
