@@ -15,7 +15,7 @@ import ForgotPasswordPage from './pages/ForgotPasswordPage.js';
 import OfficialNotification from './pages/officialNotification.js';
 import MyAccount from './pages/MyAccount.js';
 import EditProfile from './pages/EditProfile.js';
-
+import Announcement from './pages/Announcement.js';
 
 function App() {
   return (
@@ -37,6 +37,7 @@ function App() {
           <Route path="/OfficialNotification" Component={OfficialNotification} />
           <Route path="/MyAccount" Component={MyAccount} />
           <Route path="/EditProfile" Component={EditProfile} />
+          <Route path="/Announcement" Component={Announcement}/>
         </Routes>
       </BrowserRouter>
     </div>

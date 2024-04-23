@@ -2,6 +2,7 @@
 
 import React from 'react';
 import './NewsSection.css';
+import { useNavigate } from 'react-router-dom';
 
 const newsData = [
   {
@@ -27,7 +28,14 @@ const newsData = [
   },
 ];
 
+
+
 const NewsSection = () => {
+  const navigate = useNavigate();
+    const handleButtonClick = () => {
+      navigate('/Announcement')
+    };
+
   return (
     <section className="news-section">
       <div className="container">
@@ -44,7 +52,7 @@ const NewsSection = () => {
             </div>
           ))}
         </div>
-        <button className="load-more">Load More</button>
+        <button type="submit"className="load-more" onClick={handleButtonClick}>Load More</button>
       </div>
     </section>
   );

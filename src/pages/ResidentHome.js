@@ -33,12 +33,13 @@ const ResidentHome = () => {
           </div>
         </section>
 
-        <section id="services" className="services-section">
-          <Services />
-        </section>
+
 
         <section id="news" className="news-section">
           <NewsSection />
+        </section>
+        <section id="services" className="services-section">
+          <Services />
         </section>
 
       </main>
