@@ -27,9 +27,7 @@ const newsData = [
     link: "#"
   },
 ];
-const handleButtonClick = () => {
-  navigate('/Announcement');
-};
+
 
 
 const NewsSection = () => {
