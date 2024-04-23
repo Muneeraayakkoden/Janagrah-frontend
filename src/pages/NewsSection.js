@@ -2,8 +2,6 @@
 
 import React from 'react';
 import './NewsSection.css';
-import { useNavigate } from 'react-router-dom';
-const navigate = useNavigate();
 const newsData = [
   {
     id: 1,
