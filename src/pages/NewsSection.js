@@ -3,7 +3,7 @@
 import React from 'react';
 import './NewsSection.css';
 import { useNavigate } from 'react-router-dom';
-
+const navigate = useNavigate();
 const newsData = [
   {
     id: 1,
@@ -27,14 +27,14 @@ const newsData = [
     link: "#"
   },
 ];
-
+const handleButtonClick = () => {
+  navigate('/Announcement');
+};
 
 
 const NewsSection = () => {
-  const navigate = useNavigate();
-    const handleButtonClick = () => {
-      navigate('/Announcement')
-    };
+  
+
 
   return (
     <section className="news-section">

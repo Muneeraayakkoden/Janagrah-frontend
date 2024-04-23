@@ -1,0 +1,31 @@
+/* Style for the AnnouncementList component */
+.AnnouncementList {
+    background-color: #1a237e; /* Dark blue background color */
+    color: #ffffff; /* White text color */
+    padding: 20px; /* Add padding for spacing */
+  }
+  
+  .AnnouncementList h2 {
+    color: #ffffff; /* White text color for the heading */
+    font-size: 24px; /* Adjust the font size of the heading */
+  }
+  
+  .AnnouncementList ul {
+    list-style-type: none; /* Remove default list styling */
+    padding: 0; /* Remove default padding */
+  }
+  
+  .AnnouncementList li {
+    margin-bottom: 20px; /* Add margin between each announcement */
+  }
+  
+  .AnnouncementList h3 {
+    color: #ffffff; /* White text color for the announcement title */
+    font-size: 20px; /* Adjust the font size of the announcement title */
+  }
+  
+  .AnnouncementList p {
+    color: #ffffff; /* White text color for the announcement content */
+    font-size: 16px; /* Adjust the font size of the announcement content */
+  }
+  
