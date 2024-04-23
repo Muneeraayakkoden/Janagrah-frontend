@@ -100,20 +100,24 @@ const ResidentSignup = () => {
     event.preventDefault();
 
     // Perform form validation
-    if (formData.password !== formData.confirmPassword) {
-      setErrorMessage('Passwords do not match.');
-      return;
-    }
-
+    
     if (parseInt(formData.age) < 18) {
       setErrorMessage('Age must be 18 or older.');
       return;
     }
 
-    if (!/^\d{10}$/.test(formData.phone)) {
-      setErrorMessage('Phone number must be 10 digits.');
+    if (formData.password !== formData.confirmPassword) {
+      setErrorMessage('Passwords do not match.');
       return;
     }
+
+    const cleanPhoneNumber = (value) => {
+      // Check if value starts with "+91" followed by 10 digits
+      if (/^\+91\d{10}$/.test(value)) {
+        return value.slice(3); // Return the phone number without the "+91" prefix
+      }
+      return value;
+    };
 
     const requiredFields = ['state', 'district', 'localAuthority', 'ward', 'name', 'age', 'voterId', 'phone', 'job', 'email', 'username'];
     const hasEmptyFields = requiredFields.some(field => !formData[field]);
@@ -121,7 +125,11 @@ const ResidentSignup = () => {
       setErrorMessage('Please fill in all required fields.');
       return;
     }
-
+    if (parseInt(formData.annualIncome) <= 0) {
+      setErrorMessage('Annual income must be greater than 0.');
+      return;
+    }
+    
     // Call registerUser function to execute backend request
     registerUser();
   };
@@ -215,7 +223,7 @@ const ResidentSignup = () => {
               ))}
             </select>
           ) : (
-            <input type="text" name="ward" placeholder="Ward No.*" value={formData.ward} onChange={handleChange} required />
+            <input type="number" name="ward" placeholder="Ward No.*" value={formData.ward} onChange={handleChange} required />
           )}
           <br /><br />
         </div>
@@ -227,7 +235,7 @@ const ResidentSignup = () => {
           <br /><br />
           <input type="text" name="voterId" placeholder="Voter ID*" value={formData.voterId} onChange={handleChange} required />
           <br /><br />
-          <input type="number" name="phone" placeholder="Phone No.*" value={formData.phone} onChange={handleChange} required />
+          <input type="number" name="phone" placeholder="Mobile No.*" value={formData.phone} onChange={handleChange} required />
           <br /><br />
           <select name="job" value={formData.job} onChange={handleChange} required>
             <option value="">Job*</option>
