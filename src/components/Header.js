@@ -38,7 +38,6 @@ const Header = () => {
       {showDescription && (
         <div className="learn-more-description">
           <p>Janagrah is a resident engagement platform designed to empower residents and strengthen the foundations of our community. We facilitate open communication and informed decision-making by providing a direct line between residents and local authorities.</p>
-          <p>Stay informed, participate in surveys, and connect with your local authorities.</p>
           <p>Together, we can build a more engaged and informed community.</p>
         </div>
       )}

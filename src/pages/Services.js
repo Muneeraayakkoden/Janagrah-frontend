@@ -25,7 +25,7 @@ const Services = () => {
   return (
     <section className="services">
       <div className="container">
-        <h2 className="section-title">Services</h2>
+        <h2 className="section-title">SERVICES</h2>
         <div className="feature-cards">
           {features.map((feature, index) => (
             <Card key={index} icon={`fas ${feature.icon}`} title={feature.title} description={feature.description} />

@@ -1,33 +1,31 @@
-/* Contact Page */
+/*
 .ContactPage {
   padding: 50px 20px; 
 }
 
 .contact-container {
-  max-width: 800px; /* Set max-width for better content alignment */
-  margin: 0 auto; /* Center align content */
+  max-width: 800px;   margin: 0 auto; 
 }
 
 .Direct-Communication {
-  background-color: #f9f9f9; /* Light background color */
+  background-color: #f9f9f9;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Added box shadow for depth */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 }
 
 .Direct-Communication h2 {
   font-size: 1.8rem;
   margin-bottom: 20px;
-  color: #333; /* Dark text color */
-}
+  color: #333;
 
 .Direct-Communication textarea {
   width: 100%;
   margin-bottom: 20px;
   padding: 10px;
-  border: 1px solid #ddd; /* Light border */
+  border: 1px solid #ddd; 
   border-radius: 5px;
-  resize: vertical; /* Allow vertical resizing */
+  resize: vertical; 
 }
 
 .anonymous-option {
@@ -42,7 +40,7 @@
 
 .anonymous-option label {
   font-size: 1.2rem;
-  color: #555; /* Medium text color */
+  color: #555; 
 }
 
 .anonymous-option label:last-child {
@@ -51,7 +49,7 @@
 
 button[type="submit"] {
   padding: 12px 20px;
-  background-color: #007bff; /* Button color */
+  background-color: #007bff;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -61,5 +59,39 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-  background-color: #0056b3; /* Darker button color on hover */
+  background-color: #0056b3; 
+}*/
+.contactPage {
+  font-family: Arial, sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+  margin-top: 80px;
+  padding: 50px 50px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.message-input {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+.message-container {
+  margin-top: 20px;
+}
+
+input, select, button {
+  margin-right: 10px;
+  margin-bottom: 10px;
 }

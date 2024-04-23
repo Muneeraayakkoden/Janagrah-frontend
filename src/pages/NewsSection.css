@@ -17,6 +17,12 @@
   gap: 20px;
 }
 
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  color: #3e65e2;
+}
+
 .news-item {
   width: 300px;
   background-color: #f7f7f7;

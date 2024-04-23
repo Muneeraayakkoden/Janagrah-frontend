@@ -33,8 +33,6 @@ const ResidentHome = () => {
           </div>
         </section>
 
-
-
         <section id="news" className="news-section">
           <NewsSection />
         </section>
