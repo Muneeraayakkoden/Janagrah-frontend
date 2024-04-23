@@ -1,164 +1,104 @@
 import React, { useState, useEffect } from 'react';
-import './SurveyPage.css'; 
-import Card from '../components/Card';
-
-{/*const SurveyPage = () => {
-  const [surveyData, setSurveyData] = useState({
-    question: 'How satisfied are you with our services?',
-    options: ['Very Satisfied', 'Satisfied', 'Neutral', 'Dissatisfied', 'Very Dissatisfied'],
-    selectedOption: '',
-    comments: ''
-  });
-
-  const handleOptionChange = (event) => {
-    setSurveyData({ ...surveyData, selectedOption: event.target.value });
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Send survey data to backend or perform further actions
-    console.log('Survey submitted:', surveyData);
-    // Reset survey data
-    setSurveyData({
-      question: 'How satisfied are you with our services?',
-      options: ['Very Satisfied', 'Satisfied', 'Neutral', 'Dissatisfied', 'Very Dissatisfied'],
-      selectedOption: '',
-      comments: ''
-    });
-  };
-
-  return (
-    <div className="SurveyPage">
-      <h2>Survey</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="question">{surveyData.question}</div>
-        <div className="options">
-          {surveyData.options.map((option, index) => (
-            <div key={index} className="option">
-              <input
-                type="radio"
-                id={`option${index}`}
-                value={option}
-                checked={surveyData.selectedOption === option}
-                onChange={handleOptionChange}
-              />
-              <label htmlFor={`option${index}`}>{option}</label>
-            </div>
-          ))}
-        </div>
-        <button type="submit" className="submit-button">Submit</button>
-      </form>
-    </div>
-  );
-};
-
-export default SurveyPage;
-*/}
-
+//import { useHistory } from 'react-router-dom';
 
 const SurveyPage = () => {
-  const [availableSurveys, setAvailableSurveys] = useState([]);
-  const [completedSurveys, setCompletedSurveys] = useState([]);
-  const [selectedSurvey, setSelectedSurvey] = useState(null); // Track selected survey for feedback
+  const [surveyDataList, setSurveyDataList] = useState([]);
+  const [username, setUsername] = useState('');
+  //const history = useHistory();
 
-  // Fetch surveys from backend (replace with your actual API call)
   useEffect(() => {
-    const fetchSurveys = async () => {
+    const fetchSurveyData = async () => {
       try {
-        const response = await fetch('/api/surveys');
-        const data = await response.json();
-        setAvailableSurveys(data.availableSurveys);
-        setCompletedSurveys(data.completedSurveys);
+        const username = JSON.parse(localStorage.getItem('username'));
+
+        const response = await fetch('http://localhost:4000/poll/showpoll', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ username: username }),
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          console.log('Survey data:', data);
+          setSurveyDataList(data.polls);
+        } else {
+          console.error('Failed to fetch survey data');
+        }
       } catch (error) {
-        console.error('Error fetching surveys:', error);
+        console.error('Error fetching survey data:', error);
       }
     };
-    fetchSurveys();
-  }, []);
 
-  const handleSurveyClick = (survey) => {
-    setSelectedSurvey(survey);
+    fetchSurveyData();
+  }, []); // Empty dependency array ensures useEffect runs only once
+
+  const handleStopPolling = async (surveyId) => {
+    try {
+      // Implement stop polling logic here
+      console.log('Stop polling for survey ID:', surveyId);
+  
+      // Prepare the data to send in the POST request body
+      const data = { surveyId };
+  
+      // Send the POST request to the backend endpoint
+      const response = await fetch('http://localhost:4000/poll/stopPolling', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+  
+      // Check if the request was successful
+      if (response.ok) {
+        console.log('Polling stopped successfully');
+        // Perform any additional actions after stopping polling
+      } else {
+        console.error('Failed to stop polling');
+      }
+    } catch (error) {
+      console.error('Error stopping polling:', error);
+    }
   };
+  
 
-  const handleSurveySubmit = (feedback) => {
-    // Send survey response and feedback to backend (replace with your logic)
-    console.log('Survey submitted:', { survey: selectedSurvey, feedback });
-    setSelectedSurvey(null); // Clear selected survey after submission
+  const handleResult = (surveyId) => {
+    // Navigate to the result page and pass the survey ID
+    console.log('View result for survey ID:', surveyId);
+    //history.push(`/result/${surveyId}`);
   };
 
   return (
-    <div className="SurveyPage">
-      <div className="survey-sections">
-        <h2>Available Surveys</h2>
-        {availableSurveys.length > 0 ? (
-          <div className="survey-list">
-            {availableSurveys.map((survey) => (
-              <div key={survey.id} className="survey-item">
-                <button onClick={() => handleSurveyClick(survey)}>
-                  <h3>{survey.name}</h3>
-                  <p>{survey.description}</p>
-                </button>
-              </div>
+    <div>
+      {/* Render survey data here */}
+      {surveyDataList.length > 0 ? (
+        <div>
+          <h2>Survey Data</h2>
+          <ul>
+            {surveyDataList.map((survey, index) => (
+              <li key={index}>
+                Survey Number: {survey.surveyNumber}<br />
+                Survey Name: {survey.surveyName}<br />
+                Targeted Section: {survey.targetedSection}<br />
+                Survey Description: {survey.surveyDescription}<br />
+                Options:
+                <ul>
+                  {survey.options.map((option, optIndex) => (
+                    <li key={optIndex}>Option {optIndex + 1}: {option.text}</li>
+                  ))}
+                </ul>
+                <button onClick={() => handleStopPolling(survey._id)}>Stop Polling</button>
+                <button onClick={() => handleResult(survey._id)}>Result</button>
+              </li>
             ))}
-          </div>
-        ) : (
-          <p className="no-surveys">Surveys not available.</p>
-        )}
-
-        {selectedSurvey && (
-          <div className="selected-survey">
-            <h2>{selectedSurvey.name}</h2>
-            <p>{selectedSurvey.description}</p>
-            {/* Display survey questions here (replace with your logic) */}
-            <SurveyForm survey={selectedSurvey} onSubmit={handleSurveySubmit} /> {/* Replace with your SurveyForm component */}
-          </div>
-        )}
-      </div>
-      <div className="completed-surveys">
-        <h2>Completed Surveys</h2>
-        {completedSurveys.length > 0 ? (
-          <div className="completed-surveys-list">
-            {completedSurveys.map((survey) => (
-              <Card
-                key={survey.id}
-                title={survey.name}
-                description={survey.description}
-                // Add date of attempt as props if available
-              />
-            ))}
-          </div>
-        ) : (
-          <p className="no-surveys">No surveys attempted.</p>
-        )}
-      </div>
+          </ul>
+        </div>
+      ) : (
+        <p>No survey data available</p>
+      )}
     </div>
-  );
-};
-
-const SurveyForm = ({ survey, onSubmit }) => {
-  // Survey form logic here (including feedback question)
-  const [feedback, setFeedback] = useState('');
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    onSubmit(feedback); // Pass feedback to SurveyPage submit handler
-  };
-
-  return (
-    <form onSubmit={handleSubmit}>
-      {/* Display survey questions based on survey.questions (replace with your logic) */}
-      <div className="feedback-question">
-        <label htmlFor="feedback">How satisfied are you with our services?</label>
-        <select id="feedback" name="feedback" value={feedback} onChange={(e) => setFeedback(e.target.value)}>
-          <option value="Very Satisfied">Very Satisfied</option>
-          <option value="Satisfied">Satisfied</option>
-          <option value="Neutral">Neutral</option>
-          <option value="Dissatisfied">Dissatisfied</option>
-          <option value="Very Dissatisfied">Very Dissatisfied</option>
-        </select>
-      </div>
-      <button type="submit">Submit Survey</button>
-    </form>
   );
 };
 

@@ -4,8 +4,6 @@ import { useNavigate } from "react-router-dom";
 
 const ResidentSignup = () => {
   const navigate = useNavigate();
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
   const [formData, setFormData] = useState({
     state: '',
     district: '',
@@ -36,79 +34,42 @@ const ResidentSignup = () => {
     setFormData({ ...formData, state: value, district: '' });
   };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/;
-    if (!passwordRegex.test(password)) {
-      setErrorMessage('Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.');
-      return;
-    }
-
-    if (!formData.voterId.match(/[A-Za-z0-9]{10}/)) {
-      setErrorMessage('Voter ID must be 10 characters long (alphanumeric).');
-      return;
-    }
-    // Check if passwords match
-    if (password !== confirmPassword) {
-      setErrorMessage('Passwords do not match.');
-      return;
-    }
-
-    // Check if required fields are filled
-    const requiredFields = ['state', 'district', 'localAuthority', 'ward', 'name', 'age', 'voterId', 'phone', 'job', 'email', 'username'];
-    const hasEmptyFields = requiredFields.some(field => !formData[field]);
-    if (hasEmptyFields) {
-      setErrorMessage('Please fill in all required fields.');
-      return;
-    }
-
-    if (parseInt(formData.age) < 18) {
-      setErrorMessage('Age must be 18 or older.');
-      return;
-    }
-    if (!/^\d{10}$/.test(formData.phone)) {
-      setErrorMessage('Phone number must be 10 digits.');
-      return;
-    }
-
-    navigate("/ResidentSignupSuccess")
+  const registerUser = async () => {
     try {
-      console.log(JSON.stringify(formData));
-       // Send form data to the backend
-      const response = await fetch('https://localhost:4000/user/request-user', {
+      const requestBody = {
+        state: formData.state,
+        district: formData.district,
+        localAuthority: formData.localAuthority,
+        ward: formData.ward,
+        name: formData.name,
+        age: formData.age,
+        voterId: formData.voterId,
+        phone: formData.phone,
+        job: formData.job,
+        email: formData.email,
+        username: formData.username,
+        password: formData.password,
+        annualIncome: formData.annualIncome,
+        address: formData.address
+      };
+
+      // Send form data to the backend
+      const response = await fetch('http://localhost:4000/user/request-user', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({
-          state:formData.state,
-          district:formData.district,
-          localAuthority:formData.localAuthority,
-          ward:formData.ward,
-          name:formData.name,
-          age:formData.age,
-          voterId: formData.voterId,
-          phone:formData.phone,
-          job:formData.job,
-          address:formData.address,
-          email:formData.email,
-          username:formData.username,
-          password:formData.password,
-
-          annualIncome:formData.annualIncome
-        }),
-        
+        body: JSON.stringify(requestBody),
       });
-  
+
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
-  
+
       // Handle success response
       const responseData = await response.json();
       console.log("Response Data:", responseData); // Log response data
-  
+
       // Reset form data and show success message
       setFormData({
         state: '',
@@ -122,19 +83,50 @@ const ResidentSignup = () => {
         job: '',
         email: '',
         username: '',
-        password: '' ,
+        password: '',
         confirmPassword: '',
         address: '',
-        annualIncome:''
+        annualIncome: ''
       });
-      setPassword('');
-      setConfirmPassword('');
       setErrorMessage('Registration successful!');
+      navigate("/ResidentSignupSuccess");
     } catch (error) {
       // Handle fetch error
       console.error('There was a problem with your fetch operation:', error);
     }
   };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    // Perform form validation
+    if (formData.password !== formData.confirmPassword) {
+      setErrorMessage('Passwords do not match.');
+      return;
+    }
+
+    if (parseInt(formData.age) < 18) {
+      setErrorMessage('Age must be 18 or older.');
+      return;
+    }
+
+    if (!/^\d{10}$/.test(formData.phone)) {
+      setErrorMessage('Phone number must be 10 digits.');
+      return;
+    }
+
+    const requiredFields = ['state', 'district', 'localAuthority', 'ward', 'name', 'age', 'voterId', 'phone', 'job', 'email', 'username'];
+    const hasEmptyFields = requiredFields.some(field => !formData[field]);
+    if (hasEmptyFields) {
+      setErrorMessage('Please fill in all required fields.');
+      return;
+    }
+
+    // Call registerUser function to execute backend request
+    registerUser();
+  };
+
+  // Remaining code remains the same
 
   const states = [
     "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh",
@@ -178,14 +170,14 @@ const ResidentSignup = () => {
     "Student", "Farmer", "Teacher", "Doctor", "Housewife", "Fisherman", "Engineer", "Nurse", "Sportsman", "Coach", "Business", "Sales Officer",
     "Manager", "Bike Rider", "Receptionist", "Pharmacist", "Others"
   ];
-  
+
   return (
     <div className="signup-page">
       <h1>RESIDENT REGISTRATION</h1>
       <form onSubmit={handleSubmit}>
         <div className="form-section">
           <h2>Location Details</h2>
-          <select name="state" value={formData.state}  onChange={handleStateSelection} required>
+          <select name="state" value={formData.state} onChange={handleStateSelection} required>
             <option value="">Select State*</option>
             {states.map(state => (
               <option key={state} value={state}>{state}</option>
@@ -233,11 +225,11 @@ const ResidentSignup = () => {
           <br /><br />
           <input type="number" name="age" placeholder="Age*" value={formData.age} onChange={handleChange} required />
           <br /><br />
-          <input type="text" name="voterId" placeholder="Voter ID*" value={formData.voterId} onChange={handleChange}  required />
+          <input type="text" name="voterId" placeholder="Voter ID*" value={formData.voterId} onChange={handleChange} required />
           <br /><br />
           <input type="number" name="phone" placeholder="Phone No.*" value={formData.phone} onChange={handleChange} required />
           <br /><br />
-          <select name="job" value={formData.job}  onChange={handleChange} required>
+          <select name="job" value={formData.job} onChange={handleChange} required>
             <option value="">Job*</option>
             {jobs.map(job => (
               <option key={job} value={job}>{job}</option>
@@ -254,13 +246,13 @@ const ResidentSignup = () => {
           <br /><br />
           <input type="text" name="username" placeholder="Username*" value={formData.username} onChange={handleChange} required />
           <br /><br />
-          <input type="password" name="password" placeholder="Password*" value={password} onChange={(e) => setPassword(e.target.value)} required />
+          <input type="password" name="password" placeholder="Password*" value={formData.password} onChange={handleChange} required />
           <br /><br />
-          <input type="password" name="confirmPassword" placeholder="Re-enter Password*" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required /> 
+          <input type="password" name="confirmPassword" placeholder="Re-enter Password*" value={formData.confirmPassword} onChange={handleChange} required />
           <br /><br />
         </div>
         <button type="submit">Register</button>
-        {errorMessage && <p className="error-message">{errorMessage}</p>} 
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
       </form>
     </div>
   );
