@@ -12,10 +12,10 @@ const UserRequests = () => {
       // Retrieve data from local storage
       const state = JSON.parse(localStorage.getItem('state'));
       const district = JSON.parse(localStorage.getItem('district'));
-      const localgovernment = JSON.parse(localStorage.getItem('localgovernment'));
-      const wardNo = JSON.parse(localStorage.getItem('wardNo'));
+      const localAuthority = JSON.parse(localStorage.getItem('localgovernment'));
+      const ward = JSON.parse(localStorage.getItem('wardNo'));
 
-      const requestData = { state, district, localgovernment, wardNo };
+      const requestData = { state, district, localAuthority, ward };
 
       const response = await fetch('http://localhost:4000/login/userRequests', {
         method: 'POST',

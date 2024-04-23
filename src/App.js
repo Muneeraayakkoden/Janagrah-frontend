@@ -15,6 +15,8 @@ import ForgotPasswordPage from './pages/ForgotPasswordPage.js';
 import OfficialNotification from './pages/officialNotification.js';
 import MyAccount from './pages/MyAccount.js';
 import EditProfile from './pages/EditProfile.js';
+import UserRequests from './pages/UserRequests.js';
+
 
 
 function App() {
@@ -37,6 +39,8 @@ function App() {
           <Route path="/OfficialNotification" Component={OfficialNotification} />
           <Route path="/MyAccount" Component={MyAccount} />
           <Route path="/EditProfile" Component={EditProfile} />
+          <Route path="/UserRequests" Component={UserRequests} />
+
         </Routes>
       </BrowserRouter>
     </div>
