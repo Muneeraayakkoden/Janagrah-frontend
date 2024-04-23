@@ -41,6 +41,7 @@ function ResidentLoginForm() {
           localStorage.setItem('userId', JSON.stringify(data.user._id));
           localStorage.setItem('username', JSON.stringify(data.user.username));
           localStorage.setItem('password', JSON.stringify(data.user.password));
+          localStorage.setItem('wardid', JSON.stringify(data.user.wardid));
           // Login successful, navigate to ResidentHome
           navigate('/ResidentHome');
         } else {
