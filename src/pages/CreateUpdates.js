@@ -17,10 +17,11 @@ function CreateUpdates() {
     };
 
     const [announcementSent, setAnnouncementSent] = useState(false)
+    const [updates, setUpdates] = useState([]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try {
+       try {
             console.log(JSON.stringify(formData));
             const wardid = JSON.parse(localStorage.getItem('username'));
             console.log(wardid)
@@ -44,7 +45,12 @@ function CreateUpdates() {
                     // Handle success
                     const responseData = await response.json();
                     console.log("Response Data:", responseData); // Log response data
-                
+                    setUpdates(prevUpdates => [...prevUpdates, responseData]);
+                    setFormData({
+                        title: "",
+                        description: "",
+                        uploadEvent: null,
+                    });
                     setAnnouncementSent(true);
                 } else {
                     // Handle error
@@ -54,14 +60,35 @@ function CreateUpdates() {
             } else {
             console.error("Required data from local storage is missing.");
             }
-        }catch{
-
-            console.log("Error submitting form:");
+        }catch(error){
+            console.log("Error submitting form:",error);
         }
+    };
+
+    const handleClearHistory = () => {
+        setUpdates([]);
     };
 
     return (
         <div>
+            <div className="history">
+                <h1>History</h1>
+                {updates.length > 0 ? (
+                    <ul>
+                        {updates.map((update, index) => (
+                            <li key={index}>
+                                <h3>{update.title}</h3>
+                                <p>{update.description}</p>
+                            </li>
+                        ))}
+                    </ul>
+                ) : (
+                    <p>No updates yet.</p>
+                )}
+                {updates.length > 0 && (
+                    <button onClick={handleClearHistory}>Clear History</button>
+                )}
+            </div>
             <h1>Create Event</h1>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="title">Announcement Title:</label>
@@ -73,7 +100,7 @@ function CreateUpdates() {
                     <input type="file" id="upload-event" accept=".jpg,.jpeg,.png" onChange={handleChange} />
                 </div>
                 <button type="submit">Publish</button>
-                {announcementSent && <p>Announcement sent successfully!</p>} {/* Display success message if announcementSent state is true */}
+                {announcementSent && <p>Announcement sent successfully!</p>}
             </form>
         </div>
     );

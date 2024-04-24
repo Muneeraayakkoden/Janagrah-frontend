@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './OfficialNotification.css';
+import UserRequests from './UserRequests';
 
 const OfficialNotification = () => {
   const [loginRequests, setLoginRequests] = useState([]);
@@ -38,6 +39,7 @@ const OfficialNotification = () => {
     <div className="notification-page">
       <div className="login">
         <h2>Login Requests</h2>
+        <UserRequests />
         {loginRequests.length > 0 ? (
           <ul>
             {loginRequests.map((request) => (

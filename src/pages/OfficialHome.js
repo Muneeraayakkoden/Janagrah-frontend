@@ -3,15 +3,19 @@ import './OfficialHome.css';
 import { useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.png';
 
-
   // Replace with your actual API endpoint and data fetching logic
   const API_ENDPOINT = '/api/official/notifications';
+
 
 function OfficialHome() {
   const navigate = useNavigate();
   
   const handleNotificationClick = () => {
     navigate('/OfficialNotification');
+  };
+
+  const handleProfileClick = () => {
+    navigate('/MemberAccount');
   };
 
   const fetchNotifications = async () => {
@@ -46,7 +50,9 @@ function OfficialHome() {
         <h1>Janagrah</h1>
         <p>Empowering Our Community</p>
       </header>
-
+      <div className="profile">
+        <i class="fa-solid fa-user" onClick={handleProfileClick}></i>
+      </div>
       <main className="main">
         <section className="survey-section">
           <h2>SURVEY SECTION</h2>

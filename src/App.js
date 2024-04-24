@@ -16,8 +16,9 @@ import OfficialNotification from './pages/officialNotification.js';
 import MyAccount from './pages/MyAccount.js';
 import EditProfile from './pages/EditProfile.js';
 import UserRequests from './pages/UserRequests.js';
-
-
+import Announcement from './pages/Announcement.js';
+import MemberAccount from './pages/MemberAccount.js';
+import SurveysCompleted from './pages/SurveysCompleted.js';
 
 function App() {
   return (
@@ -41,7 +42,9 @@ function App() {
           <Route path="/MyAccount" Component={MyAccount} />
           <Route path="/EditProfile" Component={EditProfile} />
           <Route path="/UserRequests" Component={UserRequests} />
-
+          <Route path="/Announcement" Component={Announcement} />
+          <Route path="/MemberAccount" Component={MemberAccount} />
+          <Route path="/SurveysCompleted" Component={SurveysCompleted} />
         </Routes>
       </BrowserRouter>
     </div>

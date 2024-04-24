@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from 'react';
 
 const SurveysCompleted = () => {
-    const [userData, setUserData] = useState(null);
-    const navigate = useNavigate();
+    //const [userData, setUserData] = useState(null);
     const [surveysCompleted, setSurveysCompleted] = useState([]);
 
     useEffect(() => {
       // Fetch user data and surveys completed when the component mounts
-      fetchUserData();
+      //fetchUserData();
       fetchSurveysCompleted();
     }, []);
 
 
-const fetchSurveysCompleted = async () => {
+  const fetchSurveysCompleted = async () => {
     try {
       // Fetch surveys completed by the user from the backend
       // Adjust the endpoint URL and headers as needed
