@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react";
-import {  useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const Results = () => {
   const [surveyId, setSurveyId] = useState(null); // State to store the surveyId
- // Initialize useNavigate
+  const [surveyResults, setSurveyResults] = useState(null); // State to store survey result data
   const location = useLocation(); // Initialize useLocation
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
     const surveyIdFromUrl = searchParams.get("surveyId");
-    console.log(surveyIdFromUrl)
 
     if (surveyIdFromUrl) {
       // Update the surveyId state with the value from the URL query parameter
@@ -17,9 +16,9 @@ const Results = () => {
     } else {
       console.error("No survey ID found in the URL");
     }
-  }, [location]); // Add location as a dependency to the useEffect hook
+  }, [location]);
 
-  const sendSurveyIdToBackend = async () => {
+  const fetchSurveyResults = async () => {
     try {
       const response = await fetch("http://localhost:4000/poll/result", {
         method: "POST",
@@ -30,26 +29,41 @@ const Results = () => {
       });
 
       if (response.ok) {
-        console.log("Survey ID sent to backend successfully");
-        // Handle any further actions after sending the surveyId to the backend
+        const data = await response.json();
+        setSurveyResults(data.optionCounts); // Set the survey result data received from the backend
       } else {
-        console.error("Failed to send survey ID to backend");
+        console.error("Failed to fetch survey results");
       }
     } catch (error) {
-      console.error("Error sending survey ID to backend:", error);
+      console.error("Error fetching survey results:", error);
     }
   };
 
   useEffect(() => {
     if (surveyId) {
-      // Call the function to send the surveyId to the backend
-      sendSurveyIdToBackend();
+      // Call the function to fetch survey results from the backend
+      fetchSurveyResults();
     }
-  }, [surveyId]); // Add surveyId as a dependency to this useEffect hook
+  }, [surveyId]);
 
   return (
     <div>
       <h3>Survey History</h3>
+      {surveyResults ? (
+        <div>
+          <p>Survey ID: {surveyId}</p>
+          <p>Survey Results:</p>
+          <ul>
+            {Object.entries(surveyResults).map(([option, count]) => (
+              <li key={option}>
+                Option: {option}, Count: {count}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : (
+        <p>Loading survey results...</p>
+      )}
     </div>
   );
 };
