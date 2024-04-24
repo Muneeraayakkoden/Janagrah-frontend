@@ -29,6 +29,7 @@ function App() {
           <Route path="/ResidentHome" Component={ResidentHome}/> 
           <Route path="/" Component={LoginPage} />
           <Route path="/ResidentSignup" Component={ResidentSignup} />
+          <Route path="/LoginPage" Component={LoginPage} />
           <Route path="/ResidentSignupSuccess" Component={ResidentSignupSuccess} />
           <Route path="/LoginRejected" Component={LoginRejected} />
           <Route path="/OfficialHome" Component={OfficialHome} />
