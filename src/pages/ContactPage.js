@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './ContactPage.css'; 
 
 const ContactPage = () => {
@@ -8,6 +8,23 @@ const ContactPage = () => {
   const [messageSent, setMessageSent] = useState(false);
   const [showSendMessage, setShowSendMessage] = useState(false);
 
+  useEffect(() => {
+    fetchMessageHistory();
+  }, []);
+
+  const fetchMessageHistory = async () => {
+    try {
+      const response = await fetch('http://your-backend-api-url/messages');
+      if (response.ok) {
+        const data = await response.json();
+        setMessages(data.messages);
+      } else {
+        console.error('Failed to fetch message history. Status:', response.status);
+      }
+    } catch (error) {
+      console.error('Error fetching message history:', error.message);
+    }
+  };
 
   const handleSendMessage = async (event) => {
     event.preventDefault();
@@ -16,7 +33,7 @@ const ContactPage = () => {
       anonymous: isAnonymous,
     };
 
-    const backendUrl = 'http://your-backend-api-url/messages'; // Added code
+    const backendUrl = 'http://your-backend-api-url/messages';
     try {
       const response = await fetch(backendUrl, {
         method: 'POST',
@@ -30,7 +47,6 @@ const ContactPage = () => {
       }
       console.log('Sending message:', message);
       setMessages([...messages, message]);
-      console.log('Updated messages:', messages);
       setNewMessage('');
       setMessageSent(true);
       setTimeout(() => setMessageSent(false), 3000); 
