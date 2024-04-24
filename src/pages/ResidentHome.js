@@ -1,9 +1,9 @@
 import React from 'react';
 import Header from '../components/Header';
 import Services from './Services';
-import NewsSection from './NewsSection';
 import './ResidentHome.css';
 import { useNavigate } from 'react-router-dom';
+import Announcement from './Announcement';
 
 
 const ResidentHome = () => {
@@ -34,7 +34,7 @@ const ResidentHome = () => {
         </section>
 
         <section id="news" className="news-section">
-          <NewsSection />
+          <Announcement />
         </section>
         <section id="services" className="services-section">
           <Services />

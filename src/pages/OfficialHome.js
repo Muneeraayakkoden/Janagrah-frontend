@@ -3,15 +3,19 @@ import './OfficialHome.css';
 import { useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.png';
 
-
   // Replace with your actual API endpoint and data fetching logic
   const API_ENDPOINT = '/api/official/notifications';
+
 
 function OfficialHome() {
   const navigate = useNavigate();
   
   const handleNotificationClick = () => {
     navigate('/OfficialNotification');
+  };
+
+  const handleProfileClick = () => {
+    navigate('/MemberAccount');
   };
 
   const fetchNotifications = async () => {
@@ -39,14 +43,21 @@ function OfficialHome() {
   
   return (
     <div className="official-homepage">
-      <div className="logo">
-        <img src={logo} alt="Janagrah Logo" />
+      <div className="container">
+        <div className="logo">
+          <img src={logo} alt="Janagrah Logo" />
+        </div>
+        <header className="header">
+          <h1>Janagrah</h1>
+          <p>Empowering Our Community</p>
+        </header>
+        <div className="profile">
+          <i class="fa-solid fa-user" onClick={handleProfileClick}></i>
+        </div>
+        <div className="notification-bell" onClick={handleNotificationClick}>
+        <i className="fas fa-bell"></i>
+        </div>
       </div>
-      <header className="header">
-        <h1>Janagrah</h1>
-        <p>Empowering Our Community</p>
-      </header>
-
       <main className="main">
         <section className="survey-section">
           <h2>SURVEY SECTION</h2>
@@ -55,8 +66,8 @@ function OfficialHome() {
               <h3>Create Survey</h3>
               <p>Design and launch surveys to gather resident feedback.</p>
             </a>
-            <a href="#" className="survey-card" onClick={(e) => navigate('/Results', e)}>
-              <h3>View Results</h3>
+            <a href="#" className="survey-card" onClick={(e) => navigate('SurveysCompleted', e)}>
+              <h3>SURVEYS DONE</h3>
               <p>Analyze resident responses and gain valuable insights.</p>
             </a>
           </div>
@@ -73,12 +84,10 @@ function OfficialHome() {
 
       </main>
       <footer className="footer">
-        <p>&copy; Janagrah 2024</p>
-      </footer>
-
-      <div className="notification-bell" onClick={handleNotificationClick}>
-      <i className="fas fa-bell"></i>
+      <div className="footer-container">
+        <p className="copyright" >&copy; Janagrah 2024</p>
       </div>
+      </footer>
     </div>
   );
 };

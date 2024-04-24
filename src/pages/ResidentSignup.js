@@ -22,11 +22,84 @@ const ResidentSignup = () => {
     address: ''
   });
 
-  const [errorMessage, setErrorMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState({
+    district: '',
+    localAuthority: '',
+    ward: '',
+    name: '',
+    age: '',
+    voterId: '',
+    phone: '',
+    password:'',
+    confirmPassword: '',
+    annualIncome: ''
+  });
 
   const handleChange = (event) => {
     const { name, value } = event.target;
+    let error = '';
+  
+    // Validation rules for each field
+    switch (name) {
+      case 'district':
+      case 'localAuthority':
+      case 'name':
+        if (!/^[a-zA-Z]+$/.test(value)) {
+          error = 'Field must contain only alphabets.';
+        }
+        break;
+      case 'ward':
+        if (!/^[1-9]\d*$/.test(value)) {
+          error = 'Ward must be a number greater than 0.';
+        }
+        break;
+      case  'age':
+        if (parseInt(value) < 18) {
+          error = 'Age must be 18 or older.';
+        }
+        break;
+      case 'voterId':
+        if (!/^[a-zA-Z0-9]{10}$/.test(value)) {
+          error = 'Voter ID must be 10 alphanumeric characters.';
+        }
+        break;
+      case 'annualIncome':
+        if (parseInt(value) < 0) {
+          error = 'Annual income must be greater than or equals 0.';
+        }
+        break;
+      case 'phone':
+        if (!/^[1-9]\d{9}$/.test(value)) {
+          error = 'Phone number must be 10 digits and not start with 0.';
+        }
+        break;
+      case 'password':
+        const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/;
+        if (!passwordRegex.test(value)) {
+          error = 'Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.';
+        }
+        break;
+      case 'confirmPassword':
+        if (formData.password !== value) {
+          error = 'Passwords do not match.';
+        }
+        break;
+      default:
+        break;
+    }
+  
     setFormData({ ...formData, [name]: value });
+
+    setErrorMessage({ ...errorMessage, [name]: error });
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (Object.values(errorMessage).some(error => error)) {
+      return;
+    }
+    //navigate("/ResidentSignupSuccess");
+    registerUser();
   };
 
   const handleStateSelection = (event) => {
@@ -50,7 +123,8 @@ const ResidentSignup = () => {
         username: formData.username,
         password: formData.password,
         annualIncome: formData.annualIncome,
-        address: formData.address
+        address: formData.address,
+        confirmPassword: formData.confirmPassword
       };
 
       // Send form data to the backend
@@ -96,45 +170,6 @@ const ResidentSignup = () => {
     }
   };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    // Perform form validation
-    
-    if (parseInt(formData.age) < 18) {
-      setErrorMessage('Age must be 18 or older.');
-      return;
-    }
-
-    if (formData.password !== formData.confirmPassword) {
-      setErrorMessage('Passwords do not match.');
-      return;
-    }
-
-    const cleanPhoneNumber = (value) => {
-      // Check if value starts with "+91" followed by 10 digits
-      if (/^\+91\d{10}$/.test(value)) {
-        return value.slice(3); // Return the phone number without the "+91" prefix
-      }
-      return value;
-    };
-
-    const requiredFields = ['state', 'district', 'localAuthority', 'ward', 'name', 'age', 'voterId', 'phone', 'job', 'email', 'username'];
-    const hasEmptyFields = requiredFields.some(field => !formData[field]);
-    if (hasEmptyFields) {
-      setErrorMessage('Please fill in all required fields.');
-      return;
-    }
-    if (parseInt(formData.annualIncome) <= 0) {
-      setErrorMessage('Annual income must be greater than 0.');
-      return;
-    }
-    
-    // Call registerUser function to execute backend request
-    registerUser();
-  };
-
-  // Remaining code remains the same
 
   const states = [
     "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh",
@@ -185,6 +220,7 @@ const ResidentSignup = () => {
       <form onSubmit={handleSubmit}>
         <div className="form-section">
           <h2>Location Details</h2>
+
           <select name="state" value={formData.state} onChange={handleStateSelection} required>
             <option value="">Select State*</option>
             {states.map(state => (
@@ -192,6 +228,7 @@ const ResidentSignup = () => {
             ))}
           </select>
           <br /><br />
+
           {formData.state === 'Kerala' ? (
             <select name="district" value={formData.district} onChange={handleChange} required>
               <option value="">Select District</option>
@@ -200,9 +237,13 @@ const ResidentSignup = () => {
               ))}
             </select>
           ) : (
-            <input type="text" name="district" placeholder="District*" value={formData.district} onChange={handleChange} required />
+            <div>
+              <input type="text" name="district" placeholder="District*" value={formData.district} onChange={handleChange} required />
+              {errorMessage.district && <p className="error-message">{errorMessage.district}</p>}
+            </div>
           )}
           <br /><br />
+
           {formData.district === 'Palakkad' ? (
             <select name="localAuthority" value={formData.localAuthority} onChange={handleChange} required>
               <option value="">Select Local-Authority</option>
@@ -211,32 +252,55 @@ const ResidentSignup = () => {
               ))}
             </select>
           ) : (
-            <input type="text" name="localAuthority" placeholder="Local-Authority*" value={formData.localAuthority} onChange={handleChange} required />
+            <div>
+              <input type="text" name="localAuthority" placeholder="Local-Authority*" value={formData.localAuthority} onChange={handleChange} required />
+              {errorMessage.localAuthority && <p className="error-message">{errorMessage.localAuthority}</p>}
+            </div>
           )}
           <br /><br />
 
           {formData.localAuthority === 'SREEKRISHNAPURAM' ? (
-            <select name="ward" value={formData.wardNo} onChange={handleChange} required>
+            <select name="ward" value={formData.ward} onChange={handleChange} required>
               <option value="">Select Ward</option>
-              {wardNo['SREEKRISHNAPURAM'].map(wardNo => (
-                <option key={wardNo} value={wardNo}>{wardNo}</option>
+              {wardNo['SREEKRISHNAPURAM'].map(ward => (
+                <option key={ward} value={ward}>{ward}</option>
               ))}
             </select>
           ) : (
-            <input type="number" name="ward" placeholder="Ward No.*" value={formData.ward} onChange={handleChange} required />
+            <div>
+              <input type="number" name="ward" placeholder="Ward No.*" value={formData.ward} onChange={handleChange} required />
+              {errorMessage.ward && <p className="error-message">{errorMessage.ward}</p>}
+            </div>
           )}
           <br /><br />
+
         </div>
         <div className="form-section">
           <h2>Personal Details</h2>
-          <input type="text" name="name" placeholder="Name*" value={formData.name} onChange={handleChange} required />
+          <div>
+            <input type="text" name="name" placeholder="Name*" value={formData.name} onChange={handleChange} required />
+             {errorMessage.name && <p className="error-message">{errorMessage.name}</p>}
+          </div>
           <br /><br />
-          <input type="number" name="age" placeholder="Age*" value={formData.age} onChange={handleChange} required />
+
+          <div>
+            <input type="number" name="age" placeholder="Age*" value={formData.age} onChange={handleChange} required />
+           {errorMessage.age && <p className="error-message">{errorMessage.age}</p>}
+          </div>
           <br /><br />
-          <input type="text" name="voterId" placeholder="Voter ID*" value={formData.voterId} onChange={handleChange} required />
+
+          <div>
+            <input type="text" name="voterId" placeholder="Voter ID*" value={formData.voterId} onChange={handleChange} required />
+           {errorMessage.voterId && <p className="error-message">{errorMessage.voterId}</p>}
+          </div>
           <br /><br />
-          <input type="number" name="phone" placeholder="Mobile No.*" value={formData.phone} onChange={handleChange} required />
+
+          <div>
+            <input type="number" name="phone" placeholder="Mobile No.*" value={formData.phone} onChange={handleChange} required />
+           {errorMessage.phone && <p className="error-message">{errorMessage.phone}</p>}
           <br /><br />
+          </div>
+          
           <select name="job" value={formData.job} onChange={handleChange} required>
             <option value="">Job*</option>
             {jobs.map(job => (
@@ -244,23 +308,38 @@ const ResidentSignup = () => {
             ))}
           </select>
           <br /><br />
-          <input type="number" name="annualIncome" placeholder="Annual Income" value={formData.annualIncome} onChange={handleChange} />
+          
+          <div>
+           <input type="number" name="annualIncome" placeholder="Annual Income" value={formData.annualIncome} onChange={handleChange} />
+            {errorMessage.annualIncome && <p className="error-message">{errorMessage.annualIncome}</p>}
+          </div>
           <br /><br />
-          <textarea name="address" placeholder="Address" value={formData.address} onChange={handleChange} />
+          <div>
+            <textarea name="address" placeholder="Address" value={formData.address} onChange={handleChange} />
+          </div>
         </div>
+
         <div className="form-section">
           <h2>Account Details</h2>
           <input type="email" name="email" placeholder="Email*" value={formData.email} onChange={handleChange} required />
           <br /><br />
           <input type="text" name="username" placeholder="Username*" value={formData.username} onChange={handleChange} required />
           <br /><br />
+
+          <div>
           <input type="password" name="password" placeholder="Password*" value={formData.password} onChange={handleChange} required />
+          {errorMessage.password && <p className="error-message">{errorMessage.password}</p>}
+          </div>
           <br /><br />
-          <input type="password" name="confirmPassword" placeholder="Re-enter Password*" value={formData.confirmPassword} onChange={handleChange} required />
+
+          <div>
+            <input type="password" name="confirmPassword" placeholder="Re-enter Password*" value={formData.confirmPassword} onChange={handleChange} required />
+            {errorMessage.confirmPassword && <p className="error-message">{errorMessage.confirmPassword}</p>}
+          </div>
           <br /><br />
         </div>
+
         <button type="submit">Register</button>
-        {errorMessage && <p className="error-message">{errorMessage}</p>}
       </form>
     </div>
   );

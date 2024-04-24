@@ -90,7 +90,6 @@ const UserRequests = () => {
 
   return (
     <div>
-      <h1>User Requests Page</h1>
       <ul>
         {userData && userData.length > 0 ? (
           userData.map((user) => (

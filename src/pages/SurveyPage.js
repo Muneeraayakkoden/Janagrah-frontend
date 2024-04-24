@@ -4,7 +4,7 @@ import './SurveyPage.css';
 
 const SurveyPage = () => {
   const [surveyDataList, setSurveyDataList] = useState([]);
-  const [username, setUsername] = useState('');
+  //const [username, setUsername] = useState('');
   //const history = useHistory();
 
   useEffect(() => {
