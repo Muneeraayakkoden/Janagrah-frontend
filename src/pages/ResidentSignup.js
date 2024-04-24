@@ -74,7 +74,7 @@ const ResidentSignup = () => {
         break;
       case 'confirmPassword':
         if (formData.password !== value) {
-          setErrorMessage('Passwords do not match.');
+          setErrorMessage = 'Passwords do not match.';
         }
         break;
       default:
