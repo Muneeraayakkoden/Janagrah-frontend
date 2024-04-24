@@ -15,12 +15,27 @@ const ContactPage = () => {
       text: newMessage,
       anonymous: isAnonymous,
     };
-    // Replace with actual backend call to send message
-    console.log('Sending message:', message);
-    setMessages([...messages, message]);
-    setNewMessage('');
-    setMessageSent(true);
-    setTimeout(() => setMessageSent(false), 3000); // Hide message sent notification after 3 seconds
+
+    const backendUrl = 'http://your-backend-api-url/messages'; // Added code
+    try {
+      const response = await fetch(backendUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(message),
+      });
+      if (!response.ok) {
+        throw new Error('Failed to send message');
+      }
+      console.log('Sending message:', message);
+      setMessages([...messages, message]);
+      setNewMessage('');
+      setMessageSent(true);
+      setTimeout(() => setMessageSent(false), 3000); 
+    } catch (error) {
+      console.error('Error sending message:', error);
+    }
   };
 
   const handleClearHistory = () => {
@@ -48,7 +63,7 @@ const ContactPage = () => {
         <button
           className={`message-icon ${showSendMessage ? 'active' : ''}`} 
           onClick={() => setShowSendMessage(!showSendMessage)} >
-          <i class="fa-brands fa-rocketchat"></i>
+          <i className="fa-brands fa-rocketchat"></i>
         </button>
         {showSendMessage && ( 
           <div className="message-input">
