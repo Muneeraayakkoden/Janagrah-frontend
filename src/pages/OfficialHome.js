@@ -43,15 +43,20 @@ function OfficialHome() {
   
   return (
     <div className="official-homepage">
-      <div className="logo">
-        <img src={logo} alt="Janagrah Logo" />
-      </div>
-      <header className="header">
-        <h1>Janagrah</h1>
-        <p>Empowering Our Community</p>
-      </header>
-      <div className="profile">
-        <i class="fa-solid fa-user" onClick={handleProfileClick}></i>
+      <div className="container">
+        <div className="logo">
+          <img src={logo} alt="Janagrah Logo" />
+        </div>
+        <header className="header">
+          <h1>Janagrah</h1>
+          <p>Empowering Our Community</p>
+        </header>
+        <div className="profile">
+          <i class="fa-solid fa-user" onClick={handleProfileClick}></i>
+        </div>
+        <div className="notification-bell" onClick={handleNotificationClick}>
+        <i className="fas fa-bell"></i>
+        </div>
       </div>
       <main className="main">
         <section className="survey-section">
@@ -79,12 +84,10 @@ function OfficialHome() {
 
       </main>
       <footer className="footer">
-        <p>&copy; Janagrah 2024</p>
-      </footer>
-
-      <div className="notification-bell" onClick={handleNotificationClick}>
-      <i className="fas fa-bell"></i>
+      <div className="footer-container">
+        <p className="copyright" >&copy; Janagrah 2024</p>
       </div>
+      </footer>
     </div>
   );
 };
