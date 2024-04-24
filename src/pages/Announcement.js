@@ -1,7 +1,7 @@
 // NewsSection.jsx
 import React, { useState, useEffect } from 'react';
 import './Announcement.css';
-
+import { useNavigate } from 'react-router-dom';
 
 /*const Announcement = () => {
   const [newsData, setNewsData] = useState([]);
@@ -104,6 +104,7 @@ export default Announcement;*/
 const Announcement = () => {
   const [newsData, setNewsData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigate=useNavigate();
 
   useEffect(() => {
     fetchDataFromBackend();
@@ -168,6 +169,7 @@ const Announcement = () => {
         {newsData.length > 3 && (
           <button type="button" className="load-more" onClick={loadMoreNews}>Load More</button>
         )}
+        <button type="button" classname="Announced-history" onClick={() => {navigate('/AnnouncedHistory')}}>Announced Events</button>
       </div>
     </section>
   );

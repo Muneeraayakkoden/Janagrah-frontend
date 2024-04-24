@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom
+import './SurveyPage.css'; 
+import { useNavigate } from 'react-router-dom';
 
 const SurveyPage = () => {
   const [surveyDataList, setSurveyDataList] = useState([]);
-  const navigate = useNavigate(); // Initialize useNavigate
-
+  //const [username, setUsername] = useState('');
+  //const history = useHistory();
+  const navigate = useNavigate();
+  
   useEffect(() => {
     const fetchSurveyData = async () => {
       try {

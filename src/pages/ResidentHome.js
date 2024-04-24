@@ -18,7 +18,7 @@ const ResidentHome = () => {
       <main className="main-content">
         <section className="survey-section">
           <div className="survey-card">
-            <a href="#" onClick={() => navigate('/SurveyPage')}>
+            <a href="#" onClick={() => navigate('/dosurvey')}>
               <h3>SURVEYS</h3>
             </a>
           </div>

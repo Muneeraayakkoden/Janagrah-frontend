@@ -66,7 +66,7 @@ function OfficialHome() {
               <h3>Create Survey</h3>
               <p>Design and launch surveys to gather resident feedback.</p>
             </a>
-            <a href="#" className="survey-card" onClick={(e) => navigate('SurveysCompleted', e)}>
+            <a href="#" className="survey-card" onClick={(e) => navigate('SurveyPage', e)}>
               <h3>SURVEYS DONE</h3>
               <p>Analyze resident responses and gain valuable insights.</p>
             </a>
