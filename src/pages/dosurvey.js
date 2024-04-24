@@ -1,10 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function DoSurvey() {
   const [selectedOption, setSelectedOption] = useState('');
   const [submitted, setSubmitted] = useState(false);
-  const [option1Count, setOption1Count] = useState(0); // State to hold count for Option 1
-  const [option2Count, setOption2Count] = useState(0); // State to hold count for Option 2
+  const [polls, setPolls] = useState([]); // State to hold poll data
+
+  useEffect(() => {
+    const fetchSurveyData = async () => {
+      try {
+        const wardmemberid = JSON.parse(localStorage.getItem('wardmemberid'));
+        const job = JSON.parse(localStorage.getItem('job'));
+
+        const response = await fetch('http://localhost:4000/poll/dosurvey', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ wardmemberid: wardmemberid, job: job }),
+        });
+
+        if (response.ok) {
+          const { polls } = await response.json();
+          console.log('Survey data:', polls);
+          // Update the state with the received poll data
+          setPolls(polls);
+        } else {
+          console.error('Failed to fetch survey data');
+        }
+      } catch (error) {
+        console.error('Error fetching survey data:', error);
+      }
+    };
+
+    fetchSurveyData();
+  }, []); 
 
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
@@ -12,50 +41,35 @@ function DoSurvey() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    // Simulate sending the selected option to the server
-    console.log(`Option selected: ${selectedOption}`);
-    if (selectedOption === 'Option 1') {
-      setOption1Count(option1Count + 1);
-    } else if (selectedOption === 'Option 2') {
-      setOption2Count(option2Count + 1);
-    }
+    // Add any submission logic here if needed
     setSubmitted(true);
   };
 
   return (
     <div className="container">
-      <h1>Poll: Survey Name</h1>
-      <p>Survey Description: gg</p>
-      <form onSubmit={handleSubmit}>
-        <div className="options">
-          <div className="option">
-            <input
-              type="radio"
-              id="option1"
-              name="option"
-              value="Option 1"
-              checked={selectedOption === 'Option 1'}
-              onChange={handleOptionChange}
-            />
-            <label htmlFor="option1">Option 1</label>
+      {polls.map(poll => (
+        <div key={poll._id}>
+          <h1>Poll: {poll.surveyName}</h1>
+          <p>Survey Description: {poll.surveyDescription}</p>
+          <div className="options">
+            {poll.options.map(option => (
+              <div key={option._id} className="option">
+                <input
+                  type="radio"
+                  id={option._id}
+                  name="option"
+                  value={option.text} // Display the text property of the option
+                  checked={selectedOption === option.text}
+                  onChange={handleOptionChange}
+                />
+                <label htmlFor={option._id}>{option.text}</label>
+              </div>
+            ))}
           </div>
-          <div className="option">
-            <input
-              type="radio"
-              id="option2"
-              name="option"
-              value="Option 2"
-              checked={selectedOption === 'Option 2'}
-              onChange={handleOptionChange}
-            />
-            <label htmlFor="option2">Option 2</label>
-          </div>
+          <button type="submit" disabled={submitted}>Submit</button>
+          {submitted && <div className="result">Thank you for your vote!</div>}
         </div>
-        <button type="submit">
-          {submitted ? `Option 1: ${option1Count}, Option 2: ${option2Count}` : 'Submit'}
-        </button>
-      </form>
-      {submitted && <div className="result">Thank you for your vote!</div>}
+      ))}
     </div>
   );
 }
