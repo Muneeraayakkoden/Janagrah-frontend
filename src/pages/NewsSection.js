@@ -11,13 +11,13 @@ const NewsSection = () => {
     // Fetch initial data from the backend when component mounts
     fetchDataFromBackend();
   }, []);
-  
+  const wardid = JSON.parse(localStorage.getItem('wardmemberid'));
+  console.log(wardid);
   
   const fetchDataFromBackend = async () => {
     try{
 
-        const wardid = JSON.parse(localStorage.getItem('wardid'));
-        console.log(wardid)
+
         // Check if all required data is available
         if (wardid) {
           const response = await fetch("http://localhost:4000/announcement/send", {
@@ -34,8 +34,11 @@ const NewsSection = () => {
           const responseData = await response.json();
           console.log("Response Data from backend:", responseData); // Log response data
           
-          setNewsData(responseData.slice(0, 3)); // Display first 3 news items initially
-          setRemainingNewsData(responseData.slice(3)); // Store remaining news items separately
+          // Convert responseData.msg to an array if it's not already an array
+          const newsArray = Array.isArray(responseData.msg) ? responseData.msg : [responseData.msg];
+
+          setNewsData(newsArray.slice(0, 3)); // Display first 3 news items initially
+          setRemainingNewsData(newsArray.slice(3)); // Store remaining news items separately
         } else {
           // Handle error
           console.log("Failed to fetch announcement");
