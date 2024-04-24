@@ -30,13 +30,14 @@ const ResidentSignup = () => {
     age: '',
     voterId: '',
     phone: '',
+    password:'',
     confirmPassword: '',
     annualIncome: ''
   });
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    let errorMessage = '';
+    let error = '';
   
     // Validation rules for each field
     switch (name) {
@@ -44,37 +45,43 @@ const ResidentSignup = () => {
       case 'localAuthority':
       case 'name':
         if (!/^[a-zA-Z]+$/.test(value)) {
-          errorMessage = 'Field must contain only alphabets.';
+          error = 'Field must contain only alphabets.';
         }
         break;
       case 'ward':
         if (!/^[1-9]\d*$/.test(value)) {
-          errorMessage = 'Ward must be a number greater than 0.';
+          error = 'Ward must be a number greater than 0.';
         }
         break;
       case  'age':
         if (parseInt(value) < 18) {
-          errorMessage = 'Age must be 18 or older.';
+          error = 'Age must be 18 or older.';
         }
         break;
       case 'voterId':
         if (!/^[a-zA-Z0-9]{10}$/.test(value)) {
-          errorMessage = 'Voter ID must be 10 alphanumeric characters.';
+          error = 'Voter ID must be 10 alphanumeric characters.';
         }
         break;
       case 'annualIncome':
         if (parseInt(value) < 0) {
-          errorMessage = 'Annual income must be greater than or equals 0.';
+          error = 'Annual income must be greater than or equals 0.';
         }
         break;
       case 'phone':
         if (!/^[1-9]\d{9}$/.test(value)) {
-          errorMessage = 'Phone number must be 10 digits and not start with 0.';
+          error = 'Phone number must be 10 digits and not start with 0.';
+        }
+        break;
+      case 'password':
+        const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/;
+        if (!passwordRegex.test(value)) {
+          error = 'Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.';
         }
         break;
       case 'confirmPassword':
         if (formData.password !== value) {
-          setErrorMessage = 'Passwords do not match.';
+          error = 'Passwords do not match.';
         }
         break;
       default:
@@ -83,11 +90,15 @@ const ResidentSignup = () => {
   
     setFormData({ ...formData, [name]: value });
 
-    setErrorMessage({ ...errorMessage, [name]: errorMessage });
+    setErrorMessage({ ...errorMessage, [name]: error });
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (Object.values(errorMessage).some(error => error)) {
+      return;
+    }
+    //navigate("/ResidentSignupSuccess");
     registerUser();
   };
 
@@ -314,8 +325,13 @@ const ResidentSignup = () => {
           <br /><br />
           <input type="text" name="username" placeholder="Username*" value={formData.username} onChange={handleChange} required />
           <br /><br />
+
+          <div>
           <input type="password" name="password" placeholder="Password*" value={formData.password} onChange={handleChange} required />
+          {errorMessage.password && <p className="error-message">{errorMessage.password}</p>}
+          </div>
           <br /><br />
+
           <div>
             <input type="password" name="confirmPassword" placeholder="Re-enter Password*" value={formData.confirmPassword} onChange={handleChange} required />
             {errorMessage.confirmPassword && <p className="error-message">{errorMessage.confirmPassword}</p>}
