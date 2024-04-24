@@ -17,9 +17,7 @@ import MyAccount from './pages/MyAccount.js';
 import EditProfile from './pages/EditProfile.js';
 import UserRequests from './pages/UserRequests.js';
 import Dosurvey from './pages/dosurvey.js';
-
-
-
+import AnnouncedHistory from './pages/AnnouncedHistory.js';
 import Announcement from './pages/Announcement.js';
 import MemberAccount from './pages/MemberAccount.js';
 import SurveysCompleted from './pages/SurveysCompleted.js';
@@ -47,8 +45,7 @@ function App() {
           <Route path="/EditProfile" Component={EditProfile} />
           <Route path="/UserRequests" Component={UserRequests} />
           <Route path="/dosurvey" Component={Dosurvey} />
-
-
+          <Route path="/AnnouncedHistory" Component={AnnouncedHistory} />
           <Route path="/Announcement" Component={Announcement} />
           <Route path="/MemberAccount" Component={MemberAccount} />
           <Route path="/SurveysCompleted" Component={SurveysCompleted} />

@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import './SurveyPage.css'; 
-
+import { useNavigate } from 'react-router-dom';
 
 const SurveyPage = () => {
   const [surveyDataList, setSurveyDataList] = useState([]);
   //const [username, setUsername] = useState('');
   //const history = useHistory();
-
+  const navigate = useNavigate();
+  
   useEffect(() => {
     const fetchSurveyData = async () => {
       try {
@@ -66,8 +67,10 @@ const SurveyPage = () => {
   
 
   const handleResult = (surveyId) => {
+    
     // Navigate to the result page and pass the survey ID
     console.log('View result for survey ID:', surveyId);
+    navigate('/Results');
     //history.push(`/result/${surveyId}`);
   };
 
