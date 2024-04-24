@@ -262,7 +262,7 @@ const ContactPage = () => {
   const [messageSent, setMessageSent] = useState(false);
   const [showSendMessage, setShowSendMessage] = useState(false);
 
-  const handleSend = () => {
+ /* const handleSend = () => {
     const message = {
       text: newMessage,
       anonymous: isAnonymous
@@ -270,7 +270,26 @@ const ContactPage = () => {
     setMessages([...messages, message]);
     setNewMessage('');
     setMessageSent(true);
-  };
+  };*/
+  useEffect(() => {
+    // Function to fetch messages from the backend when component mounts
+    const fetchMessages = async () => {
+      try {
+        const response = await fetch('http://localhost:4000/messages/send'); // Replace URL with your backend endpoint
+        if (response.ok) {
+          const data = await response.json();
+          setMessages(data.messages); // Assuming the response contains an array of messages
+        } else {
+          console.error('Failed to fetch messages');
+        }
+      } catch (error) {
+        console.error('Error fetching messages:', error);
+      }
+    };
+
+    // Call the fetchMessages function
+    fetchMessages();
+  }, []); // Empty dependency array to ensure this effect runs only once when the component mounts
 
   const handleSendMessage = async (event) => {
     event.preventDefault();

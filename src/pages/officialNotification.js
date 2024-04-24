@@ -13,7 +13,7 @@ const OfficialNotification = () => {
         const loginRequestsData = await response1.json();
         setLoginRequests(loginRequestsData);
 
-        const response2 = await fetch('/api/messages');
+        const response2 = await fetch('http://localhost:4000/message/send');
         const messagesData = await response2.json();
         setMessages(messagesData);
       } catch (error) {
