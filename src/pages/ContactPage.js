@@ -30,6 +30,7 @@ const ContactPage = () => {
       }
       console.log('Sending message:', message);
       setMessages([...messages, message]);
+      console.log('Updated messages:', messages);
       setNewMessage('');
       setMessageSent(true);
       setTimeout(() => setMessageSent(false), 3000); 
@@ -47,7 +48,7 @@ const ContactPage = () => {
       <h1>Message History</h1>
       {messages.length > 0 ? (
         <div>
-          <ul>
+          <ul key={messages.length}>
             {messages.map((msg, index) => (
               <li key={index}>
                 {msg.text} ({msg.anonymous ? 'Anonymous' : 'Non-Anonymous'})
