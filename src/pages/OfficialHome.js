@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.png';
 
 
+
   // Replace with your actual API endpoint and data fetching logic
   const API_ENDPOINT = '/api/official/notifications';
 
@@ -34,7 +35,7 @@ function OfficialHome() {
   
   // Fetch notifications on initial render
   const handleAnnounceEvent = () => {
-    navigate('/CreateUpdates');
+    navigate('/Announcement');
   };
   
   return (

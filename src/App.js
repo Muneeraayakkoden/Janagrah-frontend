@@ -16,6 +16,7 @@ import OfficialNotification from './pages/officialNotification.js';
 import MyAccount from './pages/MyAccount.js';
 import EditProfile from './pages/EditProfile.js';
 import UserRequests from './pages/UserRequests.js';
+import Announcement from './pages/Annoucement.js';
 
 
 
@@ -40,7 +41,7 @@ function App() {
           <Route path="/MyAccount" Component={MyAccount} />
           <Route path="/EditProfile" Component={EditProfile} />
           <Route path="/UserRequests" Component={UserRequests} />
-
+          <Route path="/Announcement" Component={Announcement}/>
         </Routes>
       </BrowserRouter>
     </div>
