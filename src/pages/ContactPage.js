@@ -13,9 +13,7 @@ const ContactPage = () => {
     fetchMessageHistory();
   }, []);
 
-  const handleAnonymousChange = (event) => {
-    setIsAnonymous(event.target.id === 'anonymous');
-  };
+
 
   const fetchMessageHistory = async () => {
     try {
@@ -55,6 +53,7 @@ const ContactPage = () => {
       setNewMessage('');
       setMessageSent(true);
       setTimeout(() => setMessageSent(false), 3000); 
+      fetchMessageHistory();
     } catch (error) {
       console.error('Error sending message:', error);
     }
@@ -115,7 +114,7 @@ const ContactPage = () => {
                   name="messageType"
                   value="s"
                   checked={!isAnonymous}
-                  onChange={handleAnonymousChange}
+                  onChange={() => setIsAnonymous(false)}
                 />
                 <label htmlFor="nonAnonymous">Non-anonymous</label>
                 <input
@@ -124,7 +123,7 @@ const ContactPage = () => {
                 name="messageType"
                 value="s"
                 checked={isAnonymous}
-                onChange={handleAnonymousChange}
+                onChange={() => setIsAnonymous(true)}
                 />
                 <label htmlFor="anonymous">Anonymous</label>
               </div>
