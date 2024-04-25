@@ -91,6 +91,25 @@ li {
   margin-top: 20px;
 }
 
+.anonymous-option {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.anonymous-option input[type="radio"] {
+  margin-left: 20px;
+}
+
+.anonymous-option label {
+  font-size: 1.2rem;
+  color: #555; 
+}
+
+.anonymous-option label:last-child {
+  margin-left: 0px;
+}
+
 input, select, button {
   margin-right: 10px;
   margin-bottom: 10px;
