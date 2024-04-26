@@ -1,11 +1,23 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function LoginRejected() {
+  const navigate = useNavigate();
+
+  const handleSignUpClick = () => {
+    navigate('/ResidentSignup');
+  };
+
+
   return (
     <div style={containerStyle}>
       <h2 style={headingStyle}>Login Request Rejected</h2>
-      <p style={paragraphStyle}>Sorry, Your request for login has been rejected by your ward member.</p>
+      <p style={paragraphStyle}>Sorry, Your login is not verified.</p>
       <p style={warningText}>Please contact your ward member for further information.</p>
+      <p style={paragraphStyle}>
+        Are you a new user? 
+        <a href="#" onClick={handleSignUpClick}> Sign up here</a>.
+      </p>
     </div>
   );
 }
