@@ -121,12 +121,12 @@ const CreateSurvey = () => {
             onChange={handleTargetedSectionChange}
           >
             <option value="Everyone">Everyone</option>
-            <option value="student">Student</option>
-            <option value="farmer">Farmer</option>
-            <option value="teacher">Teacher</option>
-            <option value="doctor">Doctor</option>
-            <option value="housewife">Housewife</option>
-            <option value="business">Business</option>
+            <option value="Student">Student</option>
+            <option value="Farmer">Farmer</option>
+            <option value="Teacher">Teacher</option>
+            <option value="Doctor">Doctor</option>
+            <option value="Housewife">Housewife</option>
+            <option value="Business">Business</option>
           </select>
         </div>
         <div className="form-group">

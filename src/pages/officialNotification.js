@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './OfficialNotification.css';
+import UserRequests from './UserRequests';
 
 const OfficialNotification = () => {
-  const [loginRequests, setLoginRequests] = useState([]);
   const [messages, setMessages] = useState([]);
 
   // Fetch login requests and messages from backend
@@ -24,40 +24,15 @@ const OfficialNotification = () => {
     fetchData();
   }, []);
 
-  const handleApproval = (userId) => {
-    // Implement logic to send approval to backend for specific userId
-    console.log('Approve user:', userId); // Replace with actual backend call
-  };
-
-  const handleRejection = (userId) => {
-    // Implement logic to send rejection to backend for specific userId
-    console.log('Reject user:', userId); // Replace with actual backend call
-  };
 
   return (
     <div className="notification-page">
+
       <div className="login">
-        <h2>Login Requests</h2>
-        {loginRequests.length > 0 ? (
-          <ul>
-            {loginRequests.map((request) => (
-              <li key={request.id}>
-                <p>
-                  Name: {request.name} (Details hidden for privacy)
-                </p>
-                <button  className="approve" onClick={() => handleApproval(request.id)}>
-                  Approve
-                </button>
-                <button className="reject" onClick={() => handleRejection(request.id)}>
-                  Reject
-                </button>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p className="empty">No login requests found.</p>
-        )}
+        <h2>User Requests</h2>
+        <UserRequests />
       </div>
+
       <div className="message">
         <h2>Messages</h2>
         {messages.length > 0 ? (

@@ -18,7 +18,7 @@
   font-size: 1.8rem;
   margin-bottom: 20px;
   color: #333;
-
+}
 .Direct-Communication textarea {
   width: 100%;
   margin-bottom: 20px;
@@ -89,6 +89,25 @@ li {
 
 .message-container {
   margin-top: 20px;
+}
+
+.anonymous-option {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.anonymous-option input[type="radio"] {
+  margin-left: 20px;
+}
+
+.anonymous-option label {
+  font-size: 1.2rem;
+  color: #555; 
+}
+
+.anonymous-option label:last-child {
+  margin-left: 0px;
 }
 
 input, select, button {

@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import './SurveyPage.css'; 
-
+import { useNavigate } from 'react-router-dom';
 
 const SurveyPage = () => {
   const [surveyDataList, setSurveyDataList] = useState([]);
-  const [username, setUsername] = useState('');
+  //const [username, setUsername] = useState('');
   //const history = useHistory();
-
+  const navigate = useNavigate();
+  
   useEffect(() => {
     const fetchSurveyData = async () => {
       try {
@@ -33,7 +34,7 @@ const SurveyPage = () => {
     };
 
     fetchSurveyData();
-  }, []); // Empty dependency array ensures useEffect runs only once
+  }, []);
 
   const handleStopPolling = async (surveyId) => {
     try {
@@ -66,10 +67,11 @@ const SurveyPage = () => {
   
 
   const handleResult = (surveyId) => {
-    // Navigate to the result page and pass the survey ID
+    // Navigate to the result page with the survey ID as a query parameter
     console.log('View result for survey ID:', surveyId);
-    //history.push(`/result/${surveyId}`);
+    navigate(`/Results?surveyId=${surveyId}`); // Navigate to '/Results' with surveyId as query parameter
   };
+  
 
   return (
     <div>
