@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import ResidentHome from './pages/ResidentHome';
 import LoginPage from './pages/LoginPage.js';
 import ResidentSignup from './pages/ResidentSignup.js';
@@ -20,7 +21,6 @@ import Dosurvey from './pages/dosurvey.js';
 import AnnouncedHistory from './pages/AnnouncedHistory.js';
 import Announcement from './pages/Announcement.js';
 import MemberAccount from './pages/MemberAccount.js';
-import SurveysCompleted from './pages/SurveysCompleted.js';
 
 function App() {
   return (
@@ -48,7 +48,6 @@ function App() {
           <Route path="/AnnouncedHistory" Component={AnnouncedHistory} />
           <Route path="/Announcement" Component={Announcement} />
           <Route path="/MemberAccount" Component={MemberAccount} />
-          <Route path="/SurveysCompleted" Component={SurveysCompleted} />
         </Routes>
       </BrowserRouter>
     </div>
