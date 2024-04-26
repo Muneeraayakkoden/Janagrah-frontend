@@ -4,6 +4,11 @@ import { useNavigate } from "react-router-dom";
 
 const ResidentSignup = () => {
   const navigate = useNavigate();
+
+  const handleLoginClick = () => {
+    navigate('/LoginPage');
+  };
+
   const [formData, setFormData] = useState({
     state: '',
     district: '',
@@ -340,6 +345,9 @@ const ResidentSignup = () => {
         </div>
 
         <button type="submit">Register</button>
+        <p>Already Registered? 
+        <a href="#" onClick={handleLoginClick}> Login here</a>.
+      </p>
       </form>
     </div>
   );

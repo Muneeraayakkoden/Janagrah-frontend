@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './LoginPage.css';
 import logo from '../assets/logo.png';
 import { useNavigate } from 'react-router-dom';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 
 function ResidentLoginForm() {
@@ -9,9 +10,12 @@ function ResidentLoginForm() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+
   const handleForgotPasswordClick = () => {
     navigate('/ForgotPasswordPage');
   };
+
   const handleLogin = async (event) => {
     event.preventDefault();
     if (!username || !password) {
@@ -62,18 +66,35 @@ function ResidentLoginForm() {
     }
   };
 
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
     <div>
       <div className="input-group">
         <input type="text" placeholder="Username*" className="input-field" value={username} onChange={(e) => setUsername(e.target.value)} required />
       </div>
       <div className="input-group">
-        <input type="password" placeholder="Password*" className="input-field" value={password} onChange={(e) => setPassword(e.target.value)} required/>
+        <input 
+          type={showPassword ? 'text' : 'password'} 
+          placeholder="Password*" 
+          className="input-field" 
+          value={password} 
+          onChange={(e) => setPassword(e.target.value)} 
+          required
+        />
+        <span className="password-toggle" onClick={togglePasswordVisibility}>
+          {showPassword ? <FaEyeSlash /> : <FaEye />}
+        </span>
       </div>
-      <button type="submit" className="login-btn" onClick={handleLogin}>Resident Login</button>
-      <div className="error-message">{error}</div>
-      <div><a href="#" className="forgot-password" onClick={handleForgotPasswordClick}>Forgot Password?</a></div>
-      <button className="register-btn" onClick={() => {navigate('/ResidentSignup')}}>Register Now</button>
+      <div class="button-container">
+        <button type="submit" class="login-btn" onClick={handleLogin}>Resident Login</button>
+        <div className="error-message">{error}</div>
+        <div><a href="#" class="forgot-password" onClick={handleForgotPasswordClick}>Forgot Password?</a></div>
+        <button class="register-btn" onClick={() => {navigate('/ResidentSignup')}}>Register Now</button>
+      </div>
     </div>
   );
 }
@@ -85,6 +106,7 @@ function OfficialLoginForm() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleForgotPasswordClick = () => {
     navigate('/ForgotPasswordPage');
@@ -135,18 +157,34 @@ function OfficialLoginForm() {
     }
   };
 
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
-    <form>
+    <div>
       <div className="input-group">
         <input type="text" placeholder="Username*" className="input-field" value={username} onChange={(e) => setUsername(e.target.value)} required/>
       </div>
       <div className="input-group">
-        <input type="password" placeholder="Password*" className="input-field" value={password} onChange={(e) => setPassword(e.target.value)} required />
+        <input 
+          type={showPassword ? 'text' : 'password'} 
+          placeholder="Password*" 
+          className="input-field" 
+          value={password} 
+          onChange={(e) => setPassword(e.target.value)} 
+          required
+        />
+        <span className="password-toggle" onClick={togglePasswordVisibility}>
+          {showPassword ? <FaEyeSlash /> : <FaEye />}
+        </span>
       </div>
+      <div class="button-container">
       <button type="submit" className="login-btn" onClick={handleLogin}>Official Login</button>
-      <div className="error-message">{error}</div>
-      <div className="forgot-password" onClick={handleForgotPasswordClick}>Forgot Password?</div>
-    </form>
+        <div className="error-message">{error}</div>
+        <div><a href="#" class="forgot-password" onClick={handleForgotPasswordClick}>Forgot Password?</a></div>
+      </div>
+    </div>
   );
 }
 

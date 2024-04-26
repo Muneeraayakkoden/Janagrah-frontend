@@ -1,5 +1,3 @@
-
-
 body {
   margin: 0;
   padding: 0;
@@ -63,20 +61,20 @@ body {
 h2 {
   font-size: 24px;
   margin-bottom: 20px;
-  color: #333;
+  color: rgb(7, 126, 218);
   text-align: center;
 }
 
 .input-group {
   margin-bottom: 20px;
+  position: relative;
 }
 
-input[type="email"],
+input[type="text"],
 input[type="password"] {
-  width: 100%;
   margin: 8px 0;
-  padding: 0; /* Remove padding or adjust if needed */
-  display: inline-block;
+  padding: 12px; /* Add padding to input fields for better spacing and appearance */
+  width : 100%;
   border: 0.5px solid #66afd6;
   border-radius: 5px;
   font-size: 16px;
@@ -84,35 +82,40 @@ input[type="password"] {
 }
 
 /* Combined button styles for consistency */
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .login-btn,
 .register-btn {
-  width: 100%;
-  padding: 12px;
-  background-color: #3889de; /* Button color */
-  color: white;
-  margin: 10px 0;
+  padding: 10px 20px;
+  margin: 10px;
   border: none;
   border-radius: 5px;
-  font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-.login-btn:hover,
-.register-btn:hover {
-  background-color: #2a76c7;
+.login-btn {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.register-btn {
+  background-color: #28a745;
+  color: #fff;
 }
 
 .forgot-password {
-  text-align: center;
-  color: #294d74;
+  color: #007bff;
+  text-decoration: none;
   cursor: pointer;
-  font-size: 14px;
-  transition: color 0.3s ease;
 }
 
 .forgot-password:hover {
-  color: #2a76c7;
+  text-decoration: underline;
 }
 
 @media screen and (max-width: 600px) {
@@ -123,4 +126,17 @@ input[type="password"] {
   .login-container {
     width: 100%;
   }
+}
+
+.error-message {
+  color: #dc3545;
+  margin-top: 10px;
+}
+
+.password-toggle {
+  position: absolute; /* Changed position to absolute */
+  top: 50%;
+  right: 10px; /* Adjusted right spacing */
+  transform: translateY(-50%);
+  cursor: pointer;
 }
