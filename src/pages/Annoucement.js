@@ -4,12 +4,13 @@ import { Link } from 'react-router-dom';
 
 const Announcement = () => {
   const [announcements, setAnnouncements] = useState([]);
-  const wardid = JSON.parse(localStorage.getItem('username'));
-  console.log(wardid);
+  
   /*useEffect(() => {
     fetchAnnouncements();
   }, []);*/
   useEffect(() => {
+    const wardid = JSON.parse(localStorage.getItem('username'));
+    console.log(wardid);
     if (wardid) {
       fetchAnnouncements();
     } else {
@@ -19,9 +20,8 @@ const Announcement = () => {
 
   const fetchAnnouncements = async () => {
         try {
-            console.log(wardid)
             if ( wardid) {
-            const response = await fetch("http://localhost:4000/announcement/show", {
+              const response = await fetch("http://localhost:4000/announcement/show", {
                     method: "POST",
                     headers: {
                         'Content-Type': 'application/json'
@@ -29,30 +29,27 @@ const Announcement = () => {
                     body: JSON.stringify({
                         wardid:wardid,
                     }),
-            });
-                console.log(response);
-                if (response.ok) {
+              });
+              console.log(response);
+              if (response.ok) {
                     // Handle success
-                    let responseData = await response.json();
-                    console.log("All announcement:", responseData);
-                    if (!Array.isArray(responseData)) {
+                  let responseData = await response.json();
+                  console.log("All announcement:", responseData);
+                  if (!Array.isArray(responseData)) {
                         responseData = [responseData];
-                      }
+                  }
               
-                    setAnnouncements(responseData); // Set announcements state
-                } else {
-                        // Handle error
-                        console.log("Failed to announcement");
-                    // setAnnouncementSent(false);
+                  setAnnouncements(responseData); // Set announcements state
+              } else {
+                  console.error("Failed to fetch announcement");
                 }   
-            } else {
-            console.error("Required data from local storage is missing.");
-                }
+            } else{ 
+             console.error("Requird data from local storage is missing.");
+            }
         }catch(error){
-
             console.error("Error in try catch block",error.message);
         }
-    };
+  };
 
 
   /*const deleteAnnouncement = async (id) => {
@@ -68,6 +65,7 @@ const Announcement = () => {
   };*/
 
   return (
+
     <div>
       <h1>Announcements</h1>
       {announcements.length > 0 ? (
@@ -84,31 +82,13 @@ const Announcement = () => {
       ) : (
         <p>No announcements to display</p>
       )}
+      
       <Link to="/CreateUpdates">
-        <button>Create/Update Announcement</button>
+        <button>Create Announcement</button>
       </Link>
     </div>
-  )
-    /* <section className="news-section">
-     <div className="container">
-       <h2 className="section-title">ANNOUNCEMENTS</h2>
-       <div className="news-container">
-         {announcements.map(announcement => (
-           <div  className="news-item">
-
-             <div className="news-content">
-               <h3>{announcement.title}</h3>
-               <p>{announcement.description}</p>
-             </div>
-           </div>
-         ))}
-       </div>
-       <Link to="/CreateUpdates">
-        <button>Create/Update Announcement</button>
-      </Link>
-     </div>
-   </section>
-  );*/
+  );
 };
 
 export default Announcement;
+
