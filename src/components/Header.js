@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import logo from '../assets/logo.png';
 import { useNavigate } from 'react-router-dom';
 import './Header.css';
@@ -6,15 +6,13 @@ import './Header.css';
 const Header = () => {
   const navigate = useNavigate();
   const [showDescription, setShowDescription] = useState(false);
-  const [buttonText, setButtonText] = useState('Learn More');
 
   const handleProfileClick = () => {
     navigate('/MyAccount');
   };
 
   const toggleDescription = () => {
-    setShowDescription(!showDescription);
-    setButtonText(showDescription ? 'Learn More' : 'View Less');
+    setShowDescription(prevState => !prevState);
   };
 
   return (
@@ -24,14 +22,16 @@ const Header = () => {
           <img src={logo} alt="Janagrah Logo" />
         </div>
         <div className="profile">
-          <i class="fa-solid fa-user" onClick={handleProfileClick}></i>
+          <i className="fa-solid fa-user" onClick={handleProfileClick}></i>
         </div>
       </div>
       <div className="hero">
         <div className="container">
           <h1 className="hero-title">Your Voice, Shaping Our Ward</h1>
           <div className='hero-content'>
-            <button className="hero-button" onClick={toggleDescription}>{buttonText}</button>
+            <button className="hero-button" onClick={toggleDescription}>
+              {showDescription ? 'View Less' : 'Learn More'}
+            </button>
           </div>
         </div>
       </div>
@@ -41,7 +41,6 @@ const Header = () => {
           <p>Together, we can build a more engaged and informed community.</p>
         </div>
       )}
-
     </header>
   );
 };

@@ -4,17 +4,9 @@ body {
   font-family: Arial, sans-serif;
 }
 
-/* Header styles */
-.header .profile {
-  display: flex;
-  align-items: center;
-}
 
-.header .profile-btn:focus,
-.header .profile-btn:hover {
-  outline: none;
-  text-decoration: underline;
-}
+
+
 
 /* Main content styles */
 .main-content {

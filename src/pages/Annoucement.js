@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
+import './Announcement.css'
 
 const Announcement = () => {
   const [announcements, setAnnouncements] = useState([]);

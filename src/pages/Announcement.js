@@ -71,7 +71,7 @@ const Announcement = () => {
         {newsData.length > 3 && (
           <button type="button" className="load-more" onClick={loadMoreNews}>Load More</button>
         )}
-        <button type="button" classname="Announced-history" onClick={() => {navigate('/AnnouncedHistory')}}>Announced Events</button>
+        
       </div>
     </section>
   );

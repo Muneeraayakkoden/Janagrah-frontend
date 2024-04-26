@@ -38,7 +38,7 @@ function OfficialHome() {
   
   // Fetch notifications on initial render
   const handleAnnounceEvent = () => {
-    navigate('/Announcement');
+    navigate('/CreateUpdates');
   };
   
   return (
