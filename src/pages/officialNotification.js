@@ -4,7 +4,7 @@ import UserRequests from './UserRequests';
 
 const OfficialNotification = () => {
   const [messages, setMessages] = useState([]);
-
+  const [loginRequests, setLoginRequests] = useState([]);
   // Fetch login requests and messages from backend
   useEffect(() => {
     const fetchData = async () => {
@@ -30,7 +30,7 @@ const OfficialNotification = () => {
 
       <div className="login">
         <h2>User Requests</h2>
-        <UserRequests />
+        <UserRequests loginRequests={loginRequests}/>
       </div>
 
       <div className="message">

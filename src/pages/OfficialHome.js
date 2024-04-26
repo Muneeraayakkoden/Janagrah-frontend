@@ -52,7 +52,7 @@ function OfficialHome() {
           <p>Empowering Our Community</p>
         </header>
         <div className="profile">
-          <i class="fa-solid fa-user" onClick={handleProfileClick}></i>
+          <i className="fa-solid fa-user" onClick={handleProfileClick}></i>
         </div>
         <div className="notification-bell" onClick={handleNotificationClick}>
         <i className="fas fa-bell"></i>
@@ -66,7 +66,7 @@ function OfficialHome() {
               <h3>Create Survey</h3>
               <p>Design and launch surveys to gather resident feedback.</p>
             </a>
-            <a href="#" className="survey-card" onClick={(e) => navigate('SurveyPage', e)}>
+            <a href="#" className="survey-card" onClick={(e) => navigate('/SurveyPage')}>
               <h3>SURVEYS DONE</h3>
               <p>Analyze resident responses and gain valuable insights.</p>
             </a>

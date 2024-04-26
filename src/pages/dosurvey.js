@@ -72,38 +72,43 @@ function DoSurvey() {
 
   return (
     <div className="container">
-      {polls.map((poll, index) => (
-        <div key={poll._id}>
-          <h1>Poll: {poll.surveyName}</h1>
-          <p>Survey Description: {poll.surveyDescription}</p>
-          <div className="options">
-            {poll.options.map((option) => (
-              <div key={option._id} className="option">
-                <input
-                  type="radio"
-                  id={option._id}
-                  name="option"
-                  value={option.text}
-                  checked={selectedOptionId === option._id}
-                  onChange={handleOptionChange}
-                />
-                <label htmlFor={option._id}>{option.text}</label>
-              </div>
-            ))}
+      {polls.length === 0 ? (
+        <div>No surveys available</div>
+      ) : (
+        polls.map((poll, index) => (
+          <div key={poll._id}>
+            <h1>Poll: {poll.surveyName}</h1>
+            <p>Survey Description: {poll.surveyDescription}</p>
+            <div className="options">
+              {poll.options.map((option) => (
+                <div key={option._id} className="option">
+                  <input
+                    type="radio"
+                    id={option._id}
+                    name="option"
+                    value={option.text}
+                    checked={selectedOptionId === option._id}
+                    onChange={handleOptionChange}
+                  />
+                  <label htmlFor={option._id}>{option.text}</label>
+                </div>
+              ))}
+            </div>
+            <button
+              type="button"
+              disabled={submitted}
+              onClick={() => handleSubmit(poll._id, index)}
+            >
+              Submit
+            </button>
+            {submitted && <div className="result">Thank you for your vote!</div>}
+            {errorMessages[index] && <div className="error">{errorMessages[index]}</div>}
           </div>
-          <button
-            type="button"
-            disabled={submitted}
-            onClick={() => handleSubmit(poll._id, index)} // Pass pollIndex to handleSubmit
-          >
-            Submit
-          </button>
-          {submitted && <div className="result">Thank you for your vote!</div>}
-          {errorMessages[index] && <div className="error">{errorMessages[index]}</div>} {/* Render error message if exists for this poll */}
-        </div>
-      ))}
+        ))
+      )}
     </div>
   );
+  
 }
 
 export default DoSurvey;

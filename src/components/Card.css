@@ -1,4 +1,6 @@
 /* Card Component */
+
+
 .card {
   display: flex;
   flex-direction: column;
