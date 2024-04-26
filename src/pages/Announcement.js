@@ -1,12 +1,10 @@
 // NewsSection.jsx
 import React, { useState, useEffect } from 'react';
 import './Announcement.css';
-import { useNavigate } from 'react-router-dom';
 
 const Announcement = () => {
   const [newsData, setNewsData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const navigate=useNavigate();
 
   useEffect(() => {
     fetchDataFromBackend();

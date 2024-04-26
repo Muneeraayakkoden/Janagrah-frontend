@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './OfficialNotification.css';
+import './officialNotification.css';
 import UserRequests from './UserRequests';
 
 const OfficialNotification = () => {

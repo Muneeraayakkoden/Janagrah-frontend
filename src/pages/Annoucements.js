@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Announcement.css'
 
-const Announcement = () => {
+const Announcements = () => {
   const [announcements, setAnnouncements] = useState([]);
   
   /*useEffect(() => {
@@ -90,5 +90,5 @@ const Announcement = () => {
   );
 };
 
-export default Announcement;
+export default Announcements;
 

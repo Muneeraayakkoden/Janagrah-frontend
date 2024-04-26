@@ -9,42 +9,13 @@ const ContactPage = () => {
   const [messageSent, setMessageSent] = useState(false);
   const [showSendMessage, setShowSendMessage] = useState(false);
 
-  const wardid = JSON.parse(localStorage.getItem('wardmemberid'));
-  console.log(wardid);
-  const name = JSON.parse(localStorage.getItem('username'));
-  console.log(name);
-  useEffect(() => {
-    // Function to fetch messages from the backend when component mounts
-    const fetchMessages = async () => {
-      try {
-        const response = await fetch('http://localhost:4000/messages/send',{
-          method: "POST",
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            name:name,
-            wardid:wardid,
-            
-            description:formData.description
-
-          }),
-        });
-       // Replace URL with your backend endpoint
-        if (response.ok) {
-          const data = await response.json();
-          setMessages(data.messages); // Assuming the response contains an array of messages
-        } else {
-          console.error('Failed to fetch messages');
-        }
-      } catch (error) {
-        console.error('Error fetching messages:', error);
-      }
   useEffect(() => {
     fetchMessageHistory();
   }, []);
 
-
+  const handleAnonymousChange = (event) => {
+    setIsAnonymous(event.target.id === 'anonymous');
+  };
 
   const fetchMessageHistory = async () => {
     try {
@@ -59,14 +30,6 @@ const ContactPage = () => {
       console.error('Error fetching message history:', error.message);
     }
   };
-
-  
-        
-
-    // Call the fetchMessages function
-    fetchMessages();
-  }, []);
-} // Empty dependency array to ensure this effect runs only once when the component mounts
 
   const handleSendMessage = async (event) => {
     event.preventDefault();
@@ -92,7 +55,6 @@ const ContactPage = () => {
       setNewMessage('');
       setMessageSent(true);
       setTimeout(() => setMessageSent(false), 3000); 
-      fetchMessageHistory();
     } catch (error) {
       console.error('Error sending message:', error);
     }
@@ -153,7 +115,7 @@ const ContactPage = () => {
                   name="messageType"
                   value="s"
                   checked={!isAnonymous}
-                  onChange={() => setIsAnonymous(false)}
+                  onChange={handleAnonymousChange}
                 />
                 <label htmlFor="nonAnonymous">Non-anonymous</label>
                 <input
@@ -162,7 +124,7 @@ const ContactPage = () => {
                 name="messageType"
                 value="s"
                 checked={isAnonymous}
-                onChange={() => setIsAnonymous(true)}
+                onChange={handleAnonymousChange}
                 />
                 <label htmlFor="anonymous">Anonymous</label>
               </div>

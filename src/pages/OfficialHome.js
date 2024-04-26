@@ -11,7 +11,7 @@ function OfficialHome() {
   const navigate = useNavigate();
   
   const handleNotificationClick = () => {
-    navigate('/OfficialNotification');
+    navigate('/officialNotification');
   };
 
   const handleProfileClick = () => {
@@ -38,7 +38,7 @@ function OfficialHome() {
   
   // Fetch notifications on initial render
   const handleAnnounceEvent = () => {
-    navigate('/CreateUpdates');
+    navigate('/CreateAnnouncement');
   };
   
   return (

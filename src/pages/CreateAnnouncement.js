@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import './CreateUpdates.css';
+import './CreateAnnouncement.css';
+import { useNavigate } from 'react-router-dom';
 
-function CreateUpdates() {
+function CreateAnnouncement() {
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         title: "",
         description: "",
@@ -55,13 +57,14 @@ function CreateUpdates() {
                 } else {
                     // Handle error
                     console.log("Failed to create announcement");
-                // setAnnouncementSent(false);
+                    setAnnouncementSent(false);
                  }
             } else {
             console.error("Required data from local storage is missing.");
             }
         }catch(error){
             console.log("Error submitting form:",error);
+            setAnnouncementSent(false);
         }
     };
 
@@ -71,24 +74,7 @@ function CreateUpdates() {
 
     return (
         <div>
-            <div className="history">
-                <h1>History</h1>
-                {updates.length > 0 ? (
-                    <ul>
-                        {updates.map((update, index) => (
-                            <li key={index}>
-                                <h3>{update.title}</h3>
-                                <p>{update.description}</p>
-                            </li>
-                        ))}
-                    </ul>
-                ) : (
-                    <p>No updates yet.</p>
-                )}
-                {updates.length > 0 && (
-                    <button onClick={handleClearHistory}>Clear History</button>
-                )}
-            </div>
+            <div className="create-updates-container">
             <h1>Create Event</h1>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="title">Announcement Title:</label>
@@ -99,11 +85,15 @@ function CreateUpdates() {
                     <label htmlFor="upload-event">Upload Event (optional):</label>
                     <input type="file" id="upload-event" accept=".jpg,.jpeg,.png" onChange={handleChange} />
                 </div>
-                <button type="submit">Publish</button>
-                {announcementSent && <p>Announcement sent successfully!</p>}
+                <button type="submit" className="publish-button">Publish</button>
+                {announcementSent && <p className="success-message">Announcement sent successfully!</p>}
             </form>
-        </div>
+            </div>
+            <div className="history-button-container">
+                <button type="button" className="history-button" onClick={() => {navigate('/AnnouncedHistory')}}>Announced Events</button>
+            </div>
+        </div> 
     );
 }
 
-export default CreateUpdates;
+export default CreateAnnouncement;

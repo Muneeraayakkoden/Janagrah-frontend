@@ -1,24 +1,58 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const AnnouncedHistory = () => {
   const [announcementHistory, setAnnouncementHistory] = useState([]);
+  const [wardid, setWardid] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    fetchAnnouncementHistory();
+    const storedWardid = JSON.parse(localStorage.getItem('username'));
+    console.log(storedWardid);
+    if (storedWardid) {
+      setWardid(storedWardid); // Set wardid state if it exists in local storage
+    } else {
+      console.error("Required data 'wardId' from local storage is missing.");
+    }
   }, []);
+
+  useEffect(() => {
+    if (wardid) {
+      fetchAnnouncementHistory();
+    }
+  }, [wardid]);
 
   const fetchAnnouncementHistory = async () => {
     try {
-      const response = await fetch("http://localhost:4000/announcement/history");
-      if (response.ok) {
-        const data = await response.json();
-        setAnnouncementHistory(data.history);
-      } else {
-        console.error("Failed to fetch announcement history.");
+      if (wardid) {
+        const response = await fetch("http://localhost:4000/announcement/show", {
+              method: "POST",
+              headers: {
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                  wardid:wardid,
+              }),
+        });
+        console.log(response);
+        if (response.ok) {
+              // Handle success
+            let responseData = await response.json();
+            console.log("All announcement:", responseData);
+            if (!Array.isArray(responseData)) {
+                  responseData = [responseData];
+            }
+        
+            setAnnouncementHistory(responseData); // Set announcements state
+        } else {
+            console.error("Failed to fetch announcement");
+          }   
+      } else{ 
+       console.error("Requird data from local storage is missing.");
       }
-    } catch (error) {
-      console.error("Error fetching announcement history:", error);
-    }
+  }catch(error){
+      console.error("Error in try catch block",error.message);
+  }
   };
 
   const handleDeleteAnnouncement = async (announcementId) => {
@@ -37,21 +71,30 @@ const AnnouncedHistory = () => {
     }
   };
 
+  const handleAnnouncement = () => {
+    navigate('/CreateAnnouncement');
+  };
+
   return (
     <div className="announcement-history">
       <h2>Announcement History</h2>
-      <ul>
-        {announcementHistory.map(announcement => (
-          <li key={announcement.id}>
-            <div className="announcement-details">
-              <h3>{announcement.title}</h3>
-              <p>{announcement.description}</p>
-              <p>Published on: {announcement.publishDate}</p>
-            </div>
-            <button onClick={() => handleDeleteAnnouncement(announcement.id)}>Delete</button>
-          </li>
+      {announcementHistory.length > 0 ? (
+        <ul>
+          {announcementHistory.map(announcement => (
+            <li key={announcement.id}>
+              <div className="announcement-details">
+              <h3>Title:{announcement.title}</h3>
+                <p>Description{announcement.description}</p>
+                <p>Created Date: {announcement.createdDate}</p>
+              </div>
+              <button onClick={() => handleDeleteAnnouncement(announcement.id)}>Delete</button>
+            </li>
         ))}
       </ul>
+      ) : (
+        <p>No announcements to display</p> 
+      )}
+      <button onClick={handleAnnouncement}>Create Announcement</button>
     </div>
   );
 };
