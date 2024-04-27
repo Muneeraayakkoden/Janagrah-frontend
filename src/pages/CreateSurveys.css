@@ -89,3 +89,32 @@
     background-color: #283776; /* Submit button hover effect */
   }
   
+
+  #survey-form button[type="submit"]:hover {
+  background-color: #283776;
+}
+
+@media screen and (max-width: 768px) {
+  .create-survey {
+    padding: 15px;
+    max-width: 90%; /* Adjusted maximum width */
+  }
+
+  .create-survey h1 {
+    font-size: 22px;
+  }
+
+  .form-group label {
+    font-size: 14px;
+  }
+
+  .option-group input[type="text"],
+  .option-group textarea {
+    font-size: 14px;
+  }
+
+  #survey-form button[type="submit"] {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}

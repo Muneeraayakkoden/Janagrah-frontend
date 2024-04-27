@@ -1,8 +1,7 @@
 /* General styles */
 body {
-    font-family: sans-serif;
+    font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0;
   }
   
   .official-homepage {
@@ -12,8 +11,6 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    align-items: center;
-    max-width: 1200px;
     margin: 0 auto;
   }
   
@@ -22,13 +19,12 @@ body {
     justify-content: space-between;
     align-items: center; 
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    max-width: 1200px;
     margin: 0 auto;
   }
 
   .header {
     background-color: #3e65e2;
-    padding: 50px 0;
+    padding: 10px 400px ;
     text-align: center;
   }
   
@@ -45,8 +41,7 @@ body {
   
   .main {
     flex: 1; 
-    max-width: 1200px;
-    margin: 20px auto;
+    margin: 50px auto;
     padding: 20px;
   }
   
@@ -61,23 +56,21 @@ body {
   }
   
   .survey-section h2,
-  .updates-section h2,
-  .news-section h2 {
+  .updates-section h2 {
     margin-bottom: 1rem;
     font-weight: bold;
   }
   
   .survey-cards,
-  .updates-card,
-  .news-card {
+  .updates-cards {
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 5rem;
   }
   
   .survey-card,
-  .updates-card,
-  .news-card {
+  .updates-card {
+    flex: 1 0 calc(33% - 2rem);
     background-color: #f5f5f5;
     padding: 1rem;
     border-radius: 5px;
@@ -87,45 +80,32 @@ body {
   }
   
   .survey-card:hover,
-  .updates-card:hover,
-  .news-card:hover { 
+  .updates-card:hover { 
     background-color: #e0e0e0;
   }
   
   .survey-card h3,
-  .updates-card h3, 
-  .news-card h3 {
+  .updates-card h3 {
     font-size: 1.2rem;
     margin-bottom: 0.5rem;
   }
   
-  .survey-card p {
-    font-size: 0.9rem;
-    color: #666;
-  }
-  
-
+ 
   .footer {
     background-color: #3e65e2;
     color: #fff;
-    padding: 20px 0;
+    padding: 10px 0;
     text-align: center;
   }
   
-  .footer-container {
-    max-width: 1200px;
-    margin: 0 auto;
+  .footer p {
+    margin: 0;
   }
-  
-  .footer .copyright {
-    font-size: 0.9rem;
-  }
-
   
   .notification-bell {
     position: fixed;
-    top: 20px;
-    right: 20px;
+    bottom: 100px; /* Adjust positioning to place it between sections and footer */
+    right: calc(50% - 30px); /* Center the icon horizontally */
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -134,6 +114,7 @@ body {
     align-items: center;
     cursor: pointer;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000; 
   }
   
   .notification-bell i {
@@ -158,7 +139,8 @@ body {
     .main {
       padding: 1rem;
     }
-    .survey-cards {
+    .survey-cards,
+    .updates-cards {
       flex-direction: column;
     }
     .hero {

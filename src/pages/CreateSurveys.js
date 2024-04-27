@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import './CreateSurveys.css'
+import './CreateSurveys.css';
 
-const MAX_OPTIONS = 5; // Maximum allowed survey options
+const MAX_OPTIONS = 5;
 
 const CreateSurvey = () => {
   const [surveyNumber, setSurveyNumber] = useState('');
@@ -73,8 +73,7 @@ const CreateSurvey = () => {
       }
 
       const responseData = await response.json();
-      setSuccessMessage(responseData.message); // Set the success message
-      // Reset form fields after successful submission
+      setSuccessMessage(responseData.message);
       setSurveyNumber('');
       setSurveyName('');
       setTargetedSection('Everyone');
@@ -86,10 +85,9 @@ const CreateSurvey = () => {
   };
 
   return (
-    <div>
+    <div className="create-survey-container">
       <h1>Create Survey</h1>
-       {/* Display success message if available */}
-      <form id="survey-form" onSubmit={handleSubmit}>
+      <form className="survey-form" onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="survey-number">Survey Number:</label>
           <input
@@ -148,7 +146,7 @@ const CreateSurvey = () => {
               <input
                 type="text"
                 id={`option-${option.id}`}
-                name="options[]" // Include options[] for array submission
+                name="options[]"
                 value={option.text}
                 onChange={(event) => handleOptionChange(option.id, event)}
                 required
@@ -166,9 +164,9 @@ const CreateSurvey = () => {
             </div>
           ))}
         </div>
-        <button type="submit">Create Survey</button>
+        <button type="submit" className="create-survey-button">Create Survey</button>
       </form>
-      {successMessage && <p>{successMessage}</p>} 
+      {successMessage && <p className="success-message">{successMessage}</p>}
     </div>
   );
 };
