@@ -1,0 +1,26 @@
+/* Announcement.css */
+
+/* Style for each announcement record */
+.announcement {
+    border: 1px solid #ccc; /* Add border around each announcement */
+    padding: 10px; /* Add padding for spacing */
+    margin-bottom: 10px; /* Add margin at the bottom for separation */
+    background-color: #fff; 
+  }
+  
+  /* Style for announcement titles */
+  .announcement-title {
+    font-weight: bold; /* Make the title bold */
+  }
+  
+  /* Style for announcement descriptions */
+  .announcement-description {
+    color: #666; /* Change color of description text */
+  }
+  
+  /* Style for announcement created date */
+  .announcement-date {
+    font-style: italic; /* Make the date italic */
+    color: #999; /* Change color of date text */
+  }
+  

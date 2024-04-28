@@ -36,10 +36,7 @@ function OfficialHome() {
     fetchNotifications();
   }, []);
   
-  // Fetch notifications on initial render
-  const handleAnnounceEvent = () => {
-    navigate('/CreateAnnouncement');
-  };
+
   
   return (
     <div className="official-homepage">
@@ -75,11 +72,8 @@ function OfficialHome() {
         <section className="updates-section">
           <h2>ANNOUNCEMENT SECTION</h2>
           <div className="updates-cards">
-            <a href="#" className="updates-card" onClick={handleAnnounceEvent}>
-              <h3> Create Announcement</h3>
-            </a>
-            <a href="#" className="updates-card" onClick={(e) => navigate('/AnnouncedHistory')}>
-              <h3>Announcements Done</h3>
+            <a href="#" className="updates-card" onClick={(e) => navigate('/Announcements')}>
+              <h3>Announcements</h3>
             </a>
           </div>
         </section>

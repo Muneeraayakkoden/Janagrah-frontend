@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import './Announcement.css'
+import './Announcements.css'
+
 
 const Announcements = () => {
-  const [announcements, setAnnouncements] = useState([]);
-  
-  /*useEffect(() => {
-    fetchAnnouncements();
-  }, []);*/
+  const [announcements, setAnnouncements] = useState([]); 
+    
+  const wardid = JSON.parse(localStorage.getItem('username'));
+  console.log(wardid);
+
   useEffect(() => {
-    const wardid = JSON.parse(localStorage.getItem('username'));
-    console.log(wardid);
+ 
     if (wardid) {
       fetchAnnouncements();
     } else {
-      console.error("Required data 'wardId' from local storage is missing.");
+      console.error("Required data  from local storage is missing.");
     }
   }, [wardid]);
 
@@ -33,13 +33,13 @@ const Announcements = () => {
               console.log(response);
               if (response.ok) {
                     // Handle success
-                  let responseData = await response.json();
-                  console.log("All announcement:", responseData);
-                  if (!Array.isArray(responseData)) {
+                  const Data = await response.json();
+                  console.log("All announcement:",Data);
+                  /*if (!Array.isArray(responseData)) {
                         responseData = [responseData];
-                  }
-              
-                  setAnnouncements(responseData); // Set announcements state
+                  }*/
+                  console.log(Data.msg);
+                  setAnnouncements(Data.msg); // Set announcements state
               } else {
                   console.error("Failed to fetch announcement");
                 }   
@@ -63,6 +63,21 @@ const Announcements = () => {
       console.error('Error deleting announcement:', error);
     }
   };*/
+  const handleDeleteAnnouncement = async (announcementId) => {
+    try {
+      const response = await fetch(`http://localhost:4000/announcement/delete/${announcementId}`, {
+        method: 'DELETE',
+      });
+      if (response.ok) {
+        // Remove the deleted announcement from the state
+        setAnnouncements(prevAnnouncements => prevAnnouncements.filter(announcement => announcement._id !== announcementId));
+      } else {
+        console.error("Failed to delete announcement.");
+      }
+    } catch (error) {
+      console.error("Error deleting announcement:", error);
+    }
+  };
 
   return (
 
@@ -72,10 +87,11 @@ const Announcements = () => {
        
         <ul>
           {announcements.map((announcement,index) => (
-            <li key={index}>
-              <h3>Title:{announcement.title}</h3>
-              <p>Description{announcement.description}</p>
-              <p>Created Date: {announcement.createdDate}</p>
+            <li key={index} className="announcement" >
+              <p className="announcement-title">Title :{announcement.title}</p>
+              <p className="announcement-description">Description :{announcement.description}</p>
+              <p className="announcement-date"> Date : {announcement.createdAt}</p>
+              <button onClick={() => handleDeleteAnnouncement(announcement._id)}>Delete</button>
             </li>
           ))}
         </ul>
@@ -83,7 +99,7 @@ const Announcements = () => {
         <p>No announcements to display</p>
       )}
       
-      <Link to="/CreateUpdates">
+      <Link to="/CreateAnnouncement">
         <button>Create Announcement</button>
       </Link>
     </div>

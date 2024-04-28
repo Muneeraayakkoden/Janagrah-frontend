@@ -75,9 +75,6 @@ function CreateAnnouncement() {
                     {announcementSent && <p className="success-message">Announcement sent successfully!</p>}
                 </form>
             </div>
-            <div className="history-button-container">
-                <button type="button" className="history-button" onClick={() => {navigate('/AnnouncedHistory')}}>Announced Events</button>
-            </div>
         </div> 
     );
 }
