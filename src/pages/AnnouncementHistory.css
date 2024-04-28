@@ -1,0 +1,68 @@
+.announcement-history {
+    padding: 50px 0; /* Add padding for top and bottom */
+    margin: 0 auto; /* Center the content horizontally */
+    max-width: 800px; /* Set a maximum width for responsiveness */
+    border-radius: 5px; /* Add subtle border radius for visual separation */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add subtle shadow for depth */
+    background-color: #f7f7f7; /* Light background color */
+  }
+  
+  .announcement-history h2 {
+    font-size: 2rem; /* Adjust heading size */
+    margin-bottom: 20px; /* Add spacing below the heading */
+    text-align: center; /* Center the heading text */
+    color: #3e65e2; /* Blue color for title */
+  }
+  
+  .announcements-list {
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    list-style: none; /* Remove default list styling */
+  }
+  
+  .announcement-item {
+    margin-bottom: 20px; /* Add spacing between announcements */
+    display: flex; /* Arrange details and button in a row */
+    flex-wrap: wrap; /* Wrap long titles to next line */
+    border-radius: 5px; /* Add border radius for visual separation */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+    background-color: #fff; /* White background for content */
+    overflow: hidden; /* Prevent overflowing content from breaking layout */
+  }
+  
+  .announcement-details {
+    flex: 1; /* Allow details to grow and fill available space */
+    padding: 20px; /* Add padding for content */
+  }
+  
+  .announcement-details h3,
+  .announcement-details p {
+    margin: 5px 0; /* Add spacing between elements */
+  }
+  
+  .announcement-details h3 {
+    font-size: 1.2rem; /* Adjust title size within announcement */
+    color: #3e65e2; /* Blue color for title */
+  }
+  
+  .announcement-details p {
+    font-size: 1rem; /* Adjust paragraph size */
+    color: #333; /* Grey color for description and date */
+  }
+  
+  .create-announcement-button {
+    display: block; /* Display button as block element */
+    margin: 10px 0 0 auto; /* Move button below details, centered */
+    padding: 10px 20px; /* Add padding for button text */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Add border radius */
+    cursor: pointer; /* Indicate hover effect */
+    background-color: #3e65e2; /* Blue background color */
+    color: white; /* White text color */
+    font-weight: bold; /* Bold text */
+  }
+  
+  .create-announcement-button:hover {
+    background-color: #283776; /* Darker blue on hover */
+  }
+  

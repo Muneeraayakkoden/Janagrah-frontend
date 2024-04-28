@@ -4,8 +4,6 @@ import { useNavigate } from 'react-router-dom';
 
 const SurveyPage = () => {
   const [surveyDataList, setSurveyDataList] = useState([]);
-  //const [username, setUsername] = useState('');
-  //const history = useHistory();
   const navigate = useNavigate();
   
   useEffect(() => {

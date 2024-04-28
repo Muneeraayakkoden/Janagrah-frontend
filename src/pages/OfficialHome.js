@@ -59,25 +59,27 @@ function OfficialHome() {
         </div>
       </div>
       <main className="main">
+
         <section className="survey-section">
           <h2>SURVEY SECTION</h2>
           <div className="survey-cards">
             <a href="#" className="survey-card" onClick={(e) => {e.preventDefault(); navigate('/CreateSurveys');}}>
               <h3>Create Survey</h3>
-              <p>Design and launch surveys to gather resident feedback.</p>
             </a>
             <a href="#" className="survey-card" onClick={(e) => navigate('/SurveyPage')}>
-              <h3>SURVEYS DONE</h3>
-              <p>Analyze resident responses and gain valuable insights.</p>
+              <h3>Surveys Done</h3>
             </a>
           </div>
         </section>
 
         <section className="updates-section">
-          <h2>SEND ANNOUNCEMENTS</h2>
+          <h2>ANNOUNCEMENT SECTION</h2>
           <div className="updates-cards">
             <a href="#" className="updates-card" onClick={handleAnnounceEvent}>
-              <h3>Announce an event</h3>
+              <h3> Create Announcement</h3>
+            </a>
+            <a href="#" className="updates-card" onClick={(e) => navigate('/AnnouncedHistory')}>
+              <h3>Announcements Done</h3>
             </a>
           </div>
         </section>
