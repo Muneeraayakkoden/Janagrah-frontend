@@ -7,20 +7,17 @@ const AnnouncedHistory = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const storedWardid = JSON.parse(localStorage.getItem('username'));
-    console.log(storedWardid);
-    if (storedWardid) {
-      setWardid(storedWardid); // Set wardid state if it exists in local storage
+    const wardid = JSON.parse(localStorage.getItem('username'));
+    console.log(wardid);
+    if (wardid) {
+      fetchAnnouncementHistory();
     } else {
       console.error("Required data 'wardId' from local storage is missing.");
     }
-  }, []);
-
-  useEffect(() => {
-    if (wardid) {
-      fetchAnnouncementHistory();
-    }
   }, [wardid]);
+
+
+  
 
   const fetchAnnouncementHistory = async () => {
     try {
@@ -83,9 +80,9 @@ const AnnouncedHistory = () => {
           {announcementHistory.map(announcement => (
             <li key={announcement.id}>
               <div className="announcement-details">
-              <h3>Title:{announcement.title}</h3>
-                <p>Description{announcement.description}</p>
-                <p>Created Date: {announcement.createdDate}</p>
+              <h3>Title: {announcement.title}</h3>
+                <p>Description: {announcement.description}</p>
+                <p>Created Date: {announcement.createdAt}</p>
               </div>
               <button onClick={() => handleDeleteAnnouncement(announcement.id)}>Delete</button>
             </li>

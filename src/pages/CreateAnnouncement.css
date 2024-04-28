@@ -25,7 +25,7 @@
 .create-updates-container textarea {
   padding: 10px;
   margin-bottom: 15px;
-  border: 1px solid #ccc;
+  border: 0.5px solid #66afd6;
   border-radius: 5px;
 }
 

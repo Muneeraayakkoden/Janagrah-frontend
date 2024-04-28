@@ -10,7 +10,7 @@ function CreateAnnouncement() {
         uploadEvent: null,
     });
     const [announcementSent, setAnnouncementSent] = useState(false);
-    const [error, setError] = useState(null); // New state for handling errors
+    const [error, setError] = useState(null); 
    
     const handleChange = (e) => {
         const { id, value, files } = e.target;

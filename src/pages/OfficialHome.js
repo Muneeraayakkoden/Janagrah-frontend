@@ -78,7 +78,7 @@ function OfficialHome() {
             <a href="#" className="updates-card" onClick={handleAnnounceEvent}>
               <h3> Create Announcement</h3>
             </a>
-            <a href="#" className="updates-card" onClick={(e) => navigate('/AnnouncementHistory')}>
+            <a href="#" className="updates-card" onClick={(e) => navigate('/AnnouncedHistory')}>
               <h3>Announcements Done</h3>
             </a>
           </div>
