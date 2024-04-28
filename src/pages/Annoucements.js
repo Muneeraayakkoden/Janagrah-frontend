@@ -65,8 +65,12 @@ const Announcements = () => {
   };*/
   const handleDeleteAnnouncement = async (announcementId) => {
     try {
-      const response = await fetch(`http://localhost:4000/announcement/delete/${announcementId}`, {
-        method: 'DELETE',
+      const response = await fetch(`http://localhost:4000/announcement/delete`, {
+        method: 'POST',
+         headers: {
+            'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ msgId: announcementId }),
       });
       if (response.ok) {
         // Remove the deleted announcement from the state
