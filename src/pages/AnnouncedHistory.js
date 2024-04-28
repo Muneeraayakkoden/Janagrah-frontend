@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 
 const AnnouncedHistory = () => {
   const [announcementHistory, setAnnouncementHistory] = useState([]);
-  const [wardid, setWardid] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -27,9 +26,7 @@ const AnnouncedHistory = () => {
               headers: {
                   'Content-Type': 'application/json'
               },
-              body: JSON.stringify({
-                  wardid:wardid,
-              }),
+              body: JSON.stringify({wardid}),
         });
         console.log(response);
         if (response.ok) {
@@ -78,7 +75,7 @@ const AnnouncedHistory = () => {
       {announcementHistory.length > 0 ? (
         <ul>
           {announcementHistory.map(announcement => (
-            <li key={announcement.id}>
+            <li key={index}>
               <div className="announcement-details">
               <h3>Title: {announcement.title}</h3>
                 <p>Description: {announcement.description}</p>
