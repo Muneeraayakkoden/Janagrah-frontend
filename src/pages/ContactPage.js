@@ -9,20 +9,30 @@ const ContactPage = () => {
   const [messageSent, setMessageSent] = useState(false);
   const [showSendMessage, setShowSendMessage] = useState(false);
 
+  const userid = JSON.parse(localStorage.getItem('username'));
+  const wardid = JSON.parse(localStorage.getItem('wardmemberid'));
+ 
   useEffect(() => {
     fetchMessageHistory();
   }, []);
 
   const handleAnonymousChange = (event) => {
-    setIsAnonymous(event.target.id === 'anonymous');
+    setIsAnonymous(event.target.value === 'false');
   };
 
   const fetchMessageHistory = async () => {
     try {
-      const response = await fetch('http://your-backend-api-url/messages');
+      console.log(userid);
+      const response = await fetch('http://localhost:4000/message/show',{
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userid),
+      });
       if (response.ok) {
         const data = await response.json();
-        setMessages(data.messages);
+        setMessages(data);
       } else {
         console.error('Failed to fetch message history. Status:', response.status);
       }
@@ -33,28 +43,32 @@ const ContactPage = () => {
 
   const handleSendMessage = async (event) => {
     event.preventDefault();
-    const message = {
-      text: newMessage,
+    const messageData = {
+      userid: userid,
+      wardid: wardid,
+      message: newMessage,
       anonymous: isAnonymous,
     };
 
-    const backendUrl = 'http://your-backend-api-url/messages';
+    const backendUrl = "http://localhost:4000/message/send";
     try {
       const response = await fetch(backendUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(message),
+        body: JSON.stringify(messageData),
       });
       if (!response.ok) {
         throw new Error('Failed to send message');
       }
-      console.log('Sending message:', message);
-      setMessages([...messages, message]);
+      const responseData = await response.json();
+      console.log(responseData);
+      setMessages([...messages, responseData.msg]);
       setNewMessage('');
       setMessageSent(true);
-      setTimeout(() => setMessageSent(false), 3000); 
+      setTimeout(() => setMessageSent(false), 10000); 
+      
     } catch (error) {
       console.error('Error sending message:', error);
     }
@@ -84,7 +98,11 @@ const ContactPage = () => {
           <ul key={messages.length}>
             {messages.map((msg, index) => (
               <li key={index}>
-                {msg.text} ({msg.anonymous ? 'Anonymous' : 'Non-Anonymous'})
+                <div>
+                <p>Message: {msg.message}</p>
+                <p>Time: {msg.createdAt}</p>
+                <p>Anonymous: {msg.anonymous ? 'Yes' : 'No'}</p>
+              </div>
               </li>
             ))}
           </ul>
@@ -113,7 +131,7 @@ const ContactPage = () => {
                   type="radio"
                   id="nonAnonymous"
                   name="messageType"
-                  value="s"
+                  value="true"
                   checked={!isAnonymous}
                   onChange={handleAnonymousChange}
                 />
@@ -122,7 +140,7 @@ const ContactPage = () => {
                 type="radio"
                 id="anonymous"
                 name="messageType"
-                value="s"
+                value="false"
                 checked={isAnonymous}
                 onChange={handleAnonymousChange}
                 />
@@ -130,7 +148,7 @@ const ContactPage = () => {
               </div>
               <button type="submit">Send</button>
             </form>
-            {messageSent && <p>Message Sent</p>}
+            {messageSent && <p classNAme="success">Message Sent Successfully</p>}
           </div>
         )}
       </div>
