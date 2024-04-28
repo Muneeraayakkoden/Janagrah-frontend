@@ -9,6 +9,7 @@ const ContactPage = () => {
   const [messageSent, setMessageSent] = useState(false);
   const [showSendMessage, setShowSendMessage] = useState(false);
 
+
   const userid = JSON.parse(localStorage.getItem('username'));
   const wardid = JSON.parse(localStorage.getItem('wardmemberid'));
  
@@ -28,11 +29,12 @@ const ContactPage = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(userid),
+        body: JSON.stringify({userid}),
       });
       if (response.ok) {
         const data = await response.json();
-        setMessages(data);
+        console.log(data.userMsg);
+        setMessages(data.userMsg);
       } else {
         console.error('Failed to fetch message history. Status:', response.status);
       }

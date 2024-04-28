@@ -69,6 +69,24 @@ button[type="submit"]:hover {
   padding: 50px 50px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  border: 5px;
+}
+.contactPage ul {
+  list-style: none;
+  padding: 0;
+}
+
+.contactPage li {
+  border: 1px solid #ccc; /* Add border to each list item */
+  margin-bottom: 10px; /* Add some space between each list item */
+  padding: 10px; /* Add padding for better readability */
+  background-color: #fff;
+}
+
+
+
+.contactPage p {
+  margin: 0; /* Remove default margin for paragraphs */
 }
 
 .message-input {

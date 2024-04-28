@@ -6,7 +6,7 @@ const AnnouncedHistory = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const wardid = JSON.parse(localStorage.getItem('username'));
+    const wardid = localStorage.getItem('username');
     console.log(wardid);
     if (wardid) {
       fetchAnnouncementHistory();
