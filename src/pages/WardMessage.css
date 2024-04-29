@@ -1,0 +1,44 @@
+/* Styling for WardMessage component */
+.ward-message-container {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .ward-message-title {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .ward-message-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .ward-message-item {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 20px;
+  }
+  
+  .ward-message-content {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .ward-message-time {
+    font-size: 14px;
+    color: #666666;
+  }
+  
+  .ward-message-user-id {
+    font-size: 16px;
+    color: #333333;
+  }
+  
+  .ward-message-private {
+    color: #ff0000; /* Red color for private messages */
+  }
+  

@@ -20,6 +20,7 @@ import UserRequests from './pages/UserRequests.js';
 import Dosurvey from './pages/dosurvey.js';
 import Announcements from './pages/Annoucements.js'
 import MemberAccount from './pages/MemberAccount.js';
+import WardMessage from './pages/WardMessage.js';
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
           <Route path="/MyAccount" Component={MyAccount} />
           <Route path="/EditProfile" Component={EditProfile} />
           <Route path="/UserRequests" Component={UserRequests} />
+          <Route path="/WardMessage" Component={WardMessage} />          
           <Route path="/dosurvey" Component={Dosurvey} />
           <Route path="/Announcements" Component={Announcements} />
           <Route path="/MemberAccount" Component={MemberAccount} />
