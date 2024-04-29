@@ -1,17 +1,6 @@
 /* Footer */
 
-.footer {
-  background-color: #3e65e2;
-  color: #fff;
-  padding: 20px 0;
-  text-align: center;
-}
-
 .footer-container {
   max-width: 1200px;
   margin: 0 auto;
-}
-
-.footer .copyright {
-  font-size: 0.9rem;
 }

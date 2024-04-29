@@ -1,5 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 import ResidentHome from './pages/ResidentHome';
 import LoginPage from './pages/LoginPage.js';
@@ -21,6 +23,7 @@ import Dosurvey from './pages/dosurvey.js';
 import Announcements from './pages/Annoucements.js'
 import MemberAccount from './pages/MemberAccount.js';
 import WardMessage from './pages/WardMessage.js';
+
 
 function App() {
   return (
