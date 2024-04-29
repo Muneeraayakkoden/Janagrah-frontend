@@ -76,7 +76,7 @@ const ContactPage = () => {
     }
   };
 
-  const handleClearHistory = async () => {
+  /*const handleClearHistory = async () => {
     try {
       const response = await fetch('http://your-backend-api-url/messages/clear', {
         method: 'DELETE',
@@ -90,7 +90,7 @@ const ContactPage = () => {
     } catch (error) {
       console.error('Error clearing message history:', error.message);
     }
-  };
+  };*/
 
   return (
     <div className="contactPage">
@@ -104,11 +104,12 @@ const ContactPage = () => {
                 <p>Message: {msg.message}</p>
                 <p>Time: {msg.createdAt}</p>
                 <p>Anonymous: {msg.anonymous ? 'Yes' : 'No'}</p>
+                <p className={msg.read ? 'Seen' : 'not-seen'}>{msg.read ? 'Seen' : 'Unseen'}</p>
+
               </div>
               </li>
             ))}
           </ul>
-          <button onClick={handleClearHistory}>Clear History</button>
         </div>
       ) : (
         <p>No history</p>

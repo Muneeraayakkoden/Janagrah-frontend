@@ -137,3 +137,11 @@ input, select, button {
   font-weight: bold;
   margin-top: 10px;
 }
+.Seen {
+  color: green;
+}
+
+/* Style for unread messages */
+.not-seen {
+  color: red;
+}

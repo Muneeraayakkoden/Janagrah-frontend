@@ -40,5 +40,44 @@
   
   .ward-message-private {
     color: #ff0000; /* Red color for private messages */
+    font-weight: bold;
   }
+  .delete-button {
+    
+    top: 10px;
+    right: 10px;
+    background-color: #f00d0d; /* Red color for delete button */
+    color: #ffffff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .delete-button:hover {
+    background-color: #ff3333; /* Darker red color on hover */
+  }
+  /* Adjust the position of the Read button */
+/* Adjust the position of the Read button */
+.read-button {
+    background-color: #28a745; /* Green color for Read button */
+    color: #ffffff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-right: 10px; /* Add margin between Read and Delete buttons */
+    cursor: pointer;
+  }
+  
+  .read-button:hover {
+    background-color: #218838; /* Darker green color on hover */
+  }
+  .ward-message-read{
+    color: #3498db;
+  }
+  .ward-message-unread{
+    color: #3498db;
+  }
+  
+  
   
