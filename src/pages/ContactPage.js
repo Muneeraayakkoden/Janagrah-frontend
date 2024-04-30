@@ -104,7 +104,7 @@ const ContactPage = () => {
                 <p>Message: {msg.message}</p>
                 <p>Time: {msg.createdAt}</p>
                 <p>Anonymous: {msg.anonymous ? 'Yes' : 'No'}</p>
-                <p className={msg.read ? 'Seen' : 'not-seen'}>{msg.read ? 'Seen' : 'Unseen'}</p>
+                <p className={msg.read ? 'Seen' : 'not-seen'}>{msg.read ? 'Viewed' : 'Unread'}</p>
 
               </div>
               </li>
