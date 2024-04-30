@@ -30,7 +30,18 @@ const Results = () => {
 
       if (response.ok) {
         const data = await response.json();
-        setSurveyResults(data.optionCounts); // Set the survey result data received from the backend
+        console.log("data", data);
+        const totalCount = Object.values(data.optionCounts).reduce(
+          (acc, count) => acc + count,
+          0
+        );
+        const percentageResults = Object.fromEntries(
+          Object.entries(data.optionCounts).map(([option, count]) => [
+            option,
+            count / totalCount,
+          ])
+        );
+        setSurveyResults(percentageResults); // Set the survey result data received from the backend
       } else {
         console.error("Failed to fetch survey results");
       }
@@ -46,6 +57,24 @@ const Results = () => {
     }
   }, [surveyId]);
 
+  const getOptionDisplay = (percentage) => {
+    if (percentage < 0.05) {
+      return "15%"; // Set a fixed width for very low percentages
+    } else {
+      return `${percentage * 100}%`; // Set the percentage width for other options
+    }
+  };
+
+  const getPercentageColor = (percentage) => {
+    if (percentage >= 0.7) {
+      return "green";
+    } else if (percentage >= 0.3 && percentage < 0.7) {
+      return "yellow";
+    } else {
+      return "red";
+    }
+  };
+
   return (
     <div>
       <h3>Survey History</h3>
@@ -53,13 +82,60 @@ const Results = () => {
         <div>
           <p>Survey ID: {surveyId}</p>
           <p>Survey Results:</p>
-          <ul>
-            {Object.entries(surveyResults).map(([option, count]) => (
-              <li key={option}>
-                Option: {option}, Count: {count}
-              </li>
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+            }}
+          >
+            {Object.entries(surveyResults).map(([option, percentage]) => (
+              <div
+                key={option}
+                style={{
+                  backgroundColor: getPercentageColor(percentage),
+                  width: getOptionDisplay(percentage),
+                  height: "150px", // Increase height here
+                  padding: "10px",
+                  margin: "5px",
+                  border: "1px solid #000",
+                  borderRadius: "15px", // Rounded corners
+                  fontFamily: "Arial, sans-serif", // Font family
+                  fontSize: "16px", // Increase font size
+                  whiteSpace: "nowrap",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  position: "relative", // Position the percentage text
+                }}
+                title={`${option}: ${(percentage * 100).toFixed(2)}%`}
+              >
+                <div
+                  style={{
+                    position: "absolute",
+                    top: "50%",
+                    left: "50%",
+                    transform: "translate(-50%, -50%)",
+                    fontSize: "30px", // Increase font size for option text
+                    fontWeight: "bold",
+                    color: "black",
+                  }}
+                >
+                  {option}
+                </div>
+                <div
+                  style={{
+                    position: "absolute",
+                    bottom: "5px",
+                    right: "5px",
+                    fontSize: "30px", // Increase font size for percentage text
+                    fontWeight: "bold",
+                    color: "black",
+                  }}
+                >
+                  {(percentage * 100).toFixed(2)}%
+                </div>
+              </div>
             ))}
-          </ul>
+          </div>
         </div>
       ) : (
         <p>Loading survey results...</p>

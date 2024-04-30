@@ -49,6 +49,7 @@ const CreateSurvey = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    const username = JSON.parse(localStorage.getItem('username'));
 
     const formData = {
       surveyNumber,
@@ -56,8 +57,10 @@ const CreateSurvey = () => {
       targetedSection,
       surveyDescription,
       options: options.map(option => option.text),
-      username: localStorage.getItem('username')
+      username: username // Use the parsed username
     };
+  
+    console.log("formdata",formData);
 
     try {
       const response = await fetch('http://localhost:4000/poll/createpoll', {
