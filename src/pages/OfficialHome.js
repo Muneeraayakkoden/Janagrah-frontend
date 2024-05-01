@@ -17,6 +17,10 @@ function OfficialHome() {
   const handleProfileClick = () => {
     navigate('/MemberAccount');
   };
+   
+  const handleViewResidentsClick = () => {
+    navigate('/AllResidents');
+  };
 
   const fetchNotifications = async () => {
     
@@ -75,6 +79,12 @@ function OfficialHome() {
             <a href="#" className="updates-card" onClick={(e) => navigate('/Announcements')}>
               <h3>Announcements</h3>
             </a>
+          </div>
+        </section>
+        <section className="residents-section">
+          <h2>RESIDENTS SECTION</h2>
+          <div className="residents-card" onClick={handleViewResidentsClick}>
+            <h3>View All Residents</h3>
           </div>
         </section>
 
