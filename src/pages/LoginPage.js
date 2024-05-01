@@ -201,14 +201,13 @@ function LoginPage() {
         </div>
         <div className="tabs">
           <div className={`tab ${selectedTab === 'resident' ? 'active' : ''}`} onClick={() => setSelectedTab('resident')}>
-            Resident Login
+            RESIDENT LOGIN
           </div>
           <div className={`tab ${selectedTab === 'official' ? 'active' : ''}`} onClick={() => setSelectedTab('official')}>
-            Official Login
+            OFFICIAL LOGIN
           </div>
         </div>
         <div className="login-form">
-          <h2>{selectedTab === 'resident' ? 'Resident Login' : 'Official Login'}</h2>
           {selectedTab === 'resident' ? <ResidentLoginForm onRegisterClick={handleResidentRegisterClick} /> : <OfficialLoginForm  />}
         </div>
       </div>

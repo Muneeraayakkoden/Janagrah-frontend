@@ -1,8 +1,8 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: Calibri, sans-serif;
-  background-color: #f9f9f9;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f4f7f6;
 }
 
 .LoginPage {
@@ -13,13 +13,13 @@ body {
 }
 
 .login-container {
-  background-color: white;
-  padding: 40px;
+  background-color: #fff;
+  padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   width: 90%;
   max-width: 400px;
-  height: 700px; /* Fixed height for container */
+  height: 650px; /* Fixed height for container */
 }
 
 .logo-container {
@@ -28,69 +28,72 @@ body {
 }
 
 .logo-container img {
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 120px;
 }
 
 .tabs {
   display: flex;
+  justify-content: space-between;
   margin-bottom: 20px;
 }
 
 .tab {
-  flex: 1;
-  text-align: center;
-  padding: 15px 0;
+  padding: 12px 5px; /* Reduced padding */
   cursor: pointer;
-  background-color: #f2f2f2;
-  border-radius: 10px 10px 0 0;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s ease;
 }
 
 .tab.active {
-  background-color: #3889de; /* Active tab color */
-  color: white;
+  color: #007bff;
+  border-bottom: 2px solid #007bff;
+}
+
+.tab:hover {
+  color: #0056b3;
 }
 
 .login-form {
-  padding: 10px 20px;
-  border-radius: 0 0 10px 10px;
+  padding: 20px;
 }
 
 h2 {
   font-size: 24px;
   margin-bottom: 20px;
-  color: rgb(7, 126, 218);
+  color: #007bff;
   text-align: center;
 }
 
 .input-group {
   margin-bottom: 20px;
-  position: relative;
 }
 
 input[type="text"],
 input[type="password"] {
   margin: 8px 0;
-  padding: 12px; /* Add padding to input fields for better spacing and appearance */
-  width : 100%;
-  border: 0.5px solid #66afd6;
+  padding: 12px;
+  width: calc(100% - 24px); /* Adjusted width to accommodate padding */
+  border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 16px;
-  box-sizing: border-box;
+  transition: border-color 0.3s ease;
 }
 
-/* Combined button styles for consistency */
+input[type="text"]:focus,
+input[type="password"]:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
 .button-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  text-align: center;
 }
 
 .login-btn,
 .register-btn {
-  padding: 10px 20px;
+  padding: 12px 24px;
   margin: 10px;
   border: none;
   border-radius: 5px;
@@ -111,21 +114,11 @@ input[type="password"] {
 .forgot-password {
   color: #007bff;
   text-decoration: none;
-  cursor: pointer;
+  transition: color 0.3s ease;
 }
 
 .forgot-password:hover {
-  text-decoration: underline;
-}
-
-@media screen and (max-width: 600px) {
-  .LoginPage {
-    padding: 20px;
-  }
-
-  .login-container {
-    width: 100%;
-  }
+  color: #0056b3;
 }
 
 .error-message {
@@ -134,9 +127,15 @@ input[type="password"] {
 }
 
 .password-toggle {
-  position: absolute; /* Changed position to absolute */
+  position: absolute;
   top: 50%;
-  right: 10px; /* Adjusted right spacing */
+  right: 10px;
   transform: translateY(-50%);
   cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+  .login-container {
+    padding: 20px;
+  }
 }
