@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import './UserRequests.css'
 const UserRequests = () => {
   const [userData, setUserData] = useState([]);
   const [responseMessage, setResponseMessage] = useState('');
@@ -113,8 +113,8 @@ const UserRequests = () => {
               <p>Address: {user.address}</p>
               <p>Username: {user.username}</p>
               {/* Add more fields if needed */}
-              <button onClick={() => handleApprove(user._id)}>Approve</button>
-              <button onClick={() => handleReject(user._id)}>Reject</button>
+              <button className="accept-button" onClick={() => handleApprove(user._id)}>Approve</button>
+              <button className="reject-button" onClick={() => handleReject(user._id)}>Reject</button>
             </li>
           ))
         ) : (

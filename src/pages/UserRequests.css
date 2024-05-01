@@ -1,0 +1,23 @@
+/* Add CSS classes for the accept and reject buttons */
+.accept-button {
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    margin-right: 5px;
+    cursor: pointer;
+  }
+  
+  .reject-button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  /* Style for the response message */
+  .response-message {
+    color: red;
+  }
+  
