@@ -1,58 +1,29 @@
-/* Header container */
 .header {
-  background-color: #007bff; /* Primary blue background */
-  color: #fff; /* White text color */
-  padding: 5px 0; /* Padding top and bottom */
-}
-
-/* Logo */
-.logo {
-  float: left; /* Align logo to the right */
-}
-
-/* Profile icon */
-.profile {
-  float: right; /* Align profile icon to the left */
-  font-size: 2rem;
-  cursor: pointer;
-}
-
-/* Hero section */
-.hero {
-  clear: both;
-  text-align: center; /* Center align text */
-  padding: 20px 0; /* Padding top and bottom */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .hero-title {
-  font-size: 2rem; /* Larger font size */
-  margin-bottom: 20px; /* Bottom margin */
+  color: #007bff;
+  font-weight: bold;
 }
 
-/* Button */
-.btn {
-  background-color: #fff; /* White background */
-  color: #007bff; /* Primary blue text color */
-  border: 2px solid #fff; /* White border */
-  padding: 10px 20px; /* Padding */
-  border-radius: 5px; /* Rounded corners */
-  font-size: 1rem; /* Font size */
-  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+.btn-outline-light {
+  color: #007bff;
+  border-color: #007bff;
 }
 
-.btn:hover {
-  background-color: #0056b3; /* Darker blue background on hover */
-  color: #fff; /* White text color on hover */
+.btn-outline-light:hover {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
 }
 
-/* Description section */
 .learn-more-description {
-  background-color: #f8f9fa; /* Light gray background */
-  color: #343a40; /* Dark text color */
-  padding: 20px 0; /* Padding top and bottom */
+  background-color: #f8f9fa;
+  border-top: 1px solid #dee2e6;
 }
 
-.learn-more-description p {
-  margin-bottom: 5px; /* Bottom margin for paragraphs */
-  padding : 10px 10px;
+.paragraphs {
+  padding: 20px;
+  color: #007bff;
 }

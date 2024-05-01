@@ -1,20 +1,17 @@
 import React from 'react';
 import Header from '../components/Header';
 import Services from './Services';
-import './ResidentHome.css';
+//import './ResidentHome.css';
 import { useNavigate } from 'react-router-dom';
 import Announcement from './Announcement';
-
+import Footer from '../components/Footer';
 
 const ResidentHome = () => {
   const navigate = useNavigate();
 
   return (
     <div className="resident-home">
-      <header>
-        <Header />
-      </header>
-
+      <Header />
       <main className="main-content">
         <section className="survey-section">
           <div className="survey-card">
@@ -39,8 +36,8 @@ const ResidentHome = () => {
         <section id="services" className="services-section">
           <Services />
         </section>
-
       </main>
+      <Footer />
     </div>
   );
 };
