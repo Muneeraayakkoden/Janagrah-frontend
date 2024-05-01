@@ -1,15 +1,12 @@
 
 import React, { useState } from 'react';
-import './OfficialNotification.css';
+import './officialNotification.css';
 import UserRequests from './UserRequests';
 import WardMessage from './WardMessage';
 
+
 const OfficialNotification = () => {
   const [displayUserRequests, setDisplayUserRequests] = useState(true);
-
-  const toggleDisplay = () => {
-    setDisplayUserRequests(prevState => !prevState);
-  };
 
   return (
     <div className="notification-page">
