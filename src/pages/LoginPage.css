@@ -21,6 +21,7 @@ body {
   width: 90%;
   max-width: 350px;
   height: 580px; /* Fixed height for container */
+  z-index: 2;
 }
 
 .logo-container {
@@ -152,7 +153,7 @@ input[type="password"]:focus {
   background-image: url('../assets/image1.jpg');
   background-size: cover;
   background-position: center;
-  animation: backgroundAnimation1 20s linear infinite;
+  animation: backgroundAnimation1 5s linear infinite;
 }
 
 .background-image2 {
