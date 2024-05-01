@@ -1,0 +1,59 @@
+/* AllResidents.css */
+body{
+  background-color: rgb(216, 234, 245);
+}
+.user-count{
+  position: right;
+  font-size: 1.2rem;
+  
+}
+.all-residents-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .resident-card {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .resident-details {
+    margin-bottom: 10px;
+  }
+  
+  .resident-details p {
+    margin: 5px 0;
+  }
+  
+  .resident-details p:first-child {
+    font-weight: bold;
+  }
+  
+  /* Style for individual fields 
+  .resident-name {
+    color: #333;
+    font-size: 1.2rem;
+  }
+  
+  .resident-email {
+    color: #666;
+  }
+  
+  .resident-phone {
+    color: #666;
+  }
+  
+  .resident-address {
+    color: #666;
+  }
+  
+  .resident-card:last-child {
+    margin-bottom: 0;
+  }
+  
+  /* AllResidents.css */
+

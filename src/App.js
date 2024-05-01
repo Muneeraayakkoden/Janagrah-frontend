@@ -23,7 +23,7 @@ import Dosurvey from './pages/dosurvey.js';
 import Announcements from './pages/Annoucements.js'
 import MemberAccount from './pages/MemberAccount.js';
 import WardMessage from './pages/WardMessage.js';
-
+import AllResidents from './pages/AllResidents.js';
 
 function App() {
   return (
@@ -51,6 +51,7 @@ function App() {
           <Route path="/dosurvey" Component={Dosurvey} />
           <Route path="/Announcements" Component={Announcements} />
           <Route path="/MemberAccount" Component={MemberAccount} />
+          <Route path="/AllResidents" Component={AllResidents} />
         </Routes>
       </BrowserRouter>
     </div>
