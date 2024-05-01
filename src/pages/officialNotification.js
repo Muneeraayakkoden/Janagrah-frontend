@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import './officialNotification.css';
+import './OfficialNotification.css';
 import UserRequests from './UserRequests';
 import WardMessage from './WardMessage';
 

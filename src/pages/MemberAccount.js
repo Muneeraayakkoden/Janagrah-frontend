@@ -25,9 +25,7 @@ const MemberAccount = () => {
     }
   };
   const handleLogout = () => {
-    // Clear user data from local storage
-    localStorage.removeItem('token');
-    // Navigate to the login page
+    localStorage.clear();
     navigate('/LoginPage');
   };
   
@@ -38,9 +36,16 @@ const MemberAccount = () => {
       {userData && (
         <div className="user-info">
           <h2>Personal Information</h2>
+          <p>Name: {userData.name}</p>
           <p>Username: {userData.username}</p>
           <p>Password: {userData.password}</p>
-          {/* Display other user details here */}
+          <p>Age: {userData.age}</p>
+          <p>Phone Number: {userData.phone_no}</p>
+          <p>Email: {userData.email}</p>
+          <p>State: {userData.state}</p>
+          <p>District: {userData.district}</p>
+          <p>Ward No: {userData.wardNo}</p>
+          <p>Local Government: {userData.localgovernment}</p>
         </div>
       )}
       <button onClick={handleLogout}>Logout</button>

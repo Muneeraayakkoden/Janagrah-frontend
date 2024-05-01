@@ -20,17 +20,8 @@ function OfficialHome() {
    
 
   const fetchNotifications = async () => {
-    
-    try {
-      const response = await fetch(API_ENDPOINT);
-      if (response.ok) {
-        console.log('Notifications fetched successfully');
-      } else {
-        console.error('Failed to fetch notifications:', response.statusText);
-      }
-    } catch (error) {
-      console.error('Error fetching notifications:', error);
-    }
+    var bell = document.querySelector('.notification-bell');
+    bell.classList.toggle('active');
   };
 
   useEffect(() => {
@@ -46,7 +37,7 @@ function OfficialHome() {
           <img src={logo} alt="Janagrah Logo" />
         </div>
         <header className="header">
-          <h1>Janagrah</h1>
+          <h1>JANAGRAH</h1>
           <p>Empowering Our Community</p>
         </header>
         <div className="profile">
@@ -80,7 +71,7 @@ function OfficialHome() {
         </section>
         <section className="residents-section">
           <h2>RESIDENTS SECTION</h2>
-          <div className="residents-card" onClick={(e) => navigate('/AllResidents')}>
+          <div href="#" className="residents-card" onClick={(e) => navigate('/AllResidents')}>
             <h3>View All Residents</h3>
           </div>
         </section>

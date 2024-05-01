@@ -2,6 +2,7 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
+    
   }
   
   .official-homepage {
@@ -23,20 +24,22 @@ body {
   }
 
   .header {
-    background-color: #3e65e2;
-    padding: 10px 400px ;
+    background-color: #04049b;
+    padding: 10px 350px ;
     text-align: center;
   }
   
   .header h1 {
-    font-size: 2.5rem;
+    font-size: 4.5rem;
+    margin-top: 30px;
     margin-bottom: 20px;
-    color: white;
+    color: #b5b682;
   }
   
   .header p {
-    font-size: 1.25rem;
+    font-size: 1.55rem;
     margin-bottom: 30px;
+    color:white
   }
   
   .main {
@@ -92,7 +95,7 @@ body {
   
  
   .footer {
-    background-color: #3e65e2;
+    background-color: #04049b;
     color: #fff;
     padding: 10px 0;
     text-align: center;
@@ -103,9 +106,10 @@ body {
   }
   
   .notification-bell {
-    position: fixed;
-    bottom: 100px; /* Adjust positioning to place it between sections and footer */
-    right: calc(50% - 30px); /* Center the icon horizontally */
+    position: absolute;
+    bottom: 100px;
+    top: calc(1cm + 15px);
+    right: calc(40% - 13cm); /* Center the icon horizontally */
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -115,12 +119,18 @@ body {
     cursor: pointer;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     z-index: 1000; 
+    transition: all 0.3s ease-in-out;
   }
   
   .notification-bell i {
-    font-size: 2rem;
+    font-size: 3rem;
     color: goldenrod;
   }
+  .notification-bell:hover {
+    top: 50px; 
+    right: 20px; 
+    
+}
   
   /* Notification content styles */
   .notification-content {
