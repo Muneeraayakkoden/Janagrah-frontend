@@ -1,29 +1,23 @@
+/* Additional Custom CSS */
+
 .header {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-left: 240px;
 }
 
-.hero-title {
-  color: #007bff;
-  font-weight: bold;
+.btn-outline-primary {
+  color: #007bff; /* Blue text color for the button */
 }
 
-.btn-outline-light {
-  color: #007bff;
-  border-color: #007bff;
-}
-
-.btn-outline-light:hover {
-  color: #fff;
-  background-color: #007bff;
-  border-color: #007bff;
-}
-
-.learn-more-description {
-  background-color: #f8f9fa;
-  border-top: 1px solid #dee2e6;
+.btn-outline-primary:hover {
+  background-color: #007bff; /* Blue background color on hover */
+  color: #ffffff; /* White text color on hover */
 }
 
 .paragraphs {
-  padding: 20px;
   color: #007bff;
+  text-align: left;
+}
+
+.learn-more-description {
+  padding: 0; /* Adjusted padding for the "Learn More" description */
 }
