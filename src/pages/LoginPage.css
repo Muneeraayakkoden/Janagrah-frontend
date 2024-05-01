@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Roboto', sans-serif;
+ 
   background-color: #f4f7f6;
 }
 
@@ -10,16 +10,17 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  font-family: 'Georgia' , serif;
 }
 
 .login-container {
   background-color: #fff;
-  padding: 20px;
+  padding: 8px;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   width: 90%;
-  max-width: 400px;
-  height: 650px; /* Fixed height for container */
+  max-width: 350px;
+  height: 550px; /* Fixed height for container */
 }
 
 .logo-container {
@@ -28,18 +29,18 @@ body {
 }
 
 .logo-container img {
-  width: 120px;
-  height: 120px;
+  width: 100px;
+  height: 100px;
 }
 
 .tabs {
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
+  justify-content: space-around;
+
 }
 
 .tab {
-  padding: 12px 5px; /* Reduced padding */
+  padding: 10px 5px; /* Reduced padding */
   cursor: pointer;
   color: #333;
   font-weight: 500;
@@ -54,6 +55,7 @@ body {
 .tab:hover {
   color: #0056b3;
 }
+
 
 .login-form {
   padding: 20px;
