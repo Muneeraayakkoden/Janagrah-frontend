@@ -1,21 +1,50 @@
-
-
-.card-body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
+/* Services.css */
+.services {
+  padding: 50px 0; /* Adjust padding as needed */
 }
 
-.card-icon {
-  font-size: 2rem;
+.section-title {
+  text-align: center;
+  margin-bottom: 50px; /* Adjust margin as needed */
+}
+
+.feature-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Style for each card */
+.card {
+  margin: 20px; /* Adjust margin as needed */
+  max-width: 300px; /* Adjust max-width as needed */
 }
 
 .card-title {
-  font-size: 1.5rem;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px; /* Adjust margin as needed */
+}
+
+.card-icon {
+  font-size: 36px; /* Adjust icon size as needed */
+  margin-bottom: 20px; /* Adjust margin as needed */
 }
 
 .card-description {
-  font-size: 1rem;
-  color: #666;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+  .card {
+    max-width: calc(50% - 40px); /* Adjust width for smaller screens */
+  }
+}
+
+@media (max-width: 576px) {
+  .card {
+    max-width: calc(100% - 40px); /* Adjust width for even smaller screens */
+  }
 }

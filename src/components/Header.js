@@ -10,7 +10,7 @@ const Header = () => {
   };
 
   return (
-    <header className="header bg-white text-primary py-1">
+    <header className="header bg-white text-primary">
       <div className="row">
         <div className="logo">
           <img src={logo} alt="Janagrah Logo" />

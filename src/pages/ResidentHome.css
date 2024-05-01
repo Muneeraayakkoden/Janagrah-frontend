@@ -1,60 +1,31 @@
-/* Global styles */
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
+
+.nav-link {
+  padding: 10px 20px; /* Add padding to the navigation links */
+  font-size: 18px; /* Increase font size of the navigation links */
 }
 
-
-/* Main content styles */
-.main-content {
-  max-width: 1200px;
-  margin: 20px auto;
-  padding: 20px;
+.nav-link i {
+  padding-left: 5px; /* Add margin to the right of the icon */
 }
 
-/* Survey section styles */
-.survey-section {
-  margin-bottom: 20px;
+.navbar-nav .nav-item {
+  padding: 0; /* Add padding to the top and bottom of each nav item */
 }
 
-/* Contact section styles */
-.contact-section {
-  margin-bottom: 20px;
+.navbar-nav .nav-item .nav-link {
+  color: #007bff !important; /* White text color for nav links */
+  padding-bottom: 50px;
 }
 
-/* News section styles */
-.news-section {
-  margin-bottom: 20px;
+.navbar-nav .nav-item .nav-link:hover {
+  color: #007bff!important; /* Lighter text color on hover */
 }
 
-/* Services section styles */
-.services-section {
-  margin-bottom: 20px;
+.nav-text {
+  margin-left: 10px; /* Add margin to the left of the nav text */
 }
 
-/* Survey card and contact card styles */
-.survey-card,
-.contact-card {
-  background-color: #f5f5f5;
-  padding: 1rem;
-  border-radius: 5px;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-}
-
-.survey-card:hover,
-.contact-card:hover {
-  background-color: #e0e0e0;
-}
-
-.survey-card h3,
-.contact-card h3 {
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
-}
-
-.contact-card p {
-  font-size: 0.9rem;
-  color: #666;
+.col-md-2 {
+  height: 100vh; /* Extend the column to the full height of the viewport */
+  padding-left: 0;
 }
