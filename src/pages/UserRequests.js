@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 const UserRequests = () => {
   const [userData, setUserData] = useState([]);
+  const [responseMessage, setResponseMessage] = useState('');
 
   useEffect(() => {
     sendUserDataToBackend();
@@ -29,46 +30,49 @@ const UserRequests = () => {
         const responseData = await response.json();
         console.log('User data:', responseData);
         setUserData(responseData.data); // Update state with fetched data
+        setResponseMessage('');
       } else {
         console.error('Failed to send user data');
+        const errorData = await response.json();
+        setResponseMessage(errorData.message);
       }
     } catch (error) {
       console.error('There was a problem with your fetch operation:', error);
+      setResponseMessage('Error: ' + error.message);
     }
   };
 
   const handleApprove = async (userId) => {
     try {
-      // Implement approve logic here
       console.log('Approve user with ID:', userId);
       const username = JSON.parse(localStorage.getItem('username'));
 
-      // Send user ID to the backend for approval
       const response = await fetch('http://localhost:4000/login/userapprove', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ userId,username }),
+        body: JSON.stringify({ userId, username }),
       });
 
       if (response.ok) {
         console.log('User approved successfully');
-        // Perform any additional actions after approval
+        setResponseMessage('User approved successfully');
       } else {
         console.error('Failed to approve user');
+        const errorData = await response.json();
+        setResponseMessage(errorData.message);
       }
     } catch (error) {
       console.error('Error approving user:', error);
+      setResponseMessage('Error: ' + error.message);
     }
   };
 
   const handleReject = async (userId) => {
     try {
-      // Implement reject logic here
       console.log('Reject user with ID:', userId);
 
-      // Send user ID to the backend for rejection
       const response = await fetch('http://localhost:4000/login/reject', {
         method: 'POST',
         headers: {
@@ -79,12 +83,15 @@ const UserRequests = () => {
 
       if (response.ok) {
         console.log('User rejected successfully');
-        // Perform any additional actions after rejection
+        setResponseMessage('User rejected successfully');
       } else {
         console.error('Failed to reject user');
+        const errorData = await response.json();
+        setResponseMessage(errorData.message);
       }
     } catch (error) {
       console.error('Error rejecting user:', error);
+      setResponseMessage('Error: ' + error.message);
     }
   };
 
@@ -114,9 +121,10 @@ const UserRequests = () => {
           <p>No user data available</p>
         )}
       </ul>
+      {responseMessage && <p style={{ color: 'red' }}>{responseMessage}</p>
+}
     </div>
   );
-
 };
 
 export default UserRequests;
