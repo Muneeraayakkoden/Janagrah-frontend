@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './ResidentSignup.css';
 import { useNavigate } from "react-router-dom";
 
+
 const ResidentSignup = () => {
   const navigate = useNavigate();
 
@@ -49,7 +50,7 @@ const ResidentSignup = () => {
       case 'district':
       case 'localAuthority':
       case 'name':
-        if (!/^[a-zA-Z]+$/.test(value)) {
+        if (!/^[a-zA-Z\s]+$/.test(value)) {
           error = 'Field must contain only alphabets.';
         }
         break;
