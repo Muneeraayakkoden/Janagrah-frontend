@@ -29,9 +29,7 @@ const AllResidents = () => {
                 // Handle success
               const Data = await response.json();
               console.log("All Residents:",Data);
-              /*if (!Array.isArray(responseData)) {
-                    responseData = [responseData];
-              }*/
+
               console.log(Data.users);
               setDetails(Data.users); // Set announcements state
           } else {
@@ -46,13 +44,14 @@ const AllResidents = () => {
   };
 
   return (
-    <div className="all-residents-container"> {/* Apply the CSS class to the container */}
+    <div className="all-residents-container">
       <h1>ALL RESIDENTS</h1>
       <p className="user-count">Total Users: {details.length}</p>
       {details.length > 0 ? (
         <div>
           {details.map((user, index) => (
-            <div key={index} className="resident-card"> {/* Apply the CSS class to each card */}
+            <div key={index} className="resident-card"> 
+                
               <div className="resident-details">
                 <p className="resident-name">Name: {user.name}</p>
                 <p>State: {user.state}</p>
@@ -61,10 +60,10 @@ const AllResidents = () => {
                 <p>Ward: {user.ward}</p>
                 <p>Voter ID: {user.voterId}</p>
                 <p>Age: {user.age}</p>
-                <p className="resident-phone">Phone: {user.phone}</p> {/* Apply the CSS class to phone */}
+                <p className="resident-phone">Phone: {user.phone}</p>
                 <p>Job: {user.job}</p>
-                <p className="resident-address">Address: {user.address}</p> {/* Apply the CSS class to address */}
-                <p className="resident-email">Email: {user.email}</p> {/* Apply the CSS class to email */}
+                <p className="resident-address">Address: {user.address}</p> 
+                <p className="resident-email">Email: {user.email}</p> 
                 <p>Username: {user.username}</p>
                 <p>Password: {user.password}</p>
                 <p>Annual Income: {user.annualIncome}</p>

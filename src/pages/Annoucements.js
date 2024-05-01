@@ -87,6 +87,9 @@ const Announcements = () => {
 
     <div>
       <h1>Announcements</h1>
+      <Link to="/CreateAnnouncement">
+        <button>Create Announcement</button>
+      </Link>
       {announcements.length > 0 ? (
        
         <ul>
@@ -103,9 +106,7 @@ const Announcements = () => {
         <p>No announcements to display</p>
       )}
       
-      <Link to="/CreateAnnouncement">
-        <button>Create Announcement</button>
-      </Link>
+
     </div>
   );
 };
