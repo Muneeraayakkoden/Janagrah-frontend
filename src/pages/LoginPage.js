@@ -90,7 +90,7 @@ function ResidentLoginForm() {
         </span>
       </div>
       <div class="button-container">
-        <button type="submit" class="login-btn" onClick={handleLogin}>Resident Login</button>
+        <button type="submit" class="login-btn" onClick={handleLogin}>Login</button>
         <div className="error-message">{error}</div>
         <div><a href="#" class="forgot-password" onClick={handleForgotPasswordClick}>Forgot Password?</a></div>
         <button class="register-btn" onClick={() => {navigate('/ResidentSignup')}}>Register Now</button>
@@ -180,7 +180,7 @@ function OfficialLoginForm() {
         </span>
       </div>
       <div class="button-container">
-      <button type="submit" className="login-btn" onClick={handleLogin}>Official Login</button>
+      <button type="submit" className="login-btn" onClick={handleLogin}>Login</button>
         <div className="error-message">{error}</div>
         <div><a href="#" class="forgot-password" onClick={handleForgotPasswordClick}>Forgot Password?</a></div>
       </div>

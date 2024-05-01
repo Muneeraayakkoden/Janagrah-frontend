@@ -1,8 +1,7 @@
 body {
   margin: 0;
   padding: 0;
- 
-  background-color: #f4f7f6;
+  overflow: hidden; 
 }
 
 .LoginPage {
@@ -11,6 +10,7 @@ body {
   align-items: center;
   height: 100vh;
   font-family: 'Georgia' , serif;
+  position: relative;
 }
 
 .login-container {
@@ -20,7 +20,7 @@ body {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   width: 90%;
   max-width: 350px;
-  height: 550px; /* Fixed height for container */
+  height: 580px; /* Fixed height for container */
 }
 
 .logo-container {
@@ -93,24 +93,30 @@ input[type="password"]:focus {
   text-align: center;
 }
 
-.login-btn,
-.register-btn {
+.login-btn {
   padding: 12px 24px;
   margin: 10px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  background-color: #007bff;
+  color: #fff;
   transition: background-color 0.3s ease;
 }
 
-.login-btn {
-  background-color: #007bff;
-  color: #fff;
+.register-btn {
+  background-color: #fff;
+  color: #007bff;
+  border: 1px solid #007bff;
+  padding: 12px 24px;
+  margin: 10px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-.register-btn {
-  background-color: #28a745;
-  color: #fff;
+.register-btn:hover {
+  border-color: #007bff;
+  color:white;
 }
 
 .forgot-password {
@@ -135,6 +141,47 @@ input[type="password"]:focus {
   transform: translateY(-50%);
   cursor: pointer;
 }
+
+/* Background image animations */
+.background-image1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../assets/image1.jpg');
+  background-size: cover;
+  background-position: center;
+  animation: backgroundAnimation1 20s linear infinite;
+}
+
+.background-image2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../assets/image2.jpg');
+  background-size: cover;
+  background-position: center;
+  animation: backgroundAnimation2 20s linear infinite;
+}
+
+@keyframes backgroundAnimation1 {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes backgroundAnimation2 {
+  0% { opacity: 0; }
+  10% { opacity: 0; }
+  20% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
 
 @media screen and (max-width: 600px) {
   .login-container {
