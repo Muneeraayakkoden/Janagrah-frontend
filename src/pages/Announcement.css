@@ -72,11 +72,3 @@
 .load-more:hover {
   background-color: #0056b3;
 }
-.delete-button {
-  background-color:red;
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  margin-right: 5px;
-  cursor: pointer;
-}

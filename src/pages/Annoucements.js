@@ -98,7 +98,7 @@ const Announcements = () => {
               <p className="announcement-title">Title :{announcement.title}</p>
               <p className="announcement-description">Description :{announcement.description}</p>
               <p className="announcement-date"> Date : {announcement.createdAt}</p>
-              <button className="delete-button"onClick={() => handleDeleteAnnouncement(announcement._id)}>Delete</button>
+              <button onClick={() => handleDeleteAnnouncement(announcement._id)}>Delete</button>
             </li>
           ))}
         </ul>
