@@ -1,37 +1,28 @@
 /* Services.css */
 .services {
-  padding: 50px 0;
-  text-align: center;
+  padding: 50px 0; /* Adjust padding as needed */
 }
 
 .section-title {
-  font-size: 2.5rem;
-  margin-bottom: 30px;
-  color: #3e65e2;
+  text-align: center;
+  margin-bottom: 50px; /* Adjust margin as needed */
 }
 
 .feature-cards {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center;
 }
 
-/* Adjust card styles as needed */
-.card {
-  width: 300px;
-  padding: 20px;
-  margin: 20px;
-  border-radius: 10px;
-  background-color: #f7f7f7;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+  .feature-cards .card {
+    max-width: calc(50% - 40px); /* Adjust width for smaller screens */
+  }
 }
 
-.card h3 {
-  font-size: 1.5rem;
-  color: #3e65e2;
-}
-
-.card p {
-  font-size: 1.1rem;
-  color: #333;
+@media (max-width: 576px) {
+  .feature-cards .card {
+    max-width: calc(100% - 40px); /* Adjust width for even smaller screens */
+  }
 }

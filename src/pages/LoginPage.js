@@ -90,7 +90,7 @@ function ResidentLoginForm() {
         </span>
       </div>
       <div class="button-container">
-        <button type="submit" class="login-btn" onClick={handleLogin}>Resident Login</button>
+        <button type="submit" class="login-btn" onClick={handleLogin}>Login</button>
         <div className="error-message">{error}</div>
         <div><a href="#" class="forgot-password" onClick={handleForgotPasswordClick}>Forgot Password?</a></div>
         <button class="register-btn" onClick={() => {navigate('/ResidentSignup')}}>Register Now</button>
@@ -180,7 +180,7 @@ function OfficialLoginForm() {
         </span>
       </div>
       <div class="button-container">
-      <button type="submit" className="login-btn" onClick={handleLogin}>Official Login</button>
+      <button type="submit" className="login-btn" onClick={handleLogin}>Login</button>
         <div className="error-message">{error}</div>
         <div><a href="#" class="forgot-password" onClick={handleForgotPasswordClick}>Forgot Password?</a></div>
       </div>
@@ -195,20 +195,21 @@ function LoginPage() {
   }
   return (
     <div className="LoginPage">
+      <div className="background-image1"></div>
+      <div className="background-image2"></div>
       <div className="login-container">
         <div className="logo-container">
           <img src={logo} alt="Janagrah Logo" className="logo" />
         </div>
         <div className="tabs">
           <div className={`tab ${selectedTab === 'resident' ? 'active' : ''}`} onClick={() => setSelectedTab('resident')}>
-            Resident Login
+            RESIDENT LOGIN
           </div>
           <div className={`tab ${selectedTab === 'official' ? 'active' : ''}`} onClick={() => setSelectedTab('official')}>
-            Official Login
+            OFFICIAL LOGIN
           </div>
         </div>
         <div className="login-form">
-          <h2>{selectedTab === 'resident' ? 'Resident Login' : 'Official Login'}</h2>
           {selectedTab === 'resident' ? <ResidentLoginForm onRegisterClick={handleResidentRegisterClick} /> : <OfficialLoginForm  />}
         </div>
       </div>

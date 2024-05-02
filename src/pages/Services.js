@@ -3,6 +3,7 @@ import React from 'react';
 import Card from '../components/Card';
 import './Services.css';
 
+
 const features = [
   {
     icon: 'fa-chart-line',
@@ -26,9 +27,11 @@ const Services = () => {
     <section className="services">
       <div className="container">
         <h2 className="section-title">SERVICES</h2>
-        <div className="feature-cards">
+        <div className="row">
           {features.map((feature, index) => (
-            <Card key={index} icon={`fas ${feature.icon}`} title={feature.title} description={feature.description} />
+            <div key={index} className="col-md-4">
+              <Card key={index} icon={`fas ${feature.icon}`} title={feature.title} description={feature.description} />
+            </div>
           ))}
         </div>
       </div>
