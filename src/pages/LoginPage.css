@@ -64,22 +64,9 @@ body {
   
 }
 
-.ResidentSignup {
-  /* Other styles */
-  position: fixed;
-  top: 0;
-  right: -100%; /* Initially off-screen */
-  width: 100%;
-  height: 100%;
-  background-color: rgba(255, 255, 255, 0.8);
-  z-index: 9999;
-  transition: right 0.5s ease; /* Transition the right property */
+h6 {
+  color:black;
 }
-
-.ResidentSignup.show {
-  right: 0; /* Slide in from the right when the "show" class is added */
-}
-
 
 h2 {
   font-size: 24px;
