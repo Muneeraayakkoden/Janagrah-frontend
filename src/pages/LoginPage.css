@@ -14,13 +14,14 @@ body {
 }
 
 .login-container {
-  background-color: #fff;
-  padding: 8px;
-  border-radius: 10px;
+  background-color: rgba(255, 230, 230, 0.6);
+  box-shadow: 3px;
+  padding: 20px;
+  border-radius: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   width: 90%;
   max-width: 350px;
-  height: 580px; /* Fixed height for container */
+  height: 525px; /* Fixed height for container */
   z-index: 2;
 }
 
@@ -60,7 +61,25 @@ body {
 
 .login-form {
   padding: 20px;
+  
 }
+
+.ResidentSignup {
+  /* Other styles */
+  position: fixed;
+  top: 0;
+  right: -100%; /* Initially off-screen */
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 9999;
+  transition: right 0.5s ease; /* Transition the right property */
+}
+
+.ResidentSignup.show {
+  right: 0; /* Slide in from the right when the "show" class is added */
+}
+
 
 h2 {
   font-size: 24px;
@@ -69,7 +88,7 @@ h2 {
   text-align: center;
 }
 
-.input-group {
+.form-group {
   margin-bottom: 20px;
 }
 
@@ -153,35 +172,9 @@ input[type="password"]:focus {
   background-image: url('../assets/image1.jpg');
   background-size: cover;
   background-position: center;
-  animation: backgroundAnimation1 5s linear infinite;
 }
 
-.background-image2 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('../assets/image2.jpg');
-  background-size: cover;
-  background-position: center;
-  animation: backgroundAnimation2 20s linear infinite;
-}
 
-@keyframes backgroundAnimation1 {
-  0% { opacity: 0; }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
-  100% { opacity: 0; }
-}
-
-@keyframes backgroundAnimation2 {
-  0% { opacity: 0; }
-  10% { opacity: 0; }
-  20% { opacity: 1; }
-  90% { opacity: 1; }
-  100% { opacity: 0; }
-}
 
 
 @media screen and (max-width: 600px) {

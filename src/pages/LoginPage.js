@@ -73,27 +73,20 @@ function ResidentLoginForm() {
 
   return (
     <div>
-      <div className="input-group">
-        <input type="text" placeholder="Username*" className="input-field" value={username} onChange={(e) => setUsername(e.target.value)} required />
+      <div className="form-group">
+        <input type="text" placeholder="Username*" className="form-control" value={username} onChange={(e) => setUsername(e.target.value)} required />
       </div>
-      <div className="input-group">
-        <input 
-          type={showPassword ? 'text' : 'password'} 
-          placeholder="Password*" 
-          className="input-field" 
-          value={password} 
-          onChange={(e) => setPassword(e.target.value)} 
-          required
-        />
-        <span className="password-toggle" onClick={togglePasswordVisibility}>
-          {showPassword ? <FaEyeSlash /> : <FaEye />}
-        </span>
+      <div className="form-group">
+        <div className="input-group">
+          <input type={showPassword ? 'text' : 'password'} placeholder="Password*" className="form-control" value={password} onChange={(e) => setPassword(e.target.value)} required />
+          <span className="password-toggle" onClick={togglePasswordVisibility}> {showPassword ? <FaEyeSlash /> : <FaEye />} </span>
+        </div>
       </div>
       <div class="button-container">
-        <button type="submit" class="login-btn" onClick={handleLogin}>Login</button>
+        <button type="submit" className=" btn-primary btn-block" onClick={handleLogin}>Login</button>
         <div className="error-message">{error}</div>
-        <div><a href="#" class="forgot-password" onClick={handleForgotPasswordClick}>Forgot Password?</a></div>
-        <button class="register-btn" onClick={() => {navigate('/ResidentSignup')}}>Register Now</button>
+        <div><a href="#" className="forgot-password" onClick={handleForgotPasswordClick}>Forgot Password?</a></div>
+        <button className="register-btn" onClick={() => {navigate('/ResidentSignup')}}>Register Now</button>
       </div>
     </div>
   );
@@ -163,26 +156,19 @@ function OfficialLoginForm() {
 
   return (
     <div>
-      <div className="input-group">
-        <input type="text" placeholder="Username*" className="input-field" value={username} onChange={(e) => setUsername(e.target.value)} required/>
+      <div className="form-group">
+        <input type="text" placeholder="Username*" className="form-control" value={username} onChange={(e) => setUsername(e.target.value)} required/>
       </div>
       <div className="input-group">
-        <input 
-          type={showPassword ? 'text' : 'password'} 
-          placeholder="Password*" 
-          className="input-field" 
-          value={password} 
-          onChange={(e) => setPassword(e.target.value)} 
-          required
-        />
+        <input type={showPassword ? 'text' : 'password'} placeholder="Password*" className="form-control" value={password} onChange={(e) => setPassword(e.target.value)} required />
         <span className="password-toggle" onClick={togglePasswordVisibility}>
           {showPassword ? <FaEyeSlash /> : <FaEye />}
         </span>
       </div>
       <div class="button-container">
-      <button type="submit" className="login-btn" onClick={handleLogin}>Login</button>
+      <button type="submit" className="btn btn-primary btn-block" onClick={handleLogin}>Login</button>
         <div className="error-message">{error}</div>
-        <div><a href="#" class="forgot-password" onClick={handleForgotPasswordClick}>Forgot Password?</a></div>
+        <div><a href="#" className="forgot-password" onClick={handleForgotPasswordClick}>Forgot Password?</a></div>
       </div>
     </div>
   );
@@ -190,16 +176,19 @@ function OfficialLoginForm() {
 
 function LoginPage() {
   const [selectedTab, setSelectedTab] = useState('resident');
+
+
   const handleResidentRegisterClick = async () => {
     console.log('Redirect to resident registration'); 
+
   }
+
   return (
     <div className="LoginPage">
       <div className="background-image1"></div>
-      <div className="background-image2"></div>
       <div className="login-container">
-        <div className="logo-container">
-          <img src={logo} alt="Janagrah Logo" className="logo" />
+        <div className="logo-container text-center">
+          <img src={logo} alt="Janagrah Logo" className="logo img-fluid" />
         </div>
         <div className="tabs">
           <div className={`tab ${selectedTab === 'resident' ? 'active' : ''}`} onClick={() => setSelectedTab('resident')}>
@@ -210,7 +199,7 @@ function LoginPage() {
           </div>
         </div>
         <div className="login-form">
-          {selectedTab === 'resident' ? <ResidentLoginForm onRegisterClick={handleResidentRegisterClick} /> : <OfficialLoginForm  />}
+          {selectedTab === 'resident' ? <ResidentLoginForm  onRegisterClick={handleResidentRegisterClick} /> : <OfficialLoginForm  />}
         </div>
       </div>
     </div>
