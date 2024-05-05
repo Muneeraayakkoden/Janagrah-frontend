@@ -36,18 +36,6 @@ const ResidentSignup = () => {
     setCurrentPage(pageNumber);
   };
 
-  const nextPage = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage(currentPage + 1);
-    }
-  };
-
-  const prevPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-    }
-  };
-
   const [errorMessage, setErrorMessage] = useState({
     district: '',
     localAuthority: '',
