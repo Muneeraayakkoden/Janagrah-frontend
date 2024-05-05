@@ -362,9 +362,10 @@ const ResidentSignup = () => {
               </div>
             </div>
           )}
-          <p>Already Registered? 
+          
+          <div>Already Registered? 
             <a href="#" onClick={handleLoginClick}> Login here</a>
-          </p>
+          </div>
 
           
           <div className="pagination">
@@ -378,11 +379,12 @@ const ResidentSignup = () => {
               </button>
             ))}
           </div>
-        {/* Submit button */}
-        {currentPage === totalPages && (
-            <button type="submit">Register</button>
+          {/* Submit button */}
+              <br></br>
+          {currentPage === totalPages && (
+              <button type="submit">Register</button>
           )}
-          
+        
         </form>
       </div>
     </div>
