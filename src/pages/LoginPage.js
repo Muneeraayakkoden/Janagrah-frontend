@@ -73,15 +73,13 @@ function ResidentLoginForm() {
 
   return (
     <div>
-      <div className="form-group">
+      <div className="input-group">
         <input type="text" placeholder="Username*" className="form-control" value={username} onChange={(e) => setUsername(e.target.value)} required />
       </div>
-      <div className="form-group">
         <div className="input-group">
           <input type={showPassword ? 'text' : 'password'} placeholder="Password*" className="form-control" value={password} onChange={(e) => setPassword(e.target.value)} required />
           <span className="password-toggle" onClick={togglePasswordVisibility}> {showPassword ? <FaEyeSlash /> : <FaEye />} </span>
         </div>
-      </div>
       <div class="button-container">
         <button type="submit" className=" btn-primary btn-block" onClick={handleLogin}>Login</button>
         <div className="error-message">{error}</div>
@@ -156,7 +154,7 @@ function OfficialLoginForm() {
 
   return (
     <div>
-      <div className="form-group">
+      <div className="input-group">
         <input type="text" placeholder="Username*" className="form-control" value={username} onChange={(e) => setUsername(e.target.value)} required/>
       </div>
       <div className="input-group">
@@ -166,7 +164,7 @@ function OfficialLoginForm() {
         </span>
       </div>
       <div class="button-container">
-      <button type="submit" className="btn btn-primary btn-block" onClick={handleLogin}>Login</button>
+        <button type="submit" className="btn btn-primary btn-block" onClick={handleLogin}>Login</button>
         <div className="error-message">{error}</div>
         <div><a href="#" className="forgot-password" onClick={handleForgotPasswordClick}>Forgot Password?</a></div>
       </div>
