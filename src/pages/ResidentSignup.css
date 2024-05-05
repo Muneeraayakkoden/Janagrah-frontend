@@ -1,40 +1,44 @@
 /* General Styles */
 body {
-  font-family: Calibri, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f5f5f5;
+  overflow: auto;
+  font-family: 'Georgia', serif;
 }
 
 .signup-page {
-  width: 100%;
-  max-width: 400px;
-  margin: 25px auto;
-  padding: 25px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  box-shadow: 0 2 4px rgba(0, 0, 0, 0.1);
-  margin-bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: rgba(255, 230, 230, 0.6);
+  padding: 20px;
+  box-sizing: border-box; /* Ensure padding is included in the width */
+  width: 100%; /* Occupy full width */
+}
+
+.form-section {
+  margin-bottom: 40px;
 }
 
 h1 {
   text-align: center;
+  font-size: 28px;
   margin-bottom: 20px;
-  font-size: 24px;
-  color: #396fc1;
-}
-
-/* Section Styles */
-section {
-  margin-bottom: 20px;
+  color: #007bff;
 }
 
 h2 {
   font-size: 18px;
-  color: #333;
   margin-bottom: 10px;
+  color: #007bff;
 }
 
+.error-message {
+  color: #dc3545;
+  margin-top: 5px;
+}
 
 label {
   display: block;
@@ -53,15 +57,17 @@ select {
   box-sizing: border-box;
   font-size: 16px;
   margin: 8px 0;  
-  padding: 12px 20px;     
+  padding: 12px 20px;
 }
 
 input[type="text"]:focus,
 input[type="number"]:focus,
 input[type="email"]:focus,
 input[type="password"]:focus,
+textarea:focus,
 select:focus {
-  border-color: #999;
+  outline: none;
+  border-color: #007bff;
 }
 
 textarea {
@@ -76,21 +82,55 @@ textarea {
 }
 
 button[type="submit"] {
-  background-color: #1e73ce;
-  color: white;
-  padding: 15px;
+  padding: 12px 24px;
+  border: none;
   border-radius: 5px;
   cursor: pointer;
+  background-color: #007bff;
+  color: #fff;
   font-size: 16px;
-  width: 100%;
-  margin: 10px 0px;
-  border: 0.5px;
-
+  transition: background-color 0.3s ease;
 }
 
 button[type="submit"]:hover {
   background-color: #5997da;
 }
+
+p {
+  font-size: 14px;
+  color: #333;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #0056b3;
+}
+
+/* Pagination styles */
+.pagination {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.pagination button {
+  padding: 10px;
+  background-color: white;
+  color: black;
+  border: #0056b3;
+  border-radius: 50%; /* Make it a circle */
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.pagination button.current {
+  background-color: #0056b3;
+}
+
 
 /* Responsive Styles */
 @media (max-width: 768px) {
@@ -114,13 +154,4 @@ button[type="submit"]:hover {
   textarea {
     font-size: 14px;
   }
-}
-#job{
-  color: grey;
-}
-/* Error Message Styles */
-.error-message {
-  color: red;
-  font-weight: bold;
-  margin-top: 5px;
 }
