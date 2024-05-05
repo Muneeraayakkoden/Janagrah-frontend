@@ -242,157 +242,149 @@ const ResidentSignup = () => {
 
   return (
     <div className="signup-page">
-     {/*<div className="background-image1"></div>*/}
-      <h1>RESIDENT REGISTRATION</h1>
-      <form onSubmit={handleSubmit}>
-        {currentPage === 1 && (
-          <div className={`form-section ${currentPage === 1 ? 'visible' : ''}`}>
-            <h2>Location Details</h2>
-
-            <select name="state" value={formData.state} onChange={handleStateSelection} required>
-              <option value="">Select State*</option>
-              {states.map(state => (
-                <option key={state} value={state}>{state}</option>
-              ))}
-            </select>
-            <br /><br />
-
-            {formData.state === 'Kerala' ? (
-              <select name="district" value={formData.district} onChange={handleChange} required>
-                <option value="">Select District</option>
-                {districts['Kerala'].map(district => (
-                  <option key={district} value={district}>{district}</option>
+      <div className="signup-container">
+        <h1>RESIDENT REGISTRATION</h1>
+        <form onSubmit={handleSubmit}>
+          {currentPage === 1 && (
+            <div className={`form-section ${currentPage === 1 ? 'visible' : ''}`}>
+              <h2>Location Details</h2>
+              <select name="state" value={formData.state} onChange={handleStateSelection} required>
+                <option value="">Select State*</option>
+                {states.map(state => (
+                  <option key={state} value={state}>{state}</option>
                 ))}
               </select>
-            ) : (
-              <div>
-                <input type="text" name="district" placeholder="District*" value={formData.district} onChange={handleChange} required />
-                {errorMessage.district && <p className="error-message">{errorMessage.district}</p>}
-              </div>
-            )}
-            <br /><br />
+              {formData.state === 'Kerala' ? (
+                <select name="district" value={formData.district} onChange={handleChange} required>
+                  <option value="">Select District</option>
+                  {districts['Kerala'].map(district => (
+                    <option key={district} value={district}>{district}</option>
+                  ))}
+                </select>
+              ) : (
+                <div>
+                  <input type="text" name="district" placeholder="District*" value={formData.district} onChange={handleChange} required />
+                  {errorMessage.district && <p className="error-message">{errorMessage.district}</p>}
+                </div>
+              )}
 
-            {formData.district === 'Palakkad' ? (
-              <select name="localAuthority" value={formData.localAuthority} onChange={handleChange} required>
-                <option value="">Select Local-Authority</option>
-                {localAuthorities['Palakkad'].map(localAuthority => (
-                  <option key={localAuthority} value={localAuthority}>{localAuthority}</option>
+              {formData.district === 'Palakkad' ? (
+                <select name="localAuthority" value={formData.localAuthority} onChange={handleChange} required>
+                  <option value="">Select Local-Authority</option>
+                  {localAuthorities['Palakkad'].map(localAuthority => (
+                    <option key={localAuthority} value={localAuthority}>{localAuthority}</option>
+                  ))}
+                </select>
+              ) : (
+                <div>
+                  <input type="text" name="localAuthority" placeholder="Local-Authority*" value={formData.localAuthority} onChange={handleChange} required />
+                  {errorMessage.localAuthority && <p className="error-message">{errorMessage.localAuthority}</p>}
+                </div>
+              )}
+            
+
+              {formData.localAuthority === 'SREEKRISHNAPURAM' ? (
+                <select name="ward" value={formData.ward} onChange={handleChange} required>
+                  <option value="">Select Ward</option>
+                  {wardNo['SREEKRISHNAPURAM'].map(ward => (
+                    <option key={ward} value={ward}>{ward}</option>
+                  ))}
+                </select>
+              ) : (
+                <div>
+                  <input type="number" name="ward" placeholder="Ward No.*" value={formData.ward} onChange={handleChange} required />
+                  {errorMessage.ward && <p className="error-message">{errorMessage.ward}</p>}
+                </div>
+              )}
+            
+            </div>
+          )}
+
+          {currentPage === 2 && (
+            <div className={`form-section ${currentPage === 2 ? 'visible' : ''}`}>
+              <h2>Personal Details</h2>
+              <div>
+                <input type="text" name="name" placeholder="Name*" value={formData.name} onChange={handleChange} required />
+                {errorMessage.name && <p className="error-message">{errorMessage.name}</p>}
+              </div>
+             
+
+              <div>
+                <input type="number" name="age" placeholder="Age*" value={formData.age} onChange={handleChange} required />
+              {errorMessage.age && <p className="error-message">{errorMessage.age}</p>}
+              </div>
+             
+
+              <div>
+                <input type="text" name="voterId" placeholder="Voter ID*" value={formData.voterId} onChange={handleChange} required />
+              {errorMessage.voterId && <p className="error-message">{errorMessage.voterId}</p>}
+              </div>
+             
+
+              <div>
+                <input type="number" name="phone" placeholder="Mobile No.*" value={formData.phone} onChange={handleChange} required />
+              {errorMessage.phone && <p className="error-message">{errorMessage.phone}</p>}
+            
+              </div>
+              
+              <select name="job" value={formData.job} onChange={handleChange} required>
+                <option value="">Job*</option>
+                {jobs.map(job => (
+                  <option key={job} value={job}>{job}</option>
                 ))}
               </select>
-            ) : (
+           
+              
               <div>
-                <input type="text" name="localAuthority" placeholder="Local-Authority*" value={formData.localAuthority} onChange={handleChange} required />
-                {errorMessage.localAuthority && <p className="error-message">{errorMessage.localAuthority}</p>}
+              <input type="number" name="annualIncome" placeholder="Annual Income" value={formData.annualIncome} onChange={handleChange} />
+                {errorMessage.annualIncome && <p className="error-message">{errorMessage.annualIncome}</p>}
               </div>
-            )}
-            <br /><br />
-
-            {formData.localAuthority === 'SREEKRISHNAPURAM' ? (
-              <select name="ward" value={formData.ward} onChange={handleChange} required>
-                <option value="">Select Ward</option>
-                {wardNo['SREEKRISHNAPURAM'].map(ward => (
-                  <option key={ward} value={ward}>{ward}</option>
-                ))}
-              </select>
-            ) : (
+             
               <div>
-                <input type="number" name="ward" placeholder="Ward No.*" value={formData.ward} onChange={handleChange} required />
-                {errorMessage.ward && <p className="error-message">{errorMessage.ward}</p>}
+                <textarea name="address" placeholder="Address" value={formData.address} onChange={handleChange} />
               </div>
-            )}
+            </div>
+          )}
           
+          {currentPage === 3 && (
+            <div className={`form-section ${currentPage === 3 ? 'visible' : ''}`}>
+              <h2>Account Details</h2>
+              <input type="email" name="email" placeholder="Email*" value={formData.email} onChange={handleChange} required />
+              <input type="text" name="username" placeholder="Username*" value={formData.username} onChange={handleChange} required />
+              <div>
+              <input type="password" name="password" placeholder="Password*" value={formData.password} onChange={handleChange} required />
+              {errorMessage.password && <p className="error-message">{errorMessage.password}</p>}
+              </div>
+
+              <div>
+                <input type="password" name="confirmPassword" placeholder="Re-enter Password*" value={formData.confirmPassword} onChange={handleChange} required />
+                {errorMessage.confirmPassword && <p className="error-message">{errorMessage.confirmPassword}</p>}
+              </div>
+            </div>
+          )}
+          <p>Already Registered? 
+            <a href="#" onClick={handleLoginClick}> Login here</a>
+          </p>
+
+          
+          <div className="pagination">
+            {Array.from({ length: totalPages }, (_, i) => (
+              <button
+                key={i + 1}
+                onClick={() => handlePageChange(i + 1)}
+                className={currentPage === i + 1 ? 'current' : ''}
+              >
+                {i + 1}
+              </button>
+            ))}
           </div>
-        )}
-
-        {currentPage === 2 && (
-          <div className={`form-section ${currentPage === 2 ? 'visible' : ''}`}>
-            <h2>Personal Details</h2>
-            <div>
-              <input type="text" name="name" placeholder="Name*" value={formData.name} onChange={handleChange} required />
-              {errorMessage.name && <p className="error-message">{errorMessage.name}</p>}
-            </div>
-            <br /><br />
-
-            <div>
-              <input type="number" name="age" placeholder="Age*" value={formData.age} onChange={handleChange} required />
-            {errorMessage.age && <p className="error-message">{errorMessage.age}</p>}
-            </div>
-            <br /><br />
-
-            <div>
-              <input type="text" name="voterId" placeholder="Voter ID*" value={formData.voterId} onChange={handleChange} required />
-            {errorMessage.voterId && <p className="error-message">{errorMessage.voterId}</p>}
-            </div>
-            <br /><br />
-
-            <div>
-              <input type="number" name="phone" placeholder="Mobile No.*" value={formData.phone} onChange={handleChange} required />
-            {errorMessage.phone && <p className="error-message">{errorMessage.phone}</p>}
-            <br /><br />
-            </div>
-            
-            <select name="job" value={formData.job} onChange={handleChange} required>
-              <option value="">Job*</option>
-              {jobs.map(job => (
-                <option key={job} value={job}>{job}</option>
-              ))}
-            </select>
-            <br /><br />
-            
-            <div>
-            <input type="number" name="annualIncome" placeholder="Annual Income" value={formData.annualIncome} onChange={handleChange} />
-              {errorMessage.annualIncome && <p className="error-message">{errorMessage.annualIncome}</p>}
-            </div>
-            <br /><br />
-            <div>
-              <textarea name="address" placeholder="Address" value={formData.address} onChange={handleChange} />
-            </div>
-          </div>
-        )}
-        
-        {currentPage === 3 && (
-          <div className={`form-section ${currentPage === 3 ? 'visible' : ''}`}>
-            <h2>Account Details</h2>
-            <input type="email" name="email" placeholder="Email*" value={formData.email} onChange={handleChange} required />
-            <br /><br />
-            <input type="text" name="username" placeholder="Username*" value={formData.username} onChange={handleChange} required />
-            <br /><br />
-
-            <div>
-            <input type="password" name="password" placeholder="Password*" value={formData.password} onChange={handleChange} required />
-            {errorMessage.password && <p className="error-message">{errorMessage.password}</p>}
-            </div>
-            <br /><br />
-
-            <div>
-              <input type="password" name="confirmPassword" placeholder="Re-enter Password*" value={formData.confirmPassword} onChange={handleChange} required />
-              {errorMessage.confirmPassword && <p className="error-message">{errorMessage.confirmPassword}</p>}
-            </div>
-            <br /><br />
-          </div>
-        )}
-        <p>Already Registered? 
-          <a href="#" onClick={handleLoginClick}> Login here</a>
-        </p>
-
-        
-        <div className="pagination">
-          {Array.from({ length: totalPages }, (_, i) => (
-            <button
-              key={i + 1}
-              onClick={() => handlePageChange(i + 1)}
-              className={currentPage === i + 1 ? 'current' : ''}
-            >
-              {i + 1}
-            </button>
-          ))}
-        </div>
-      {/* Submit button */}
-      {currentPage === totalPages && (
-          <button type="submit">Register</button>
-        )}
-        
-      </form>
+        {/* Submit button */}
+        {currentPage === totalPages && (
+            <button type="submit">Register</button>
+          )}
+          
+        </form>
+      </div>
     </div>
   );
 }
