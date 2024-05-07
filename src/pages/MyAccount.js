@@ -21,35 +21,25 @@ const MyAccount = () => {
         const password = JSON.parse(localStorage.getItem('password'));
         const job = JSON.parse(localStorage.getItem('job'));
         const age = JSON.parse(localStorage.getItem('age'));
-        const district = JSON.parse(localStorage.getItem('district'));
-        const state = JSON.parse(localStorage.getItem('state'));
         const phn = JSON.parse(localStorage.getItem('phone'));
         const email = JSON.parse(localStorage.getItem('email'));
-        const ward = JSON.parse(localStorage.getItem('ward'));
-        const local = JSON.parse(localStorage.getItem('localAuthority'));
         const annualIncome = JSON.parse(localStorage.getItem('annualIncome'));
         const address = JSON.parse(localStorage.getItem('address'));
         const name = JSON.parse(localStorage.getItem('name'));
-        const voterId = JSON.parse(localStorage.getItem('voterId'));
-        const wardmember = JSON.parse(localStorage.getItem('wardmemberid'));
+        
 
 
       const data = {
         username,
         password,
+        name,  
         job,
         age,
-        state,
-        district,
-        local,
-        ward,
         phn,
         email,
         annualIncome,
         address,
-        name,
-        voterId,
-        wardmember,
+        
       };
 
       setUserData(data);
