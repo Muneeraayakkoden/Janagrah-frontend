@@ -50,6 +50,32 @@ const AllResidents = () => {
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);
   };
+  const handleDelete = async (residentId) => {
+    try {
+      const response = await fetch('http://localhost:4000/user/delete', {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          residentId: residentId,
+        }),
+      });
+      if (response.ok) {
+        const responseData = await response.json();
+        if (responseData.success) {
+          // Remove the deleted resident from the state
+          setDetails(details.filter(resident => resident._id !== residentId));
+        } else {
+          console.log(responseData.message);
+        }
+      } else {
+        console.error("Failed to delete resident");
+      }
+    } catch (error) {
+      console.error("Error deleting resident:", error.message);
+    }
+  };
 
   const filteredResidents = details ? details.filter(resident =>
     resident.name.toLowerCase().includes(searchQuery.toLowerCase())
@@ -85,6 +111,7 @@ const AllResidents = () => {
                 <p className="resident-address">Address: {resident.address}</p>
                 <p className="resident-email">Email: {resident.email}</p>
                 <p>Annual Income: {resident.annualIncome}</p>
+                <button className='delete-button' onClick={() => handleDelete(resident._id)}>Delete</button>
               </div>
             </div>
           ))}

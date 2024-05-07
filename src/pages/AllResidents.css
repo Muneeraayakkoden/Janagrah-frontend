@@ -51,6 +51,19 @@
   .resident-card:last-child {
     margin-bottom: 0;
   }
+  .delete-button {
+    background-color: #ff4d4d; /* Red background color */
+    color: white; /* White text color */
+    border: none;
+    padding: 8px 12px; /* Padding around the button text */
+    font-size: 14px; /* Font size */
+    cursor: pointer; /* Cursor style */
+    border-radius: 4px; /* Rounded corners */
+    transition: background-color 0.3s; /* Smooth transition for background color */
+  }
   
+  .delete-button:hover {
+    background-color: #e60000; /* Darker red background color on hover */
+  }
 
 

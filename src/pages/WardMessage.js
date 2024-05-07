@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './WardMessage.css'; // Import the CSS file
 
+
+
 const WardMessage = () => {
   const [messages, setMessages] = useState([]);
   const wardid = JSON.parse(localStorage.getItem('username'));
@@ -103,6 +105,7 @@ const WardMessage = () => {
                   <p className="ward-message-unread"> Unread</p>
               )}
             </div>
+            
              <button className="delete-button" onClick={() => handleDelete(message._id)}>Delete</button>
              <button className="read-button" onClick={() => handleRead(message._id)}>Read</button>
           </li>
