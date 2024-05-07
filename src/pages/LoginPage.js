@@ -47,6 +47,18 @@ function ResidentLoginForm() {
           localStorage.setItem('password', JSON.stringify(data.user.password));
           localStorage.setItem('wardmemberid', JSON.stringify(data.user.wardmemberid));
           localStorage.setItem('job', JSON.stringify(data.user.job));
+          localStorage.setItem('state', JSON.stringify(data.user.state));
+          localStorage.setItem('district', JSON.stringify(data.user.district));
+          localStorage.setItem('localAuthority', JSON.stringify(data.user.localAuthority));
+          localStorage.setItem('ward', JSON.stringify(data.user.ward));
+          localStorage.setItem('name', JSON.stringify(data.user.name));
+          localStorage.setItem('age', JSON.stringify(data.user.age));
+          localStorage.setItem('phone', JSON.stringify(data.user.phone));
+          localStorage.setItem('address', JSON.stringify(data.user.address));
+          localStorage.setItem('email', JSON.stringify(data.user.email));
+          localStorage.setItem('voterId', JSON.stringify(data.user.voterId));
+          localStorage.setItem('annualIncome', JSON.stringify(data.user.annualIncome));
+
 
           // Login successful, navigate to ResidentHome
           navigate('/ResidentHome');
