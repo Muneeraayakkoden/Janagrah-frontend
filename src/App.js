@@ -17,7 +17,6 @@ import CreateSurveys from './pages/CreateSurveys.js';
 import ForgotPasswordPage from './pages/ForgotPasswordPage.js';
 import OfficialNotification from './pages/officialNotification.js';
 import MyAccount from './pages/MyAccount.js';
-import EditProfile from './pages/EditProfile.js';
 import UserRequests from './pages/UserRequests.js';
 import Dosurvey from './pages/dosurvey.js';
 import Announcements from './pages/Annoucements.js'
@@ -45,7 +44,6 @@ function App() {
           <Route path="/ForgotPasswordPage" Component={ForgotPasswordPage} />
           <Route path="/OfficialNotification" Component={OfficialNotification} />
           <Route path="/MyAccount" Component={MyAccount} />
-          <Route path="/EditProfile" Component={EditProfile} />
           <Route path="/UserRequests" Component={UserRequests} />
           <Route path="/WardMessage" Component={WardMessage} />          
           <Route path="/dosurvey" Component={Dosurvey} />
