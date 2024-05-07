@@ -21,7 +21,7 @@ const AllResidents = () => {
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            wardid: wardid,
+            wardmemberid: wardid,
           }),
         });
         console.log(response);
@@ -30,8 +30,12 @@ const AllResidents = () => {
           const responseData = await response.json();
           console.log("All Residents:", responseData);
 
-          console.log(responseData.data);
-          setDetails(responseData.data); // Set residents state
+          if (responseData.success) {
+            console.log(responseData.data);
+            setDetails(responseData.data); // Set residents state
+          } else {
+            console.log(responseData.message);
+          }
         } else {
           console.error("Failed to fetch details");
         }
@@ -47,9 +51,9 @@ const AllResidents = () => {
     setSearchQuery(e.target.value);
   };
 
-  const filteredResidents = details.filter(resident =>
-    resident.username.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const filteredResidents = details ? details.filter(resident =>
+    resident.name.toLowerCase().includes(searchQuery.toLowerCase())
+  ) : [];
 
   return (
     <div className="all-residents-container">
@@ -68,8 +72,8 @@ const AllResidents = () => {
           {filteredResidents.map((resident, index) => (
             <div key={index} className="resident-card">
               <div className="resident-details">
-                <p className="resident-name">Name: {resident.username}</p>
-                <p>Ward Member ID: {resident.wardmemberid}</p>
+                <p className="resident-name">Name: {resident.name}</p>
+                <p>Username: {resident.username}</p>
                 <p>State: {resident.state}</p>
                 <p>District: {resident.district}</p>
                 <p>Local Authority: {resident.localAuthority}</p>
@@ -80,7 +84,6 @@ const AllResidents = () => {
                 <p>Job: {resident.job}</p>
                 <p className="resident-address">Address: {resident.address}</p>
                 <p className="resident-email">Email: {resident.email}</p>
-                <p>Password: {resident.password}</p>
                 <p>Annual Income: {resident.annualIncome}</p>
               </div>
             </div>
