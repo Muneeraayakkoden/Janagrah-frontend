@@ -21,6 +21,10 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
     padding: 20px;
+    position: relative; /* Position the delete button relative to this */
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    padding: 10px;
   }
   
   .ward-message-content {
@@ -42,23 +46,30 @@
     color: #ff0000; /* Red color for private messages */
     font-weight: bold;
   }
-  .delete-button {
-    
-    top: 10px;
-    right: 10px;
-    background-color: #c23a3a; /* Red color for delete button */
-    color: #ffffff;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
   
-  .delete-button:hover {
-    background-color: #ff3333; /* Darker red color on hover */
-  }
-  /* Adjust the position of the Read button */
-/* Adjust the position of the Read button */
+   
+  
+.delete-button {
+  background-color: transparent; /* Make the background transparent */
+  border: none; /* Remove border */
+  padding: 0; /* Remove padding */
+  cursor: pointer;
+  position: absolute; /* Position absolutely */
+  top: 50%; /* Align to the vertical center */
+  right: 10px; /* Align to the right */
+  transform: translateY(-50%); /* Adjust for vertical centering */
+}
+
+/* Style the delete icon */
+.delete-button svg {
+  fill: #7f7f7f; /* Set the fill color of the delete icon to grey */
+}
+
+.delete-button:hover svg {
+  fill: #666666; /* Change fill color on hover */
+}
+
+
 .read-button {
     background-color: #3cbe5a; /* Green color for Read button */
     color: #ffffff;
