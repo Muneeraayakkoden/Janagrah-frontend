@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import './ResidentSignup.css';
 import { useNavigate } from "react-router-dom";
 
-
 const ResidentSignup = () => {
   const navigate = useNavigate();
 
@@ -25,9 +24,9 @@ const ResidentSignup = () => {
     password: '',
     confirmPassword: '',
     annualIncome: '',
-    address: ''
+    address: '',
+    image: '' // New state to hold the uploaded image file
   });
-
 
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = 3;
@@ -46,7 +45,8 @@ const ResidentSignup = () => {
     phone: '',
     password:'',
     confirmPassword: '',
-    annualIncome: ''
+    annualIncome: '',
+    image: '' // Added image error message
   });
 
   const handleChange = (event) => {
@@ -107,12 +107,43 @@ const ResidentSignup = () => {
     setErrorMessage({ ...errorMessage, [name]: error });
   };
 
+  const handleImageUpload = (event) => {
+    const file = event.target.files[0];
+    
+    if (!file) {
+      // No file selected
+      return;
+    }
+    const maxSize = 1 * 1024 * 1024; // 1MB in bytes
+    if (file.size > maxSize) {
+      setErrorMessage({ ...errorMessage, image: 'File size exceeds 1MB limit.' });
+      return;
+    }
+  
+    const reader = new FileReader();
+  
+    // Event listener for when the FileReader has finished reading the file
+    reader.onloadend = () => {
+      // Log the result to see if the image data is being read correctly
+      console.log("Image data URL:", reader.result);
+      // Once the file has been read, set the image data URL to the formData
+      setFormData({ ...formData, image: reader.result });
+    };
+  
+    // Read the selected file as a data URL
+    reader.readAsDataURL(file);
+  };
+  
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (!formData.image) {
+      setErrorMessage({ ...errorMessage, image: 'Please upload an image.' });
+      return;
+    }
     if (Object.values(errorMessage).some(error => error)) {
       return;
     }
-    //navigate("/ResidentSignupSuccess");
     registerUser();
   };
 
@@ -138,8 +169,9 @@ const ResidentSignup = () => {
         password: formData.password,
         annualIncome: formData.annualIncome,
         address: formData.address,
-        confirmPassword: formData.confirmPassword
+        image: formData.image.split(',')[1] // Get the base64 part of the data URL
       };
+      console.log("requestBody :", requestBody); 
 
       // Send form data to the backend
       const response = await fetch('http://localhost:4000/user/request-user', {
@@ -174,7 +206,8 @@ const ResidentSignup = () => {
         password: '',
         confirmPassword: '',
         address: '',
-        annualIncome: ''
+        annualIncome: '',
+        image: ''
       });
       setErrorMessage('Registration successful!');
       navigate("/ResidentSignupSuccess");
@@ -233,15 +266,19 @@ const ResidentSignup = () => {
       <div className="signup-container">
         <h1>RESIDENT REGISTRATION</h1>
         <form onSubmit={handleSubmit}>
+          {/* Form sections */}
           {currentPage === 1 && (
             <div className={`form-section ${currentPage === 1 ? 'visible' : ''}`}>
+              {/* Location Details */}
               <h2>Location Details</h2>
+              {/* State Dropdown */}
               <select name="state" value={formData.state} onChange={handleStateSelection} required>
                 <option value="">Select State*</option>
                 {states.map(state => (
                   <option key={state} value={state}>{state}</option>
                 ))}
               </select>
+              {/* District Dropdown or Input */}
               {formData.state === 'Kerala' ? (
                 <select name="district" value={formData.district} onChange={handleChange} required>
                   <option value="">Select District</option>
@@ -255,7 +292,7 @@ const ResidentSignup = () => {
                   {errorMessage.district && <p className="error-message">{errorMessage.district}</p>}
                 </div>
               )}
-
+              {/* Local Authority Dropdown or Input */}
               {formData.district === 'Palakkad' ? (
                 <select name="localAuthority" value={formData.localAuthority} onChange={handleChange} required>
                   <option value="">Select Local-Authority</option>
@@ -269,8 +306,7 @@ const ResidentSignup = () => {
                   {errorMessage.localAuthority && <p className="error-message">{errorMessage.localAuthority}</p>}
                 </div>
               )}
-            
-
+              {/* Ward Dropdown or Input */}
               {formData.localAuthority === 'SREEKRISHNAPURAM' ? (
                 <select name="ward" value={formData.ward} onChange={handleChange} required>
                   <option value="">Select Ward</option>
@@ -284,78 +320,82 @@ const ResidentSignup = () => {
                   {errorMessage.ward && <p className="error-message">{errorMessage.ward}</p>}
                 </div>
               )}
-            
             </div>
           )}
 
+          {/* Personal Details */}
           {currentPage === 2 && (
             <div className={`form-section ${currentPage === 2 ? 'visible' : ''}`}>
               <h2>Personal Details</h2>
+              {/* Name Input */}
               <div>
                 <input type="text" name="name" placeholder="Name*" value={formData.name} onChange={handleChange} required />
                 {errorMessage.name && <p className="error-message">{errorMessage.name}</p>}
               </div>
-             
-
+              {/* Age Input */}
               <div>
                 <input type="number" name="age" placeholder="Age*" value={formData.age} onChange={handleChange} required />
-              {errorMessage.age && <p className="error-message">{errorMessage.age}</p>}
+                {errorMessage.age && <p className="error-message">{errorMessage.age}</p>}
               </div>
-             
-
+              {/* Voter ID Input */}
               <div>
                 <input type="text" name="voterId" placeholder="Voter ID*" value={formData.voterId} onChange={handleChange} required />
-              {errorMessage.voterId && <p className="error-message">{errorMessage.voterId}</p>}
+                {errorMessage.voterId && <p className="error-message">{errorMessage.voterId}</p>}
               </div>
-             
-
+              {/* Phone Number Input */}
               <div>
                 <input type="number" name="phone" placeholder="Mobile No.*" value={formData.phone} onChange={handleChange} required />
-              {errorMessage.phone && <p className="error-message">{errorMessage.phone}</p>}
-            
+                {errorMessage.phone && <p className="error-message">{errorMessage.phone}</p>}
               </div>
-              
+              {/* Job Dropdown */}
               <select name="job" value={formData.job} onChange={handleChange} required>
                 <option value="">Job*</option>
                 {jobs.map(job => (
                   <option key={job} value={job}>{job}</option>
                 ))}
               </select>
-           
-              
+              {/* Annual Income Input */}
               <div>
-              <input type="number" name="annualIncome" placeholder="Annual Income" value={formData.annualIncome} onChange={handleChange} />
+                <input type="number" name="annualIncome" placeholder="Annual Income" value={formData.annualIncome} onChange={handleChange} />
                 {errorMessage.annualIncome && <p className="error-message">{errorMessage.annualIncome}</p>}
               </div>
-             
+              {/* Address Input */}
               <div>
                 <textarea name="address" placeholder="Address" value={formData.address} onChange={handleChange} />
               </div>
             </div>
           )}
-          
+
+          {/* Account Details */}
           {currentPage === 3 && (
             <div className={`form-section ${currentPage === 3 ? 'visible' : ''}`}>
               <h2>Account Details</h2>
+              {/* Email Input */}
               <input type="email" name="email" placeholder="Email*" value={formData.email} onChange={handleChange} required />
+              {/* Username Input */}
               <input type="text" name="username" placeholder="Username*" value={formData.username} onChange={handleChange} required />
+              {/* Password Inputs */}
               <div>
-              <input type="password" name="password" placeholder="Password*" value={formData.password} onChange={handleChange} required />
-              {errorMessage.password && <p className="error-message">{errorMessage.password}</p>}
+                <input type="password" name="password" placeholder="Password*" value={formData.password} onChange={handleChange} required />
+                {errorMessage.password && <p className="error-message">{errorMessage.password}</p>}
               </div>
-
               <div>
                 <input type="password" name="confirmPassword" placeholder="Re-enter Password*" value={formData.confirmPassword} onChange={handleChange} required />
                 {errorMessage.confirmPassword && <p className="error-message">{errorMessage.confirmPassword}</p>}
               </div>
+              {/* Image Input */}
+              <div>
+                <label htmlFor="image">Image:</label>
+                <input type="file" id="image" name="image" accept="image/jpeg, image/png,image/jpg" onChange={handleImageUpload} />
+                {errorMessage.image && <p className="error-message">{errorMessage.image}</p>}
+              </div>
             </div>
           )}
-          
-          <div>Already Registered? 
-            <a href="#" onClick={handleLoginClick}> Login here</a>
-          </div>
 
-          
+          {/* Login Link */}
+          <div>Already Registered? <a href="#" onClick={handleLoginClick}> Login here</a></div>
+
+          {/* Pagination */}
           <div className="pagination">
             {Array.from({ length: totalPages }, (_, i) => (
               <button
@@ -367,12 +407,13 @@ const ResidentSignup = () => {
               </button>
             ))}
           </div>
-          {/* Submit button */}
-              <br></br>
+
+          {/* Submit Button */}
+          <br />
           {currentPage === totalPages && (
-              <button type="submit">Register</button>
+            <button type="submit">Register</button>
           )}
-        
+
         </form>
       </div>
     </div>

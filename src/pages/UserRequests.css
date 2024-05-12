@@ -1,19 +1,47 @@
-/* Add CSS classes for the accept and reject buttons */
+.user-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.user-image-container {
+  margin-bottom: 10px;
+}
+
+.user-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user-details {
+  text-align: center;
+}
+
+.button-container {
+  margin-top: 10px;
+}
+
+.accept-button,
+.reject-button {
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
 .accept-button {
-    background-color: green;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    margin-right: 5px;
-    cursor: pointer;
-  }
-  
-  .reject-button {
-    background-color: red;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-  }
-  
-  
+  background-color: #4caf50;
+  color: white;
+}
+
+.reject-button {
+  background-color: #f44336;
+  color: white;
+}
