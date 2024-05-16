@@ -35,6 +35,9 @@ const MemberAccount = () => {
       <h1>Member Profile</h1>
       {userData && (
         <div className="user-info">
+          <div className="resident-image-container">
+                <img className="resident-image" src={`data:image/jpeg;base64,${userData.image}`} alt="Resident" />
+              </div>
           <h2>Personal Information</h2>
           <p>Name: {userData.name}</p>
           <p>Username: {userData.username}</p>

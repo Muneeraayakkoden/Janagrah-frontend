@@ -1,69 +1,68 @@
-/* AllResidents.css */
-
 .user-count{
-  position: right;
+  text-align: right; /* Align the text to the right */
   font-size: 1.2rem;
-  
+  margin-bottom: 20px; /* Add margin bottom to create space between user count and residents */
 }
+
 .all-residents-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  .resident-card {
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .resident-details {
-    margin-bottom: 10px;
-  }
-  
-  .resident-details p {
-    margin: 5px 0;
-  }
-  
-  .resident-details p:first-child {
-    font-weight: bold;
-  }
- 
-  .resident-name {
-    color: #333;
-    font-size: 1.2rem;
-  }
-  
-  .resident-email {
-    color: #666;
-  }
-  
-  .resident-phone {
-    color: #666;
-  }
-  
-  .resident-address {
-    color: #666;
-  }
-  
-  .resident-card:last-child {
-    margin-bottom: 0;
-  }
-  .delete-button {
-    background-color: #ff4d4d; /* Red background color */
-    color: white; /* White text color */
-    border: none;
-    padding: 8px 12px; /* Padding around the button text */
-    font-size: 14px; /* Font size */
-    cursor: pointer; /* Cursor style */
-    border-radius: 4px; /* Rounded corners */
-    transition: background-color 0.3s; /* Smooth transition for background color */
-  }
-  
-  .delete-button:hover {
-    background-color: #e60000; /* Darker red background color on hover */
-  }
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
 
+.resident-card {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
 
+.resident-details {
+  margin-bottom: 10px;
+}
+
+.resident-details p {
+  margin: 5px 0;
+}
+
+.resident-details p:first-child {
+  font-weight: bold;
+}
+
+.resident-name {
+  color: #333;
+  font-size: 1.2rem;
+}
+
+.resident-email,
+.resident-phone,
+.resident-address {
+  color: #666;
+}
+
+.delete-button {
+  background-color: #ff4d4d; /* Red background color */
+  color: white; /* White text color */
+  border: none;
+  padding: 8px 12px; /* Padding around the button text */
+  font-size: 14px; /* Font size */
+  cursor: pointer; /* Cursor style */
+  border-radius: 4px; /* Rounded corners */
+  transition: background-color 0.3s; /* Smooth transition for background color */
+}
+
+.delete-button:hover {
+  background-color: #e60000; /* Darker red background color on hover */
+}
+
+.resident-image-container {
+  margin-bottom: 10px;
+}
+
+.resident-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+}
