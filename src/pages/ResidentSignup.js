@@ -120,6 +120,9 @@ const ResidentSignup = () => {
       return;
     }
   
+    // Clear image error message when a new image is selected
+    setErrorMessage({ ...errorMessage, image: '' });
+  
     const reader = new FileReader();
   
     // Event listener for when the FileReader has finished reading the file
@@ -133,6 +136,7 @@ const ResidentSignup = () => {
     // Read the selected file as a data URL
     reader.readAsDataURL(file);
   };
+  
   
 
   const handleSubmit = async (event) => {
