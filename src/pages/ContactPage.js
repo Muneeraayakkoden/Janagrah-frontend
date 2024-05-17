@@ -1,5 +1,6 @@
 import React, { useState , useEffect} from 'react';
 import './ContactPage.css'; 
+import { IoIosSend } from "react-icons/io";
 
 
 const ContactPage = () => {
@@ -76,21 +77,8 @@ const ContactPage = () => {
     }
   };
 
-  /*const handleClearHistory = async () => {
-    try {
-      const response = await fetch('http://your-backend-api-url/messages/clear', {
-        method: 'DELETE',
-      });
-      if (response.ok) {
-        setMessages([]);
-        console.log('Message history cleared successfully.');
-      } else {
-        console.error('Failed to clear message history. Status:', response.status);
-      }
-    } catch (error) {
-      console.error('Error clearing message history:', error.message);
-    }
-  };*/
+
+     
 
   return (
     <div className="contactPage">
@@ -149,9 +137,9 @@ const ContactPage = () => {
                 />
                 <label htmlFor="anonymous">Anonymous</label>
               </div>
-              <button type="submit">Send</button>
+              <button className="send"type="submit"><IoIosSend /> Send</button>
             </form>
-            {messageSent && <p classNAme="success">Message Sent Successfully</p>}
+            {messageSent && <p className="success">Message Sent Successfully</p>}
           </div>
         )}
       </div>

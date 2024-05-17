@@ -18,7 +18,6 @@ import CreateSurveys from './pages/CreateSurveys.js';
 import ForgotPasswordPage from './pages/ForgotPasswordPage.js';
 import OfficialNotification from './pages/officialNotification.js';
 import MyAccount from './pages/MyAccount.js';
-import EditProfile from './pages/EditProfile.js';
 import UserRequests from './pages/UserRequests.js';
 import Dosurvey from './pages/dosurvey.js';
 import Announcements from './pages/Annoucements.js';
@@ -32,28 +31,28 @@ function App() {
     <div>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Homepage />} />
-          <Route path="/ContactPage" element={<ContactPage />} />
-          <Route path="/SurveyPage" element={<SurveyPage />} />
-          <Route path="/ResidentHome" element={<ResidentHome />} /> 
-          <Route path="/ResidentSignup" element={<ResidentSignup />} />
-          <Route path="/LoginPage" element={<LoginPage />} />
-          <Route path="/ResidentSignupSuccess" element={<ResidentSignupSuccess />} />
-          <Route path="/LoginRejected" element={<LoginRejected />} />
-          <Route path="/OfficialHome" element={<OfficialHome />} />
-          <Route path="/CreateAnnouncement" element={<CreateAnnouncement />} />
-          <Route path="/CreateSurveys" element={<CreateSurveys />} />
-          <Route path="/Results" element={<Results />} />
-          <Route path="/ForgotPasswordPage" element={<ForgotPasswordPage />} />
-          <Route path="/OfficialNotification" element={<OfficialNotification />} />
-          <Route path="/MyAccount" element={<MyAccount />} />
-          <Route path="/EditProfile" element={<EditProfile />} />
-          <Route path="/UserRequests" element={<UserRequests />} />
-          <Route path="/WardMessage" element={<WardMessage />} />          
-          <Route path="/dosurvey" element={<Dosurvey />} />
-          <Route path="/Announcements" element={<Announcements />} />
-          <Route path="/MemberAccount" element={<MemberAccount />} />
-          <Route path="/AllResidents" element={<AllResidents />} />
+          <Route path="/ContactPage" Component={ContactPage} />
+          <Route path="/SurveyPage" Component={SurveyPage} />
+          <Route path="/ResidentHome" Component={ResidentHome}/> 
+          <Route path="/" Component={LoginPage} />
+          <Route path="/ResidentSignup" Component={ResidentSignup} />
+          <Route path="/LoginPage" Component={LoginPage} />
+          <Route path="/ResidentSignupSuccess" Component={ResidentSignupSuccess} />
+          <Route path="/LoginRejected" Component={LoginRejected} />
+          <Route path="/OfficialHome" Component={OfficialHome} />
+          <Route path="/CreateAnnouncement" Component={CreateAnnouncement} />
+          <Route path="/CreateSurveys" Component={CreateSurveys} />
+          <Route path="/Results" Component={Results} />
+          <Route path="/ForgotPasswordPage" Component={ForgotPasswordPage} />
+          <Route path="/OfficialNotification" Component={OfficialNotification} />
+          <Route path="/MyAccount" Component={MyAccount} />
+          <Route path="/EditProfile" Component={EditProfile} />
+          <Route path="/UserRequests" Component={UserRequests} />
+          <Route path="/WardMessage" Component={WardMessage} />          
+          <Route path="/dosurvey" Component={Dosurvey} />
+          <Route path="/Announcements" Component={Announcements} />
+          <Route path="/MemberAccount" Component={MemberAccount} />
+          <Route path="/AllResidents" Component={AllResidents} />
         </Routes>
       </BrowserRouter>
     </div>

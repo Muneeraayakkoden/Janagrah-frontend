@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './WardMessage.css'; // Import the CSS file
+import { MdDelete } from "react-icons/md";
+
 
 const WardMessage = () => {
   const [messages, setMessages] = useState([]);
@@ -103,7 +105,8 @@ const WardMessage = () => {
                   <p className="ward-message-unread"> Unread</p>
               )}
             </div>
-             <button className="delete-button" onClick={() => handleDelete(message._id)}>Delete</button>
+            
+             <button className="delete-button" onClick={() => handleDelete(message._id)}><MdDelete /></button>
              <button className="read-button" onClick={() => handleRead(message._id)}>Read</button>
           </li>
         ))}

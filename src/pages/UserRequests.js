@@ -94,37 +94,42 @@ const UserRequests = () => {
       setResponseMessage('Error: ' + error.message);
     }
   };
-
   return (
-    <div>
-      <ul>
-        {userData && userData.length > 0 ? (
-          userData.map((user) => (
-            <li key={user._id}>
+    <div className="user-container">
+      {userData.length > 0 ? (
+        userData.map((user) => (
+          <div key={user._id} className="user-card">
+            <div className="user-image-container">
+              <img className="user-image" src={`data:image/jpeg;base64,${user.image}`} alt="User" />
+            </div>
+            <div className="user-details">
               <p>Name: {user.name}</p>
               <p>Age: {user.age}</p>
               <p>Phone: {user.phone}</p>
               <p>Email: {user.email}</p>
               <p>State: {user.state}</p>
               <p>District: {user.district}</p>
-              <p>Local Government: {user.localgovernment}</p>
-              <p>Ward No: {user.wardNo}</p>
+              <p>Local Government: {user.localAuthority}</p>
+              <p>Ward No: {user.ward}</p>
               <p>Job: {user.job}</p>
               <p>Address: {user.address}</p>
               <p>Username: {user.username}</p>
-              {/* Add more fields if needed */}
+            </div>
+            <div className="button-container">
               <button className="accept-button" onClick={() => handleApprove(user._id)}>Approve</button>
               <button className="reject-button" onClick={() => handleReject(user._id)}>Reject</button>
-            </li>
-          ))
-        ) : (
-          <p>No user data available</p>
-        )}
-      </ul>
-      {responseMessage && <p style={{ color: 'red' }}>{responseMessage}</p>
-}
+            </div>
+          </div>
+        ))
+      ) : (
+        <p>No user data available</p>
+      )}
+      {responseMessage && <p style={{ color: 'red' }}>{responseMessage}</p>}
     </div>
   );
+  
 };
 
 export default UserRequests;
+
+
