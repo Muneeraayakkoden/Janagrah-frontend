@@ -1,31 +1,36 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #007bff;
+  padding: 10px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-nav {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+}
+
+.nav-item {
+  flex-grow: 1;
+}
 
 .nav-link {
-  padding: 10px 20px; /* Add padding to the navigation links */
-  font-size: 18px; /* Increase font size of the navigation links */
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 18px;
 }
 
-.nav-link i {
-  padding-left: 5px; /* Add margin to the right of the icon */
-}
-
-.navbar-nav .nav-item {
-  padding: 0; /* Add padding to the top and bottom of each nav item */
-}
-
-.navbar-nav .nav-item .nav-link {
-  color: #007bff !important; /* White text color for nav links */
-  padding-bottom: 50px;
-}
-
-.navbar-nav .nav-item .nav-link:hover {
-  color: #007bff!important; /* Lighter text color on hover */
+.nav-link:hover {
+  color: #ffb74d;
 }
 
 .nav-text {
-  margin-left: 10px; /* Add margin to the left of the nav text */
+  margin-left: 5px;
 }
 
-.col-md-2 {
-  height: 100vh; /* Extend the column to the full height of the viewport */
-  padding-left: 0;
+.nav-link i {
+  margin-right: 5px;
 }

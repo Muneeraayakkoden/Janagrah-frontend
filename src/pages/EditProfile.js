@@ -6,7 +6,7 @@ const EditProfile = () => {
   const [userData, setUserData] = useState(null);
   const [formData, setFormData] = useState({
     name: '',
-    age: '',
+    age: ''
     // Add other fields here as needed
   });
   const navigate = useNavigate();
@@ -33,7 +33,7 @@ const EditProfile = () => {
       // Populate form data with fetched user data
       setFormData({
         name: data.name,
-        age: data.age,
+        age: data.age
         // Populate other fields similarly
       });
     } catch (error) {
@@ -98,3 +98,4 @@ const EditProfile = () => {
 };
 
 export default EditProfile;
+

@@ -62,7 +62,7 @@ function OfficialHome() {
         </section>
 
         <section className="updates-section">
-          <h2>ANNOUNCEMENT SECTION</h2>
+          <br></br><h2>ANNOUNCEMENT SECTION</h2>
           <div className="updates-cards">
             <a href="#" className="updates-card" onClick={(e) => navigate('/Announcements')}>
               <h3>Announcements</h3>
@@ -70,7 +70,7 @@ function OfficialHome() {
           </div>
         </section>
         <section className="residents-section">
-          <h2>RESIDENTS SECTION</h2>
+         <br></br><h2><b>RESIDENTS SECTION</b></h2>
           <div href="#" className="residents-card" onClick={(e) => navigate('/AllResidents')}>
             <h3>View All Residents</h3>
           </div>
