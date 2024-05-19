@@ -25,6 +25,7 @@ import MemberAccount from './pages/MemberAccount.js';
 import WardMessage from './pages/WardMessage.js';
 import AllResidents from './pages/AllResidents.js';
 import Homepage from './pages/Homepage.js';
+import EditProfile from './pages/EditProfile.js';
 
 function App() {
   return (

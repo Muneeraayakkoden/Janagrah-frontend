@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './LoginPage.css';
 import logo from '../assets/logo.png';
-import { useNavigate } from 'react-router-dom';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 
@@ -86,17 +86,17 @@ function ResidentLoginForm() {
   return (
     <div>
       <div className="input-group">
-        <input type="text" placeholder="Username*" className="form-control" value={username} onChange={(e) => setUsername(e.target.value)} required />
+        <input type="text" placeholder="Username*" className="form-control form-control-custom " value={username} onChange={(e) => setUsername(e.target.value)} required />
       </div>
-        <div className="input-group">
-          <input type={showPassword ? 'text' : 'password'} placeholder="Password*" className="form-control" value={password} onChange={(e) => setPassword(e.target.value)} required />
-          <span className="password-toggle" onClick={togglePasswordVisibility}> {showPassword ? <FaEyeSlash /> : <FaEye />} </span>
-        </div>
-      <div class="button-container">
-        <button type="submit" className=" btn-primary btn-block" onClick={handleLogin}>Login</button>
+      <div className="input-group">
+        <input type={showPassword ? 'text' : 'password'} placeholder="Password*" className="form-control form-control-custom" value={password} onChange={(e) => setPassword(e.target.value)} required />
+        <span className="password-toggle" onClick={togglePasswordVisibility}> {showPassword ? <FaEyeSlash /> : <FaEye />} </span>
+      </div>
+      <div><a href="#" className="forgot-password" onClick={handleForgotPasswordClick}>Forgot Password?</a></div>
+      <div className="button-container">
+        <button className="register-btn" onClick={() => {navigate('/ResidentSignup')}}><i class="fas fa-user-plus"></i> Register</button>
+        <button className="login-buttn" onClick={handleLogin}><i class="fas fa-sign-in-alt"></i> Login </button>
         <div className="error-message">{error}</div>
-        <div><a href="#" className="forgot-password" onClick={handleForgotPasswordClick}>Forgot Password?</a></div>
-        <button className="register-btn" onClick={() => {navigate('/ResidentSignup')}}>Register Now</button>
       </div>
     </div>
   );
@@ -167,18 +167,18 @@ function OfficialLoginForm() {
   return (
     <div>
       <div className="input-group">
-        <input type="text" placeholder="Username*" className="form-control" value={username} onChange={(e) => setUsername(e.target.value)} required/>
+        <input type="text" placeholder="Username*" className="form-control form-control-custom" value={username} onChange={(e) => setUsername(e.target.value)} required/>
       </div>
       <div className="input-group">
-        <input type={showPassword ? 'text' : 'password'} placeholder="Password*" className="form-control" value={password} onChange={(e) => setPassword(e.target.value)} required />
+        <input type={showPassword ? 'text' : 'password'} placeholder="Password*" className="form-control form-control-custom" value={password} onChange={(e) => setPassword(e.target.value)} required />
         <span className="password-toggle" onClick={togglePasswordVisibility}>
           {showPassword ? <FaEyeSlash /> : <FaEye />}
         </span>
       </div>
-      <div class="button-container">
-        <button type="submit" className="btn btn-primary btn-block" onClick={handleLogin}>Login</button>
+      <div><a href="#" className="forgot-password" onClick={handleForgotPasswordClick}>Forgot Password?</a></div>
+      <div className="button-container">
+        <button  className="login-buttn" onClick={handleLogin}><i class="fas fa-sign-in-alt"></i> Login</button>
         <div className="error-message">{error}</div>
-        <div><a href="#" className="forgot-password" onClick={handleForgotPasswordClick}>Forgot Password?</a></div>
       </div>
     </div>
   );
@@ -186,7 +186,6 @@ function OfficialLoginForm() {
 
 function LoginPage() {
   const [selectedTab, setSelectedTab] = useState('resident');
-
 
   const handleResidentRegisterClick = async () => {
     console.log('Redirect to resident registration'); 
@@ -197,16 +196,16 @@ function LoginPage() {
     <div className="LoginPage">
       <div className="background-image1"></div>
       <div className="login-container">
-        <div className="logo-container text-center">
+        <div className="logo-container">
           <img src={logo} alt="Janagrah Logo" className="logo img-fluid" />
           <h6>JANAGRAH</h6>
         </div>
         <div className="tabs">
           <div className={`tab ${selectedTab === 'resident' ? 'active' : ''}`} onClick={() => setSelectedTab('resident')}>
-            RESIDENT LOGIN
+          <i class="fas fa-user"></i> RESIDENT
           </div>
           <div className={`tab ${selectedTab === 'official' ? 'active' : ''}`} onClick={() => setSelectedTab('official')}>
-            OFFICIAL LOGIN
+          <i class="fas fa-user-tie"></i> OFFICIAL
           </div>
         </div>
         <div className="login-form">

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './EditProfile.css';
+//import './EditProfile.css';
 
 const EditProfile = () => {
   const [userData, setUserData] = useState(null);
