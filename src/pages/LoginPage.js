@@ -201,10 +201,10 @@ function LoginPage() {
         </div>
         <div className="tabs">
           <div className={`tab ${selectedTab === 'resident' ? 'active' : ''}`} onClick={() => setSelectedTab('resident')}>
-          <i class="fas fa-user"></i> RESIDENT
+          <i class="fas fa-user"></i>RESIDENT
           </div>
           <div className={`tab ${selectedTab === 'official' ? 'active' : ''}`} onClick={() => setSelectedTab('official')}>
-          <i class="fas fa-user-tie"></i> OFFICIAL
+          <i class="fas fa-user-tie"></i>OFFICIAL
           </div>
         </div>
         <div className="login-form">
