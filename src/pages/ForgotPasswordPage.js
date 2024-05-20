@@ -32,7 +32,7 @@ function ForgotPasswordPage() {
         setMessage('Failed to submit the request. Please try again later.');
       }
     } catch (error) {
-      setMessage('There was a problem with your request. Please try again later.');
+      setMessage('This email is not registered before.');
     }
   };
 
@@ -46,8 +46,9 @@ function ForgotPasswordPage() {
           <input type="email" placeholder="Enter your email" className="input-field" value={email} onChange={(e) => setEmail(e.target.value)} required />
         </div>
         <button className="submit-btn">Submit</button>
+        {message && <p className="msg">{message}</p>}
       </form>
-      {message && <div className="message">{message}</div>}
+      
     </div>
   </div>
   );
