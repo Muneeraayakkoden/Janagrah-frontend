@@ -5,6 +5,10 @@ body {
   margin: 0;
   padding: 0;
   overflow: hidden;
+  background-image: url('../assets/image1.jpg');
+  background-size: cover;
+  background-position: center;
+  
 }
 
 .LoginPage {
@@ -20,7 +24,7 @@ body {
   background-color: #ffffff;
   padding: 30px;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 350px;
   z-index: 2;
@@ -141,19 +145,7 @@ form-control-custom:focus {
   margin-top: 10px;
 }
 
-/* Background image animations */
-.background-image1 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('../assets/image1.jpg');
-  background-size: cover;
-  background-position: center;
-  filter: brightness(0.7);
-  z-index: 1;
-}
+
 
 
 .tab i,

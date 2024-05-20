@@ -2,6 +2,8 @@
 
 import React, { useState } from 'react';
 import './ForgotPasswordPage.css';
+import { FaEnvelope } from 'react-icons/fa';
+
 
 function ForgotPasswordPage() {
   const [email, setEmail] = useState('');
@@ -36,15 +38,18 @@ function ForgotPasswordPage() {
 
   return (
     <div className="ForgotPasswordPage">
+    <div className="ForgotPasswordPage-container">
       <h2>Forgot Password ?</h2>
       <form onSubmit={handleSubmit}>
         <div className="input-group">
+          <FaEnvelope className="icon" />
           <input type="email" placeholder="Enter your email" className="input-field" value={email} onChange={(e) => setEmail(e.target.value)} required />
         </div>
         <button type="submit" className="submit-btn">Submit</button>
       </form>
       {message && <div className="message">{message}</div>}
     </div>
+  </div>
   );
 }
 

@@ -194,7 +194,6 @@ function LoginPage() {
 
   return (
     <div className="LoginPage">
-      <div className="background-image1"></div>
       <div className="login-container">
         <div className="logo-container">
           <img src={logo} alt="Janagrah Logo" className="logo img-fluid" />
