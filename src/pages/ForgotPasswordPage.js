@@ -45,7 +45,7 @@ function ForgotPasswordPage() {
           <FaEnvelope className="icon" />
           <input type="email" placeholder="Enter your email" className="input-field" value={email} onChange={(e) => setEmail(e.target.value)} required />
         </div>
-        <button type="submit" className="submit-btn">Submit</button>
+        <button className="submit-btn">Submit</button>
       </form>
       {message && <div className="message">{message}</div>}
     </div>

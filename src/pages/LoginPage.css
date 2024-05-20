@@ -21,11 +21,11 @@ body {
 }
 
 .login-container {
-  background-color: #ffffff;
+  background-color: rgba(255, 230, 230, 0.6);
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 85%;
+  width: 80%;
   max-width: 350px;
   transition: width 0.3s ease;
 }
