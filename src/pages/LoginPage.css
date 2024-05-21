@@ -8,7 +8,7 @@ body {
   background-image: url('../assets/image1.jpg');
   background-size: cover;
   background-position: center;
-  font-family: 'Georgia', serif;
+  
 }
 
 .LoginPage {
@@ -17,6 +17,7 @@ body {
   align-items: center;
   height: 100vh;
   position: relative;
+  font-family: 'Merriweather', serif;
 }
 
 .login-container {

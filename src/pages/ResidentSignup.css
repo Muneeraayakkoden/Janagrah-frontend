@@ -5,11 +5,11 @@ body {
   background-image: url('../assets/image1.jpg');
   background-size: cover;
   background-position: center;
+
 }
 
 .signup-page {
- 
-  font-family: 'Georgia', serif;
+  font-family: 'Merriweather', serif;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,7 +23,6 @@ body {
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  
   transition: width 0.3s ease;
 }
 
@@ -32,7 +31,6 @@ body {
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
   margin-bottom: 20px;
-  
 }
 
 h1 {
