@@ -5,15 +5,12 @@ import './ResidentHome.css';
 import { useNavigate } from 'react-router-dom';
 import Announcement from './Announcement';
 import Footer from '../components/Footer';
-import logo from '../assets/logo.png'; // Import the logo image
+import logo from '../assets/logo.png'; 
 
 const ResidentHome = () => {
   const navigate = useNavigate();
-
   const handleLogout = () => {
-    // Clear user data from local storage
     localStorage.removeItem('token');
-    // Navigate to the login page
     navigate('/LoginPage');
   };
 
