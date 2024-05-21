@@ -50,7 +50,7 @@ const Announcement = () => {
 
   return (
     <section className="news-section">
-      <div className="container">
+      <div>
         <h2 className="section-title">ANNOUNCEMENTS</h2>
         {loading && <p>Loading...</p>}
         {!loading && newsData.length === 0 && <p>No announcements</p>}

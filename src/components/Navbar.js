@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import logo from '../assets/logo.png';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -11,6 +12,10 @@ const Navbar = () => {
 
     return (
         <nav className="navbar">
+            <div className="logo-container">
+                <img src={logo} alt="Janagrah Logo" className="logo img-fluid" />
+                <h6>JANAGRAH</h6>
+            </div>
             <ul className="navbar-nav">
                 <li className="nav-item">
                 <a className="nav-link" href="#" onClick={() => navigate('/ContactPage')}>

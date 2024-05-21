@@ -1,23 +1,17 @@
-/* Additional Custom CSS */
-
+/* Header.css */
 .header {
-  padding: 0;
+  margin-left: 200px; 
+  padding: 10px;
+  background-color: #ffffff;
+  color: #007bff; 
+  font-family: 'Merriweather', serif;
 }
 
-.btn-outline-primary {
-  color: #007bff; /* Blue text color for the button */
+
+.btn {
+  margin-bottom: 20px;
 }
 
-.btn-outline-primary:hover {
-  background-color: #007bff; /* Blue background color on hover */
-  color: #ffffff; /* White text color on hover */
-}
-
-.paragraphs {
-  color: #007bff;
-  text-align: left;
-}
-
-.learn-more-description {
-  padding: 0; /* Adjusted padding for the "Learn More" description */
+.paragraphs p {
+  margin-bottom: 2px;
 }

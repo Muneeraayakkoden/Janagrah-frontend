@@ -25,7 +25,7 @@ const features = [
 const Services = () => {
   return (
     <section className="services">
-      <div className="container">
+      <div>
         <h2 className="section-title">SERVICES</h2>
         <div className="row">
           {features.map((feature, index) => (

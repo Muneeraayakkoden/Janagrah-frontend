@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import logo from '../assets/logo.png';
-//import './Header.css';
+import './Header.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Header = () => {
@@ -12,11 +11,9 @@ const Header = () => {
   return (
     <header className="header bg-white text-primary">
       <div className="row">
-        <div className="logo">
-          <img src={logo} alt="Janagrah Logo" />
-        </div>
         <div className="col-md">
-          <h1 className="hero-title text-primary">Your Voice, Shaping Our Ward</h1>
+          <h1>JANAGRAH</h1>
+          <h3 className="hero-title text-primary">Your Voice, Shaping Our Ward</h3>
         </div>
       </div>
       <div>
