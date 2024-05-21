@@ -8,7 +8,7 @@ body {
   background-image: url('../assets/image1.jpg');
   background-size: cover;
   background-position: center;
-  
+  font-family: 'Georgia', serif;
 }
 
 .LoginPage {
@@ -16,7 +16,6 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  font-family: 'Georgia', serif;
   position: relative;
 }
 

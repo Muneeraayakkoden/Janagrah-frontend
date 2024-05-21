@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './ResidentSignup.css';
 import { useNavigate } from "react-router-dom";
+import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+import {FaUser, FaEnvelope, FaLock, FaAddressCard, FaPhone, FaBriefcase, FaMoneyBillWave, FaHome, FaImage, FaMapMarkerAlt, FaUserShield} from 'react-icons/fa';
 
 const ResidentSignup = () => {
   const navigate = useNavigate();
@@ -25,14 +27,16 @@ const ResidentSignup = () => {
     confirmPassword: '',
     annualIncome: '',
     address: '',
-    image: '' // New state to hold the uploaded image file
+    image: '' 
   });
 
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = 3;
 
   const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
+    if (pageNumber >= 1 && pageNumber <= totalPages) {
+      setCurrentPage(pageNumber);
+    }
   };
 
   const [errorMessage, setErrorMessage] = useState({
@@ -46,7 +50,7 @@ const ResidentSignup = () => {
     password:'',
     confirmPassword: '',
     annualIncome: '',
-    image: '' // Added image error message
+    image: '' 
   });
 
   const handleChange = (event) => {
@@ -274,7 +278,7 @@ const ResidentSignup = () => {
           {currentPage === 1 && (
             <div className={`form-section ${currentPage === 1 ? 'visible' : ''}`}>
               {/* Location Details */}
-              <h2>Location Details</h2>
+              <h2><FaMapMarkerAlt />Location Details</h2>
               {/* State Dropdown */}
               <select name="state" value={formData.state} onChange={handleStateSelection} required>
                 <option value="">Select State*</option>
@@ -330,7 +334,7 @@ const ResidentSignup = () => {
           {/* Personal Details */}
           {currentPage === 2 && (
             <div className={`form-section ${currentPage === 2 ? 'visible' : ''}`}>
-              <h2>Personal Details</h2>
+              <h2><FaUser /> Personal Details</h2>
               {/* Name Input */}
               <div>
                 <input type="text" name="name" placeholder="Name*" value={formData.name} onChange={handleChange} required />
@@ -373,7 +377,7 @@ const ResidentSignup = () => {
           {/* Account Details */}
           {currentPage === 3 && (
             <div className={`form-section ${currentPage === 3 ? 'visible' : ''}`}>
-              <h2>Account Details</h2>
+              <h2><FaUserShield /> Account Details</h2>
               {/* Email Input */}
               <input type="email" name="email" placeholder="Email*" value={formData.email} onChange={handleChange} required />
               {/* Username Input */}
@@ -389,7 +393,7 @@ const ResidentSignup = () => {
               </div>
               {/* Image Input */}
               <div>
-                <label htmlFor="image">Image:</label>
+                <h2><FaImage /> Image:</h2>
                 <input type="file" id="image" name="image" accept="image/jpeg, image/png,image/jpg" onChange={handleImageUpload} />
                 {errorMessage.image && <p className="error-message">{errorMessage.image}</p>}
               </div>
@@ -401,22 +405,27 @@ const ResidentSignup = () => {
 
           {/* Pagination */}
           <div className="pagination">
-            {Array.from({ length: totalPages }, (_, i) => (
-              <button
-                key={i + 1}
-                onClick={() => handlePageChange(i + 1)}
-                className={currentPage === i + 1 ? 'current' : ''}
-              >
-                {i + 1}
-              </button>
-            ))}
+          {currentPage > 1 && (
+          <button
+              type="button"
+              className="prev-btn"
+              onClick={() => handlePageChange(currentPage - 1)}>
+              <FaArrowLeft /> Prev
+            </button>
+            )}
+            <span className="page-indicator">{currentPage}/{totalPages}</span>
+            {currentPage < totalPages && (
+            <button
+              type="button"
+              className="next-btn"
+              onClick={() => handlePageChange(currentPage + 1)}>
+              Next <FaArrowRight />
+            </button>
+            )}
+             {currentPage === totalPages && (
+              <button >Register</button>
+            )}
           </div>
-
-          {/* Submit Button */}
-          <br />
-          {currentPage === totalPages && (
-            <button type="submit">Register</button>
-          )}
 
         </form>
       </div>
