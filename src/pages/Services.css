@@ -1,17 +1,25 @@
 /* Services.css */
 .services {
   padding: 50px 0; /* Adjust padding as needed */
+  width: 100%;
+  overflow: hidden;
 }
 
 .section-title {
   text-align: center;
   margin-bottom: 50px; /* Adjust margin as needed */
+  font-weight: 600;
 }
 
 .feature-cards {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.services_section{
+  padding:0 10%;
+  /* width: 80%; */
 }
 
 /* Media query for responsiveness */

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import logo from '../assets/logo.png';
+import logo2 from '../assets/logo2.png';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -13,8 +13,8 @@ const Navbar = () => {
     return (
         <nav className="navbar">
             <div className="logo-container">
-                <img src={logo} alt="Janagrah Logo" className="logo img-fluid" />
-                <h6>JANAGRAH</h6>
+                <img src={logo2} alt="Janagrah Logo" className="logo img-fluid" />
+                <h5 className="htitle">JANAGRAH</h5>
             </div>
             <ul className="navbar-nav">
                 <li className="nav-item">

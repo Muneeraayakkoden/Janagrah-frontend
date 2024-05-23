@@ -1,13 +1,5 @@
 /* General Styles */
-body {
-  margin: 0;
-  padding: 0;
-  background-image: url('../assets/image1.jpg');
-  background-size: cover;
-  background-position: center;
-  overflow: hidden;
-  height: 100vh;
-}
+
 
 .signup-page {
   font-family: 'Merriweather', serif;
@@ -17,6 +9,7 @@ body {
   height: 100vh;
   padding: 20px;
 }
+
 .signup-container {
   width: 100%;
 

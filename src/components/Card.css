@@ -1,7 +1,4 @@
 /* Services.css */
-.services {
-  padding: 50px 0; /* Adjust padding as needed */
-}
 
 .section-title {
   text-align: center;
@@ -29,6 +26,7 @@
 .card-icon {
   font-size: 36px; /* Adjust icon size as needed */
   margin-bottom: 20px; /* Adjust margin as needed */
+  color: #63c1f0;
 }
 
 .card-description {

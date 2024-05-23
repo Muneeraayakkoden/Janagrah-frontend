@@ -165,7 +165,7 @@ function OfficialLoginForm() {
   };
 
   return (
-    <div>
+    <div className='LoginPageFull'>
       <div className="input-group">
         <input type="text" placeholder="Username*" className="form-control form-control-custom" value={username} onChange={(e) => setUsername(e.target.value)} required/>
       </div>
