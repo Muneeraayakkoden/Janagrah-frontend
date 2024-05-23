@@ -5,8 +5,8 @@ import './ResidentHome.css';
 import Announcement from './Announcement';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
+
 const ResidentHome = () => {
-  
   return (
     <div className="resident-home"> 
       <Header />
