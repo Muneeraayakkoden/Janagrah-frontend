@@ -54,6 +54,7 @@ function App() {
           <Route path="/Announcements" Component={Announcements} />
           <Route path="/MemberAccount" Component={MemberAccount} />
           <Route path="/AllResidents" Component={AllResidents} />
+          <Route path="/Homepage" Component={Homepage} />
         </Routes>
       </BrowserRouter>
     </div>

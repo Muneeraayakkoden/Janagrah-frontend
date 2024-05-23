@@ -20,7 +20,7 @@ const Header = () => {
   };
 
   return (
-    <header className="header bg-white">
+    <header className="header rheader">
       <div className="row">
         <div className="col-md">
           <h1 className="title">JANAGRAH</h1>
