@@ -49,17 +49,22 @@
 }
 
 .read-more {
-  display: block;
-  text-align: center;
-  padding: 10px;
-  background-color: #007bff;
-  color: #fff;
-  text-decoration: none;
+  display: inline-block;
+  padding: 10px 10px;
+  margin: 0;
   border-radius: 5px;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease;
+  background-color: #ffffff;
+  color: #5dbeef;
+  border: 1px solid #5dbeef;
+  width: 115px; 
 }
 
 .read-more:hover {
-  background-color: #0056b3;
+  background-color: #007bff;
+  color: #ffffff;
 }
 
 .load-more {

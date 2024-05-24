@@ -17,9 +17,8 @@
   justify-content: center;
 }
 
-.services_section{
-  padding:0 10%;
-  /* width: 80%; */
+div.row {
+  --bs-gutter-x: 0;
 }
 
 /* Media query for responsiveness */

@@ -27,7 +27,7 @@
 
 .logo-container {
   text-align: center;
-  margin-bottom: 10px;
+  
 }
 
 .logo-container img {
@@ -104,7 +104,8 @@ form-control-custom:focus {
   flex-wrap: wrap;
 }
 
-.login-buttn, .register-btn {
+.login-buttn, 
+.register-btn {
   display: inline-block;
   padding: 10px 10px;
   margin: 0;

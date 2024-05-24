@@ -128,7 +128,7 @@ li {
   margin-left: 0px;
 }
 
-input, select, button {
+input, select, #contact {
   margin-right: 10px;
   margin-bottom: 10px;
 }

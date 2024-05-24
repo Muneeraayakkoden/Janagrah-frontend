@@ -170,7 +170,7 @@ const MyAccount = () => {
         </div>
       )}
       {isEditedSuccessfully && <p className="success-message">Profile edited successfully!</p>}
-      <button onClick={handleLogout}><IoLogOutOutline /> Logout</button>
+      <button className="leave" onClick={handleLogout}><IoLogOutOutline /> Logout</button>
     </div>
   );
 };

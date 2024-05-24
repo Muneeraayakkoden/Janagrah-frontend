@@ -1,10 +1,5 @@
 
 
-.section-title {
-  text-align: center;
-  margin-bottom: 50px; 
-}
-
 .feature-cards {
   display: flex;
   flex-wrap: wrap;

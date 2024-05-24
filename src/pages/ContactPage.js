@@ -103,7 +103,7 @@ const ContactPage = () => {
         <p>No history</p>
       )}
       <div className="message-container">
-        <button
+        <button id="contact"
           className={`message-icon ${showSendMessage ? 'active' : ''}`} 
           onClick={() => setShowSendMessage(!showSendMessage)} >
           <i className="fa-brands fa-rocketchat"></i>
