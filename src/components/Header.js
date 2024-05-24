@@ -20,7 +20,7 @@ const Header = () => {
   };
 
   return (
-    <header className="header rheader">
+    <header className="rheader">
       <div className="row">
         <div className="col-md">
           <h1 className="title">JANAGRAH</h1>
