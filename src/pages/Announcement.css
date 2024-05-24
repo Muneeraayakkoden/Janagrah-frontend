@@ -1,7 +1,7 @@
 
 .news-section {
   padding: 20px;
-  text-align: center; /* Align section content center */
+  text-align: center; 
 }
 
 .section-title {
@@ -20,7 +20,7 @@
 }
 
 .news-item {
-  width: calc(50% - 10px); /* Two items per row */
+  width: calc(50% - 10px); 
   border: 1px solid #ccc;
   border-radius: 5px;
   overflow: hidden;

@@ -1,11 +1,11 @@
 /* Homepage.css */
 
 /* General Styles */
-body {
+/*body {
   margin: 0;
   padding: 0;
   font-family: 'Arial', sans-serif;
-  background-color: #f7f7f7; /* Light grey background */
+  background-color: #f7f7f7; 
 }
 
 .Homepage {
@@ -19,8 +19,8 @@ body {
   align-items: center;
   padding: 20px;
   background-color: #ffffff; /* White background */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Shadow effect */
-}
+  /*box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+}*/
 
 .login-link {
   color: #007bff; /* Blue color */
