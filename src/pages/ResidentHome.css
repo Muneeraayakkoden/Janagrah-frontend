@@ -6,6 +6,7 @@
   margin: 0;
   padding: 0;
   background-color: white;
+  font-family: 'Merriweather', serif;
 }
 
 .piano1{
@@ -19,4 +20,14 @@
   flex-direction: column;
   width: 100%;
   justify-content: space-between;
-  }
+}
+
+.main-content.h3 {
+  color:white;
+  background-color: #5dbeef;
+}
+
+.aboutUs-section {
+  padding: 30px;
+  text-align: center;
+}

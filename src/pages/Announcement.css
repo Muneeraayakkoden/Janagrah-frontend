@@ -1,6 +1,6 @@
 
 .news-section {
-  padding: 20px;
+  padding: 30px;
   text-align: center; 
 }
 
@@ -9,7 +9,9 @@
   margin-bottom: 20px;
   text-align: center;
   font-weight: 600;
-  color:#63c1f0 !important;
+  background-color: #5dbeef;
+  color:white !important;
+
 }
 
 .news-container {

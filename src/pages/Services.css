@@ -1,14 +1,14 @@
 /* Services.css */
-.services {
-  padding: 50px 0; /* Adjust padding as needed */
-  width: 100%;
-  overflow: hidden;
+.service-section {
+  padding: 30px;
+  text-align: center;
 }
 
 .section-title {
   text-align: center;
   margin-bottom: 50px; /* Adjust margin as needed */
   font-weight: 600;
+  background-color: #5dbeef;
 }
 
 .feature-cards {

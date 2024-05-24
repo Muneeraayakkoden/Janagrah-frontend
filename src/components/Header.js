@@ -27,17 +27,7 @@ const Header = () => {
           <h3 className="hero-title">Your Voice, Shaping Our Ward</h3>
         </div>
       </div>
-      <button className="btn btn-outline-primary" onClick={toggleDescription}>
-        {showDescription ? 'View Less' : 'Learn More'}
-      </button>
-      {showDescription && (
-        <div className="learn-more-popup fade-in">
-          <div className="paragraphs">
-            <p>Janagrah is a resident engagement platform designed to empower residents and strengthen the foundations of our community. We facilitate open communication and informed decision-making by providing a direct line between residents and local authorities.</p>
-            <p>Together, we can build a more engaged and informed community.</p>
-          </div>
-        </div>
-      )}
+     
     </header>
   );
 };

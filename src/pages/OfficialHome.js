@@ -64,7 +64,7 @@ function OfficialHome() {
         <section className="updates-section">
           <br></br><h2>ANNOUNCEMENT SECTION</h2>
           <div className="updates-cards">
-            <a href="#" className="updates-card" onClick={(e) => navigate('/Announcements')}>
+            <a href="#" className="updates-card" onClick={(e) => navigate('/AnnouncementHistory')}>
               <h3>Announcements</h3>
             </a>
           </div>

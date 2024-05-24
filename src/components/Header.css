@@ -11,7 +11,7 @@
 }
 
 .title {
-  color: black !important; 
+  color: #5dbeef !important; 
   margin-bottom: 10px;
   font-size: 40px;
   font-weight: 800;
@@ -20,52 +20,11 @@
 .hero-title {
   margin: 0;
   text-align: center;
-  color:#5dbeef;
+  color:black;
   font-size:25px;
   font-weight: 600;
 }
 
-.btn {
-  margin-top: 30px;
-  cursor: pointer;
-  width:fit-content;
-}
-
-.learn-more-popup {
-  background-color: white;
-  border: 1px solid #1c7ed4;
-  padding: 5px;
-  position: absolute;
-  top: 12px;
-  right: 10px;
-  width: 450px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-}
-
-.paragraphs{
-  padding: 20px; 
-}
-
-.paragraphs p{
-   font-size: 15px !important;
-   
-   padding: 0px !important;
-   margin:0px 9 !important;
-  }
-
-.fade-in {
-  animation: fadeIn 0.5s;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
 
 
 @media screen and (max-width: 768px) {
@@ -74,12 +33,4 @@
     padding: 5px;
   }
   
-  .btn {
-    margin-top: 20px;
-  }
-  
-  .learn-more-popup {
-    width: 90%;
-    right: 5%;
-  }
 }
