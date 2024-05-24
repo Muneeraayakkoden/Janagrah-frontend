@@ -72,19 +72,18 @@
   color: #666666; /* Medium grey color */
 }
 
-.logo {
+/*.logo {
   width: 100px; /* Adjust the width of the logo */
-  height: auto; /* Maintain aspect ratio */
-  margin-bottom: 10px; /* Add space below the logo */
-}
-
-.services {
+  /*height: auto; /* Maintain aspect ratio */
+ /* margin-bottom: 10px; /* Add space below the logo */
+/*}*/
+/*.services {
   display: flex;
   justify-content: space-between; 
   align-items: flex-start; 
   margin-bottom: 50px;
 }
-
+*/
 .service {
   width: 30%; /* Adjust the width of each box */
   background-color: #ffffff; /* White background */

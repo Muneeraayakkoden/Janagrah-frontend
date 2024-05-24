@@ -1,11 +1,10 @@
 
  
 .navbar {
- 
+  position: fixed;
   height: 100vh;
   background-color: #63c1f0;
   display: flex;
-  width: 200px;
   justify-content: space-between;
   flex-direction: column;
   justify-content: start;
@@ -50,7 +49,7 @@
 
 .logo-container {
   text-align: center;
-  padding-top: 20px;
+  padding: 20px;
 
 }
 
