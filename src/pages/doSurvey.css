@@ -16,10 +16,9 @@
   }
   
   .poll {
-    border: 2px solid #101010;
+    border: 2px solid #5dbeef;
     border-radius: 10px;
     padding: 30px;
-    background: linear-gradient(135deg, #d0edf0, #e3f7fa);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     margin-bottom: 30px;
     width: calc(50% - 60px);
@@ -37,12 +36,6 @@
     position: relative;
   }
   
-  .poll h1::before {
-    content: '📊';
-    position: absolute;
-    left: -5px;
-    font-size: 32px;
-  }
   
   /* Sub-header Style */
   .poll h5 {
