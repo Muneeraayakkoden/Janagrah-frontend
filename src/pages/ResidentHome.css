@@ -39,6 +39,6 @@
 }
 .main-content {
   background-image: url('../assets/image2.jpg');
-
+  background-repeat: no-repeat;
   background-position: center;
 }
