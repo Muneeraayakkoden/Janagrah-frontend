@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import './UserRequests.css'
+import './UserRequests.css';
+
 const UserRequests = () => {
-  const [userData, setUserData] = useState([]);
+  const [userData, setUserData] = useState([]);  // Initialize as an empty array
   const [responseMessage, setResponseMessage] = useState('');
 
   useEffect(() => {
@@ -29,7 +30,7 @@ const UserRequests = () => {
       if (response.ok) {
         const responseData = await response.json();
         console.log('User data:', responseData);
-        setUserData(responseData.data); // Update state with fetched data
+        setUserData(responseData.data || []);  // Ensure data is an array
         setResponseMessage('');
       } else {
         console.error('Failed to send user data');
@@ -94,9 +95,10 @@ const UserRequests = () => {
       setResponseMessage('Error: ' + error.message);
     }
   };
+
   return (
     <div className="user-container">
-      {userData.length > 0 ? (
+      {userData && userData.length > 0 ? (  // Add check for userData
         userData.map((user) => (
           <div key={user._id} className="user-card">
             <div className="user-image-container">
@@ -127,9 +129,6 @@ const UserRequests = () => {
       {responseMessage && <p style={{ color: 'red' }}>{responseMessage}</p>}
     </div>
   );
-  
 };
 
 export default UserRequests;
-
-
