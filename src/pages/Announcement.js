@@ -50,7 +50,7 @@ const Announcement = () => {
 
   return (
     <section className="news-section">
-      <div className="container">
+      <div>
         <h2 className="section-title">ANNOUNCEMENTS</h2>
         {loading && <p>Loading...</p>}
         {!loading && newsData.length === 0 && <p>No announcements</p>}
@@ -61,7 +61,6 @@ const Announcement = () => {
                 <h3>{newsItem.title}</h3>
                 <p>{newsItem.description}</p>
                 {newsItem.image && <img src={newsItem.image} alt={newsItem.title} />}
-                <a href={newsItem.link} className="read-more">Read More</a>
               </div>
             </div>
           ))}
@@ -69,7 +68,6 @@ const Announcement = () => {
         {newsData.length > 3 && (
           <button type="button" className="load-more" onClick={loadMoreNews}>Load More</button>
         )}
-        
       </div>
     </section>
   );

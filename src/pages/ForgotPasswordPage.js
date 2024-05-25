@@ -2,6 +2,8 @@
 
 import React, { useState } from 'react';
 import './ForgotPasswordPage.css';
+import { FaEnvelope } from 'react-icons/fa';
+
 
 function ForgotPasswordPage() {
   const [email, setEmail] = useState('');
@@ -30,21 +32,25 @@ function ForgotPasswordPage() {
         setMessage('Failed to submit the request. Please try again later.');
       }
     } catch (error) {
-      setMessage('There was a problem with your request. Please try again later.');
+      setMessage('This email is not registered before.');
     }
   };
 
   return (
     <div className="ForgotPasswordPage">
+    <div className="ForgotPasswordPage-container">
       <h2>Forgot Password ?</h2>
       <form onSubmit={handleSubmit}>
         <div className="input-group">
+          <FaEnvelope className="icon" />
           <input type="email" placeholder="Enter your email" className="input-field" value={email} onChange={(e) => setEmail(e.target.value)} required />
         </div>
-        <button type="submit" className="submit-btn">Submit</button>
+        <button className="submit-btn">Submit</button>
+        {message && <p className="msg">{message}</p>}
       </form>
-      {message && <div className="message">{message}</div>}
+      
     </div>
+  </div>
   );
 }
 

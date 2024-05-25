@@ -85,7 +85,7 @@ const ContactPage = () => {
       <h1>Message History</h1>
       {messages.length > 0 ? (
         <div>
-          <ul key={messages.length}>
+          <ul className='item' key={messages.length}>
             {messages.map((msg, index) => (
               <li key={index}>
                 <div>
@@ -103,7 +103,7 @@ const ContactPage = () => {
         <p>No history</p>
       )}
       <div className="message-container">
-        <button
+        <button id="contact"
           className={`message-icon ${showSendMessage ? 'active' : ''}`} 
           onClick={() => setShowSendMessage(!showSendMessage)} >
           <i className="fa-brands fa-rocketchat"></i>

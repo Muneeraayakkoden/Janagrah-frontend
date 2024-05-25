@@ -24,10 +24,10 @@ const features = [
 
 const Services = () => {
   return (
-    <section className="services">
-      <div className="container">
+    <section className="service-section">
+      <div>
         <h2 className="section-title">SERVICES</h2>
-        <div className="row">
+        <div className="row services_section">
           {features.map((feature, index) => (
             <div key={index} className="col-md-4">
               <Card key={index} icon={`fas ${feature.icon}`} title={feature.title} description={feature.description} />

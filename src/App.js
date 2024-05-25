@@ -1,7 +1,8 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+// Import other page components
 
 import ResidentHome from './pages/ResidentHome';
 import LoginPage from './pages/LoginPage.js';
@@ -9,8 +10,8 @@ import ResidentSignup from './pages/ResidentSignup.js';
 import ResidentSignupSuccess from './pages/ResidentSignupSuccess.js';
 import ContactPage from './pages/ContactPage.js';
 import SurveyPage from './pages/SurveyPage.js';
-import LoginRejected from './pages/LoginRejected.js'
-import OfficialHome from './pages/OfficialHome.js'
+import LoginRejected from './pages/LoginRejected.js';
+import OfficialHome from './pages/OfficialHome.js';
 import CreateAnnouncement from './pages/CreateAnnouncement.js';
 import Results from './pages/Results.js';
 import CreateSurveys from './pages/CreateSurveys.js';
@@ -19,10 +20,12 @@ import OfficialNotification from './pages/officialNotification.js';
 import MyAccount from './pages/MyAccount.js';
 import UserRequests from './pages/UserRequests.js';
 import Dosurvey from './pages/dosurvey.js';
-import Announcements from './pages/Annoucements.js'
+import Announcements from './pages/AnnoucementHistory.js';
 import MemberAccount from './pages/MemberAccount.js';
 import WardMessage from './pages/WardMessage.js';
 import AllResidents from './pages/AllResidents.js';
+import Homepage from './pages/Homepage.js';
+import EditProfile from './pages/EditProfile.js';
 
 function App() {
   return (
@@ -44,12 +47,14 @@ function App() {
           <Route path="/ForgotPasswordPage" Component={ForgotPasswordPage} />
           <Route path="/OfficialNotification" Component={OfficialNotification} />
           <Route path="/MyAccount" Component={MyAccount} />
+          <Route path="/EditProfile" Component={EditProfile} />
           <Route path="/UserRequests" Component={UserRequests} />
           <Route path="/WardMessage" Component={WardMessage} />          
           <Route path="/dosurvey" Component={Dosurvey} />
-          <Route path="/Announcements" Component={Announcements} />
+          <Route path="/AnnouncementHistory" Component={Announcements} />
           <Route path="/MemberAccount" Component={MemberAccount} />
           <Route path="/AllResidents" Component={AllResidents} />
+          <Route path="/Homepage" Component={Homepage} />
         </Routes>
       </BrowserRouter>
     </div>
@@ -57,5 +62,6 @@ function App() {
 }
 
 export default App;
+
 
     

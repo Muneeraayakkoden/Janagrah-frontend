@@ -1,4 +1,4 @@
-/* General styles */
+/* General styles
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -38,7 +38,7 @@ body {
   
   .header p {
     font-size: 1.55rem;
-    margin-bottom: 30px;
+    margin-bottom: 30px; 
     color:white
   }
   
@@ -95,8 +95,7 @@ body {
   
  
   .footer {
-    background-color: #04049b;
-    color: #fff;
+    color: black;
     padding: 10px 0;
     text-align: center;
   }
@@ -109,7 +108,7 @@ body {
     position: absolute;
     bottom: 100px;
     top: calc(1cm + 15px);
-    right: calc(40% - 13cm); /* Center the icon horizontally */
+    right: calc(40% - 13cm); 
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -132,16 +131,16 @@ body {
     
 }
   
-  /* Notification content styles */
+ 
   .notification-content {
-    display: none; /* Initially hidden */
+    display: none; 
     position: absolute;
     bottom: 80px;
     right: 20px;
   }
 
   .section.active {
-    /* Styles for the active section */
+   
     border: 1px solid #ddd;
     background-color: #f0f0f0;
   }
@@ -175,5 +174,4 @@ body {
     font-size: 1.2rem;
     margin-bottom: 0.5rem;
 }
-  
-    
+   */

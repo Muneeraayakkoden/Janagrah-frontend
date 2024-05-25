@@ -1,8 +1,26 @@
-/* Footer */
 
 .footer-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding-right: auto;
+  padding: 20px; 
+  font-weight: 600;
+  text-align: center !important;
 }
 
+@media (max-width: 1200px) {
+  .footer-container {
+    padding: 20px; 
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    padding: 15px; 
+  }
+}
+
+@media (max-width: 576px) {
+  .footer-container {
+    padding: 10px;
+  }
+}

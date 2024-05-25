@@ -145,11 +145,42 @@ const MyAccount = () => {
                   key
                 )
               ) {
+                let label = ''
+                switch(key){
+                  case 'username':
+                    label = 'Username'
+                    break;
+                  case 'password':
+                    label = 'Password';
+                    break;
+                  case 'name':
+                    label = 'Name';
+                    break;
+                  case 'job':
+                    label = 'Job Title';
+                    break;
+                  case 'age':
+                    label = 'Age';
+                    break;
+                  case 'phn':
+                    label = 'Phone';
+                    break;
+                  case 'email':
+                    label = 'Email';
+                    break;
+                  case 'annualIncome':
+                    label = 'Annual Income';
+                    break;
+                  case 'address':
+                    label = 'Address';
+                    break;
+                }
                 return (
-                  <p key={key}>
+                  <p key={label}>
+                    
                     <span style={{ fontWeight: 'bold' }}>
-                      {key}:
-                    </span>
+                      {label}: 
+                    </span> 
                     {isEditing ? (
                       <input type="text" name={key} value={editedUserData[key] || ''} onChange={handleChange} />
                     ) : (
@@ -166,7 +197,7 @@ const MyAccount = () => {
         </div>
       )}
       {isEditedSuccessfully && <p className="success-message">Profile edited successfully!</p>}
-      <button onClick={handleLogout}><IoLogOutOutline /> Logout</button>
+      <button className="leave" onClick={handleLogout}><IoLogOutOutline /> Logout</button>
     </div>
   );
 };
