@@ -81,7 +81,7 @@ const ContactPage = () => {
     <div className="contactPage">
       {messages.length > 0 ? (
         <div className="Container">
-          <h1>Message History</h1>
+          <h1 className='heading'>Message History</h1>
           <div className="item" key={messages.length}>
             {messages.map((msg, index) => (
               <div key={index}>
@@ -99,7 +99,7 @@ const ContactPage = () => {
         <p>No history</p>
       )}
       <div className="message-container">
-      <h1>Write a Message</h1>
+      <h1 className='heading'>Write a Message</h1>
         <button id="contact"
           className={`message-icon ${showSendMessage ? 'active' : ''}`} 
           onClick={() => setShowSendMessage(!showSendMessage)} >
