@@ -16,7 +16,7 @@
   width: 100%;
   position: relative;
   max-width: 400px;
-  background-color: rgba(255, 230, 230, 0.6);
+  background-color: rgba(157, 169, 173, 0.6);
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -26,8 +26,7 @@
 
 .form-section {
   padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  border-radius: 10px; 
   margin-bottom: 20px;
   box-sizing: border-box;
 }
@@ -36,15 +35,22 @@ h1 {
   text-align: center;
   font-size: 27px;
   margin-bottom: 10px;
-  color: #04080c;
-  
+  color: #04080c; 
 }
 
-h2 {
-  font-size: 18px;
-  margin-bottom: 10px;
-  color: #0e55a1; 
+.Regbutton {
+  display: inline-block;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-weight: bold;
+  background-color: black;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 16px;
 }
+
 
 .error-message {
   color: #dc3545;
@@ -58,7 +64,7 @@ input[type="email"],
 input[type="password"],
 select {
   width: 100%;
-  border: 0.5px solid #66afd6; 
+  border: 0.5px solid #151b1e; 
   border-radius: 5px;
   font-size: 16px;
   margin-bottom: 15px;  
@@ -74,14 +80,14 @@ input[type="password"]:focus,
 textarea:focus,
 select:focus {
   outline: none;
-  border-color: #007bff; 
+  border-color: #000000; 
 }
 
 textarea {
   width: 100%;
   height: 60px;
   padding: 12px 20px ;
-  border: 0.5px solid #66afd6; 
+  border: 0.5px solid #151b1e; 
   border-radius: 5px;
   box-sizing: border-box;
   font-size: 16px;
@@ -110,7 +116,7 @@ a:hover {
 
 .pagination .prev-btn,
 .pagination .next-btn {
-  background-color: #1368c3;
+  background-color: black;
   color: white;
   padding: 10px 20px;
   border: none;
@@ -134,7 +140,7 @@ a:hover {
 
 .pagination .prev-btn:hover,
 .pagination .next-btn:hover {
-  background-color: #2a76c7;
+  background-color: black;
 }
 
 .pagination .page-indicator {
