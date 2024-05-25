@@ -49,20 +49,22 @@
   
    
   
-.delete-button {
-  background-color: transparent; /* Make the background transparent */
-  border: none; /* Remove border */
-  padding: 0; /* Remove padding */
+.delete-button1 {
+  background-color: rgb(243, 63, 63); 
+  border: none; 
+  padding: 0; 
   cursor: pointer;
-  position: absolute; /* Position absolutely */
-  top: 50%; /* Align to the vertical center */
-  right: 10px; /* Align to the right */
-  transform: translateY(-50%); /* Adjust for vertical centering */
+  position: absolute;
+  top: 10%; 
+  right: 5%; 
+  transform: translateY(-50%); 
 }
 
 /* Style the delete icon */
 .delete-button svg {
-  fill: #7f7f7f; /* Set the fill color of the delete icon to grey */
+  fill: #7f7f7f;
+  width: 24px; 
+  height: 24px;
 }
 
 .delete-button:hover svg {

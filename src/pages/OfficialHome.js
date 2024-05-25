@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+/*import React, { useEffect } from 'react';
 import './OfficialHome.css';
 import { useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.png';
@@ -85,5 +85,92 @@ function OfficialHome() {
     </div>
   );
 };
+
+export default OfficialHome;*/
+import React, { useState } from 'react';
+import './OfficialHome.css';
+import { useNavigate } from 'react-router-dom';
+import logo from '../assets/logo2.png';
+import aboutImage from '../assets/church-of-the-king-j9jZSqfH5YI-unsplash.jpg';
+
+function OfficialHome() {
+  const navigate = useNavigate();
+  const [sidebarExpanded, setSidebarExpanded] = useState(false);
+  const [selectedSection, setSelectedSection] = useState('about');
+
+  const handleSidebarToggle = () => {
+    setSidebarExpanded(!sidebarExpanded);
+  };
+
+  const handleSectionChange = (section) => {
+    setSelectedSection(section);
+  };
+
+  return (
+    <div className="official-homepage">
+      <div className={`sidebar ${sidebarExpanded ? 'expanded' : ''}`}>
+        <div className="logo">
+          <img src={logo} alt="Janagrah Logo" />
+        </div>
+        <div className="nav-icons">
+          <div className="nav-icon" onClick={() => navigate('/MemberAccount')}>
+            <i className="fa-solid fa-user"></i>
+            {sidebarExpanded && <span>Profile</span>}
+          </div>
+          <div className="nav-icon" onClick={() => navigate('/officialNotification')}>
+            <i className="fas fa-bell"></i>
+            {sidebarExpanded && <span>Notifications</span>}
+          </div>
+          <div className="nav-icon" onClick={() => handleSectionChange('surveys')}>
+            <i className="fas fa-list"></i>
+            {sidebarExpanded && <span>Surveys</span>}
+          </div>
+          <div className="nav-icon" onClick={() => navigate('/AnnouncementHistory')}>
+            <i className="fas fa-bullhorn"></i>
+            {sidebarExpanded && <span>Announcements</span>}
+          </div>
+          <div className="nav-icon" onClick={() => navigate('/AllResidents')}>
+            <i className="fas fa-users"></i>
+            {sidebarExpanded && <span>View All Residents</span>}
+          </div>
+        </div>
+        <div className="toggle-btn" onClick={handleSidebarToggle}>
+          {sidebarExpanded ? '<' : '>'}
+        </div>
+      </div>
+      <div className={`content ${sidebarExpanded ? 'expanded' : ''}`}>
+        <div className="container">
+          <header className="header">
+            <h1>JANAGRAH</h1>
+            <p>Empowering Our Community</p>
+          </header>
+        </div>
+        <main className="main">
+          {selectedSection === 'about' && (
+            <section className="about-section">
+              <h2>About Janagrah</h2>
+              <p>Janagrah is a resident engagement platform designed to empower residents and strengthen the foundations of our community. We facilitate open communication and informed decision-making by providing a direct line between residents and local authorities.</p>
+              <p>Together, we can build a more engaged and informed community.</p>
+              <img src={aboutImage} alt="Community Engagement" className="about-image" />
+            </section>
+          )}
+           {selectedSection === 'surveys' && (
+            <section className="survey-section">
+              <div className="survey-tabs">
+                <button onClick={() => navigate('/CreateSurveys')}>Create Survey</button>
+                <button onClick={() => navigate('/SurveyPage')}>Surveys Done</button>
+              </div>
+            </section>
+          )}
+        </main>
+        <footer className="footer">
+          <div className="footer-container">
+            <p className="copyright">&copy; Janagrah 2024</p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  );
+}
 
 export default OfficialHome;

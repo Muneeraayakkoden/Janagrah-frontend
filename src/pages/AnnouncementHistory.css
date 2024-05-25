@@ -1,26 +1,71 @@
-/* Announcement.css */
+/* General layout */
+.announcement-page-container {
+  display: flex;
+  min-height: 100vh;
+  margin: 0;
+}
+
+/* Sidebar styling */
+.announcement-sidebar {
+  width: 250px; /* Fixed width for the sidebar */
+  background-color: #f4f4f4;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  overflow-y: auto; /* Ensure scrollbar if content overflows */
+}
+
+/* Main content styling */
+.announcement-main-content {
+  flex-grow: 1;
+  padding: 20px;
+  background-color: #f9f9f9;
+  margin-left: 0; /* Ensure it doesn't overlap with the sidebar */
+}
 
 /* Style for each announcement record */
-.announcement {
-    border: 1px solid #ccc; /* Add border around each announcement */
-    padding: 10px; /* Add padding for spacing */
-    margin-bottom: 10px; /* Add margin at the bottom for separation */
-    background-color: #fff; 
-  }
-  
-  /* Style for announcement titles */
-  .announcement-title {
-    font-weight: bold; /* Make the title bold */
-  }
-  
-  /* Style for announcement descriptions */
-  .announcement-description {
-    color: #666; /* Change color of description text */
-  }
-  
-  /* Style for announcement created date */
-  .announcement-date {
-    font-style: italic; /* Make the date italic */
-    color: #999; /* Change color of date text */
-  }
-  
+.announcement-item {
+  border: 1px solid #ccc; /* Add border around each announcement */
+  padding: 10px; /* Add padding for spacing */
+  margin-bottom: 10px; /* Add margin at the bottom for separation */
+  background-color: #fff;
+}
+
+/* Style for announcement titles */
+.announcement-title {
+  font-weight: bold; /* Make the title bold */
+}
+
+/* Style for announcement descriptions */
+.announcement-description {
+  color: #666; /* Change color of description text */
+}
+
+/* Style for announcement created date */
+.announcement-date {
+  font-style: italic; /* Make the date italic */
+  color: #999; /* Change color of date text */
+}
+
+/* Button styling */
+.announcement-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.announcement-button:hover {
+  background-color: #0056b3;
+}
+
+/* Link styling */
+.announcement-link {
+  text-decoration: none;
+}
+
+.announcement-link button {
+  margin-bottom: 20px;
+}

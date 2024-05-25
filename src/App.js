@@ -26,7 +26,8 @@ import WardMessage from './pages/WardMessage.js';
 import AllResidents from './pages/AllResidents.js';
 import Homepage from './pages/Homepage.js';
 import EditProfile from './pages/EditProfile.js';
-
+import Officialside from './components/Officialside.js'
+import Surveyboth from './pages/Surveyboth.js'
 function App() {
   return (
     <div>
@@ -55,6 +56,8 @@ function App() {
           <Route path="/MemberAccount" Component={MemberAccount} />
           <Route path="/AllResidents" Component={AllResidents} />
           <Route path="/Homepage" Component={Homepage} />
+          <Route path="/Officialside" Component={Officialside} />
+          <Route path="/Surveyboth" Component={Surveyboth} />
         </Routes>
       </BrowserRouter>
     </div>
