@@ -21,7 +21,7 @@ const Navbar = () => {
                 <li class="nav-item">
                     <a href="#aboutUs-section" class="nav-link">
                         <i class="fas fa-info-circle"></i>
-                        <span class="nav-text">About Us</span>
+                        <span class="nav-text">ABOUT US</span>
                     </a>
                 </li>
 
