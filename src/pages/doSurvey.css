@@ -20,7 +20,7 @@
   }
   
   .poll {
-    border: 2px solid #00aaff;
+    border: 2px solid #101010;
     border-radius: 10px;
     padding: 30px;
     background: linear-gradient(135deg, #d0edf0, #e3f7fa);
@@ -36,6 +36,7 @@
   /* Header Style */
   .poll h1 {
     font-size: 32px;
+    color: rgb(6, 6, 6);
     margin-bottom: 25px;
     position: relative;
   }
@@ -51,7 +52,7 @@
   .poll h5 {
     margin-bottom: 25px;
     font-size: 18px;
-    color: #0056b3;
+    color: #00aaff;
   }
   
   /* Options Style */
@@ -65,12 +66,12 @@
     margin-right: 15px;
     width: 20px;
     height: 20px;
-    accent-color: #00aaff;
+    accent-color: #010304;
   }
   
   .option label {
     font-size: 16px;
-    color: #0056b3;
+    color: #010203;
   }
   
   /* Button Style */
