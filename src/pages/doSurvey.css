@@ -16,7 +16,7 @@
   }
   
   .poll {
-    border: 2px solid #5dbeef;
+    border: 0.5px solid  rgb(28, 78, 136);
     border-radius: 10px;
     padding: 30px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -41,7 +41,7 @@
   .poll h5 {
     margin-bottom: 25px;
     font-size: 18px;
-    color: #00aaff;
+    color:  rgb(24, 81, 147);
   }
   
   /* Options Style */
@@ -64,7 +64,7 @@
   }
   
   /* Button Style */
-  button {
+  .doSurveybutton {
     display: inline-block;
     padding: 12px 25px;
     margin-top: 20px;
@@ -72,25 +72,25 @@
     cursor: pointer;
     border: none;
     transition: background-color 0.3s ease, transform 0.2s ease;
-    background-color: #00aaff;
+    background-color:  rgb(28, 78, 136);
     color: #fff;
     font-size: 16px;
     font-weight: 600;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   }
   
-  button:disabled {
+  .doSurveybutton:disabled {
     background-color: #cccccc;
     cursor: not-allowed;
   }
   
-  button:hover:enabled {
+  .doSurveybutton:hover:enabled {
     background-color: #007bff;
     transform: translateY(-3px);
   }
   
   /* Icon Inside Button */
-  button::before {
+  .doSurveybutton::before {
     margin-right: 10px;
   }
   

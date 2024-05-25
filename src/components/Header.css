@@ -1,7 +1,6 @@
 
 .rheader {
   padding: 10px;
-  background-color: #ffffff;
   font-family: 'Merriweather', serif;
   display: flex;
   justify-content: center;
@@ -12,7 +11,7 @@
 }
 
 .title {
-  color: #5dbeef !important; 
+  color: rgb(28, 78, 136) !important; 
   margin-bottom: 10px;
   font-size: 40px;
   font-weight: 800;

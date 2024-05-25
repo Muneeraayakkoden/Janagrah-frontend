@@ -3,13 +3,14 @@
 .navbar {
   position: fixed;
   height: 100vh;
-  background-color: #63c1f0;
+  background-color: rgb(28, 78, 136);
   display: flex;
   justify-content: space-between;
   flex-direction: column;
   justify-content: start;
   align-items: center;
   font-family: 'Merriweather', serif;
+  height: 100%;
 }
 
 .navbar-nav {
@@ -30,16 +31,17 @@
 .nav-link {
   display: flex;
   align-items: center;
-  padding: 15px 70px;
+  padding: 15px 20px;
   color: white;
   text-decoration: none;
   width: 100%;
   font-size: 18px;
-  transition: background-color 0.3s;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .nav-link:hover {
   color: black;
+  transform: translateX(-10px);
 }
 
 .nav-text {

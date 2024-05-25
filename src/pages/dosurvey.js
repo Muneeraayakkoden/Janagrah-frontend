@@ -78,7 +78,7 @@ function DoSurvey() {
       ) : (
         polls.map((poll, index) => (
           <div className="poll" key={poll._id}>
-            <h1><u>Survey Name: {poll.surveyName}</u></h1>
+            <h1><u>{index+1}: {poll.surveyName}</u></h1>
             <h5>Description: {poll.surveyDescription}</h5>
             <div className="options">
               {poll.options.map((option) => (
@@ -88,7 +88,7 @@ function DoSurvey() {
                 </div>
               ))}
             </div>
-            <button type="button" disabled={submitted} onClick={() => handleSubmit(poll._id, index)}><i class="fas fa-paper-plane"></i> Submit </button>
+            <button className="doSurveybutton" type="button" disabled={submitted} onClick={() => handleSubmit(poll._id, index)}><i class="fas fa-paper-plane"></i> Submit </button>
             {submitted && <div className="result">Thank you for your vote!</div>}
             {errorMessages[index] && <div className="error">{errorMessages[index]}</div>}
           </div>
