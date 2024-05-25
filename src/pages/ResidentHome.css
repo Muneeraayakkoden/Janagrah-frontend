@@ -20,6 +20,7 @@
   width: 100%;
   justify-content: space-between;
   background-color:  white;
+  width: calc(100% - 200px);
 }
 
 .main-content.h3 {
@@ -36,4 +37,25 @@
   padding: 20px;
   border: 1px solid rgb(28, 78, 136);
   border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+  .piano1 {
+    width: 150px; 
+  }
+
+  .piano2 {
+    width: calc(100% - 150px); 
+    margin-left: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .piano1 {
+    width: 100px;
+  }
+
+  .piano2 {
+    width: calc(100% - 100px); 
+  }
 }

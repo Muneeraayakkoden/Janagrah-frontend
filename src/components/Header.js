@@ -3,21 +3,6 @@ import './Header.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Header = () => {
-  const [showDescription, setShowDescription] = useState(false);
-
-  useEffect(() => {
-    let timer;
-    if (showDescription) {
-      timer = setTimeout(() => {
-        setShowDescription(false);
-      }, 5000); // fade after 5 seconds
-    }
-    return () => clearTimeout(timer);
-  }, [showDescription]);
-
-  const toggleDescription = () => {
-    setShowDescription(prevState => !prevState);
-  };
 
   return (
     <header className="rheader">
@@ -27,7 +12,6 @@ const Header = () => {
           <h3 className="hero-title">Your Voice, Shaping Our Ward</h3>
         </div>
       </div>
-     
     </header>
   );
 };

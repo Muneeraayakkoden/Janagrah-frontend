@@ -10,6 +10,7 @@
   justify-content: start;
   align-items: center;
   font-family: 'Merriweather', serif;
+  height: 100%;
 }
 
 .navbar-nav {
@@ -30,7 +31,7 @@
 .nav-link {
   display: flex;
   align-items: center;
-  padding: 15px 70px;
+  padding: 15px 20px;
   color: white;
   text-decoration: none;
   width: 100%;
