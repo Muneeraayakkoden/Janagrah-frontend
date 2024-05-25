@@ -10,7 +10,6 @@ const ContactPage = () => {
   const [messageSent, setMessageSent] = useState(false);
   const [showSendMessage, setShowSendMessage] = useState(false);
 
-
   const userid = JSON.parse(localStorage.getItem('username'));
   const wardid = JSON.parse(localStorage.getItem('wardmemberid'));
  
@@ -76,33 +75,31 @@ const ContactPage = () => {
       console.error('Error sending message:', error);
     }
   };
-
-
-     
+ 
 
   return (
     <div className="contactPage">
-      <h1>Message History</h1>
       {messages.length > 0 ? (
-        <div>
-          <ul className='item' key={messages.length}>
+        <div className="Container">
+          <h1>Message History</h1>
+          <div className="item" key={messages.length}>
             {messages.map((msg, index) => (
-              <li key={index}>
-                <div>
-                <p>Message: {msg.message}</p>
-                <p>Time: {msg.createdAt}</p>
-                <p>Anonymous: {msg.anonymous ? 'Yes' : 'No'}</p>
-                <p className={msg.read ? 'Seen' : 'not-seen'}>{msg.read ? 'Viewed' : 'Unread'}</p>
-
+              <div key={index}>
+                <div className="message-content">
+                  <p className='chat'>{msg.message}</p>
+                  <p>Anonymous: {msg.anonymous ? 'Yes' : 'No'}</p>
+                  <p className='chatTime'>{msg.createdAt}</p>
+                  <p className={msg.read ? 'Seen' : 'not-seen'}>{msg.read ? 'Viewed' : 'Unread'}</p>
+                </div>
               </div>
-              </li>
             ))}
-          </ul>
+          </div>
         </div>
       ) : (
         <p>No history</p>
       )}
       <div className="message-container">
+      <h1>Write a Message</h1>
         <button id="contact"
           className={`message-icon ${showSendMessage ? 'active' : ''}`} 
           onClick={() => setShowSendMessage(!showSendMessage)} >
@@ -137,7 +134,7 @@ const ContactPage = () => {
                 />
                 <label htmlFor="anonymous">Anonymous</label>
               </div>
-              <button className="send"type="submit"><IoIosSend /> Send</button>
+              <button className="send" type="submit"><IoIosSend /> Send</button>
             </form>
             {messageSent && <p className="success">Message Sent Successfully</p>}
           </div>
