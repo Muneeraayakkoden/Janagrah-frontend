@@ -1,8 +1,7 @@
-
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './MyAccount.css';
-import { FaUserEdit  } from "react-icons/fa";
+import { FaUserEdit } from "react-icons/fa";
 import { IoLogOutOutline } from "react-icons/io5";
 
 const MyAccount = () => {
@@ -10,12 +9,39 @@ const MyAccount = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [editedUserData, setEditedUserData] = useState({});
   const [isEditedSuccessfully, setIsEditedSuccessfully] = useState(false);
+  const [userrData, setUserrData] = useState({});
+  const [responseMessage, setResponseMessage] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
     // Fetch user data when the component mounts
     fetchUserData();
+    fetchImage();
   }, []);
+
+  const fetchImage = async () => {
+    try {
+      const username = JSON.parse(localStorage.getItem('username'));
+
+      const response = await fetch('http://localhost:4000/user/image', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username }),
+      });
+
+      if (response.ok) {
+        const responseData = await response.json();
+        setUserrData(responseData.data); // Update state with fetched data
+        setResponseMessage('');
+      } else {
+        console.error('Failed to fetch image');
+      }
+    } catch (error) {
+      console.error('Error fetching image:', error.message);
+    }
+  };
 
   const fetchUserData = () => {
     try {
@@ -74,7 +100,6 @@ const MyAccount = () => {
         body: JSON.stringify(editedUserData),
       });
       if (response.ok) {
-        console.log(response);
         const updatedUserData = await response.json();
         Object.entries(updatedUserData.user).forEach(([key, value]) => {
           localStorage.setItem(key, JSON.stringify(value));
@@ -98,6 +123,9 @@ const MyAccount = () => {
   return (
     <div className="profile-page">
       <h1>RESIDENT PROFILE</h1>
+      <div className="resident-image-container">
+        <img className="resident-image" src={`data:image/jpeg;base64,${userrData.image}`} alt="Resident" />
+      </div>
       {userData && (
         <div>
           <div className="ward-info">
@@ -163,10 +191,9 @@ const MyAccount = () => {
               }
               return null;
             })}
-            {isEditing && <button className="b1 "onClick={handleSave}>Save</button>}
+            {isEditing && <button className="b1" onClick={handleSave}>Save</button>}
             {!isEditing && <button className='b2' onClick={handleEdit}><FaUserEdit /></button>}
           </div>
-
         </div>
       )}
       {isEditedSuccessfully && <p className="success-message">Profile edited successfully!</p>}
@@ -176,4 +203,3 @@ const MyAccount = () => {
 };
 
 export default MyAccount;
-

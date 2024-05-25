@@ -1,47 +1,72 @@
-.user-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.user-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.user-count {
+  text-align: right;
+  font-size: 1.2rem;
   margin-bottom: 20px;
 }
 
-.user-image-container {
+.all-residents-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.resident-card {
+  position: relative;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.resident-details {
   margin-bottom: 10px;
 }
 
-.user-image {
+.resident-details p {
+  margin: 5px 0;
+}
+
+.resident-details p:first-child {
+  font-weight: bold;
+}
+
+.resident-name {
+  color: #333;
+  font-size: 1.2rem;
+}
+
+.resident-email,
+.resident-phone,
+.resident-address {
+  color: #666;
+}
+
+.delete-button {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 4px 8px; /* Reduced padding */
+  font-size: 10px; /* Reduced font size */
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+  position: absolute;
+  bottom: 8px; /* Adjust bottom position */
+  right: 8px; /* Adjust right position */
+}
+
+.delete-button:hover {
+  background-color: #e60000;
+}
+
+.resident-image-container {
+  margin-bottom: 10px;
+}
+
+.resident-image {
   width: 200px;
   height: 200px;
   border-radius: 50%;
   object-fit: cover;
-}
-
-.user-details {
-  text-align: center;
-}
-
-.button-container {
-  margin-top: 10px;
-}
-
-.accept-button,
-.reject-button {
-  padding: 5px 10px;
-  cursor: pointer;
-}
-
-.accept-button {
-  background-color: #4caf50;
-  color: white;
-}
-
-.reject-button {
-  background-color: #f44336;
-  color: white;
 }

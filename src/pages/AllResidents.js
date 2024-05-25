@@ -50,6 +50,7 @@ const AllResidents = () => {
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);
   };
+
   const handleDelete = async (residentId) => {
     try {
       const response = await fetch('http://localhost:4000/user/delete', {
@@ -96,7 +97,10 @@ const AllResidents = () => {
       {filteredResidents.length > 0 ? (
         <div>
           {filteredResidents.map((resident, index) => (
-            <div key={index} className="resident-card">
+            <div key={resident._id} className="resident-card">
+              <div className="resident-image-container">
+                <img className="resident-image" src={`data:image/jpeg;base64,${resident.image}`} alt="Resident" />
+              </div>
               <div className="resident-details">
                 <p className="resident-name">Name: {resident.name}</p>
                 <p>Username: {resident.username}</p>
@@ -111,9 +115,12 @@ const AllResidents = () => {
                 <p className="resident-address">Address: {resident.address}</p>
                 <p className="resident-email">Email: {resident.email}</p>
                 <p>Annual Income: {resident.annualIncome}</p>
-                <button className='delete-button' onClick={() => handleDelete(resident._id)}>Delete</button>
+                <button  onClick={() => handleDelete(resident._id)}>Delete</button>
+                
               </div>
+             
             </div>
+             
           ))}
         </div>
       ) : (
@@ -121,6 +128,9 @@ const AllResidents = () => {
       )}
     </div>
   );
+  
+  
+  
 };
 
 export default AllResidents;
