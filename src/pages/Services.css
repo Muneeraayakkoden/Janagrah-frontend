@@ -1,36 +1,19 @@
-/* Services.css */
-.services {
-  padding: 50px 0; /* Adjust padding as needed */
-  width: 100%;
-  overflow: hidden;
+
+.service-section {
+  padding: 30px;
+  text-align: center;
 }
 
 .section-title {
   text-align: center;
-  margin-bottom: 50px; /* Adjust margin as needed */
+  margin-bottom: 50px; 
   font-weight: 600;
+  background-color: #5dbeef;
+  color: white; 
+  padding: 10px; 
 }
 
-.feature-cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
 
-.services_section{
-  padding:0 10%;
-  /* width: 80%; */
-}
-
-/* Media query for responsiveness */
-@media (max-width: 768px) {
-  .feature-cards .card {
-    max-width: calc(50% - 40px); /* Adjust width for smaller screens */
-  }
-}
-
-@media (max-width: 576px) {
-  .feature-cards .card {
-    max-width: calc(100% - 40px); /* Adjust width for even smaller screens */
-  }
+div.row {
+  --bs-gutter-x: 0;
 }

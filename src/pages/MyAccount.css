@@ -56,7 +56,7 @@
     margin-bottom: 8px;
   }
   
-  button {
+  .leave {
     background-color: #0f8992;
     color: #fff;
     border: none;
@@ -67,7 +67,7 @@
     transition: background-color 0.3s ease;
   }
   
-  button:hover {
+  .leave:hover {
     background-color: #0056b3;
   }
   

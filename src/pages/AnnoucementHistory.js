@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import './Announcements.css'
+import './AnnouncementHistory.css'
 
 
 const Announcements = () => {

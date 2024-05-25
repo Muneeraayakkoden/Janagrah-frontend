@@ -1,7 +1,7 @@
 
 .news-section {
-  padding: 20px;
-  text-align: center; /* Align section content center */
+  padding: 30px;
+  text-align: center; 
 }
 
 .section-title {
@@ -9,21 +9,23 @@
   margin-bottom: 20px;
   text-align: center;
   font-weight: 600;
-  color:#63c1f0 !important;
+  background-color: #5dbeef;
+  color:white !important;
 }
 
 .news-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   gap: 20px;
+  justify-content: center;
 }
 
 .news-item {
-  width: calc(50% - 10px); /* Two items per row */
-  border: 1px solid #ccc;
+  width: calc(50% - 50px); 
+  border: 1px solid #5dbeef;
   border-radius: 5px;
   overflow: hidden;
+  background-color: white;
 }
 
 .news-content {
@@ -31,8 +33,9 @@
 }
 
 .news-content h3 {
-  font-size: 18px;
-  margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px; 
 }
 
 .news-content p {
@@ -47,30 +50,75 @@
 }
 
 .read-more {
-  display: block;
-  text-align: center;
-  padding: 10px;
-  background-color: #007bff;
-  color: #fff;
-  text-decoration: none;
+  display: inline-block;
+  padding: 10px 10px;
+  margin: 0;
   border-radius: 5px;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease;
+  background-color: #ffffff;
+  color: #5dbeef;
+  border: 1px solid #5dbeef;
+  width: 115px; 
 }
 
 .read-more:hover {
-  background-color: #0056b3;
+  background-color: #007bff;
+  color: #ffffff;
 }
 
 .load-more {
-  display: block;
+  
   margin-top: 20px;
   padding: 10px 20px;
-  background-color: #007bff;
-  color: #fff;
+  background-color:  #32a5de;
+  color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
 
 .load-more:hover {
-  background-color: #0056b3;
+  background-color: #007bff;
+}
+
+
+@media (max-width: 768px) {
+  .news-item {
+    width: 100%;
+  }
+
+  .news-container {
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .read-more {
+    width: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 20px;
+  }
+
+  .news-content h3 {
+    font-size: 16px;
+  }
+
+  .news-content p {
+    font-size: 12px;
+  }
+
+  .read-more {
+    padding: 8px 8px;
+    font-size: 14px;
+  }
+
+  .load-more {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
 }

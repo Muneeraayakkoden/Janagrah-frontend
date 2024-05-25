@@ -69,7 +69,6 @@ const Announcement = () => {
         {newsData.length > 3 && (
           <button type="button" className="load-more" onClick={loadMoreNews}>Load More</button>
         )}
-        
       </div>
     </section>
   );

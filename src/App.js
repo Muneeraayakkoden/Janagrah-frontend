@@ -20,7 +20,7 @@ import OfficialNotification from './pages/officialNotification.js';
 import MyAccount from './pages/MyAccount.js';
 import UserRequests from './pages/UserRequests.js';
 import Dosurvey from './pages/dosurvey.js';
-import Announcements from './pages/Annoucements.js';
+import Announcements from './pages/AnnoucementHistory.js';
 import MemberAccount from './pages/MemberAccount.js';
 import WardMessage from './pages/WardMessage.js';
 import AllResidents from './pages/AllResidents.js';
@@ -51,7 +51,7 @@ function App() {
           <Route path="/UserRequests" Component={UserRequests} />
           <Route path="/WardMessage" Component={WardMessage} />          
           <Route path="/dosurvey" Component={Dosurvey} />
-          <Route path="/Announcements" Component={Announcements} />
+          <Route path="/AnnouncementHistory" Component={Announcements} />
           <Route path="/MemberAccount" Component={MemberAccount} />
           <Route path="/AllResidents" Component={AllResidents} />
           <Route path="/Homepage" Component={Homepage} />

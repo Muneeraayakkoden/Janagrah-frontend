@@ -24,7 +24,7 @@ const features = [
 
 const Services = () => {
   return (
-    <section className="services">
+    <section className="service-section">
       <div>
         <h2 className="section-title">SERVICES</h2>
         <div className="row services_section">
