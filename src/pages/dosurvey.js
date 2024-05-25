@@ -61,7 +61,7 @@ function DoSurvey() {
         } else {
           const data = await response.json();
           console.error('Failed to submit data:', data.message);
-          setErrorMessages({ ...errorMessages, [pollIndex]: data.message }); // Store the error message for the poll
+          setErrorMessages({ ...errorMessages, [pollIndex]: data.message }); 
         }
       } else {
         console.error('Invalid surveyId');
@@ -78,8 +78,8 @@ function DoSurvey() {
       ) : (
         polls.map((poll, index) => (
           <div className="poll" key={poll._id}>
-            <h1>Poll: {poll.surveyName}</h1>
-            <p>Survey Description: {poll.surveyDescription}</p>
+            <h1><u>Survey Name: {poll.surveyName}</u></h1>
+            <h5>Description: {poll.surveyDescription}</h5>
             <div className="options">
               {poll.options.map((option) => (
                 <div key={option._id} className="option">
@@ -88,7 +88,7 @@ function DoSurvey() {
                 </div>
               ))}
             </div>
-            <button type="button" disabled={submitted} onClick={() => handleSubmit(poll._id, index)}> Submit </button>
+            <button type="button" disabled={submitted} onClick={() => handleSubmit(poll._id, index)}><i class="fas fa-paper-plane"></i> Submit </button>
             {submitted && <div className="result">Thank you for your vote!</div>}
             {errorMessages[index] && <div className="error">{errorMessages[index]}</div>}
           </div>

@@ -1,13 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
 .container {
     padding: 30px;
-    text-align: center;
     font-family: 'Merriweather', serif;
     background-image: url('../assets/image2.jpg');
+    background-size: cover;  
+    background-position: center; 
+    background-size:auto;
+    display: flex;
+    flex-wrap: wrap;
   }
   
   h3 {
     font-size: 24px;
-    margin-bottom: 20px;
     text-align: center;
     font-weight: 600;
     padding: 10px;
@@ -15,50 +20,88 @@
   }
   
   .poll {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 20px;
-    background-color: white;
-    margin-bottom: 20px;
+    border: 2px solid #00aaff;
+    border-radius: 10px;
+    padding: 30px;
+    background: linear-gradient(135deg, #d0edf0, #e3f7fa);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    width: calc(50% - 60px);
+    margin: 30px;
+    overflow: hidden;
+    color: #333;
+    position: relative;
   }
   
+  /* Header Style */
   .poll h1 {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 10px;
+    font-size: 32px;
+    margin-bottom: 25px;
+    position: relative;
   }
   
-  .poll p {
-    font-size: 14px;
-    margin-bottom: 10px;
+  .poll h1::before {
+    content: '📊';
+    position: absolute;
+    left: -20px;
+    font-size: 32px;
   }
   
+  /* Sub-header Style */
+  .poll h5 {
+    margin-bottom: 25px;
+    font-size: 18px;
+    color: #0056b3;
+  }
+  
+  /* Options Style */
   .options .option {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
   }
   
   .option input {
-    margin-right: 10px;
+    margin-right: 15px;
+    width: 20px;
+    height: 20px;
+    accent-color: #00aaff;
   }
   
+  .option label {
+    font-size: 16px;
+    color: #0056b3;
+  }
+  
+  /* Button Style */
   button {
     display: inline-block;
-    padding: 10px 20px;
-    margin-top: 10px;
-    border-radius: 5px;
+    padding: 12px 25px;
+    margin-top: 20px;
+    border-radius: 25px;
     cursor: pointer;
     border: none;
-    transition: background-color 0.3s ease;
-    background-color: #007bff;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    background-color: #00aaff;
     color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   }
   
   button:disabled {
     background-color: #cccccc;
+    cursor: not-allowed;
   }
   
   button:hover:enabled {
-    background-color: #0056b3;
+    background-color: #007bff;
+    transform: translateY(-3px);
+  }
+  
+  /* Icon Inside Button */
+  button::before {
+    margin-right: 10px;
   }
   
   .result {

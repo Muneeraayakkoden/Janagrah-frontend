@@ -13,32 +13,7 @@
   padding: 10px; 
 }
 
-.feature-cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
 
 div.row {
   --bs-gutter-x: 0;
-}
-
-
-@media (max-width: 768px) {
-  .feature-cards .card {
-    flex: 1 1 calc(50% - 40px); 
-    max-width: calc(50% - 40px);
-  }
-}
-
-@media (max-width: 576px) {
-  .feature-cards .card {
-    flex: 1 1 calc(100% - 40px); 
-    max-width: calc(100% - 40px);
-  }
-}
-
-
-.feature-cards .card .card-body {
-  padding: 20px;
 }
