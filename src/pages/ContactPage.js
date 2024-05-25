@@ -85,7 +85,7 @@ const ContactPage = () => {
       <h1>Message History</h1>
       {messages.length > 0 ? (
         <div>
-          <ul key={messages.length}>
+          <ul className='item' key={messages.length}>
             {messages.map((msg, index) => (
               <li key={index}>
                 <div>

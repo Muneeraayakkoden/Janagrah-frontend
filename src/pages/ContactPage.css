@@ -1,112 +1,48 @@
-/*
-.ContactPage {
-  padding: 50px 20px; 
-}
-
-.contact-container {
-  max-width: 800px;   margin: 0 auto; 
-}
-
-.Direct-Communication {
-  background-color: #f9f9f9;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
-}
-
-.Direct-Communication h2 {
-  font-size: 1.8rem;
-  margin-bottom: 20px;
-  color: #333;
-}
-.Direct-Communication textarea {
-  width: 100%;
-  margin-bottom: 20px;
-  padding: 10px;
-  border: 1px solid #ddd; 
-  border-radius: 5px;
-  resize: vertical; 
-}
-
-.anonymous-option {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.anonymous-option input[type="radio"] {
-  margin-right: 10px;
-}
-
-.anonymous-option label {
-  font-size: 1.2rem;
-  color: #555; 
-}
-
-.anonymous-option label:last-child {
-  margin-left: 10px;
-}
-
-button[type="submit"] {
-  padding: 12px 20px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  font-size: 1.2rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-button[type="submit"]:hover {
-  background-color: #0056b3; 
-}*/
 .contactPage {
   font-family: Arial, sans-serif;
   max-width: 800px;
   margin: 0 auto;
   margin-top: 80px;
-  padding: 50px 50px;
-  border: 1px solid #ccc;
+  padding: 20px;
   border-radius: 5px;
-  border: 5px;
-}
-.contactPage ul {
-  list-style: none;
-  padding: 0;
-}
+  background-color: #f9f9f9;
 
-.contactPage li {
-  border: 1px solid #ccc; /* Add border to each list item */
-  margin-bottom: 10px; /* Add some space between each list item */
-  padding: 10px; /* Add padding for better readability */
-  background-color: #fff;
+  border: 1px ;
+  padding: 10px;
+  box-shadow: 5px 10px 18px rgb(190, 235, 212);
 }
 
+.message-history {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-height: 500px;
+  overflow-y: auto;
+  margin-top: 20px;
+}
 
+.message-item {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #f1f1f1;
+}
 
-.contactPage p {
-  margin: 0; /* Remove default margin for paragraphs */
+.message-item p {
+  margin: 0;
+}
+
+.message-container {
+  margin-top: 20px;
 }
 
 .message-input {
   background-color: #f9f9f9;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  margin-bottom: 10px;
-}
-
-.message-container {
-  margin-top: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .anonymous-option {
@@ -121,7 +57,7 @@ li {
 
 .anonymous-option label {
   font-size: 1.2rem;
-  color: #555; 
+  color: #555;
 }
 
 .anonymous-option label:last-child {
@@ -132,16 +68,41 @@ input, select, #contact {
   margin-right: 10px;
   margin-bottom: 10px;
 }
+
 .success {
   color: green;
   font-weight: bold;
   margin-top: 10px;
 }
+
 .Seen {
   color: green;
 }
 
-/* Style for unread messages */
 .not-seen {
   color: red;
+}
+
+.message-icon {
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.message-icon.active {
+  color: #f6f7f9;
+}
+
+.send {
+  padding: 12px 20px;
+  background-color: #0d9779;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.send:hover {
+  background-color: #0056b3;
 }
