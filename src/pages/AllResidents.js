@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './AllResidents.css'; // Import the CSS file
+import Officialside from '../components/Officialside.js';
 
 const AllResidents = () => {
   const [details, setDetails] = useState([]);
@@ -84,6 +85,7 @@ const AllResidents = () => {
 
   return (
     <div className="all-residents-container">
+      < Officialside/>
       <h1>ALL RESIDENTS</h1>
       <div className="search-container">
         <input

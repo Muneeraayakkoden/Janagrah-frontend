@@ -106,7 +106,7 @@ const WardMessage = () => {
               )}
             </div>
             
-             <button className="delete-button" onClick={() => handleDelete(message._id)}><MdDelete /></button>
+             <button className="delete-button1" onClick={() => handleDelete(message._id)}><MdDelete /></button>
              <button className="read-button" onClick={() => handleRead(message._id)}>Read</button>
           </li>
         ))}

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './MyAccount.css';
+import Officialside from '../components/Officialside.js';
 
 const MemberAccount = () => {
   const [userData, setUserData] = useState(null);
@@ -10,7 +11,7 @@ const MemberAccount = () => {
     // Fetch user data when the component mounts
     fetchUserData();
   }, []);
-
+ 
   const fetchUserData = async () => {
     try {
       // Retrieve the user ID from local storage
@@ -32,6 +33,7 @@ const MemberAccount = () => {
 
   return (
     <div className="profile-page">
+       <Officialside />
       <h1>Member Profile</h1>
       {userData && (
         <div className="user-info">
