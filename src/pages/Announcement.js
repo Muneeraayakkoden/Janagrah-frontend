@@ -61,7 +61,6 @@ const Announcement = () => {
                 <h3>{newsItem.title}</h3>
                 <p>{newsItem.description}</p>
                 {newsItem.image && <img src={newsItem.image} alt={newsItem.title} />}
-                <a href={newsItem.link} className="read-more">Read More</a>
               </div>
             </div>
           ))}
