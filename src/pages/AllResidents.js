@@ -115,9 +115,12 @@ const AllResidents = () => {
                 <p className="resident-address">Address: {resident.address}</p>
                 <p className="resident-email">Email: {resident.email}</p>
                 <p>Annual Income: {resident.annualIncome}</p>
-                <button className='delete-button' onClick={() => handleDelete(resident._id)}>Delete {resident.name}</button>
+                <button  onClick={() => handleDelete(resident._id)}>Delete</button>
+                
               </div>
+             
             </div>
+             
           ))}
         </div>
       ) : (

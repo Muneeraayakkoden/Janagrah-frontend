@@ -1,4 +1,4 @@
-.user-count{
+.user-count {
   text-align: right; /* Align the text to the right */
   font-size: 1.2rem;
   margin-bottom: 20px; /* Add margin bottom to create space between user count and residents */
@@ -13,9 +13,10 @@
 .resident-card {
   background-color: #f9f9f9;
   border-radius: 8px;
-  padding: 20px;
-  margin-bottom: 20px;
+  padding: 2px;
+  margin-bottom: 2px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: relative; /* Ensure relative positioning for button */
 }
 
 .resident-details {
@@ -40,16 +41,19 @@
 .resident-address {
   color: #666;
 }
-
 .delete-button {
   background-color: #ff4d4d; /* Red background color */
   color: white; /* White text color */
   border: none;
-  padding: 8px 12px; /* Padding around the button text */
-  font-size: 14px; /* Font size */
+  padding: 3px 6px; /* Reduced padding */
+  font-size: 10px; /* Reduced font size */
   cursor: pointer; /* Cursor style */
   border-radius: 4px; /* Rounded corners */
   transition: background-color 0.3s; /* Smooth transition for background color */
+  position: absolute; /* Position the button absolutely */
+  bottom: 5px; /* Adjust bottom position as needed */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Center horizontally */
 }
 
 .delete-button:hover {
