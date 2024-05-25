@@ -24,8 +24,6 @@ div.row {
 }
 
 
-
-
 @media (max-width: 768px) {
   .feature-cards .card {
     flex: 1 1 calc(50% - 40px); 
