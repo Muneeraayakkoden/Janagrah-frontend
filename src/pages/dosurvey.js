@@ -72,7 +72,7 @@ function DoSurvey() {
   };
 
   return (
-    <div className="container">
+    <div className="SurveyContainer">
       {polls.length === 0 ? (
         <h3>No surveys available</h3>
       ) : (

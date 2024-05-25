@@ -4,7 +4,7 @@
   margin: 0 auto;
   padding: 20px; 
   font-weight: 600;
-  text-align: center;
+  text-align: center !important;
 }
 
 @media (max-width: 1200px) {

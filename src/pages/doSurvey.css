@@ -1,9 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
-.container {
+.SurveyContainer {
     padding: 30px;
     font-family: 'Merriweather', serif;
-   
     display: flex;
     flex-wrap: wrap;
   }
