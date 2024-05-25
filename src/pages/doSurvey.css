@@ -3,10 +3,7 @@
 .container {
     padding: 30px;
     font-family: 'Merriweather', serif;
-    background-image: url('../assets/image2.jpg');
-    background-size: cover;  
-    background-position: center; 
-    background-size:auto;
+   
     display: flex;
     flex-wrap: wrap;
   }
