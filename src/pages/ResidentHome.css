@@ -31,3 +31,9 @@
   padding: 30px;
   text-align: center;
 }
+
+.main-content {
+  background-image: url('../assets/image2.jpg');
+  background-size: cover;
+  background-position: center;
+}

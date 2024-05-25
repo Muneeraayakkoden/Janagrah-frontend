@@ -1,4 +1,4 @@
-/* Services.css */
+
 .service-section {
   padding: 30px;
   text-align: center;
@@ -6,9 +6,11 @@
 
 .section-title {
   text-align: center;
-  margin-bottom: 50px; /* Adjust margin as needed */
+  margin-bottom: 50px; 
   font-weight: 600;
   background-color: #5dbeef;
+  color: white; 
+  padding: 10px; 
 }
 
 .feature-cards {
@@ -21,15 +23,24 @@ div.row {
   --bs-gutter-x: 0;
 }
 
-/* Media query for responsiveness */
+
+
+
 @media (max-width: 768px) {
   .feature-cards .card {
-    max-width: calc(50% - 40px); /* Adjust width for smaller screens */
+    flex: 1 1 calc(50% - 40px); 
+    max-width: calc(50% - 40px);
   }
 }
 
 @media (max-width: 576px) {
   .feature-cards .card {
-    max-width: calc(100% - 40px); /* Adjust width for even smaller screens */
+    flex: 1 1 calc(100% - 40px); 
+    max-width: calc(100% - 40px);
   }
+}
+
+
+.feature-cards .card .card-body {
+  padding: 20px;
 }
