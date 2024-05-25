@@ -78,7 +78,12 @@ function OfficialSide() {
       <div className="logo">
         <img src={logo} alt="Janagrah Logo" />
       </div>
+      
       <div className="nav-icons">
+      <div className="nav-icon" onClick={() => handleNavigation('/OfficialHome')}>
+          <i className="fas fa-home"></i>
+          {sidebarExpanded && <span>Home</span>}
+        </div>
         <div className="nav-icon" onClick={() => handleNavigation('/MemberAccount')}>
           <i className="fa-solid fa-user"></i>
           {sidebarExpanded && <span>Profile</span>}

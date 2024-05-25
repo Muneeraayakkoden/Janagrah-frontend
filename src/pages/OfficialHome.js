@@ -86,7 +86,7 @@ function OfficialHome() {
   );
 };
 
-export default OfficialHome;*/
+export default OfficialHome;
 import React, { useState } from 'react';
 import './OfficialHome.css';
 import { useNavigate } from 'react-router-dom';
@@ -162,6 +162,45 @@ function OfficialHome() {
               </div>
             </section>
           )}
+        </main>
+        <footer className="footer">
+          <div className="footer-container">
+            <p className="copyright">&copy; Janagrah 2024</p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  );
+}
+
+export default OfficialHome;
+*/
+import React from 'react';
+import './OfficialHome.css';
+import { useNavigate } from 'react-router-dom';
+import OfficialSide from '../components/Officialside'; // Adjust the import path as needed
+import aboutImage from '../assets/church-of-the-king-j9jZSqfH5YI-unsplash.jpg';
+
+function OfficialHome() {
+  const navigate = useNavigate();
+
+  return (
+    <div className="official-homepage">
+      <OfficialSide />
+      <div className="content">
+        <div className="container">
+          <header className="header">
+            <h1>JANAGRAH</h1>
+            <p>Empowering Our Community</p>
+          </header>
+        </div>
+        <main className="main">
+          <section className="about-section">
+            <h2>About Janagrah</h2>
+            <p>Janagrah is a resident engagement platform designed to empower residents and strengthen the foundations of our community. We facilitate open communication and informed decision-making by providing a direct line between residents and local authorities.</p>
+            <p>Together, we can build a more engaged and informed community.</p>
+            <img src={aboutImage} alt="Community Engagement" className="about-image" />
+          </section>
         </main>
         <footer className="footer">
           <div className="footer-container">
