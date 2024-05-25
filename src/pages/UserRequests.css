@@ -1,9 +1,91 @@
-.user-count {
-  text-align: right;
-  font-size: 1.2rem;
-  margin-bottom: 20px;
+/* Center the entire user container on the page */
+.user-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; /* Full height viewport */
+  text-align: center; /* Center text */
 }
 
+.user-card {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  max-width: 800px; /* Maximum width for the card */
+  width: 100%; /* Ensure it takes full width within the max-width */
+  text-align: left; /* Align text to the left inside the card */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-image-container {
+  margin-bottom: 10px;
+}
+
+.user-image {
+  width: 150px; /* Adjust as needed */
+  height: 150px; /* Adjust as needed */
+  border-radius: 50%; /* Make the image round */
+  object-fit: cover; /* Cover the container */
+}
+
+.user-details {
+  margin-bottom: 10px;
+}
+
+.user-details p {
+  margin: 5px 0;
+}
+
+.user-details p:first-child {
+  font-weight: bold;
+}
+
+.button-container {
+  display: flex;
+  gap: 10px;
+  justify-content: center; /* Center the buttons */
+}
+
+.accept-button,
+.reject-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.accept-button {
+  background-color: #4caf50; /* Green */
+  color: white;
+}
+
+.accept-button:hover {
+  background-color: #45a049; /* Darker green */
+}
+
+.reject-button {
+  background-color: #f44336; /* Red */
+  color: white;
+}
+
+.reject-button:hover {
+  background-color: #d32f2f; /* Darker red */
+}
+
+.response-message {
+  color: red;
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+/* Styles for other containers and elements */
 .all-residents-container {
   max-width: 800px;
   margin: 0 auto;
@@ -11,7 +93,6 @@
 }
 
 .resident-card {
-  position: relative;
   background-color: #f9f9f9;
   border-radius: 8px;
   padding: 20px;
@@ -46,27 +127,13 @@
   background-color: #ff4d4d;
   color: white;
   border: none;
-  padding: 4px 8px; /* Reduced padding */
-  font-size: 10px; /* Reduced font size */
+  padding: 8px 12px;
+  font-size: 14px;
   cursor: pointer;
   border-radius: 4px;
   transition: background-color 0.3s;
-  position: absolute;
-  bottom: 8px; /* Adjust bottom position */
-  right: 8px; /* Adjust right position */
 }
 
 .delete-button:hover {
   background-color: #e60000;
-}
-
-.resident-image-container {
-  margin-bottom: 10px;
-}
-
-.resident-image {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  object-fit: cover;
 }
