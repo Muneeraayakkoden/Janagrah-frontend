@@ -10,7 +10,7 @@
   margin: 20px; 
   max-width: 400px; 
   max-height: 400px;
-  border: 1px solid #5dbeef ;
+  border: 1px solid rgb(28, 78, 136) ;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -28,7 +28,7 @@
 .card-icon {
   font-size: 36px; 
   margin-bottom: 20px; 
-  color: #63c1f0;
+  color: rgb(28, 78, 136);
 }
 
 .card-description {

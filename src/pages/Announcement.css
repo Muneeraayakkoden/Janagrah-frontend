@@ -9,7 +9,7 @@
   margin-bottom: 20px;
   text-align: center;
   font-weight: 600;
-  background-color: #5dbeef;
+  background-color: rgb(28, 78, 136);
   color:white !important;
 }
 
@@ -22,7 +22,7 @@
 
 .news-item {
   width: calc(50% - 50px); 
-  border: 1px solid #5dbeef;
+  border: 1px solid rgb(28, 78, 136);
   border-radius: 5px;
   overflow: hidden;
   background-color: white;
@@ -55,7 +55,7 @@
   
   margin-top: 20px;
   padding: 10px 20px;
-  background-color:  #32a5de;
+  background-color:  rgb(28, 78, 136);
   color: white;
   border: none;
   border-radius: 5px;

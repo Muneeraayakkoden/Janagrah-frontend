@@ -88,7 +88,7 @@ function DoSurvey() {
                 </div>
               ))}
             </div>
-            <button type="button" disabled={submitted} onClick={() => handleSubmit(poll._id, index)}><i class="fas fa-paper-plane"></i> Submit </button>
+            <button className="doSurveybutton" type="button" disabled={submitted} onClick={() => handleSubmit(poll._id, index)}><i class="fas fa-paper-plane"></i> Submit </button>
             {submitted && <div className="result">Thank you for your vote!</div>}
             {errorMessages[index] && <div className="error">{errorMessages[index]}</div>}
           </div>

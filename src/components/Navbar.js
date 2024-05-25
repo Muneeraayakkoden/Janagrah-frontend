@@ -18,27 +18,34 @@ const Navbar = () => {
             </div>
             <ul className="navbar-nav">
 
-            <li className="nav-item">
-                <a className="nav-link" href="#" onClick={() => navigate('/dosurvey')}>
-                    <i className="fas fa-poll"></i> <span className="nav-text">SURVEYS</span>
-                </a>
+                <li class="nav-item">
+                    <a href="#aboutUs-section" class="nav-link">
+                        <i class="fas fa-info-circle"></i>
+                        <span class="nav-text">About Us</span>
+                    </a>
                 </li>
 
                 <li className="nav-item">
-                <a className="nav-link" href="#" onClick={() => navigate('/ContactPage')}>
-                    <i className="fas fa-envelope"></i> <span className="nav-text">CONTACT</span>
-                </a>
+                    <a className="nav-link" href="#" onClick={() => navigate('/dosurvey')}>
+                        <i className="fas fa-poll"></i> <span className="nav-text">SURVEYS</span>
+                    </a>
+                </li>
+
+                <li className="nav-item">
+                    <a className="nav-link" href="#" onClick={() => navigate('/ContactPage')}>
+                        <i className="fas fa-envelope"></i> <span className="nav-text">CONTACT</span>
+                    </a>
                 </li>
                 
                 <li className="nav-item">
-                <a className="nav-link" href="#" onClick={() => navigate('/MyAccount')}>
-                    <i className="fas fa-user"></i> <span className="nav-text">PROFILE</span>
-                </a>
+                    <a className="nav-link" href="#" onClick={() => navigate('/MyAccount')}>
+                        <i className="fas fa-user"></i> <span className="nav-text">PROFILE</span>
+                    </a>
                 </li>
                 <li className="nav-item">
-                <a className="nav-link" href="#" onClick={handleLogout}>
-                    <i className="fas fa-sign-out-alt"></i> <span className="nav-text">LOGOUT</span>
-                </a>
+                    <a className="nav-link" href="#" onClick={handleLogout}>
+                        <i className="fas fa-sign-out-alt"></i> <span className="nav-text">LOGOUT</span>
+                    </a>
                 </li>
             </ul>
         </nav>

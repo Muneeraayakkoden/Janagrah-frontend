@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import './LoginRejected.css';
 
 function LoginRejected() {
   const navigate = useNavigate();
@@ -10,42 +11,22 @@ function LoginRejected() {
 
 
   return (
-    <div style={containerStyle}>
-      <h2 style={headingStyle}>Login Request Rejected</h2>
-      <p style={paragraphStyle}>Sorry, Your login is not verified.</p>
-      <p style={warningText}>Please contact your ward member for further information.</p>
-      <p style={paragraphStyle}>
-        Are you a new user? 
-        <a href="#" onClick={handleSignUpClick}> Sign up here</a>.
-      </p>
+    <div className=" reject flex min-h-screen items-center justify-center bg-gray-100 px-4 dark:bg-gray-950">
+      <div className="max-w-md space-y-4 text-center">
+        <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-50">Login Request Rejected</h1>
+        <p className="text-gray-600 dark:text-gray-400">
+          Sorry, Your login is not verified. Please contact your ward member for further information.
+        </p>
+        <div className="flex flex-col items-center gap-2">
+          <a
+            className="text-sm font-medium text-gray-900 underline transition-colors hover:text-gray-700 dark:text-gray-50 dark:hover:text-gray-300"
+            href="#" onClick={handleSignUpClick}>
+            Are you a new user? Sign up here.
+          </a>
+        </div>
+      </div>
     </div>
-  );
+)
 }
-
-const containerStyle = {
-  backgroundColor: '#f0f0f0',
-  padding: '20px',
-  borderRadius: '8px',
-  textAlign: 'center',
-  boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
-  maxWidth: '500px',
-  margin: 'auto',
-  marginTop: '50px',
-};
-
-const warningText = {
-  color:'red'
-}
-
-const headingStyle = {
-  color: '#3e65e2',
-  fontSize: '24px',
-  marginBottom: '15px',
-};
-
-const paragraphStyle = {
-  color: '#333',
-  fontSize: '18px',
-};
 
 export default LoginRejected;

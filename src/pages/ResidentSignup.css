@@ -51,7 +51,9 @@ h1 {
   font-size: 16px;
 }
 
-
+.Regbutton:hover {
+  background-color:#212324;
+}
 .error-message {
   color: #dc3545;
   margin-top: 5px;

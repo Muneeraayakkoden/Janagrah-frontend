@@ -19,11 +19,11 @@
   flex-direction: column;
   width: 100%;
   justify-content: space-between;
+  background-color:  white;
 }
 
 .main-content.h3 {
   color:white;
-  background-color: #5dbeef;
 }
 
 .aboutUs-section {
@@ -34,11 +34,6 @@
 .para {
   background-color: white;
   padding: 20px;
-  border: 1px solid #5dbeef;
+  border: 1px solid rgb(28, 78, 136);
   border-radius: 5px;
-}
-.main-content {
-  background-image: url('../assets/image2.jpg');
-  background-repeat: no-repeat;
-  background-position: center;
 }

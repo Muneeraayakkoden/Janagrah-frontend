@@ -64,7 +64,7 @@
   }
   
   /* Button Style */
-  button {
+  .doSurveybutton {
     display: inline-block;
     padding: 12px 25px;
     margin-top: 20px;
@@ -79,18 +79,18 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   }
   
-  button:disabled {
+  .doSurveybutton:disabled {
     background-color: #cccccc;
     cursor: not-allowed;
   }
   
-  button:hover:enabled {
+  .doSurveybutton:hover:enabled {
     background-color: #007bff;
     transform: translateY(-3px);
   }
   
   /* Icon Inside Button */
-  button::before {
+  .doSurveybutton::before {
     margin-right: 10px;
   }
   
