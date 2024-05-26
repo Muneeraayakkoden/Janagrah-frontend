@@ -4,7 +4,7 @@
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 8px;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.687);
   }
   
   .profile-page h1 {
@@ -14,7 +14,7 @@
   }
   
   .user-info {
-    background-color: #fff;
+    background-color: #ffffffc2;
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 20px;

@@ -8,7 +8,7 @@
 /* Sidebar styling */
 .announcement-sidebar {
   width: 250px; /* Fixed width for the sidebar */
-  background-color: #f4f4f4;
+  background-color: #f4f4f4d4;
   padding: 20px;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
   overflow-y: auto; /* Ensure scrollbar if content overflows */
@@ -18,7 +18,7 @@
 .announcement-main-content {
   flex-grow: 1;
   padding: 20px;
-  background-color: #f9f9f9;
+  background-color: #f9f9f9c4;
   margin-left: 0; /* Ensure it doesn't overlap with the sidebar */
 }
 
@@ -27,7 +27,7 @@
   border: 1px solid #ccc; /* Add border around each announcement */
   padding: 10px; /* Add padding for spacing */
   margin-bottom: 10px; /* Add margin at the bottom for separation */
-  background-color: #fff;
+  background-color: #ffffffab;
 }
 
 /* Style for announcement titles */

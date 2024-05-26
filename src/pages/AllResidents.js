@@ -89,6 +89,7 @@ const AllResidents = () => {
       <h1>ALL RESIDENTS</h1>
       <div className="search-container">
         <input
+        className='s1'
           type="text"
           placeholder="Search by name"
           value={searchQuery}

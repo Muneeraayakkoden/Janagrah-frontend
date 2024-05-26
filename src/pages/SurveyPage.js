@@ -72,7 +72,7 @@ const SurveyPage = () => {
   
 
   return (
-    <div>
+    <div className='surveypage'>
       {/* Render survey data here */}
       {surveyDataList.length > 0 ? (
         <div>
