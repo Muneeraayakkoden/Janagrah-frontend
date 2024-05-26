@@ -195,12 +195,12 @@ function OfficialHome() {
           </header>
         </div>
         <main className="main">
-          <section className="about-section">
-            <h2>About Janagrah</h2>
-            <p>Janagrah is a resident engagement platform designed to empower residents and strengthen the foundations of our community. We facilitate open communication and informed decision-making by providing a direct line between residents and local authorities.</p>
-            <p>Together, we can build a more engaged and informed community.</p>
-            <img src={aboutImage} alt="Community Engagement" className="about-image" />
-          </section>
+        <div className="highlighted-text">
+    <h2>Together</h2>
+    <h3>we build</h3>
+    <h1 className="bigger">COMMUNITY</h1>
+  </div>
+
         </main>
         <footer className="footer">
           <div className="footer-container">

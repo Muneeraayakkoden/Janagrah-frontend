@@ -2,6 +2,10 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   overflow-x: hidden;
+  background-image: url('../assets/photo.jpg');
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat;
 }
 
 .official-homepage {
@@ -93,6 +97,8 @@ body {
   flex: 1;
   padding: 20px;
   transition: margin-left 0.3s;
+  display: flex; /* Use flexbox */
+  flex-direction: column;
 }
 
 .content.expanded {
@@ -100,12 +106,19 @@ body {
 }
 
 .container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
   text-align: center;
 }
 
 .header h1 {
   margin: 0;
-  font-size: 2.5em;
+  font-size: 4.5em; /* Increased font size for the "JANAGRAH" heading */
+  color: #b5b682; /* Optionally adjust the color */
 }
 
 .header p {
@@ -115,20 +128,29 @@ body {
 }
 
 .main {
-  padding: 20px;
+  flex: 1;
+  display: flex;
+  justify-content: flex-end; /* Align the about section to the right */
+  align-items: flex-start; /* Align items to the start of the container */
 }
 
 .about-section {
-  text-align: left;
+  max-width: 400px; /* Adjust the width as needed */
+  margin-left: auto; /* Pushes the section to the right */
+  padding: 20px; /* Add padding inside the border */
+  border: 2px solid #ccc; /* Add a border */
+  border-radius: 8px; /* Optional: Add border-radius for rounded corners */
+  background-color: #ffffffb7; /* Lighten the background color */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shade effect */
 }
 
 .about-section h2 {
-  font-size: 2em;
+  font-size: 1.5em; /* Decreased font size for the about section heading */
   margin-bottom: 10px;
 }
 
 .about-section p {
-  font-size: 1.2em;
+  font-size: 1em; /* Decreased font size for the about section text */
   line-height: 1.5;
   margin-bottom: 20px;
 }
@@ -140,7 +162,7 @@ body {
 }
 
 .footer {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.128);
   padding: 10px;
   text-align: center;
 }
@@ -154,175 +176,29 @@ body {
   color: #777;
 }
 
-  
-  /*.official-homepage {
-    background-color: #fff;
-    color: #000;
-    padding: 15px 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    margin: 0 auto;
-  }
-  
-  .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center; 
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    margin: 0 auto;
-  }
-
-  .header {
-    background-color: #04049b;
-    padding: 10px 350px ;
-    text-align: center;
-  }
-  
-  .header h1 {
-    font-size: 4.5rem;
-    margin-top: 30px;
-    margin-bottom: 20px;
-    color: #b5b682;
-  }
-  
-  .header p {
-    font-size: 1.55rem;
-    margin-bottom: 30px; 
-    color:white
-  }
-  
-  .main {
-    flex: 1; 
-    margin: 50px auto;
-    padding: 20px;
-  }
-  
-  .logo img {
-    width: 150px;
-    height: auto;
-  
-  }  
-
-  .section {
-    margin-bottom: 2rem;
-  }
-  
-  .survey-section h2,
-  .updates-section h2 {
-    margin-bottom: 1rem;
-    font-weight: bold;
-  }
-  
-  .survey-cards,
-  .updates-cards {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5rem;
-  }
-  
-  .survey-card,
-  .updates-card {
-    flex: 1 0 calc(33% - 2rem);
-    background-color: #f5f5f5;
-    padding: 1rem;
-    border-radius: 5px;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-  }
-  
-  .survey-card:hover,
-  .updates-card:hover { 
-    background-color: #e0e0e0;
-  }
-  
-  .survey-card h3,
-  .updates-card h3 {
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
-  }
-  
- 
-  .footer {
-    color: black;
-    padding: 10px 0;
-    text-align: center;
-  }
-  
-  .footer p {
-    margin: 0;
-  }
-  
-  .notification-bell {
-    position: absolute;
-    bottom: 100px;
-    top: calc(1cm + 15px);
-    right: calc(40% - 13cm); 
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    z-index: 1000; 
-    transition: all 0.3s ease-in-out;
-  }
-  
-  .notification-bell i {
-    font-size: 3rem;
-    color: goldenrod;
-  }
-  .notification-bell:hover {
-    top: 50px; 
-    right: 20px; 
-    
-}
-  
- 
-  .notification-content {
-    display: none; 
-    position: absolute;
-    bottom: 80px;
-    right: 20px;
-  }
-
-  .section.active {
-   
-    border: 1px solid #ddd;
-    background-color: #f0f0f0;
-  }
-  @media (max-width: 800px) {
-    .main {
-      padding: 1rem;
-    }
-    .survey-cards,
-    .updates-cards {
-      flex-direction: column;
-    }
-    .hero {
-      padding: 0 20px;
-    }
-
-  }
-  .residents-card {
-    background-color: #f5f5f5;
-    padding: 1rem;
-    border-radius: 5px;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
+.highlighted-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* Align items to the right side */
 }
 
-.residents-card:hover {
-    background-color: #e0e0e0;
+.highlighted-text h1,
+.highlighted-text h2,
+.highlighted-text h3 {
+  margin: 0; /* Remove default margins */
+  font-family: 'Arial Black', sans-serif; /* Change font family */
+  color: #333; /* Change text color to make it stand out */
+  
 }
 
-.residents-card h3 {
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
+.bigger {
+  font-size: 5em; /* Increase font size to make it much bigger */
 }
-   
-*/
+
+.highlighted-text h2 {
+  margin-top: -0.2em; /* Adjust the margin to position "we build" exactly below "Together" */
+}
+.highlighted-text h2,
+.highlighted-text h3{
+  font-size: 3em;
+}
