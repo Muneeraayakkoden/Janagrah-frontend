@@ -14,7 +14,6 @@ const MyAccount = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Fetch user data when the component mounts
     fetchUserData();
     fetchImage();
   }, []);
@@ -33,7 +32,7 @@ const MyAccount = () => {
 
       if (response.ok) {
         const responseData = await response.json();
-        setUserrData(responseData.data); // Update state with fetched data
+        setUserrData(responseData.data); 
         setResponseMessage('');
       } else {
         console.error('Failed to fetch image');
@@ -45,9 +44,7 @@ const MyAccount = () => {
 
   const fetchUserData = () => {
     try {
-      // Retrieve user data from local storage
       const username = JSON.parse(localStorage.getItem('username'));
-      const password = JSON.parse(localStorage.getItem('password'));
       const job = JSON.parse(localStorage.getItem('job'));
       const age = JSON.parse(localStorage.getItem('age'));
       const phn = JSON.parse(localStorage.getItem('phone'));
@@ -59,7 +56,6 @@ const MyAccount = () => {
       const localAuthority = JSON.parse(localStorage.getItem('localAuthority'))
       const data = {
         username,
-        password,
         name,
         job,
         age,
@@ -79,9 +75,9 @@ const MyAccount = () => {
   };
 
   const handleLogout = () => {
-    // Clear user data from local storage
+   
     localStorage.clear();
-    // Navigate to the login page
+   
     navigate('/LoginPage');
   };
 
@@ -91,7 +87,7 @@ const MyAccount = () => {
 
   const handleSave = async () => {
     try {
-      // Send updated data to the backend
+     
       const response = await fetch('http://localhost:4000/user/edit', {
         method: 'POST',
         headers: {
@@ -106,7 +102,7 @@ const MyAccount = () => {
         });
         setUserData(updatedUserData.user);
         setIsEditing(false);
-        setIsEditedSuccessfully(true); // Set the state to indicate successful edit
+        setIsEditedSuccessfully(true); 
       } else {
         console.error('Failed to save profile changes');
       }
@@ -129,7 +125,7 @@ const MyAccount = () => {
       {userData && (
         <div>
           <div className="ward-info">
-            <h2>Ward Details</h2>
+            <h3><u>Ward Details</u></h3>
             {userData && (
               <p>
                 Ward ID: {userData.ward}<br />
@@ -138,46 +134,43 @@ const MyAccount = () => {
             )}
           </div>
           <div className="user-info">
-            <h2>Personal Details</h2>
+            <h3><u>Personal Details</u></h3>
             {Object.entries(userData).map(([key, value]) => {
               if (
-                ['username', 'password', 'name', 'job', 'age', 'phn', 'email', 'annualIncome', 'address'].includes(
+                ['username', 'name', 'job', 'age', 'phn', 'email', 'annualIncome', 'address'].includes(
                   key
                 )
               ) {
                 let label = ''
                 switch(key){
-                  case 'username':
+                  case 'username': 
                     label = 'Username'
                     break;
-                  case 'password':
-                    label = 'Password';
-                    break;
-                  case 'name':
+                  
+                  case 'name': 
                     label = 'Name';
                     break;
-                  case 'job':
+                  case 'job': 
                     label = 'Job Title';
                     break;
-                  case 'age':
+                  case 'age': 
                     label = 'Age';
                     break;
-                  case 'phn':
+                  case 'phn': 
                     label = 'Phone';
                     break;
-                  case 'email':
+                  case 'email': 
                     label = 'Email';
                     break;
-                  case 'annualIncome':
+                  case 'annualIncome': 
                     label = 'Annual Income';
                     break;
-                  case 'address':
+                  case 'address': 
                     label = 'Address';
                     break;
                 }
                 return (
                   <p key={label}>
-                    
                     <span style={{ fontWeight: 'bold' }}>
                       {label}: 
                     </span> 
