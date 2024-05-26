@@ -16,7 +16,8 @@
   }
   
   .ward-message-item {
-    background-color: #f8f9fa;
+    width: 500px;
+    background-color: #f8f9facd;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
