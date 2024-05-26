@@ -77,7 +77,7 @@ const SurveyPage = () => {
       {surveyDataList.length > 0 ? (
         <div>
           <h2>Survey Data</h2>
-          <ul>
+          <ul className='survey1'>
             {surveyDataList.map((survey, index) => (
               <li key={index}>
                 Survey Number: {survey.surveyNumber}<br />

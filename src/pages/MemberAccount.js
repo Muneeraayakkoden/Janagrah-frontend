@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './MyAccount.css';
 import Officialside from '../components/Officialside.js';
+import { IoLogOutOutline } from "react-icons/io5";
 
 const MemberAccount = () => {
   const [userData, setUserData] = useState(null);
@@ -40,7 +41,7 @@ const MemberAccount = () => {
           <div className="resident-image-container">
                 <img className="resident-image" src={`data:image/jpeg;base64,${userData.image}`} alt="Resident" />
               </div>
-          <h2>Personal Information</h2>
+          
           <p>Name: {userData.name}</p>
           <p>Username: {userData.username}</p>
           <p>Password: {userData.password}</p>
@@ -53,7 +54,7 @@ const MemberAccount = () => {
           <p>Local Government: {userData.localgovernment}</p>
         </div>
       )}
-      <button onClick={handleLogout}>Logout</button>
+      <button onClick={handleLogout}><IoLogOutOutline />Logout</button>
     </div>
   );
 };

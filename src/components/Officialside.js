@@ -71,7 +71,7 @@ function OfficialSide() {
   const handleLogout = () => {
     // Clear local storage or any other logout logic
     localStorage.clear();
-    navigate('/login'); // Redirect to the login page or any other appropriate page
+    navigate('/LoginPage'); // Redirect to the login page or any other appropriate page
   };
   return (
     <div className={`sidebar ${sidebarExpanded ? 'expanded' : ''}`}>
