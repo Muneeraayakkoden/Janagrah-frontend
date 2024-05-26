@@ -199,6 +199,7 @@ function OfficialHome() {
     <h2>Together</h2>
     <h3>we build</h3>
     <h1 className="bigger">COMMUNITY</h1>
+
   </div>
 
         </main>

@@ -162,9 +162,10 @@ body {
 }
 
 .footer {
-  background-color: rgba(255, 255, 255, 0.128);
+  background-color: rgba(255, 255, 255, 0);
   padding: 10px;
   text-align: center;
+  margin-top: 20px;
 }
 
 .footer-container {
@@ -180,6 +181,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-end; /* Align items to the right side */
+  margin-bottom: 20px; 
 }
 
 .highlighted-text h1,
