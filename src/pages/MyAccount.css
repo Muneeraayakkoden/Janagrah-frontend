@@ -1,75 +1,51 @@
 .profile-page {
     max-width: 800px;
-    margin: 0 auto;
+    margin: 30px;
     padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: rgba(255, 255, 255, 0.687);
+    font-family: 'Merriweather', serif;
   }
   
   .profile-page h1 {
-    font-size: 35px;
-    margin-bottom: 20px;
-    color: rgb(5, 5, 83);
+    color:rgb(28, 78, 136);
+    font-weight: bold;
   }
+
   
-  .user-info {
-    background-color: #ffffffc2;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 20px;
-  }
-  
-  .user-info h2 {
+  .user-info h3 {
     font-size: 30px;
     margin-bottom: 10px;
-    color:rgb(6, 146, 99)
+    color:rgb(40, 93, 228);
   }
-  .ward-info h2{
-    color: rgb(3, 155, 104);
+
+  .ward-info h3{
+    color: rgb(40, 93, 228);
   }
   
   .user-info p {
-    margin-bottom: 8px;
-  }
-  
-  .surveys-completed {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 20px;
-  }
-  
-  .surveys-completed h2 {
-    font-size: 20px;
     margin-bottom: 10px;
   }
   
-  .surveys-completed ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .surveys-completed li {
-    margin-bottom: 8px;
-  }
   
   .leave {
-    background-color: #0f8992;
+    background-color: rgb(28, 78, 136);
     color: #fff;
     border: none;
     border-radius: 4px;
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
+    margin-top: 20px;
     transition: background-color 0.3s ease;
   }
   
   .leave:hover {
-    background-color: #0056b3;
+    background-color: #007bff;
   }
+  
+
+
+
+
   
   /* Responsive */
   @media (max-width: 768px) {

@@ -78,7 +78,7 @@ function DoSurvey() {
       ) : (
         polls.map((poll, index) => (
           <div className="poll" key={poll._id}>
-            <h1><u>{index+1}: {poll.surveyName}</u></h1>
+            <h1 className='heading'><u>{index+1}: {poll.surveyName}</u></h1>
             <h5>Description: {poll.surveyDescription}</h5>
             <div className="options">
               {poll.options.map((option) => (
