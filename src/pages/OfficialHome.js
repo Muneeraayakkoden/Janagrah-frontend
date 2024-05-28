@@ -7,7 +7,7 @@ import logo from '../assets/logo.png';
   const API_ENDPOINT = '/api/official/notifications';
 
 
-function OfficialHome() {
+  function OfficialHome() {
   const navigate = useNavigate();
   
   const handleNotificationClick = () => {
@@ -172,14 +172,18 @@ function OfficialHome() {
     </div>
   );
 }
-
+  <div className="highlighted-text">
+        <h2>Together</h2>
+        <h3>we build</h3>
+        <h1 className="bigger">COMMUNITY</h1>
+  </div>
 export default OfficialHome;
 */
 import React from 'react';
 import './OfficialHome.css';
 import { useNavigate } from 'react-router-dom';
-import OfficialSide from '../components/Officialside'; // Adjust the import path as needed
-import aboutImage from '../assets/church-of-the-king-j9jZSqfH5YI-unsplash.jpg';
+import OfficialSide from '../components/Officialside'; 
+
 
 function OfficialHome() {
   const navigate = useNavigate();
@@ -195,15 +199,9 @@ function OfficialHome() {
           </header>
         </div>
         <main className="main">
-        <div className="highlighted-text">
-    <h2>Together</h2>
-    <h3>we build</h3>
-    <h1 className="bigger">COMMUNITY</h1>
 
-  </div>
-
-        </main>
-        <footer className="footer">
+  </main>
+  <footer className="footer">
           <div className="footer-container">
             <p className="copyright">&copy; Janagrah 2024</p>
           </div>

@@ -49,4 +49,26 @@
   .poll-item li span:last-child::after {
     margin-left: 5px;
   }
+  .survey_result {
+    background-color: rgba(255, 255, 255, 0.406);
+    padding: 40px; /* Padding around the content */
+    margin: 20px auto; /* Margin around the container, centered horizontally */
+    border: 2px solid #ccc; /* Grey border */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    max-width: 800px; /* Max width of the container */
+    font-family: Arial, sans-serif; /* Font family */
+  }
+  
+  .survey_result h3 {
+    margin-bottom: 20px; /* Space below the header */
+    font-size: 24px; /* Larger font size for the header */
+    color: #333; /* Header text color */
+  }
+  
+  .survey_result p {
+    font-size: 18px; /* Larger font size for paragraph text */
+    color: #333; /* Text color */
+  }
+  
   

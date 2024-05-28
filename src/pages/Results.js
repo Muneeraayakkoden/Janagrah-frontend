@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-
+import Officialside from '../components/Officialside';
+import './Results.css'
 const Results = () => {
   const [surveyId, setSurveyId] = useState(null); // State to store the surveyId
   const [surveyResults, setSurveyResults] = useState(null); // State to store survey result data
@@ -76,10 +77,11 @@ const Results = () => {
   };
 
   return (
-    <div>
+    <div className="survey_result">
       <h3>Survey History</h3>
+      <Officialside />
       {surveyResults ? (
-        <div>
+        <div className="polling-result-analysis">
           <p>Survey ID: {surveyId}</p>
           <p>Survey Results:</p>
           <div
@@ -91,6 +93,7 @@ const Results = () => {
             {Object.entries(surveyResults).map(([option, percentage]) => (
               <div
                 key={option}
+                className="poll-item"
                 style={{
                   backgroundColor: getPercentageColor(percentage),
                   width: getOptionDisplay(percentage),

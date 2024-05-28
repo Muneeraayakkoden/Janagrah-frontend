@@ -2,7 +2,7 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   overflow-x: hidden;
-  background-image: url('../assets/photo.jpg');
+  background-image: url('../assets/modern-glass-building-bottom-view.jpg');
   background-size: cover; 
   background-position: center; 
   background-repeat: no-repeat;
@@ -13,84 +13,7 @@ body {
   height: 100vh;
 }
 
-.sidebar {
-  width: 60px;
-  background-color: #333;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 10px 0;
-  transition: width 0.3s;
-  position: fixed;
-  height: 100%;
-  top: 0;
-  left: 0;
-}
 
-.sidebar.expanded {
-  width: 200px;
-}
-
-.logo img {
-  height: 40px;
-  margin-bottom: 20px;
-}
-
-.nav-icons {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
-.nav-icon {
-  display: flex;
-  align-items: center;
-  padding: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  width: 100%;
-  justify-content: center;
-}
-
-.nav-icon:hover {
-  background-color: #444;
-}
-
-.nav-icon i {
-  font-size: 1.5em;
-}
-
-.nav-icon span {
-  margin-left: 10px;
-  display: none;
-}
-
-.sidebar.expanded .nav-icon {
-  justify-content: flex-start;
-}
-
-.sidebar.expanded .nav-icon span {
-  display: inline;
-}
-
-.survey-dropdown {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  padding-left: 20px;
-}
-
-.toggle-btn {
-  margin-top: auto;
-  cursor: pointer;
-  padding: 10px;
-  background-color: #444;
-  text-align: center;
-  width: 100%;
-  color: white;
-  font-size: 1.2em;
-}
 
 .content {
   margin-left: 60px;
@@ -109,16 +32,24 @@ body {
   flex: 1;
   display: flex;
   flex-direction: column;
+  text-align: center;
+  padding: 20px;
 }
 
 .header {
-  text-align: center;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column; 
+    margin-bottom: 0px; 
 }
 
 .header h1 {
   margin: 0;
-  font-size: 4.5em; /* Increased font size for the "JANAGRAH" heading */
-  color: #b5b682; /* Optionally adjust the color */
+  font-size: 4.5em;
+  color: rgba(0, 0, 0, 0.721);
+  font-weight: 100;
+  font-family: 'Arial Black', sans-serif,monospace;
+  letter-spacing: 3px;
 }
 
 .header p {
@@ -134,32 +65,7 @@ body {
   align-items: flex-start; /* Align items to the start of the container */
 }
 
-.about-section {
-  max-width: 400px; /* Adjust the width as needed */
-  margin-left: auto; /* Pushes the section to the right */
-  padding: 20px; /* Add padding inside the border */
-  border: 2px solid #ccc; /* Add a border */
-  border-radius: 8px; /* Optional: Add border-radius for rounded corners */
-  background-color: #ffffffb7; /* Lighten the background color */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shade effect */
-}
 
-.about-section h2 {
-  font-size: 1.5em; /* Decreased font size for the about section heading */
-  margin-bottom: 10px;
-}
-
-.about-section p {
-  font-size: 1em; /* Decreased font size for the about section text */
-  line-height: 1.5;
-  margin-bottom: 20px;
-}
-
-.about-image {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-}
 
 .footer {
   background-color: rgba(255, 255, 255, 0);
@@ -181,7 +87,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-end; /* Align items to the right side */
-  margin-bottom: 20px; 
+  margin-bottom: 0px; 
 }
 
 .highlighted-text h1,
@@ -189,7 +95,7 @@ body {
 .highlighted-text h3 {
   margin: 0; /* Remove default margins */
   font-family: 'Arial Black', sans-serif; /* Change font family */
-  color: #333; /* Change text color to make it stand out */
+  color:#6c6b6b/* Change text color to make it stand out */
   
 }
 

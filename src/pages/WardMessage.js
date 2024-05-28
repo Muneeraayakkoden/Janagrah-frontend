@@ -23,6 +23,7 @@ const WardMessage = () => {
           });
           if (response.ok) {
             const data = await response.json();
+            console.log(data);
             setMessages(data.userMsg);
           } else {
             console.error("Failed to fetch messages");
@@ -87,18 +88,19 @@ const WardMessage = () => {
 
   return (
     <div className="ward-message-container">
-      <h1 className="ward-message-title">Ward Member Messages</h1>
+      <h1 className="ward-message-title"> Messages from Resident</h1>
       <ul className="ward-message-list">
-        {messages.map(message => (
+        {messages.map((message, index) => (
           <li key={message._id} className="ward-message-item">
             <div>
+            {message.anonymous ? (
+                <p className="ward-message-private">{index + 1}. PRIVATE</p>
+              ) : (
+                <p className="ward-message-user-id">{index + 1}. User ID : {message.userid}</p>
+              )}
               <p className="ward-message-content"> {message.message}</p>
               <p className="ward-message-time">Date : {message.createdAt}</p>
-              {message.anonymous ? (
-                <p className="ward-message-private">PRIVATE</p>
-              ) : (
-                <p className="ward-message-user-id">User ID : {message.userid}</p>
-              )}  
+  
               {message.read ? (
                 <p className="ward-message-read">Viewed</p>
               ):(
@@ -106,7 +108,7 @@ const WardMessage = () => {
               )}
             </div>
             
-             <button className="delete-button1" onClick={() => handleDelete(message._id)}><MdDelete /></button>
+             <button className="delete-button1" onClick={() => handleDelete(message._id)}><MdDelete size={30} /></button>
              <button className="read-button" onClick={() => handleRead(message._id)}>Read</button>
           </li>
         ))}

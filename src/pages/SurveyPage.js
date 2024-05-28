@@ -77,10 +77,10 @@ const SurveyPage = () => {
       {surveyDataList.length > 0 ? (
         <div>
           <h2>Survey Data</h2>
-          <ul className='survey1'>
+          <div className='survey1'>
             {surveyDataList.map((survey, index) => (
-              <li key={index}>
-                Survey Number: {survey.surveyNumber}<br />
+              <div className='survey2' key={index}>
+                <p className="survey_no">{index +1}.  SURVEY NO: {survey.surveyNumber}</p>
                 Survey Name: {survey.surveyName}<br />
                 Targeted Section: {survey.targetedSection}<br />
                 Survey Description: {survey.surveyDescription}<br />
@@ -90,11 +90,11 @@ const SurveyPage = () => {
                     <li key={optIndex}>Option {optIndex + 1}: {option.text}</li>
                   ))}
                 </ul>
-                <button onClick={() => handleStopPolling(survey._id)}>Stop Polling</button>
-                <button onClick={() => handleResult(survey._id)}>Result</button>
-              </li>
+                <button className='stop_poll' onClick={() => handleStopPolling(survey._id)}>Stop Polling</button>
+                <button className="poll_result" onClick={() => handleResult(survey._id)}>Result</button>
+              </div>
             ))}
-          </ul>
+          </div>
         </div>
       ) : (
         <p>No survey data available</p>

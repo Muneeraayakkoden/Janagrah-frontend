@@ -22,12 +22,20 @@
   margin-left: 0; /* Ensure it doesn't overlap with the sidebar */
 }
 
+.announcement-main-content h1 {
+  font-size: 50px;
+}
+
 /* Style for each announcement record */
 .announcement-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Space out the children elements */
   border: 1px solid #ccc; /* Add border around each announcement */
   padding: 10px; /* Add padding for spacing */
   margin-bottom: 10px; /* Add margin at the bottom for separation */
   background-color: #ffffffab;
+  position: relative; /* Make the item a positioning context */
 }
 
 /* Style for announcement titles */
@@ -36,8 +44,33 @@
 }
 
 /* Style for announcement descriptions */
+/*.announcement-description {
+  color: #666;
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis;
+  max-width: 300px; 
+  position: relative;
+}*/
 .announcement-description {
-  color: #666; /* Change color of description text */
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.announcement-description:hover::after {
+  content: attr(data-fulltext);
+  position: absolute;
+  white-space: nowrap;
+  background-color: #333;
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
 }
 
 /* Style for announcement created date */
@@ -48,7 +81,7 @@
 
 /* Button styling */
 .announcement-button {
-  background-color: #007bff;
+  background-color: rgba(0, 0, 0, 0.792);
   color: white;
   border: none;
   padding: 10px 15px;
@@ -68,4 +101,16 @@
 
 .announcement-link button {
   margin-bottom: 20px;
+}
+
+/* Delete button styling */
+.announcement-deletebutton {
+  background: none; /* Remove background */
+  border: none; /* Remove border */
+  cursor: pointer; /* Pointer cursor on hover */
+  padding: 0; /* Remove padding */
+}
+
+.announcement-deletebutton:hover {
+  color: red; /* Change icon color on hover */
 }

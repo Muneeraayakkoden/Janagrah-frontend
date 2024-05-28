@@ -18,9 +18,18 @@ const MemberAccount = () => {
       // Retrieve the user ID from local storage
       const username = JSON.parse(localStorage.getItem('username'));
       const password = JSON.parse(localStorage.getItem('password'));
+      const age = JSON.parse(localStorage.getItem('age'));
+      const district = JSON.parse(localStorage.getItem('district'));
+      const phone_no = JSON.parse(localStorage.getItem('phone_no'));
+      const name = JSON.parse(localStorage.getItem('name'));
+      const email = JSON.parse(localStorage.getItem('email'));
+      const wardNo = JSON.parse(localStorage.getItem('wardNo'));
+      const state = JSON.parse(localStorage.getItem('state'));
+      const localgovernment = JSON.parse(localStorage.getItem('localgovernment'));
       console.log(username);
       console.log(password);
-      const data ={username,password}
+
+      const data ={username,password,age,district,phone_no,name,email,wardNo,state,localgovernment}
       setUserData(data);
     } catch (error) {
       console.error('Error fetching data:', error.message);

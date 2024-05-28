@@ -116,9 +116,11 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './AnnouncementHistory.css';
 import Officialside from '../components/Officialside.js';
+import { MdDelete } from "react-icons/md";
 
 const Announcements = () => {
   const [announcements, setAnnouncements] = useState([]);
+  const [expandedDescription, setExpandedDescription] = useState(null);
 
   const wardid = JSON.parse(localStorage.getItem('username'));
   console.log(wardid);
@@ -179,28 +181,38 @@ const Announcements = () => {
       console.error("Error deleting announcement:", error);
     }
   };
-
+  const toggleDescription = (index) => {
+    if (expandedDescription === index) {
+      setExpandedDescription(null);
+    } else {
+      setExpandedDescription(index);
+    }
+  };
   return (
     <div className="announcement-page-container">
       <div className="announcement-sidebar">
         <Officialside />
       </div>
       <div className="announcement-main-content">
-        <h1>Announcements</h1>
+        <h1>ANNOUNCEMENTS</h1>
         <Link to="/CreateAnnouncement" className="announcement-link">
           <button className="announcement-button">Create Announcement</button>
         </Link>
         {announcements.length > 0 ? (
-          <ul>
+          <div>
             {announcements.map((announcement, index) => (
-              <li key={index} className="announcement-item">
-                <p className="announcement-title">Title: {announcement.title}</p>
-                <p className="announcement-description">Description: {announcement.description}</p>
+              <div key={index} className="announcement-item">
+                <p className="announcement-title">{index+1}. Title: {announcement.title}</p>
+                <p className="announcement-description"
+                 data-fulltext={announcement.description}
+                 onClick={() => toggleDescription(index)}>
+                   Description: {expandedDescription === index ? announcement.description : `${announcement.description.substring(0, 40)}...`}
+                </p>
                 <p className="announcement-date">Date: {announcement.createdAt}</p>
-                <button className="announcement-button" onClick={() => handleDeleteAnnouncement(announcement._id)}>Delete</button>
-              </li>
+                <button className="announcement-deletebutton" onClick={() => handleDeleteAnnouncement(announcement._id)}><MdDelete size={24}/></button>
+              </div>
             ))}
-          </ul>
+          </div>
         ) : (
           <p>No announcements to display</p>
         )}
