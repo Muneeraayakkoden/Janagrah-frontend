@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Officialside from '../components/Officialside';
-import './Results.css'
+import './Results.css';
+
 const Results = () => {
-  const [surveyId, setSurveyId] = useState(null); // State to store the surveyId
-  const [surveyResults, setSurveyResults] = useState(null); // State to store survey result data
-  const location = useLocation(); // Initialize useLocation
+  const [surveyId, setSurveyId] = useState(null);
+  const [surveyResults, setSurveyResults] = useState(null);
+  const location = useLocation();
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
     const surveyIdFromUrl = searchParams.get("surveyId");
 
     if (surveyIdFromUrl) {
-      // Update the surveyId state with the value from the URL query parameter
       setSurveyId(surveyIdFromUrl);
     } else {
       console.error("No survey ID found in the URL");
@@ -42,7 +42,7 @@ const Results = () => {
             count / totalCount,
           ])
         );
-        setSurveyResults(percentageResults); // Set the survey result data received from the backend
+        setSurveyResults(percentageResults);
       } else {
         console.error("Failed to fetch survey results");
       }
@@ -53,27 +53,12 @@ const Results = () => {
 
   useEffect(() => {
     if (surveyId) {
-      // Call the function to fetch survey results from the backend
       fetchSurveyResults();
     }
   }, [surveyId]);
 
-  const getOptionDisplay = (percentage) => {
-    if (percentage < 0.05) {
-      return "15%"; // Set a fixed width for very low percentages
-    } else {
-      return `${percentage * 100}%`; // Set the percentage width for other options
-    }
-  };
-
-  const getPercentageColor = (percentage) => {
-    if (percentage >= 0.7) {
-      return "green";
-    } else if (percentage >= 0.3 && percentage < 0.7) {
-      return "yellow";
-    } else {
-      return "red";
-    }
+  const getOptionWidth = (percentage) => {
+    return `${percentage * 100}%`;
   };
 
   return (
@@ -84,56 +69,37 @@ const Results = () => {
         <div className="polling-result-analysis">
           <p>Survey ID: {surveyId}</p>
           <p>Survey Results:</p>
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-            }}
-          >
+          <div>
             {Object.entries(surveyResults).map(([option, percentage]) => (
               <div
                 key={option}
                 className="poll-item"
-                style={{
-                  backgroundColor: getPercentageColor(percentage),
-                  width: getOptionDisplay(percentage),
-                  height: "150px", // Increase height here
-                  padding: "10px",
-                  margin: "5px",
-                  border: "1px solid #000",
-                  borderRadius: "15px", // Rounded corners
-                  fontFamily: "Arial, sans-serif", // Font family
-                  fontSize: "16px", // Increase font size
-                  whiteSpace: "nowrap",
-                  overflow: "hidden",
-                  textOverflow: "ellipsis",
-                  position: "relative", // Position the percentage text
-                }}
                 title={`${option}: ${(percentage * 100).toFixed(2)}%`}
               >
                 <div
+                  className="poll-bar"
                   style={{
-                    position: "absolute",
-                    top: "50%",
-                    left: "50%",
-                    transform: "translate(-50%, -50%)",
-                    fontSize: "30px", // Increase font size for option text
-                    fontWeight: "bold",
-                    color: "black",
+                    width: getOptionWidth(percentage),
+                    backgroundColor: 'white',
+                    color: 'black' // Ensure option name is in black color
                   }}
                 >
-                  {option}
+                  <span className="option-text">{option}</span>
                 </div>
-                <div
-                  style={{
-                    position: "absolute",
-                    bottom: "5px",
-                    right: "5px",
-                    fontSize: "30px", // Increase font size for percentage text
-                    fontWeight: "bold",
-                    color: "black",
-                  }}
-                >
+                {percentage === 0 ? (
+                  <div
+                    className="poll-bar"
+                    style={{
+                      width: "100%",
+                      backgroundColor: "#333",
+                      color: 'white',
+                      paddingLeft: getOptionWidth(percentage) // Shift the text to align with the white bar
+                    }}
+                  >
+                    <span className="option-text">{option}</span>
+                  </div>
+                ) : null}
+                <div className="percentage-text">
                   {(percentage * 100).toFixed(2)}%
                 </div>
               </div>
