@@ -18,6 +18,12 @@
   letter-spacing: 3px;
   margin-bottom: 10px;
   text-align: center; 
+  color: #020103; /* Use a darker color for better visibility */
+  background: linear-gradient(45deg, #101112, #426dad); /* Add a gradient background */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; /* Use gradient text effect */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Add a subtle text shadow */
+  transition: transform 0.3s ease; /* Add a smooth transform transition */
 }
 
 .hero-title {
@@ -25,7 +31,7 @@
   text-align: center;
   font-weight: 600;
   font-size: 1.2em;
-  color: #555;
+
 }
 
 @media screen and (max-width: 768px) {

@@ -12,7 +12,7 @@
 .piano1{
   display: flex;
   float: left;
-  width: 200px;
+  width: 100px;
 }
 
 .piano2{
@@ -20,8 +20,7 @@
   flex-direction: column;
   width: 100%;
   justify-content: space-between;
-  background-color:  white;
-  width: calc(100% - 200px);
+  margin-left: 100px;
 }
 
 .main-content.h3 {

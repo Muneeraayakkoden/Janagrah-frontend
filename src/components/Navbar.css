@@ -79,14 +79,4 @@
   width: 60%;
   border:0.5px solid white;
 }
-.content {
-  margin-left: 100px;
-  flex: 1;
-  padding: 20px;
-  transition: margin-left 0.3s;
-}
-
-.content.expanded {
-  margin-left: 200px;
-}
 

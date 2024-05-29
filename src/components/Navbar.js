@@ -35,13 +35,6 @@ const Navbar = () => {
                     </a> 
                 </li>
 
-                <li class="nav-item">
-                    <a href="#aboutUs-section" class="nav-link">
-                        <i class="fas fa-info-circle"></i>
-                        {sidebarExpanded && <span class="nav-text">ABOUT US</span>}
-                    </a>
-                </li>
-
                 <li className="nav-item">
                     <a className="nav-link" href="#" onClick={() =>  handleNavigation('/dosurvey')}>
                         <i className="fas fa-poll"></i> 
