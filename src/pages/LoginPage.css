@@ -8,15 +8,15 @@
   height: 100vh;
   position: relative;
   font-family: 'Merriweather', serif;
-  background-image: url('../assets/image11.jpg');
+  background-image: url('../assets/black-prism-concept-ai-generated.jpg');
   background-size: cover;
   background-position: center;
 }
 
 .login-container {
-  background-color: rgba(157, 169, 173, 0.6);
+  background-color: rgba(157, 169, 173, 0.477);
   padding: 30px;
-  border-radius: 10px;
+  border-radius: 50px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   width: 80%;
   max-width: 350px;
@@ -107,7 +107,7 @@ form-control-custom:focus {
   display: inline-block;
   padding: 10px 10px;
   margin: 0;
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
   border: none;
   transition: background-color 0.3s ease;
