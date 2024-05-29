@@ -10,13 +10,13 @@
   margin: 20px; 
   max-width: 400px; 
   max-height: 400px;
-  border: 1px solid rgb(28, 78, 136) ;
+  border: 1px solid  rgb(4, 4, 4);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 20px rgba(58, 58, 60, 0.2);
 }
 
 .card-title {
@@ -28,7 +28,7 @@
 .card-icon {
   font-size: 36px; 
   margin-bottom: 20px; 
-  color: rgb(28, 78, 136);
+  color: rgb(4, 4, 4);
 }
 
 .card-description {
