@@ -7,6 +7,10 @@
   margin: 0;
   padding: 0;
   font-family: 'Merriweather', serif;
+  overflow-x: hidden;
+  background-image: url('../assets/modern-glass-building-bottom-view.jpg');
+  background-size: cover; 
+  background-position: center;
 }
 
 .piano1{

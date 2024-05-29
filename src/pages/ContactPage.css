@@ -68,7 +68,7 @@
   margin-left: 0px;
 }
 
-input, select, #contact {
+.message-input input, select, #contact {
   margin-right: 10px;
   margin-bottom: 10px;
 }
