@@ -4,6 +4,8 @@
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
+  width: 100vh;
+  height:100vh;
 }
 
 .Container, 
@@ -12,8 +14,8 @@
   margin: 20px;
   padding: 20px;
   border-radius: 5px;
-  background-color: white;
-  border: 0.5px solid #0056b3;
+  background-color: rgba(157, 169, 173, 0.477);
+  border: 0.5px solid #030303;
   flex: 1;
 }
 
@@ -37,7 +39,7 @@
 }
 
 .heading {
-  color:rgb(28, 78, 136);
+  color:black;
   font-weight: bold;
 }
 
