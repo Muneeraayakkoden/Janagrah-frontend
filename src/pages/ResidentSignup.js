@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './ResidentSignup.css';
 import { useNavigate } from "react-router-dom";
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
-import {FaUser, FaEnvelope, FaLock, FaAddressCard, FaPhone, FaBriefcase, FaMoneyBillWave, FaHome, FaImage, FaMapMarkerAlt, FaUserShield} from 'react-icons/fa';
+import {FaUser, FaImage, FaMapMarkerAlt, FaUserShield} from 'react-icons/fa';
 
 const ResidentSignup = () => {
   const navigate = useNavigate();
@@ -57,7 +57,7 @@ const ResidentSignup = () => {
     const { name, value } = event.target;
     let error = '';
   
-    // Validation rules for each field
+   
     switch (name) {
       case 'district':
       case 'localAuthority':
@@ -107,7 +107,6 @@ const ResidentSignup = () => {
     }
   
     setFormData({ ...formData, [name]: value });
-
     setErrorMessage({ ...errorMessage, [name]: error });
   };
 
@@ -115,7 +114,6 @@ const ResidentSignup = () => {
     const file = event.target.files[0];
     
     if (!file) {
-      // No file selected
       return;
     }
     const maxSize = 1 * 1024 * 1024; // 1MB in bytes
@@ -124,24 +122,18 @@ const ResidentSignup = () => {
       return;
     }
   
-    // Clear image error message when a new image is selected
     setErrorMessage({ ...errorMessage, image: '' });
   
     const reader = new FileReader();
   
-    // Event listener for when the FileReader has finished reading the file
+   
     reader.onloadend = () => {
-      // Log the result to see if the image data is being read correctly
       console.log("Image data URL:", reader.result);
-      // Once the file has been read, set the image data URL to the formData
       setFormData({ ...formData, image: reader.result });
     };
-  
-    // Read the selected file as a data URL
     reader.readAsDataURL(file);
   };
-  
-  
+   
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -314,7 +306,7 @@ const ResidentSignup = () => {
                   {errorMessage.localAuthority && <p className="error-message">{errorMessage.localAuthority}</p>}
                 </div>
               )}
-              {/* Ward Dropdown or Input */}
+            
               {formData.localAuthority === 'SREEKRISHNAPURAM' ? (
                 <select name="ward" value={formData.ward} onChange={handleChange} required>
                   <option value="">Select Ward</option>
@@ -398,12 +390,8 @@ const ResidentSignup = () => {
                 {errorMessage.image && <p className="error-message">{errorMessage.image}</p>}
               </div>
             </div>
-          )}
-
-       
-          <div>Already Registered? <a href="#" onClick={handleLoginClick}> Login here</a></div>
-
-      
+          )}       
+          <div>Already Registered? <a href="#" onClick={handleLoginClick}> Login here</a></div>      
           <div className="pagination">
           {currentPage > 1 && (
           <button

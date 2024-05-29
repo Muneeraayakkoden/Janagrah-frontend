@@ -1,16 +1,15 @@
-body {
-  font-family: Arial, sans-serif;
+
+
+.official-homepage {
+  display: flex;
+  height: 100vh;
+  font-family: 'Merriweather', serif;
   margin: 0;
   overflow-x: hidden;
   background-image: url('../assets/modern-glass-building-bottom-view.jpg');
   background-size: cover; 
   background-position: center; 
   background-repeat: no-repeat;
-}
-
-.official-homepage {
-  display: flex;
-  height: 100vh;
 }
 
 
