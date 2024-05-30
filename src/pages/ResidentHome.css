@@ -1,3 +1,4 @@
+
 .resident-home{
   display: flex;
   flex-direction: row;
@@ -6,12 +7,16 @@
   margin: 0;
   padding: 0;
   font-family: 'Merriweather', serif;
+  overflow-x: hidden;
+  background-image: url('../assets/modern-glass-building-bottom-view.jpg');
+  background-size: cover; 
+  background-position: center;
 }
 
 .piano1{
   display: flex;
   float: left;
-  width: 200px;
+  width: 100px;
 }
 
 .piano2{
@@ -19,8 +24,8 @@
   flex-direction: column;
   width: 100%;
   justify-content: space-between;
-  background-color:  white;
-  width: calc(100% - 200px);
+  margin-left: 100px;
+  
 }
 
 .main-content.h3 {
@@ -33,11 +38,10 @@
 }
 
 .para {
-  background-color: white;
   padding: 20px;
-  border: 1px solid rgb(28, 78, 136);
-  border-radius: 5px;
 }
+
+
 
 @media (max-width: 768px) {
   .piano1 {

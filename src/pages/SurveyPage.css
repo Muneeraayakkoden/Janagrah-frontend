@@ -154,7 +154,7 @@
 .poll_result:hover {
   background-color: #226726; /* Darker green on hover */
 }
-button {
+.surveypage button {
   margin-right: 10px; /* Adds space between buttons */
   padding: 10px 20px;
   border: none;

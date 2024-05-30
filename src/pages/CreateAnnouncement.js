@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import './CreateAnnouncement.css';
-import { useNavigate } from 'react-router-dom';
 
 function CreateAnnouncement() {
-    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         title: "",
         description: "",
