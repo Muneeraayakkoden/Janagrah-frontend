@@ -1,7 +1,7 @@
 /* Results.css */
 
 .survey_result {
-  background-color: black; /* Change background to black */
+  background-color: rgba(0, 0, 0, 0.361); /* Change background to black */
   margin: 20px auto;
   padding: 20px;
   width: 80%; /* Reduced width */

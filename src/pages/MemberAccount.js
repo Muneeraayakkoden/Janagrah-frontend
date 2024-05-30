@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './MyAccount.css';
+import './MemberAccount.css';
 import Officialside from '../components/Officialside.js';
 import { IoLogOutOutline } from "react-icons/io5";
 
@@ -42,11 +42,11 @@ const MemberAccount = () => {
   
 
   return (
-    <div className="profile-page">
+    <div className="profile-page1">
        <Officialside />
       <h1>Member Profile</h1>
       {userData && (
-        <div className="user-info">
+        <div className="user-info1">
           <div className="resident-image-container">
                 <img className="resident-image" src={`data:image/jpeg;base64,${userData.image}`} alt="Resident" />
               </div>

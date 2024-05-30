@@ -24,6 +24,7 @@
 
 .announcement-main-content h1 {
   font-size: 50px;
+  color:rgba(0, 0, 0, 0.854);
 }
 
 /* Style for each announcement record */
@@ -109,6 +110,7 @@
   border: none; /* Remove border */
   cursor: pointer; /* Pointer cursor on hover */
   padding: 0; /* Remove padding */
+  color:black;
 }
 
 .announcement-deletebutton:hover {
