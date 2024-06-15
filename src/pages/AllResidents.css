@@ -6,16 +6,17 @@
 }
 
 .all-residents-container {
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
     padding: 20px;
+    
   }
   .search-container input {
     width: 100%;
     padding: 10px;
     margin-bottom: 20px;
     border: none;
-    border-radius: 5px;
+    border-radius: 20px;
     font-size: 1rem;
     background-color: #33333310;
     color: black;
@@ -25,6 +26,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+  justify-content: center;
   }
   .resident-card {
     background-color: #dddcdc3f;
@@ -32,14 +34,22 @@
     padding: 20px;
     margin-bottom: 20px;
     margin-top: 20px;
-    width:400px;
+    width:500px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     position: relative;
     border: 1px solid #9dbfea;
     margin-right: 10px;
+
+    flex: 0 1 calc(33.333% - 20px); /* Adjusted to ensure 3 items per row with margins */
+    box-sizing: border-box;
          
   }
-  
+  @media (max-width: 600px) {
+    .resident-card {
+      flex: 0 1 100%; /* Full width on small screens */
+      margin: 5px 0; /* Adjust margin for narrow screens */
+    }
+  }
   .resident-details {
   margin-bottom: 10px;
   }
@@ -142,4 +152,5 @@
 }
 .user_details{
   display: flex;
+  width:900px;
 }

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './UserRequests.css';
+import { VscUnverified } from "react-icons/vsc";
 
 const UserRequests = () => {
   const [userData, setUserData] = useState([]);  // Initialize as an empty array
@@ -100,7 +101,7 @@ const UserRequests = () => {
     <div className="user-container">
       {userData && userData.length > 0 ? (  // Add check for userData
         userData.map((user) => (
-          <div key={user._id} className="user-card">
+          <div key={user._id} className="user-cardd">
             <div className="user-image-container">
               <img className="user-image" src={`data:image/jpeg;base64,${user.image}`} alt="User" />
             </div>
@@ -119,7 +120,7 @@ const UserRequests = () => {
             </div>
             <div className="button-container">
               <button className="accept-button" onClick={() => handleApprove(user._id)}>Approve</button>
-              <button className="reject-button" onClick={() => handleReject(user._id)}>Reject</button>
+              <button className="reject-button" onClick={() => handleReject(user._id)}><VscUnverified />Reject</button>
             </div>
           </div>
         ))

@@ -10,7 +10,7 @@ function OfficialHome() {
       <OfficialSide />
       <div className="content">
         <div className="container">
-          <header className="header">
+          <header className="headerr">
             <h1>JANAGRAH</h1>
             <p>Empowering Our Community</p>
           </header>
