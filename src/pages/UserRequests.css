@@ -1,6 +1,6 @@
 /* Center the entire user container on the page */
 .user-container {
-  display: flex;
+
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -9,20 +9,25 @@
 }
 
 .user-card {
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  padding: 20px;
+  background-color:rgba(255, 255, 255, 0.605);
+  color:black;
+  border-radius: 20px;
+  padding: 1px;
   margin-bottom: 20px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.112);
   max-width: 800px; /* Maximum width for the card */
   width: 100%; /* Ensure it takes full width within the max-width */
   text-align: left; /* Align text to the left inside the card */
   display: flex;
   flex-direction: column;
   align-items: center;
+  border: 1px solid #ccc; 
+  width:700px;
+ 
 }
 
-.user-image-container {
+.user-image-container 
+{
   margin-bottom: 10px;
 }
 

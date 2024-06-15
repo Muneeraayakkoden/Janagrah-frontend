@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './AllResidents.css'; // Import the CSS file
 import Officialside from '../components/Officialside.js';
+import { MdDelete } from "react-icons/md";
 
 const AllResidents = () => {
   const [details, setDetails] = useState([]);
@@ -98,7 +99,7 @@ const AllResidents = () => {
       </div>
       <p className="user-count">Total Users: {filteredResidents.length}</p>
       {filteredResidents.length > 0 ? (
-        <div>
+        <div className="user_details">
           {filteredResidents.map((resident, index) => (
             <div key={resident._id} className="resident-card">
               <div className="resident-image-container">
@@ -118,7 +119,7 @@ const AllResidents = () => {
                 <p className="resident-address">Address: {resident.address}</p>
                 <p className="resident-email">Email: {resident.email}</p>
                 <p>Annual Income: {resident.annualIncome}</p>
-                <button  onClick={() => handleDelete(resident._id)}>Delete</button>
+                <button  onClick={() => handleDelete(resident._id)}><MdDelete size={24}/>Delete</button>
                 
               </div>
              

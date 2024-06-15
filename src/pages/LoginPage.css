@@ -8,15 +8,15 @@
   height: 100vh;
   position: relative;
   font-family: 'Merriweather', serif;
-  background-image: url('../assets/image11.jpg');
+  background-image: url('../assets/black-prism-concept-ai-generated.jpg');
   background-size: cover;
   background-position: center;
 }
 
 .login-container {
-  background-color: rgba(157, 169, 173, 0.6);
+  background-color:rgba(157, 169, 173, 0.6);
   padding: 30px;
-  border-radius: 10px;
+  border-radius: 50px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   width: 80%;
   max-width: 350px;
@@ -56,7 +56,7 @@
 
 .tab.active {
   border-bottom: 2px solid #212324;
-  color: #212324;
+  color: black;
 }
 
 .login-form {
@@ -74,10 +74,6 @@ form-control-custom  {
   width: 100%;
 }
 
-form-control-custom:focus {
-  border: 2px solid #ced4da;
-}
-
 .input-group {
   position: relative;
   margin: 5px 0;
@@ -86,7 +82,7 @@ form-control-custom:focus {
 .password-toggle {
   position: absolute;
   top: 50%;
-  right: 20px;
+  right: 10px;
   transform: translateY(-50%);
   cursor: pointer;
   color: #080808;
@@ -107,7 +103,7 @@ form-control-custom:focus {
   display: inline-block;
   padding: 10px 10px;
   margin: 0;
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
   border: none;
   transition: background-color 0.3s ease;
@@ -132,11 +128,6 @@ form-control-custom:focus {
 
 .forgot-password:hover {
   color: #212324;
-}
-
-.error-message {
-  color: #dc3545;
-  margin-top: 10px;
 }
 
 .tab i,
@@ -183,6 +174,6 @@ form-control-custom:focus {
     font-size: 14px;
   }
   .password-toggle {
-    right: 14px; /* Adjust position for smaller screens */
+    right: 14px; 
   }
 }

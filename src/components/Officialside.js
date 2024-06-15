@@ -1,56 +1,5 @@
-/*import React, { useState } from 'react';
-import { Outlet, useNavigate } from 'react-router-dom';
-import './Officialside.css'; // Update the CSS file name accordingly
-import logo from '../assets/logo2.png';
 
-function Officialside() {
-  const navigate = useNavigate();
-  const [sidebarExpanded, setSidebarExpanded] = useState(false);
 
-  const handleSidebarToggle = () => {
-    setSidebarExpanded(!sidebarExpanded);
-  };
-
-  return (
-    <div className="official-homepage">
-      <div className={`sidebar ${sidebarExpanded ? 'expanded' : ''}`}>
-        <div className="logo">
-          <img src={logo} alt="Janagrah Logo" />
-        </div>
-        <div className="nav-icons">
-          <div className="nav-icon" onClick={() => navigate('/MemberAccount')}>
-            <i className="fa-solid fa-user"></i>
-            {sidebarExpanded && <span>Profile</span>}
-          </div>
-          <div className="nav-icon" onClick={() => navigate('/officialNotification')}>
-            <i className="fas fa-bell"></i>
-            {sidebarExpanded && <span>Notifications</span>}
-          </div>
-          <div className="nav-icon" onClick={() => navigate('/Surveys')}>
-            <i className="fas fa-poll"></i>
-            {sidebarExpanded && <span>Surveys</span>}
-          </div>
-          <div className="nav-icon" onClick={() => navigate('/AnnouncementHistory')}>
-            <i className="fas fa-bullhorn"></i>
-            {sidebarExpanded && <span>Announcements</span>}
-          </div>
-          <div className="nav-icon" onClick={() => navigate('/AllResidents')}>
-            <i className="fas fa-users"></i>
-            {sidebarExpanded && <span>View All Residents</span>}
-          </div>
-        </div>
-        <div className="toggle-btn" onClick={handleSidebarToggle}>
-          {sidebarExpanded ? '<' : '>'}
-        </div>
-      </div>
-      <div className={`content ${sidebarExpanded ? 'expanded' : ''}`}>
-        <Outlet />
-      </div>
-    </div>
-  );
-}
-
-export default Officialside;*/
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import logo from '../assets/logo2.png';

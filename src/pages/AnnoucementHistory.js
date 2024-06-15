@@ -194,7 +194,7 @@ const Announcements = () => {
         <Officialside />
       </div>
       <div className="announcement-main-content">
-        <h1>ANNOUNCEMENTS</h1>
+        <h1 id="www">ANNOUNCEMENTS</h1>
         <Link to="/CreateAnnouncement" className="announcement-link">
           <button className="announcement-button">Create Announcement</button>
         </Link>

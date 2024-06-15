@@ -5,6 +5,8 @@
     font-family: 'Merriweather', serif;
     display: flex;
     flex-wrap: wrap;
+    width: 100vh;
+    height:100vh;
   }
   
   .SurveyContainer h3 {

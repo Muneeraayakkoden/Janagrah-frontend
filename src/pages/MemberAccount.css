@@ -1,0 +1,75 @@
+/* MemberAccount.css */
+
+.profile-page1 {
+    background-color: #12121238;
+    color: #ffffff;
+    min-height: 100vh;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .profile-page1 h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ffffff;
+  }
+  
+  .user-info1 {
+    background-color: #1e1e1e84;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .user-info1 p {
+    font-size: 16px;
+    margin: 10px 0;
+  }
+  
+  .resident-image-container {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .resident-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ffffff;
+  }
+  
+  .logout {
+    display: block;
+    background-color: #ff5722;
+    color: #ffffff;
+    padding: 10px 20px;
+    margin: 20px auto;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+  }
+  
+  .logout:hover {
+    background-color: #e64a19;
+  }
+  
+  .logout svg {
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+  
+  /* Dark theme for Officialside component */
+  .officialside {
+    background-color: #1e1e1e25;
+    color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  

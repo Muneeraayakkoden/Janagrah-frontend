@@ -11,19 +11,27 @@
 }
 
 .title {
-  color: rgb(28, 78, 136) !important; 
+  font-size: 4.5em;
+  color: rgba(0, 0, 0, 0.721);
+  font-weight: 100;
+  font-family: 'Arial Black', sans-serif,monospace;
+  letter-spacing: 3px;
   margin-bottom: 10px;
-  font-size: 40px;
-  font-weight: 800;
   text-align: center; 
+  color: #020103; /* Use a darker color for better visibility */
+  background: linear-gradient(45deg, #101112, #426dad); /* Add a gradient background */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; /* Use gradient text effect */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Add a subtle text shadow */
+  transition: transform 0.3s ease; /* Add a smooth transform transition */
 }
 
 .hero-title {
   margin: 0;
   text-align: center;
-  color: black;
-  font-size: 25px;
   font-weight: 600;
+  font-size: 1.2em;
+
 }
 
 @media screen and (max-width: 768px) {

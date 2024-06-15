@@ -1,16 +1,14 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  overflow-x: hidden;
-  background-image: url('../assets/modern-glass-building-bottom-view.jpg');
-  background-size: cover; 
-  background-position: center; 
-  background-repeat: no-repeat;
-}
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
 
 .official-homepage {
   display: flex;
   height: 100vh;
+  font-family: 'Merriweather', serif;
+  margin: 0;
+  overflow-x: hidden;
+  background-image: url('../assets/modern-glass-building-bottom-view.jpg');
+  background-size: cover; 
+  background-position: center;
 }
 
 
@@ -45,11 +43,16 @@ body {
 
 .header h1 {
   margin: 0;
-  font-size: 4.5em;
+  font-size: 5.5em;
   color: rgba(0, 0, 0, 0.721);
   font-weight: 100;
-  font-family: 'Arial Black', sans-serif,monospace;
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.753),black);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Montserrat', sans-serif;
   letter-spacing: 3px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 .header p {
