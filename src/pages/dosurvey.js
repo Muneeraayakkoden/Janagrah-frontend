@@ -12,13 +12,14 @@ function DoSurvey() {
       try {
         const wardmemberid = JSON.parse(localStorage.getItem('wardmemberid'));
         const job = JSON.parse(localStorage.getItem('job'));
+        const username = JSON.parse(localStorage.getItem('username'));
 
         const response = await fetch('http://localhost:4000/poll/dosurvey', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ wardmemberid, job }),
+          body: JSON.stringify({ wardmemberid, job,username }),
         });
 
         if (response.ok) {
