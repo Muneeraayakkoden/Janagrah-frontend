@@ -171,3 +171,6 @@
 .stop_poll,.poll_result{
   display: block;
 }
+.survey-button{
+  display:flex;
+}

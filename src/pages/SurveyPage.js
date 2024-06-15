@@ -89,9 +89,10 @@ const SurveyPage = () => {
                   {survey.options.map((option, optIndex) => (
                     <li key={optIndex}>Option {optIndex + 1}: {option.text}</li>
                   ))}
-                </ul>
-                <button className='stop_poll' onClick={() => handleStopPolling(survey._id)}>Stop Polling</button>
-                <button className="poll_result" onClick={() => handleResult(survey._id)}>Result</button>
+                </ul><div className='survey-button'> 
+                      <button className='stop_poll' onClick={() => handleStopPolling(survey._id)}>Stop Polling</button>
+                      <button className="poll_result" onClick={() => handleResult(survey._id)}>Result</button>
+                    </div>
               </div>
             ))}
           </div>

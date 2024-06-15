@@ -76,7 +76,7 @@ const MemberAccount = () => {
   };
 
   return (
-    <div className="profile-page">
+    <div className="profile-page1">
       <Officialside />
       <h1>Member Profile</h1>
       {userData && (
@@ -96,9 +96,8 @@ const MemberAccount = () => {
           <p>Local Government: {userData.localgovernment}</p>
         </div>
       )}
-      <button onClick={handleLogout}>
-        <IoLogOutOutline /> Logout
-      </button>
+      <button className='ward-logout' onClick={handleLogout}>
+        <IoLogOutOutline /> Logout</button>
     </div>
   );
 };

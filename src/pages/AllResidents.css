@@ -1,4 +1,4 @@
-.user-count {
+/*.user-count {
   text-align: right; 
   font-size: 1.2rem;
   margin-bottom: 20px;
@@ -40,14 +40,14 @@
     border: 1px solid #9dbfea;
     margin-right: 10px;
 
-    flex: 0 1 calc(33.333% - 20px); /* Adjusted to ensure 3 items per row with margins */
+    flex: 0 1 calc(33.333% - 20px); 
     box-sizing: border-box;
          
   }
   @media (max-width: 600px) {
     .resident-card {
-      flex: 0 1 100%; /* Full width on small screens */
-      margin: 5px 0; /* Adjust margin for narrow screens */
+      flex: 0 1 100%;
+      margin: 5px 0;
     }
   }
   .resident-details {
@@ -153,4 +153,102 @@
 .user_details{
   display: flex;
   width:900px;
+}*/
+
+
+.all-residents-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: rgba(253, 252, 252, 0.258);
+}
+.all-residents-container h1{
+  text-align: center;
+}
+.search-container input {
+  margin-top: 10px;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 20px;
+  font-size: 1rem;
+  background-color: #33333310;
+  color: black;
+}
+
+.user-count {
+  text-align: right;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.user_details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+}
+
+.resident-card {
+  background-color: rgba(255, 255, 255, 0.297);
+  
+  padding: 10px;
+  margin-bottom: 1px;
+  width: 100%;
+  box-shadow: 0 2px 5px rgb(197, 196, 196);
+  position: relative;
+  border: 1px solid white;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.resident-image-container {
+  margin-right: 20px;
+}
+
+.resident-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.resident-basic-details {
+  flex-grow: 1;
+}
+
+.resident-details {
+  margin-top: 10px;
+}
+
+.resident-details p {
+  margin: 5px 0;
+}
+
+.resident-name {
+  color: #333;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.resident-email,
+.resident-phone,
+.resident-address {
+  color: #666;
+}
+
+.resident-delete-buttoon{
+  background: none; /* Remove background */
+  border: 1px solid #ccc;  /* Remove border */
+  cursor: pointer; /* Pointer cursor on hover */
+  padding: 10px; /* Remove padding */
+  color:black;
+  border-radius: 30px;
+  transition: background-color 0.3s;
+}
+.resident-delete-buttoon:hover{
+  background-color:rgba(255, 0, 0, 0.505);
 }
