@@ -63,7 +63,7 @@ const MemberAccount = () => {
           <p>Local Government: {userData.localgovernment}</p>
         </div>
       )}
-      <button onClick={handleLogout}><IoLogOutOutline />Logout</button>
+      <button className="logout"  onClick={handleLogout}><IoLogOutOutline />Logout</button>
     </div>
   );
 };

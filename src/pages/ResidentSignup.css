@@ -1,40 +1,48 @@
-/* General Styles */
 
 .signup-page {
-  font-family: 'Merriweather', serif;
+  display: flex;
   justify-content: center;
   align-items: center;
-  display: flex;
+  width: 100%;
   height: 100vh;
-  padding: 20px;
   background-image: url('../assets/black-prism-concept-ai-generated.jpg');
   background-size: cover;
   background-position: center;
+  margin: 0;
+  font-family: 'Merriweather', serif;
 }
 
 .signup-container {
   width: 100%;
-  position: relative;
   max-width: 400px;
+  max-height: 90vh; 
+  overflow-y: auto; 
+  overflow-x: hidden;
   background-color: rgba(157, 169, 173, 0.8);
-  padding: 20px;
   border-radius: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   transition: width 0.3s ease;
   box-sizing: border-box;
+  padding: 20px 50px;
+  margin: 0 20px; 
 }
 
-.form-section {
-  padding: 15px;
-  border-radius: 10px; 
-  margin-bottom: 20px;
+.signup-container::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.signup-container {
+  scrollbar-width: none; /* Firefox */
+}
+
+.form-section { 
   box-sizing: border-box;
 }
 
 .signup-page h1 {
   text-align: center;
   font-size: 27px;
-  margin-bottom: 10px;
   color: #04080c; 
 }
 
@@ -52,13 +60,12 @@
 }
 
 .Regbutton:hover {
-  background-color:#212324;
-}
-.error-message {
-  color: #681a1c;
-  margin-top: 5px;
+  background-color: #212324;
 }
 
+.error-message {
+  color: #a00409;
+}
 
 input[type="text"],
 input[type="number"],
@@ -69,7 +76,7 @@ select {
   border: 0.5px solid #151b1e; 
   border-radius: 5px;
   font-size: 16px;
-  margin-bottom: 15px;  
+  margin-bottom: 10px;  
   padding: 12px 20px;
   box-sizing: border-box; 
   transition: border-color 0.3s ease;
@@ -82,20 +89,19 @@ input[type="password"]:focus,
 textarea:focus,
 select:focus {
   outline: none;
-  border-color: #000000; 
+  border-color: black; 
 }
 
 textarea {
   width: 100%;
   height: 60px;
-  padding: 12px 20px ;
+  padding: 12px 20px;
   border: 0.5px solid #151b1e; 
   border-radius: 5px;
   box-sizing: border-box;
   font-size: 16px;
-  margin-bottom:15px;
+  margin-bottom: 10px;
 }
-
 
 a {
   color: #0069d9; 
@@ -107,89 +113,48 @@ a:hover {
   color: #0056b3; 
 }
 
-/* Pagination styles */
 .pagination {
-  margin-top: 15px;
+  margin-top: 5px;
+  display: flex;
   align-items: center;
   justify-content: space-between;
-
-  display: flex;
 }
 
 .pagination .prev-btn,
 .pagination .next-btn {
   background-color: black;
   color: white;
-  padding: 10px 20px;
   border: none;
   border-radius: 5px;
+  padding: 10px 20px;
   cursor: pointer;
   font-size: 16px;
   transition: background-color 0.3s ease;
 }
 
-.pagination .prev-btn {
-  left: 0;
-}
-
-.pagination .next-btn {
-  right: 0;
-}
-
-.pagination .page-indicator {
-  margin: 0 auto;
-}
-
 .pagination .prev-btn:hover,
 .pagination .next-btn:hover {
-  background-color: black;
+  background-color: #333;
 }
 
 .pagination .page-indicator {
   font-size: 16px;
   color: #333;
   text-align: center;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
 }
 
-/* Responsive Styles */
-@media (max-width: 340px) {
-  .signup-container {
-    padding: 20px;
-  }
 
-  .form-section {
-    padding: 15px; 
-  }
-
-  h1 {
-    font-size: 20px;
-  }
-
-  h2 {
-    font-size: 16px;
-  }
-
-  input[type="text"],
-  input[type="number"],
-  input[type="email"],
-  input[type="password"],
-  select,
-  textarea {
-    font-size: 14px;
-  }
-
-  button[type="submit"] {
-    padding: 8px 16px; 
-    font-size: 14px; 
-  }
-
-  .pagination .prev-btn,
-  .pagination .next-btn {
-    padding: 8px 16px; 
-    font-size: 14px; 
+@media (max-width: 500px) {
+  .pagination .prev-btn, .pagination .next-btn {
+    flex: 1 1 100%; /* Buttons take full width on small screens */
+    text-align: center;
   }
 
   .pagination .page-indicator {
-    font-size: 14px; 
+    flex: 1 1 100%; /* Page indicator takes full width on small screens */
+    text-align: center;
   }
 }

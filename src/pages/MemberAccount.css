@@ -41,7 +41,7 @@
     border: 2px solid #ffffff;
   }
   
-  button {
+  .logout {
     display: block;
     background-color: #ff5722;
     color: #ffffff;
@@ -54,11 +54,11 @@
     transition: background-color 0.3s;
   }
   
-  button:hover {
+  .logout:hover {
     background-color: #e64a19;
   }
   
-  button svg {
+  .logout svg {
     margin-right: 8px;
     vertical-align: middle;
   }

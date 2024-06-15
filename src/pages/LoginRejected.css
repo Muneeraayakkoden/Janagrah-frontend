@@ -1,6 +1,23 @@
+.regbg {
+    margin: 0;
+    padding: 0;
+    background-image: url('../assets/black-prism-concept-ai-generated.jpg');
+    background-size: cover;
+    background-position: center;
+}
 .reject {
+    display: flex;
+    justify-content: center;
     align-items: center;
-    margin: 150px;
+    height: 100vh;
     font-family: 'Merriweather', serif;
 }
-  
+
+.container {
+    background-color: white;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 800px; 
+}

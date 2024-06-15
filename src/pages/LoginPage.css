@@ -74,8 +74,6 @@ form-control-custom  {
   width: 100%;
 }
 
-
-
 .input-group {
   position: relative;
   margin: 5px 0;
@@ -84,7 +82,7 @@ form-control-custom  {
 .password-toggle {
   position: absolute;
   top: 50%;
-  right: 20px;
+  right: 10px;
   transform: translateY(-50%);
   cursor: pointer;
   color: #080808;
@@ -176,6 +174,6 @@ form-control-custom  {
     font-size: 14px;
   }
   .password-toggle {
-    right: 14px; /* Adjust position for smaller screens */
+    right: 14px; 
   }
 }
