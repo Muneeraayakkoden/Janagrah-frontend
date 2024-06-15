@@ -25,6 +25,7 @@
 .announcement-main-content h1 {
   font-size: 50px;
   color:rgba(0, 0, 0, 0.854);
+  text-align: left;
 }
 
 /* Style for each announcement record */
@@ -59,11 +60,11 @@
   cursor: pointer;
 }
 
-.announcement-description:hover::after {
+/*.announcement-description:hover::after {
   content: attr(data-fulltext);
   position: absolute;
   white-space: nowrap;
-  background-color: #333;
+  background-color: #33333318;
   color: #fff;
   padding: 5px;
   border-radius: 5px;
@@ -72,7 +73,7 @@
   left: 50%;
   transform: translateX(-50%);
   z-index: 1;
-}
+}*/
 
 /* Style for announcement created date */
 .announcement-date {
@@ -89,6 +90,7 @@
   margin-top: 10px;
   cursor: pointer;
   border-radius: 4px;
+  text-align: right;
 }
 
 .announcement-button:hover {
@@ -115,4 +117,7 @@
 
 .announcement-deletebutton:hover {
   color: red; /* Change icon color on hover */
+}
+#www{
+  text-align: center;
 }

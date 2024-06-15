@@ -99,7 +99,7 @@ const AllResidents = () => {
       </div>
       <p className="user-count">Total Users: {filteredResidents.length}</p>
       {filteredResidents.length > 0 ? (
-        <div>
+        <div className="user_details">
           {filteredResidents.map((resident, index) => (
             <div key={resident._id} className="resident-card">
               <div className="resident-image-container">

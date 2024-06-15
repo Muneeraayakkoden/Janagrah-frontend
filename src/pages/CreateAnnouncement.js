@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import './CreateAnnouncement.css';
+import Officialside from '../components/Officialside.js';
 
 function CreateAnnouncement() {
     const [formData, setFormData] = useState({
@@ -73,7 +74,8 @@ function CreateAnnouncement() {
     return (
         <div>
             <div className="create-updates-container">
-            <h1>Create Event</h1>
+            <Officialside />
+            <h1>Create Announcement</h1>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="title">Announcement Title:</label>
                 <input type="text" id="title" required value={formData.title} onChange={handleChange} />

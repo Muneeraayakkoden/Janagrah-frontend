@@ -70,4 +70,6 @@
     background-color: #dc3545;
     color: #fff;
   }
-  
+  .tabs{
+    background-color: rgba(0, 0, 0, 0.153);
+  }

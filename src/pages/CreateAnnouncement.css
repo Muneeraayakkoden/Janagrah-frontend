@@ -2,7 +2,7 @@
   max-width: 600px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #f0f7ff;
+  background-color: rgba(0, 0, 0, 0.135);
   border-radius: 10px;
   margin-top: 50px;
 }
@@ -27,11 +27,12 @@
   padding: 10px;
   margin-bottom: 15px;
   border: 0.5px solid #66afd6 ;
-  border-radius: 5px;
+  border-radius: 20px;
 }
 
 .create-updates-container input[type="file"] {
   margin-bottom: 15px;
+  
 }
 
 .create-updates-container button {

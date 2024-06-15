@@ -168,3 +168,6 @@
   font-weight: bold;
   font-size: larger;
 }
+.stop_poll,.poll_result{
+  display: block;
+}
