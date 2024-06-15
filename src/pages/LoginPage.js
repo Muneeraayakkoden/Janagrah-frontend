@@ -199,7 +199,7 @@ function LoginPage() {
           <img src={logo} alt="Janagrah Logo" className="logo img-fluid" />
           <h6>JANAGRAH</h6>
         </div>
-        <div className="tabs">
+        <div className="logintabs">
           <div className={`tab ${selectedTab === 'resident' ? 'active' : ''}`} onClick={() => setSelectedTab('resident')}>
           <i class="fas fa-user"></i>RESIDENT
           </div>

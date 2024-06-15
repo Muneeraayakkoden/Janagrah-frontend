@@ -39,10 +39,11 @@
   color: #020406;
 }
 
-.tabs {
+.logintabs {
   display: flex;
   justify-content: space-around;
   margin-bottom: 5px;
+
 }
 
 .tab {
@@ -72,6 +73,8 @@ form-control-custom  {
   font-size: 14px;
   transition: border-color 0.3s ease;
   width: 100%;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .input-group {
