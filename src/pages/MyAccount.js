@@ -121,14 +121,15 @@ const MyAccount = () => {
       <div className="account">
         <h1>PROFILE</h1>
         {userData && (
-          <div className="user-info-container">
+          <div>
+            <div className="ward-info">
+            <p>
+              Ward ID: {userData.ward}<br />
+              Ward Name: {userData.localAuthority}<br />
+            </p>
+            </div>
+          <div className="user-info-container"> 
             <div className="user-info">
-              <div className="ward-info">
-                <p>
-                  Ward ID: {userData.ward}<br />
-                  Ward Name: {userData.localAuthority}<br />
-                </p>
-              </div>
               <h3><u>Personal Details</u></h3>
               {Object.entries(userData).map(([key, value]) => {
                 if (['username', 'name', 'job', 'age', 'phn', 'email', 'annualIncome', 'address'].includes(key)) {
@@ -181,6 +182,7 @@ const MyAccount = () => {
               <img className="resident-image" src={`data:image/jpeg;base64,${userrData.image}`} alt="Resident" />
             </div>
           </div>
+        </div>
         )}
         {isEditedSuccessfully && <p className="success-message">Profile edited successfully!</p>}
       </div>
