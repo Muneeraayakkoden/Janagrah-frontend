@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
-import logo2 from '../assets/logo2.png';
+import logo from '../assets/logo.png';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -23,18 +23,11 @@ const Navbar = () => {
     return (
         <nav className={`navbar ${sidebarExpanded ? 'expanded' : ''}`}>
             <div className="logo-container">
-                <img src={logo2} alt="Janagrah Logo" className="logo img-fluid" />
+                <img src={logo} alt="Janagrah Logo" className="logo img-fluid" />
                 <h5 className="htitle">JANAGRAH</h5>
             </div>
             <ul className="navbar-nav">
-                
-                <li className="nav-item">
-                    <a className="nav-link" href="#" onClick={() =>  handleNavigation('/ResidentHome')}>
-                        <i className="fas fa-home"></i>
-                        {sidebarExpanded && <span className="nav-text">HOME</span>}
-                    </a> 
-                </li>
-
+               
                 <li className="nav-item">
                     <a className="nav-link" href="#" onClick={() =>  handleNavigation('/dosurvey')}>
                         <i className="fas fa-poll"></i> 
@@ -61,10 +54,11 @@ const Navbar = () => {
                         {sidebarExpanded && <span className="nav-text">LOGOUT</span>}
                     </a>
                 </li>
+                <div className="togglebtn" onClick={handleSidebarToggle}>
+                    {sidebarExpanded ? '<' : '>'}
+                </div>
             </ul>
-            <div className="togglebtn" onClick={handleSidebarToggle}>
-                {sidebarExpanded ? '<' : '>'}
-            </div>
+            
         </nav>
     );
 };

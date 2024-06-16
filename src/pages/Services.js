@@ -8,12 +8,12 @@ const features = [
   {
     icon: 'fa-chart-line',
     title: 'Share Your Ideas',
-    description: 'Participate in surveys and polls to shape local decisions.',
+    description: 'Participate in surveys & polls to shape local decisions.',
   },
   {
     icon: 'fa-newspaper',
     title: 'Stay Informed',
-    description: 'Access the latest news, updates, and announcements from your ward.',
+    description: 'Access the latest news & announcements from your ward.',
   },
   {
     icon: 'fa-envelope',

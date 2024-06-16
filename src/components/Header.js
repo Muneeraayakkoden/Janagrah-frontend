@@ -10,7 +10,7 @@ const Header = () => {
       <div className="row">
         <div className="col-md">
           <h1 className="title">JANAGRAH</h1>
-          <h3 className="hero-title">Your Voice, Shaping Our Ward</h3>
+          <h3 className="hero-title">Connecting Community</h3>
         </div>
       </div>
     </header>

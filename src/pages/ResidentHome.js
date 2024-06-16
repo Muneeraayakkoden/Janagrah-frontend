@@ -9,17 +9,17 @@ import Navbar from '../components/Navbar';
 const ResidentHome = () => {
   return (
     <div className="resident-home"> 
-      <div className="piano1">
+      <div className="it1">
         <Navbar />
       </div>
-      <div className="piano2">
+      <div className="it2">
         <Header />
         <main className="main-content">
           <section className="aboutUs-section">
             <h2 className="section-title">ABOUT US</h2>
             <div className = "para"> 
               <p>Janagrah is a resident engagement platform designed to empower residents and strengthen the foundations of our community. We facilitate open communication and informed decision-making by providing a direct line between residents and local authorities.</p>
-              <p>Together, we can build a more engaged and informed community.</p>
+              <p className= "p1">Together, we can build a more engaged and informed community.</p>
             </div>
           </section>
           <section id="news" className="newses-section">

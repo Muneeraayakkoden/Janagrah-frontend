@@ -1,17 +1,17 @@
 
 .news-section {
-  padding: 30px;
+  padding: 25px;
   text-align: center; 
 }
 
 .section-title {
   font-size: 24px;
   text-align: center;
-  font-weight: 600;
-  margin-bottom: 50px; 
+  font-weight: 600; 
   padding: 10px; 
   background-color: #292626;
   color:white !important;
+  margin: 0;
 }
 
 .news-container {
@@ -49,8 +49,6 @@
   height: auto;
   margin-bottom: 10px;
 }
-
-
 
 .load-more, .view-less {
   margin-top: 20px;

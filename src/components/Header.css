@@ -1,6 +1,6 @@
 
 .rheader {
-  padding: 10px;
+  padding: 8px;
   font-family: 'Merriweather', serif;
   display: flex;
   justify-content: center;
@@ -16,7 +16,7 @@
   font-weight: 100;
   font-family: 'Arial Black', sans-serif,monospace;
   letter-spacing: 3px;
-  margin-bottom: 10px;
+  margin: 0;
   text-align: center; 
   color: #020103; /* Use a darker color for better visibility */
   background: linear-gradient(45deg, #101112, #426dad); /* Add a gradient background */
@@ -31,7 +31,6 @@
   text-align: center;
   font-weight: 600;
   font-size: 1.2em;
-
 }
 
 @media screen and (max-width: 768px) {
