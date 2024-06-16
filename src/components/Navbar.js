@@ -24,7 +24,6 @@ const Navbar = () => {
         <nav className={`navbar ${sidebarExpanded ? 'expanded' : ''}`}>
             <div className="logo-container">
                 <img src={logo} alt="Janagrah Logo" className="logo img-fluid" />
-                <h5 className="htitle">JANAGRAH</h5>
             </div>
             <ul className="navbar-nav">
                

@@ -9,6 +9,8 @@
   top: 0;
   left: 0;
   width:75px;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .navbar.expanded {
@@ -30,6 +32,7 @@
   margin: 0;
   padding: 0;
   width: 100%;
+  flex-grow: 1; /* Allow the nav to grow and fill available space */
 }
 
 .nav-item {
@@ -37,7 +40,6 @@
   cursor: pointer;
   display: flex;
   align-items: center;
-  justify-content: center;
   transition: background-color 0.3s transform 0.3s ease;
 }
 
@@ -68,13 +70,9 @@
 .logo-container {
   padding: 0 5px 0 5px;
   width: 100%;
+  display: flex;
 }
 
-.htitle {
-  margin: 0;
-  font-size: 12px;
-  color: black;
-}
 
 .togglebtn {
   cursor: pointer;
@@ -85,10 +83,10 @@
   width: 50%;
 }
 
-/* Responsive adjustments for navbar */
+
 @media (max-width: 450px) {
   .navbar {
-    width: 80px; /* Adjust to be more compact on smaller screens */
+    width: 80px; 
   }
 
   .navbar.expanded {
