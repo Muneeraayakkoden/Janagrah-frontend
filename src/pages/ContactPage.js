@@ -1,7 +1,8 @@
 import React, { useState , useEffect} from 'react';
 import './ContactPage.css'; 
+import { FaPen, FaTrash } from "react-icons/fa";
 import { IoIosSend } from "react-icons/io";
-
+import Navbar from '../components/Navbar';
 
 const ContactPage = () => {
   const [messages, setMessages] = useState([]);
@@ -76,9 +77,14 @@ const ContactPage = () => {
     }
   };
  
+  const handleDeleteMessage = (indexToDelete) => {
+    const updatedMessages = messages.filter((_, index) => index !== indexToDelete);
+    setMessages(updatedMessages);
+  };
 
   return (
     <div className="contactPage">
+      <Navbar />
       {messages.length > 0 ? (
         <div className="Container">
           <h1 className='heading'>Message History</h1>
@@ -90,6 +96,7 @@ const ContactPage = () => {
                   <p>Anonymous: {msg.anonymous ? 'Yes' : 'No'}</p>
                   <p className='chatTime'>{msg.createdAt}</p>
                   <p className={msg.read ? 'Seen' : 'not-seen'}>{msg.read ? 'Viewed' : 'Unread'}</p>
+                  <FaTrash onClick={() => handleDeleteMessage(index)} className="trash-icon" />
                 </div>
               </div>
             ))}
@@ -103,7 +110,7 @@ const ContactPage = () => {
         <button id="contact"
           className={`message-icon ${showSendMessage ? 'active' : ''}`} 
           onClick={() => setShowSendMessage(!showSendMessage)} >
-          <i className="fa-brands fa-rocketchat"></i>
+          <FaPen />
         </button>
         {showSendMessage && ( 
           <div className="message-input">
@@ -113,6 +120,7 @@ const ContactPage = () => {
                 value={newMessage}
                 onChange={(e) => setNewMessage(e.target.value)}
                 placeholder="Enter your message..."
+                required
               />
               <div className="anonymous-option">
                 <input

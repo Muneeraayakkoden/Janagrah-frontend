@@ -1,27 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap');
+
 .contactPage {
   font-family: 'Merriweather', serif;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap; /* Changed to nowrap for a three-column layout */
   gap: 20px;
-  justify-content: center;
-  width: 100vh;
-  height:100vh;
+  justify-content: space-between; /* Changed to space-between to align items properly */
+  width: 100vw;
+  height: 100vh;
+  background-image: url('../assets/black-prism-concept-ai-generated.jpg');
+  background-size: cover;
+  background-position: center;
 }
 
-.Container, 
-.message-container {
-  width: calc(50% - 40px); 
-  margin: 20px;
+.navbar {
+  width: 140px; /* Fixed width for the navbar */
+  background-color: rgba(157, 169, 173, 0.477);
+  border-right: 0.5px solid #030303;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.Container {
+  flex: 1; /* Flex grow to take remaining space */
+  margin: 20px 0 20px 160px;
   padding: 20px;
   border-radius: 5px;
   background-color: rgba(157, 169, 173, 0.477);
   border: 0.5px solid #030303;
-  flex: 1;
+  overflow-y: auto;
 }
 
+.message-container {
+  flex: 1; /* Flex grow to take remaining space */
+  margin: 20px 20px 20px 0;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: rgba(157, 169, 173, 0.477);
+  border: 0.5px solid #030303;
+}
 
 .message-content { 
-  border: 1px solid ;
+  border: 1px solid;
   border-radius: 5px;
   padding: 10px;
   margin-bottom: 10px;
@@ -29,18 +49,19 @@
 }
 
 .chat {
-  color:#0056b3;
+  color: black;
 }
 
 .chatTime {
   text-align: right;
   font-size: 0.8rem; 
-  white-space: nowrap; 
+  white-space: nowrap;
 }
 
 .heading {
-  color:black;
+  color: black;
   font-weight: bold;
+  font-size: 1.2rem; /* Increased font size */
 }
 
 .message-input {
@@ -60,7 +81,7 @@
 }
 
 .anonymous-option label {
-  font-size: 1.2rem;
+  font-size: 1rem; /* Adjusted font size */
   color: #555;
 }
 
@@ -88,18 +109,18 @@
 }
 
 .message-icon {
-  font-size: 2rem;
+  font-size: 1.5rem; /* Adjusted icon size */
   cursor: pointer;
-  transition: color 0.3s ease; 
+  transition: color 0.3s ease;
 }
 
 .message-icon.active {
-  color: rgb(28, 78, 136); 
+  color: rgb(5, 7, 10); 
 }
 
 .send {
   padding: 12px 20px;
-  background-color: rgb(28, 78, 136);
+  background-color: black;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -109,15 +130,38 @@
 }
 
 .send:hover {
-  background-color: #0056b3;
+  opacity: 0.5;
 }
+
 
 @media (max-width: 768px) {
   .contactPage {
-    flex-direction: column; 
+    flex-direction: column;
+    justify-content: flex-start; 
+  }
+  .navbar {
+    width: 10%;
+    margin: 0; /* Remove margin to use full width */
+    padding: 10px 20px;
   }
   .Container, .message-container {
-    width: 100%; 
-    margin-top: 20px; 
+    height: auto; /* Adjust height */
+    margin: 10px 10px 10px 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .heading {
+    font-size: 1rem; /* Smaller font size for small screens */
+  }
+  .chatTime {
+    font-size: 0.7rem; /* Smaller font size for small screens */
+  }
+  .send {
+    font-size: 1rem; /* Smaller button font size */
+    padding: 10px 15px;
+  }
+  .message-icon {
+    font-size: 1.2rem; /* Smaller icon size */
   }
 }

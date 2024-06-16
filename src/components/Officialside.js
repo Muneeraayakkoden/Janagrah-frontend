@@ -24,7 +24,7 @@ function OfficialSide() {
   };
   return (
     <div className={`sidebar ${sidebarExpanded ? 'expanded' : ''}`}>
-      <div className="logo">
+      <div className="officiallogo">
         <img src={logo} alt="Janagrah Logo" />
       </div>
       
