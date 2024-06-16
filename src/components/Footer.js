@@ -4,8 +4,8 @@ import './Footer.css';
 
 const Footer = () => {
   return (
-    <footer className="footer">
-      <div className="container">
+    <footer className="residentfooter">
+      <div className="footercontainer">
         <div className="text-center">
           <p className="footer-text mb-0"> <b>&copy; 2024 Janagrah. All rights reserved.</b></p>
         </div>

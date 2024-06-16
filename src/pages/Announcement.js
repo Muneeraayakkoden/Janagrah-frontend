@@ -5,6 +5,7 @@ import './Announcement.css';
 const Announcement = () => {
   const [newsData, setNewsData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [visibleNewsCount, setVisibleNewsCount] = useState(3);
 
   useEffect(() => {
     fetchDataFromBackend();
@@ -43,10 +44,15 @@ const Announcement = () => {
   };
 
   const loadMoreNews = () => {
-    // Load next 3 news items
-    const nextNews = newsData.slice(newsData.length, newsData.length + 3);
-    setNewsData(prevNewsData => [...prevNewsData, ...nextNews]);
+    // Increase visible count to show all news items
+    setVisibleNewsCount(newsData.length);
   };
+
+  const viewLessNews = () => {
+    // Reset visible count to show only 3 news items
+    setVisibleNewsCount(3);
+  };
+  
 
   return (
     <section className="news-section">
@@ -55,7 +61,7 @@ const Announcement = () => {
         {loading && <p>Loading...</p>}
         {!loading && newsData.length === 0 && <p>No announcements</p>}
         <div className="news-container">
-          {newsData.map((newsItem, index) => (
+        {newsData.slice(0, visibleNewsCount).map((newsItem, index) => (
             <div key={index} className="news-item">
               <div className="news-content">
                 <h3>{newsItem.title}</h3>
@@ -65,9 +71,12 @@ const Announcement = () => {
             </div>
           ))}
         </div>
-        {newsData.length > 3 && (
-          <button type="button" className="load-more" onClick={loadMoreNews}>Load More</button>
-        )}
+        {newsData.length > visibleNewsCount && visibleNewsCount === 3 ?(
+            <button type="button" className="load-more" onClick={loadMoreNews}>Load More</button>
+          ) : (
+            visibleNewsCount >3 && 
+            <button type="button" className="view-less" onClick={viewLessNews}>View Less</button>
+          )}
       </div>
     </section>
   );

@@ -23,7 +23,7 @@
 
 .news-item {
   width: calc(50% - 20px); 
-  border: 1px solid rgb(28, 78, 136);
+  border: 1px solid black;
   border-radius: 5px;
   overflow: hidden;
   background-color: white;
@@ -52,18 +52,20 @@
 
 
 
-.load-more {
+.load-more, .view-less {
   margin-top: 20px;
   padding: 10px 20px;
-  background-color:  rgb(28, 78, 136);
-  color: white;
+  background-color: rgb(103, 115, 129);
+  color: black;
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
 
-.load-more:hover {
-  background-color: #007bff;
+.load-more:hover,
+.view-less:hover {
+  background-color: black;
+  color: white;
 }
 
 

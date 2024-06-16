@@ -16,7 +16,7 @@
 .piano1{
   display: flex;
   float: left;
-  width: 100px;
+  width: 200px;
 }
 
 .piano2{
@@ -24,7 +24,6 @@
   flex-direction: column;
   width: 100%;
   justify-content: space-between;
-  margin-left: 100px;
   
 }
 
