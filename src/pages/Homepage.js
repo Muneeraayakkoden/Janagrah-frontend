@@ -1,7 +1,7 @@
 import React from 'react';
-//import './Homepage.css';
 import { Link } from 'react-router-dom';
 import logo from '../assets/logo.png'; // Adjust the import path for the logo image
+import './Homepage.css';
 
 function Homepage() {
   return (
@@ -19,7 +19,7 @@ function Homepage() {
         <div className="service">
           <h2><b>Surveys</b></h2>
           <h5>Participate in Surveys and Polls: Voice your opinions</h5>
-          <p>Participate in surveys and polls to voice your opinions and contribute to community decision-making.<br />Your engagement is key to our collective success</p>
+          <p>Participate in surveys and polls to voice your opinions and contribute to community decision-making.<br />Your engagement is key to our collective success.</p>
         </div>
         <div className="service">
           <h2><b>Direct Communication</b></h2>
@@ -34,7 +34,7 @@ function Homepage() {
       </div>
 
       <div className="cta">
-        <p>Join us in building a vibrant and harmonious community on Janagrah. Together, we can create a platform where every voice matters, and a positive change is a collective effort.</p>
+        <p>Join us in building a vibrant and harmonious community on Janagrah. Together, we can create a platform where every voice matters, and positive change is a collective effort.</p>
         <Link to="/LoginPage" className="login-btn">Login</Link>
         <Link to="/ResidentSignup" className="signup-btn">Sign Up</Link>
       </div>
@@ -43,4 +43,5 @@ function Homepage() {
 }
 
 export default Homepage;
+
 

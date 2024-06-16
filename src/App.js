@@ -26,17 +26,18 @@ import WardMessage from './pages/WardMessage.js';
 import AllResidents from './pages/AllResidents.js';
 import Homepage from './pages/Homepage.js';
 import EditProfile from './pages/EditProfile.js';
-import Officialside from './components/Officialside.js'
-import Surveyboth from './pages/Surveyboth.js'
+import Officialside from './components/Officialside.js';
+import Surveyboth from './pages/Surveyboth.js';
+
 function App() {
   return (
     <div>
       <BrowserRouter>
         <Routes>
+          <Route path="/" Component={Homepage} />
           <Route path="/ContactPage" Component={ContactPage} />
           <Route path="/SurveyPage" Component={SurveyPage} />
-          <Route path="/ResidentHome" Component={ResidentHome}/> 
-          <Route path="/" Component={LoginPage} />
+          <Route path="/ResidentHome" Component={ResidentHome} /> 
           <Route path="/ResidentSignup" Component={ResidentSignup} />
           <Route path="/LoginPage" Component={LoginPage} />
           <Route path="/ResidentSignupSuccess" Component={ResidentSignupSuccess} />
@@ -65,6 +66,7 @@ function App() {
 }
 
 export default App;
+
 
 
     
