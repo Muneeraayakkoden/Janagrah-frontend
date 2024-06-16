@@ -32,33 +32,87 @@ const ResidentSignup = () => {
 
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = 3;
-
-  const handlePageChange = (pageNumber) => {
-    if (pageNumber >= 1 && pageNumber <= totalPages) {
-      setCurrentPage(pageNumber);
-    }
-  };
-
+ 
   const [errorMessage, setErrorMessage] = useState({
+    state: '',
     district: '',
     localAuthority: '',
     ward: '',
     name: '',
     age: '',
     voterId: '',
+    job: '',
     phone: '',
-    password:'',
+    email: '',
+    username: '',
+    password: '',
     confirmPassword: '',
     annualIncome: '',
     image: '' 
   });
 
+
+
+  const handlePageChange = (pageNumber) => {
+    if (pageNumber >= 1 && pageNumber <= totalPages) {
+      setCurrentPage(pageNumber);
+    }
+  };
+  
+  const handleNextPage = () => {
+    const errors = validateCurrentPage();
+    if (!Object.values(errors).some(error => error)) {
+      handlePageChange(currentPage + 1);
+    } else {
+      setErrorMessage(errors);
+    }
+  };
+
+  const validateCurrentPage = () => {
+    let errors = {};
+    switch (currentPage) {
+      case 1:
+        errors = {
+          state: formData.state ? '' : 'State is required.',
+          district: formData.district ? '' : 'District is required.',
+          localAuthority: formData.localAuthority ? '' : 'Local Authority is required.',
+          ward: formData.ward ? '' : 'Ward is required.'
+        };
+        break;
+      case 2:
+        errors = {
+          name: formData.name ? '' : 'Name is required.',
+          age: formData.age ? '' : 'Age is required.',
+          voterId: formData.voterId ? '' : 'Voter ID is required.',
+          phone: formData.phone ? '' : 'Phone number is required.',
+          job: formData.job ? '' : 'Select a job type.'
+        };
+        break;
+      case 3:
+        errors = {
+          email: formData.email ? '' : 'Email is required.',
+          username: formData.username ? '' : 'Username is required.',
+          password: formData.password ? '' : 'Password is required.',
+          confirmPassword: formData.confirmPassword ? '' : 'Confirm Password is required.',
+          image: formData.image ? '' : 'Image is required.'
+        };
+        break;
+      default:
+        break;
+    }
+    return errors;
+  };
+
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     let error = '';
-  
-   
     switch (name) {
+      case 'state':
+        if (!value) {
+          error = 'State is required.';
+        }
+        break;
       case 'district':
       case 'localAuthority':
       case 'name':
@@ -102,6 +156,11 @@ const ResidentSignup = () => {
           error = 'Passwords do not match.';
         }
         break;
+      case 'email':
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+          error = 'Invalid email format.';
+        }
+        break;
       default:
         break;
     }
@@ -123,10 +182,8 @@ const ResidentSignup = () => {
     }
   
     setErrorMessage({ ...errorMessage, image: '' });
-  
     const reader = new FileReader();
   
-   
     reader.onloadend = () => {
       console.log("Image data URL:", reader.result);
       setFormData({ ...formData, image: reader.result });
@@ -134,23 +191,27 @@ const ResidentSignup = () => {
     reader.readAsDataURL(file);
   };
    
+  
+  const handleStateSelection = (event) => {
+    const { value } = event.target;
+    setFormData({ ...formData, state: value, district: '' });
+    setErrorMessage({ ...errorMessage, state: '' });
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    const errors = validateCurrentPage();
     if (!formData.image) {
       setErrorMessage({ ...errorMessage, image: 'Please upload an image.' });
       return;
     }
-    if (Object.values(errorMessage).some(error => error)) {
+    if (Object.values(errors).some(error => error)) {
+      setErrorMessage(errors);
       return;
     }
-    registerUser();
+    await registerUser();
   };
 
-  const handleStateSelection = (event) => {
-    const { value } = event.target;
-    setFormData({ ...formData, state: value, district: '' });
-  };
 
   const registerUser = async () => {
     try {
@@ -189,8 +250,7 @@ const ResidentSignup = () => {
    
       const responseData = await response.json();
       console.log("Response Data:", responseData); 
-
-     
+ 
       setFormData({
         state: '',
         district: '',
@@ -209,8 +269,7 @@ const ResidentSignup = () => {
         annualIncome: '',
         image: ''
       });
-      setErrorMessage('Registration successful!');
-      navigate("/ResidentSignupSuccess");
+        navigate("/ResidentSignupSuccess");
     } catch (error) {
       // Handle fetch error
       console.error('There was a problem with your fetch operation:', error);
@@ -236,16 +295,16 @@ const ResidentSignup = () => {
 
   const localAuthorities = {
     "Palakkad": [
-      "AGALI", "AKATHETHARA", "ALANALLUR", "ALATHUR", "AMBALAPARA", "ANAKKARA", "ANANGANADI", "AYILUR", "CHALAVARA", "CHALISSERI",
-      "COYALAMMANAM", "ELAPPULLY", "ELEVANCHERY", "ERIMAYUR", "ERUTHEMPATHY", "KADAMPAZHIPURAM", "KANHIRAPUZHA", "KANNADI", "KANNAMBRA",
-      "KAPPUR", "KARAKURUSSI", "KARIMPUZHA", "KAVASSERI", "KERALASSERY", "KIZHAKKANCHERY", "KODUMBA", "KODUVAYUR", "KOLLENGODE", "KONGAD",
-      "KOPPAM", "KOTTOPPADAM", "KOTTAYI", "KOZHINJAMPARA", "KARIMBA", "KULUKKALLUR", "KUMARAMPUTHUR", "KUTHANUR", "LAKKIDI PERUR", "MALAMPUZHA",
-      "MANKARA", "MANNUR", "MARUTHARODE", "MATHUR", "MUTHUTHALA", "MELARCODE", "MUNDUR", "MUTHALAMADA", "NAGALASSERI", "NALLEPPILLY", "NELLAYA",
-      "NELLIAMPATHY", "NEMMARA", "ONGALLUR", "PALLASSANA", "POOKKOTTUKAVU", "PARUTHUR", "PARALI", "PATTITHARA", "PATTANCHERY", "PERUMATTY",
-      "PERUNGOTTUKURUSSI", "PERUVEMBA", "PIRAYIRI", "POLPULLY", "PUDUCODE", "PUDUNAGARAM","PUDUPPARIYARM", "PUDUR", "PUDUSSERI",  "SHOLAYUR",
-      "SREEKRISHNAPURAM", "TARUR", "THACHAMPARA", "THACHANATTUKARA", "THENKURUSSI", "THIRUMITTACODE", "THIRUVEGAPURA", "TRIKKADIRI", "THRITHALA",
-      "VADAKKANCHERY", "VADAKARAPATHY","VADAVANNUR", "VALLAPUZHA", "VANDAZHY", "VANIAMKULAM", "VELLINEZHI", "VILAYUR",  "PALAKKAD", "CHITTUR-TATTAMANGALAM", 
-      "MANNARKKAD", "CHERPULASSERY", "OTTAPPALAM", "SHORANUR", "PATTAMBI"
+      "Agali", "Akathethara", "Alanallur", "Alathur", "Ambalapara", "Anakkara", "Ananganadi", "Ayilur", "Chalavara", "Chalisseri",
+      "Coyalammanam", "Elappully", "Elevanchery", "Erimayur", "Eruthempathy", "Kadampazhipuram", "Kanhirapuzha", "Kannadi", "Kannambra",
+      "Kappur", "Karakurussi", "Karimpuzha", "Kavasseri", "Keralassery", "Kizhakkanchery", "Kodumba", "Koduvayur", "Kollengode", "Kongad",
+      "Koppam", "Kottoppadam", "Kottayi", "Kozhinjampara", "Karimba", "Kulukkallur", "Kumaramputhur", "Kuthanur", "Lakkidi Perur", "Malampuzha",
+      "Mankara", "Mannur", "Marutharode", "Mathur", "Muthuthala", "Melarcode", "Mundur", "Muthalamada", "Nagalasseri", "Nalleppilly", "Nellaya",
+      "Nelliampathy", "Nemmara", "Ongallur", "Pallassana", "Pookkottukavu", "Paruthur", "Parali", "Pattithara", "Pattanchery", "Perumatty",
+      "Perungottukurussi", "Peruvemba", "Pirayiri", "Polpully", "Puduccode", "Pudunagaram", "Pudupariyarm", "Pudur", "Pudusseri", "Sholayur",
+      "Sreekrishnapuram", "Tarur", "Thachampara", "Thachanattukara", "Thenkurussi", "Thirumittacode", "Thiruvegapura", "Trikkadiri", "Thrithala",
+      "Vadakkanchery", "Vadakarapathy", "Vadavannur", "Vallapuzha", "Vandazhy", "Vaniamkulam", "Vellinezhi", "Vilayur", "Palakkad", "Chittur-Tattamangalam",
+      "Mannarkkad", "Cherpulassery", "Ottappalam", "Shoranur", "Pattambi"
     ]
   };
 
@@ -266,19 +325,19 @@ const ResidentSignup = () => {
       <div className="signup-container">
         <h1>RESIDENT REGISTRATION</h1>
         <form onSubmit={handleSubmit}>
-        
           {currentPage === 1 && (
             <div className={`form-section ${currentPage === 1 ? 'visible' : ''}`}>
              
               <FaMapMarkerAlt />
-             
-              <select name="state" value={formData.state} onChange={handleStateSelection} required>
-                <option value="">Select State*</option>
-                {states.map(state => (
-                  <option key={state} value={state}>{state}</option>
-                ))}
-              </select>
-            
+             <div>
+                <select name="state" value={formData.state} onChange={handleStateSelection} required>
+                  <option value="">Select State*</option>
+                  {states.map(state => (
+                    <option key={state} value={state}>{state}</option>
+                  ))}
+                </select>
+                {errorMessage.state && <p className="error-message">{errorMessage.state}</p>}
+              </div>
               {formData.state === 'Kerala' ? (
                 <select name="district" value={formData.district} onChange={handleChange} required>
                   <option value="">Select District</option>
@@ -286,6 +345,7 @@ const ResidentSignup = () => {
                     <option key={district} value={district}>{district}</option>
                   ))}
                 </select>
+                
               ) : (
                 <div>
                   <input type="text" name="district" placeholder="District*" value={formData.district} onChange={handleChange} required />
@@ -347,14 +407,16 @@ const ResidentSignup = () => {
                 <input type="number" name="phone" placeholder="Mobile No.*" value={formData.phone} onChange={handleChange} required />
                 {errorMessage.phone && <p className="error-message">{errorMessage.phone}</p>}
               </div>
-           
-              <select name="job" value={formData.job} onChange={handleChange} required>
-                <option value="">Job*</option>
-                {jobs.map(job => (
-                  <option key={job} value={job}>{job}</option>
-                ))}
-              </select>
-             
+
+              <div>
+                <select name="job" value={formData.job} onChange={handleChange} required>
+                  <option value="">Job*</option>
+                  {jobs.map(job => (
+                    <option key={job} value={job}>{job}</option>
+                  ))}
+                </select>
+                {errorMessage.job && <p className="error-message">{errorMessage.job}</p>}
+              </div>
               <div>
                 <input type="number" name="annualIncome" placeholder="Annual Income" value={formData.annualIncome} onChange={handleChange} />
                 {errorMessage.annualIncome && <p className="error-message">{errorMessage.annualIncome}</p>}
@@ -372,15 +434,15 @@ const ResidentSignup = () => {
              <FaUserShield />
             
               <input type="email" name="email" placeholder="Email*" value={formData.email} onChange={handleChange} required />
-           
+              {errorMessage.email && <p className="error-message">{errorMessage.email}</p>}
               <input type="text" name="username" placeholder="Username*" value={formData.username} onChange={handleChange} required />
-           
+              {errorMessage.username && <p className="error-message">{errorMessage.username}</p>}
               <div>
                 <input type="password" name="password" placeholder="Password*" value={formData.password} onChange={handleChange} required />
                 {errorMessage.password && <p className="error-message">{errorMessage.password}</p>}
               </div>
               <div>
-                <input type="password" name="confirmPassword" placeholder="Re-enter Password*" value={formData.confirmPassword} onChange={handleChange} required />
+                <input type="password" name="confirmPassword" placeholder="Confirm Password*" value={formData.confirmPassword} onChange={handleChange} required />
                 {errorMessage.confirmPassword && <p className="error-message">{errorMessage.confirmPassword}</p>}
               </div>
            
@@ -406,15 +468,14 @@ const ResidentSignup = () => {
             <button
               type="button"
               className="next-btn"
-              onClick={() => handlePageChange(currentPage + 1)}>
+              onClick={handleNextPage}>
               Next <FaArrowRight />
             </button>
             )}
              {currentPage === totalPages && (
-              <button className="Regbutton">Register</button>
+              <button type="submit" className="Regbutton">Register</button>
             )}
           </div>
-
         </form>
       </div>
     </div>

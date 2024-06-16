@@ -53,23 +53,23 @@
   margin-bottom: 5px;
 }
 
-  .notification-page button:focus {
-    outline: none;
-  }
-  
-  .notification-page button:hover {
-    opacity: 0.8;
-  }
-  
-  .notification-page button.approve {
-    background-color: #28a745;
-    color: #fff;
-  }
-  
-  .notification-page button.reject {
-    background-color: #dc3545;
-    color: #fff;
-  }
-  .tabs{
-    background-color: rgba(0, 0, 0, 0.153);
-  }
+.notification-page button:focus {
+  outline: none;
+}
+
+.notification-page button:hover {
+  opacity: 0.8;
+}
+
+.notification-page button.approve {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.notification-page button.reject {
+  background-color: #dc3545;
+  color: #fff;
+}
+.tabs{
+  background-color: rgba(0, 0, 0, 0.153);
+}
