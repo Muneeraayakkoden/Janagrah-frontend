@@ -107,8 +107,8 @@ const AllResidents = () => {
                 <div className="user_details">
                     {filteredResidents.map((resident, index) => (
                         <div key={resident._id} className="resident-card" onClick={() => toggleDetails(resident._id)}>
-                            <div className="resident-image-container">
-                                <img className="resident-image" src={`data:image/jpeg;base64,${resident.image}`} alt="Resident" />
+                            <div className="residents-image-container">
+                                <img className="residents-image" src={`data:image/jpeg;base64,${resident.image}`} alt="Resident" />
                             </div>
                             <div className="resident-basic-details">
                                 <p className="resident-name">{resident.name}</p>

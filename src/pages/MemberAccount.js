@@ -81,8 +81,8 @@ const MemberAccount = () => {
       <h1>Member Profile</h1>
       {userData && (
         <div className="user-info1">
-          <div className="resident-image-container">
-            {userImage && <img className="resident-image" src={`data:image/jpeg;base64,${userImage}`} alt="Resident" />}
+          <div className="member-image-container">
+            {userImage && <img className="member-image" src={`data:image/jpeg;base64,${userImage}`} alt="Resident" />}
           </div>
           <p>Name: {userData.name}</p>
           <p>Username: {userData.username}</p>

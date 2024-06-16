@@ -29,12 +29,12 @@
     margin: 10px 0;
   }
   
-  .resident-image-container {
+  .member-image-container {
     text-align: center;
     margin-bottom: 20px;
   }
   
-  .resident-image {
+  .member-image {
     width: 150px;
     height: 150px;
     border-radius: 50%;

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './MyAccount.css';
-import { FaUserEdit } from "react-icons/fa";
-import { IoLogOutOutline } from "react-icons/io5";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUserEdit, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'; // Import necessary FontAwesome icons
+import Navbar from '../components/Navbar';
 
 const MyAccount = () => {
   const [userData, setUserData] = useState(null);
@@ -32,7 +33,7 @@ const MyAccount = () => {
 
       if (response.ok) {
         const responseData = await response.json();
-        setUserrData(responseData.data); 
+        setUserrData(responseData.data);
         setResponseMessage('');
       } else {
         console.error('Failed to fetch image');
@@ -75,9 +76,7 @@ const MyAccount = () => {
   };
 
   const handleLogout = () => {
-   
     localStorage.clear();
-   
     navigate('/LoginPage');
   };
 
@@ -87,7 +86,6 @@ const MyAccount = () => {
 
   const handleSave = async () => {
     try {
-     
       const response = await fetch('http://localhost:4000/user/edit', {
         method: 'POST',
         headers: {
@@ -95,6 +93,7 @@ const MyAccount = () => {
         },
         body: JSON.stringify(editedUserData),
       });
+      
       if (response.ok) {
         const updatedUserData = await response.json();
         Object.entries(updatedUserData.user).forEach(([key, value]) => {
@@ -118,79 +117,73 @@ const MyAccount = () => {
 
   return (
     <div className="profile-page">
-      <h1>RESIDENT PROFILE</h1>
-      <div className="resident-image-container">
-        <img className="resident-image" src={`data:image/jpeg;base64,${userrData.image}`} alt="Resident" />
-      </div>
-      {userData && (
-        <div>
-          <div className="ward-info">
-            <h3><u>Ward Details</u></h3>
-            {userData && (
-              <p>
-                Ward ID: {userData.ward}<br />
-                Ward Name: {userData.localAuthority}<br />
-              </p>
-            )}
-          </div>
-          <div className="user-info">
-            <h3><u>Personal Details</u></h3>
-            {Object.entries(userData).map(([key, value]) => {
-              if (
-                ['username', 'name', 'job', 'age', 'phn', 'email', 'annualIncome', 'address'].includes(
-                  key
-                )
-              ) {
-                let label = ''
-                switch(key){
-                  case 'username': 
-                    label = 'Username'
-                    break;
-                  
-                  case 'name': 
-                    label = 'Name';
-                    break;
-                  case 'job': 
-                    label = 'Job Title';
-                    break;
-                  case 'age': 
-                    label = 'Age';
-                    break;
-                  case 'phn': 
-                    label = 'Phone';
-                    break;
-                  case 'email': 
-                    label = 'Email';
-                    break;
-                  case 'annualIncome': 
-                    label = 'Annual Income';
-                    break;
-                  case 'address': 
-                    label = 'Address';
-                    break;
+      <Navbar />
+      <div className="account">
+        <h1>PROFILE</h1>
+        {userData && (
+          <div className="user-info-container">
+            <div className="user-info">
+              <div className="ward-info">
+                <p>
+                  Ward ID: {userData.ward}<br />
+                  Ward Name: {userData.localAuthority}<br />
+                </p>
+              </div>
+              <h3><u>Personal Details</u></h3>
+              {Object.entries(userData).map(([key, value]) => {
+                if (['username', 'name', 'job', 'age', 'phn', 'email', 'annualIncome', 'address'].includes(key)) {
+                  let label = '';
+                  switch (key) {
+                    case 'username':
+                      label = 'Username';
+                      break;
+                    case 'name':
+                      label = 'Name';
+                      break;
+                    case 'job':
+                      label = 'Job Title';
+                      break;
+                    case 'age':
+                      label = 'Age';
+                      break;
+                    case 'phn':
+                      label = 'Phone';
+                      break;
+                    case 'email':
+                      label = 'Email';
+                      break;
+                    case 'annualIncome':
+                      label = 'Annual Income';
+                      break;
+                    case 'address':
+                      label = 'Address';
+                      break;
+                    default:
+                      break;
+                  }
+                  return (
+                    <p key={label}>
+                      <span style={{ fontWeight: 'bold' }}>{label}:</span> 
+                      {isEditing ? (
+                        <input type="text" name={key} value={editedUserData[key] || ''} onChange={handleChange} />
+                      ) : (
+                        value
+                      )}
+                    </p>
+                  );
                 }
-                return (
-                  <p key={label}>
-                    <span style={{ fontWeight: 'bold' }}>
-                      {label}: 
-                    </span> 
-                    {isEditing ? (
-                      <input type="text" name={key} value={editedUserData[key] || ''} onChange={handleChange} />
-                    ) : (
-                      value
-                    )}
-                  </p>
-                );
-              }
-              return null;
-            })}
-            {isEditing && <button className="b1" onClick={handleSave}>Save</button>}
-            {!isEditing && <button className='b2' onClick={handleEdit}><FaUserEdit /></button>}
+                return null;
+              })}
+              {isEditing && <button className="b1" onClick={handleSave}>Save</button>}
+              {!isEditing && <button className='b2' onClick={handleEdit}><FontAwesomeIcon icon={faUserEdit} /></button>}
+            </div>
+            <div className="resident-image-container">
+              <img className="resident-image" src={`data:image/jpeg;base64,${userrData.image}`} alt="Resident" />
+            </div>
           </div>
-        </div>
-      )}
-      {isEditedSuccessfully && <p className="success-message">Profile edited successfully!</p>}
-      <button className="leave" onClick={handleLogout}><IoLogOutOutline /> Logout</button>
+        )}
+        {isEditedSuccessfully && <p className="success-message">Profile edited successfully!</p>}
+      </div>
     </div>
   );
 };
