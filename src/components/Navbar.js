@@ -22,7 +22,7 @@ const Navbar = () => {
 
     return (
         <nav className={`navbar ${sidebarExpanded ? 'expanded' : ''}`}>
-            <div className="logo-container">
+            <div className="navlogo-container">
                 <img src={logo} alt="Janagrah Logo" className="logo img-fluid" />
             </div>
             <ul className="navbar-nav">
