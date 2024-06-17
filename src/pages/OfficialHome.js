@@ -9,7 +9,7 @@ function OfficialHome() {
     <div className="official-homepage">
       <OfficialSide />
       <div className="content">
-        <div className="container">
+        <div className="containerr">
           <header className="headerr">
             <h1>JANAGRAH</h1>
             <p>Empowering Our Community</p>

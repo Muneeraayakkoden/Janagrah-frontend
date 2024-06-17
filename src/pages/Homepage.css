@@ -29,18 +29,19 @@ body {
   width: 100%;
   padding: 20px;
   background: none; /* No background color */
+
 }
 
 .login-btn,
 .signup-btn,
 .get-started-btn {
   padding: 15px 30px; /* Larger padding */
-  font-size: 24px; /* Larger font size */
+  font-size: 20px; /* Larger font size */
   border: none;
   text-decoration: none;
   transition: background-color 0.3s ease;
   display: inline-block; /* Ensure buttons are inline */
-  border-radius: 5px; /* Rounded corners */
+  border-radius: 50px; /* Rounded corners */
 }
 
 .login-btn {
