@@ -13,27 +13,25 @@
   background-position: center;
 }
 
-
 .SurveyContainer h3 {
   font-size: 24px;
   text-align: center;
   font-weight: 600;
   padding: 10px;
   border-radius: 5px;
-  color: black;
+  color: white;
+  width: 100%;
 }
 
 .polls-container {
   display: flex;
-  flex-wrap: wrap;
   background-color: rgba(218, 224, 226, 0.477);
   gap: 20px;
   padding: 20px;
-  margin: 2px 2px 2px 140px;
+  margin-top: 20px;
   width: auto;
   height: 100%;
   overflow-y: auto;
-  justify-content: center;
 }
 
 .poll {
@@ -47,7 +45,7 @@
   background-color: #fff;
   overflow: hidden;
   color: #333;
-  flex: 1 1 300px;
+  flex: 0 0 auto;
 }
 
 .poll h1 {

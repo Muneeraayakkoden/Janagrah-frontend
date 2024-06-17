@@ -92,8 +92,8 @@ const ContactPage = () => {
             {messages.map((msg, index) => (
               <div key={index}>
                 <div className="message-content">
-                  <p className='chat'>{msg.message}</p>
-                  <p>Anonymous: {msg.anonymous ? 'Yes' : 'No'}</p>
+                  <p className='chat'><b>{msg.message}</b></p>
+                  <p>{msg.anonymous ? 'Private' : 'Public'}</p>
                   <p className='chatTime'>{msg.createdAt}</p>
                   <p className={msg.read ? 'Seen' : 'not-seen'}>{msg.read ? 'Viewed' : 'Unread'}</p>
                   <FaTrash onClick={() => handleDeleteMessage(index)} className="trash-icon" />
