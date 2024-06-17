@@ -26,7 +26,7 @@
 }
 
 .message-container {
-  flex: 1; /* Flex grow to take remaining space */
+  flex: 1;
   margin: 20px 20px 20px 0;
   padding: 20px;
   border-radius: 5px;
@@ -40,17 +40,14 @@
   padding: 10px;
   margin-bottom: 10px;
   background-color: white;
+  width: 90%;
 }
 
 .chat {
   color: black;
 }
 
-.chatTime {
-  text-align: right;
-  font-size: 0.8rem; 
-  white-space: nowrap;
-}
+
 
 .heading {
   color: black;
