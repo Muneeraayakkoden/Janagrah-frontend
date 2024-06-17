@@ -83,6 +83,7 @@ function DoSurvey() {
         <h3>No surveys available</h3>
       ) : (
         <div className="polls-container">
+          <h3>AVAILABLE SURVEYS</h3>
           {polls.map((poll, index) => (
             <div className="poll" key={poll._id}>
               <h1 className='heading'><u>{index+1}: {poll.surveyName}</u></h1>
