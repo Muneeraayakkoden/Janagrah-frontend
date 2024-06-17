@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import './doSurvey.css';
+import Navbar from '../components/Navbar';
 
 function DoSurvey() {
   const [selectedOptionId, setSelectedOptionId] = useState(null);
   const [submitted, setSubmitted] = useState(false);
   const [polls, setPolls] = useState([]);
   const [errorMessages, setErrorMessages] = useState({});
-
+  
   useEffect(() => {
     const fetchSurveyData = async () => {
       try {
@@ -74,6 +75,7 @@ function DoSurvey() {
 
   return (
     <div className="SurveyContainer">
+      <Navbar />
       {polls.length === 0 ? (
         <h3>No surveys available</h3>
       ) : (
