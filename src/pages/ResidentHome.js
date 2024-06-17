@@ -17,9 +17,9 @@ const ResidentHome = () => {
         <main className="main-content">
           <section className="aboutUs-section">
             <h2 className="section-title">ABOUT US</h2>
-            <div className = "para"> 
+            <div className="para"> 
               <p>Janagrah is a resident engagement platform designed to empower residents and strengthen the foundations of our community. We facilitate open communication and informed decision-making by providing a direct line between residents and local authorities.</p>
-              <p className= "p1">Together, we can build a more engaged and informed community.</p>
+              <p className="p1">Together, we can build a more engaged and informed community.</p>
             </div>
           </section>
           <section id="news" className="newses-section">
