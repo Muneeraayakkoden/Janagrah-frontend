@@ -3,9 +3,9 @@
 .contactPage {
   font-family: 'Merriweather', serif;
   display: flex;
-  flex-wrap: nowrap; /* Changed to nowrap for a three-column layout */
+  flex-wrap: nowrap; 
   gap: 20px;
-  justify-content: space-between; /* Changed to space-between to align items properly */
+  justify-content: space-between; 
   width: 100vw;
   height: 100vh;
   background-image: url('../assets/black-prism-concept-ai-generated.jpg');
@@ -16,7 +16,7 @@
 
 
 .Container {
-  flex: 1; /* Flex grow to take remaining space */
+  flex: 1; 
   margin: 20px 0 20px 160px;
   padding: 20px;
   border-radius: 5px;
@@ -35,12 +35,26 @@
 }
 
 .message-content { 
+  position: relative;
   border: 1px solid;
   border-radius: 5px;
   padding: 10px;
   margin-bottom: 10px;
   background-color: white;
   width: 90%;
+}
+
+.trash-icon {
+  position: absolute; /* Absolute positioning for the icon */
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  color: black;
+  transition: color 0.3s ease;
+}
+
+.trash-icon:hover {
+  color: red;
 }
 
 .chat {
