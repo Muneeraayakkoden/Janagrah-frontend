@@ -234,7 +234,6 @@ const ResidentSignup = () => {
       };
       console.log("requestBody :", requestBody); 
 
-     
       const response = await fetch('http://localhost:4000/user/request-user', {
         method: 'POST',
         headers: {
@@ -245,9 +244,7 @@ const ResidentSignup = () => {
 
       if (!response.ok) {
         throw new Error('Network response was not ok');
-      }
-
-   
+      }   
       const responseData = await response.json();
       console.log("Response Data:", responseData); 
  
