@@ -295,14 +295,14 @@ const ResidentSignup = () => {
 
   const localAuthorities = {
     "Palakkad": [
-      "Agali", "Akathethara", "Alanallur", "Alathur", "Ambalapara", "Anakkara", "Ananganadi", "Ayilur", "Chalavara", "Chalisseri",
+      "Sreekrishnapuram","Agali", "Akathethara", "Alanallur", "Alathur", "Ambalapara", "Anakkara", "Ananganadi", "Ayilur", "Chalavara", "Chalisseri",
       "Coyalammanam", "Elappully", "Elevanchery", "Erimayur", "Eruthempathy", "Kadampazhipuram", "Kanhirapuzha", "Kannadi", "Kannambra",
       "Kappur", "Karakurussi", "Karimpuzha", "Kavasseri", "Keralassery", "Kizhakkanchery", "Kodumba", "Koduvayur", "Kollengode", "Kongad",
       "Koppam", "Kottoppadam", "Kottayi", "Kozhinjampara", "Karimba", "Kulukkallur", "Kumaramputhur", "Kuthanur", "Lakkidi Perur", "Malampuzha",
       "Mankara", "Mannur", "Marutharode", "Mathur", "Muthuthala", "Melarcode", "Mundur", "Muthalamada", "Nagalasseri", "Nalleppilly", "Nellaya",
       "Nelliampathy", "Nemmara", "Ongallur", "Pallassana", "Pookkottukavu", "Paruthur", "Parali", "Pattithara", "Pattanchery", "Perumatty",
       "Perungottukurussi", "Peruvemba", "Pirayiri", "Polpully", "Puduccode", "Pudunagaram", "Pudupariyarm", "Pudur", "Pudusseri", "Sholayur",
-      "Sreekrishnapuram", "Tarur", "Thachampara", "Thachanattukara", "Thenkurussi", "Thirumittacode", "Thiruvegapura", "Trikkadiri", "Thrithala",
+       "Tarur", "Thachampara", "Thachanattukara", "Thenkurussi", "Thirumittacode", "Thiruvegapura", "Trikkadiri", "Thrithala",
       "Vadakkanchery", "Vadakarapathy", "Vadavannur", "Vallapuzha", "Vandazhy", "Vaniamkulam", "Vellinezhi", "Vilayur", "Palakkad", "Chittur-Tattamangalam",
       "Mannarkkad", "Cherpulassery", "Ottappalam", "Shoranur", "Pattambi"
     ]

@@ -11,15 +11,15 @@ function Surveys() {
   return (
     <div className="survey-page">
       <Officialside />
-      <div className="tabs">
+      <div className="tabbbs">
         <div
-          className={`tab ${activeTab === 'createSurvey' ? 'active' : ''}`}
+          className={`tabbs ${activeTab === 'createSurvey' ? 'active' : ''}`}
           onClick={() => setActiveTab('createSurvey')}
         >
           Create Survey
         </div>
         <div
-          className={`tab ${activeTab === 'surveysDone' ? 'active' : ''}`}
+          className={`tabbs ${activeTab === 'surveysDone' ? 'active' : ''}`}
           onClick={() => setActiveTab('surveysDone')}
         >
           Surveys Done
