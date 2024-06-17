@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../assets/logo.png'; // Adjust the import path for the logo image
+import logo2 from '../assets/logo2.png'; // Adjust the import path for the logo image
 import './Homepage.css';
 
 function Homepage() {
@@ -11,7 +11,7 @@ function Homepage() {
         <Link to="/ResidentSignup" className="get-started-btn">Get Started</Link>
       </div>
       <div className="header">
-        <img src={logo} alt="Janagrah Logo" className="logo" /> {/* Use the logo image */}
+        <img src={logo2} alt="Janagrah Logo" className="logo" /> {/* Use the logo image */}
         <h1>JANAGRAH</h1>
         <p>Connecting Communities Digitally</p>
       </div>

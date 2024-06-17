@@ -16,7 +16,7 @@ body {
   flex-direction: column;
   justify-content: space-between;
   position: relative;
-  padding-top: 60px; /* Add padding at the top to ensure content is not hidden by the top bar */
+  padding: 60px; /* Add padding at the top to ensure content is not hidden by the top bar */
 }
 
 .top-bar {

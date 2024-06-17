@@ -123,71 +123,72 @@ const MyAccount = () => {
         {userData && (
           <div>
             <div className="ward-info">
-            <p>
-              Ward ID: {userData.ward}<br />
-              Ward Name: {userData.localAuthority}<br />
-            </p>
+              <p>
+                Ward ID: {userData.ward}<br />
+                Ward Name: {userData.localAuthority}<br />
+              </p>
             </div>
-          <div className="user-info-container"> 
-            <div className="user-info">
-              <h3><u>Personal Details</u></h3>
-              {Object.entries(userData).map(([key, value]) => {
-                if (['username', 'name', 'job', 'age', 'phn', 'email', 'annualIncome', 'address'].includes(key)) {
-                  let label = '';
-                  switch (key) {
-                    case 'username':
-                      label = 'Username';
-                      break;
-                    case 'name':
-                      label = 'Name';
-                      break;
-                    case 'job':
-                      label = 'Job Title';
-                      break;
-                    case 'age':
-                      label = 'Age';
-                      break;
-                    case 'phn':
-                      label = 'Phone';
-                      break;
-                    case 'email':
-                      label = 'Email';
-                      break;
-                    case 'annualIncome':
-                      label = 'Annual Income';
-                      break;
-                    case 'address':
-                      label = 'Address';
-                      break;
-                    default:
-                      break;
+            <div className="user-info-container"> 
+              <div className="user-info">
+                <h3>Personal Details</h3>
+                {Object.entries(userData).map(([key, value]) => {
+                  if (['username', 'name', 'job', 'age', 'phn', 'email', 'annualIncome', 'address'].includes(key)) {
+                    let label = '';
+                    switch (key) {
+                      case 'username':
+                        label = 'Username';
+                        break;
+                      case 'name':
+                        label = 'Name';
+                        break;
+                      case 'job':
+                        label = 'Job Title';
+                        break;
+                      case 'age':
+                        label = 'Age';
+                        break;
+                      case 'phn':
+                        label = 'Phone';
+                        break;
+                      case 'email':
+                        label = 'Email';
+                        break;
+                      case 'annualIncome':
+                        label = 'Annual Income';
+                        break;
+                      case 'address':
+                        label = 'Address';
+                        break;
+                      default:
+                        break;
+                    }
+                    return (
+                      <p key={label}>
+                        <span style={{ fontWeight: 'bold' }}>{label}:</span> 
+                        {isEditing ? (
+                          <input type="text" name={key} value={editedUserData[key] || ''} onChange={handleChange} />
+                        ) : (
+                          value
+                        )}
+                      </p>
+                    );
                   }
-                  return (
-                    <p key={label}>
-                      <span style={{ fontWeight: 'bold' }}>{label}:</span> 
-                      {isEditing ? (
-                        <input type="text" name={key} value={editedUserData[key] || ''} onChange={handleChange} />
-                      ) : (
-                        value
-                      )}
-                    </p>
-                  );
-                }
-                return null;
-              })}
-              {isEditing && <button className="b1" onClick={handleSave}>Save</button>}
-              {!isEditing && <button className='b2' onClick={handleEdit}><FontAwesomeIcon icon={faUserEdit} /></button>}
-            </div>
-            <div className="resident-image-container">
-              <img className="resident-image" src={`data:image/jpeg;base64,${userrData.image}`} alt="Resident" />
+                  return null;
+                })}
+                {isEditing && <button className="b1" onClick={handleSave}>Save</button>}
+                {!isEditing && <button className='b2' onClick={handleEdit}><FontAwesomeIcon icon={faUserEdit} /></button>}
+              </div>
+              <div className="resident-image-container">
+                <img className="resident-image" src={`data:image/jpeg;base64,${userrData.image}`} alt="Resident" />
+              </div>
             </div>
           </div>
-        </div>
         )}
         {isEditedSuccessfully && <p className="success-message">Profile edited successfully!</p>}
       </div>
     </div>
   );
+  
 };
 
 export default MyAccount;
