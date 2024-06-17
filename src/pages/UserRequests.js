@@ -31,6 +31,7 @@ const UserRequests = () => {
       if (response.ok) {
         const responseData = await response.json();
         console.log('User data:', responseData);
+        console.log("requested data",responseData)
         setUserData(responseData.data || []);  // Ensure data is an array
         setResponseMessage('');
       } else {

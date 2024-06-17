@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 const SurveyPage = () => {
   const [surveyDataList, setSurveyDataList] = useState([]);
   const navigate = useNavigate();
-  
+
   useEffect(() => {
     const fetchSurveyData = async () => {
       try {
@@ -16,13 +16,17 @@ const SurveyPage = () => {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ username: username }),
+          body: JSON.stringify({ username }),
         });
 
         if (response.ok) {
           const data = await response.json();
           console.log('Survey data:', data);
-          setSurveyDataList(data.polls);
+          
+          // Sort the surveys by createdAt
+          const sortedSurveys = data.polls.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+          
+          setSurveyDataList(sortedSurveys);
         } else {
           console.error('Failed to fetch survey data');
         }
@@ -38,11 +42,9 @@ const SurveyPage = () => {
     try {
       // Implement stop polling logic here
       console.log('Stop polling for survey ID:', surveyId);
-  
-      // Prepare the data to send in the POST request body
+
       const data = { surveyId };
-  
-      // Send the POST request to the backend endpoint
+
       const response = await fetch('http://localhost:4000/poll/stopPolling', {
         method: 'POST',
         headers: {
@@ -50,8 +52,7 @@ const SurveyPage = () => {
         },
         body: JSON.stringify(data),
       });
-  
-      // Check if the request was successful
+
       if (response.ok) {
         console.log('Polling stopped successfully');
         // Perform any additional actions after stopping polling
@@ -62,18 +63,14 @@ const SurveyPage = () => {
       console.error('Error stopping polling:', error);
     }
   };
-  
 
   const handleResult = (surveyId) => {
-    // Navigate to the result page with the survey ID as a query parameter
     console.log('View result for survey ID:', surveyId);
-    navigate(`/Results?surveyId=${surveyId}`); // Navigate to '/Results' with surveyId as query parameter
+    navigate(`/Results?surveyId=${surveyId}`);
   };
-  
 
   return (
     <div className='surveypage'>
-      {/* Render survey data here */}
       {surveyDataList.length > 0 ? (
         <div>
           <h2>Survey Data</h2>
@@ -89,10 +86,11 @@ const SurveyPage = () => {
                   {survey.options.map((option, optIndex) => (
                     <li key={optIndex}>Option {optIndex + 1}: {option.text}</li>
                   ))}
-                </ul><div className='survey-button'> 
-                      <button className='stop_poll' onClick={() => handleStopPolling(survey._id)}>Stop Polling</button>
-                      <button className="poll_result" onClick={() => handleResult(survey._id)}>Result</button>
-                    </div>
+                </ul>
+                <div className='survey-button'> 
+                  <button className='stop_poll' onClick={() => handleStopPolling(survey._id)}>Stop Polling</button>
+                  <button className="poll_result" onClick={() => handleResult(survey._id)}>Result</button>
+                </div>
               </div>
             ))}
           </div>
