@@ -293,7 +293,7 @@ const ResidentSignup = () => {
 
   const localAuthorities = {
     "Palakkad": [
-      "Sreekrishnapuram","Agali", "Akathethara", "Alanallur", "Alathur", "Ambalapara", "Anakkara", "Ananganadi", "Ayilur", "Chalavara", "Chalisseri",
+      "SREEKRISHNAPURAM","Agali", "Akathethara", "Alanallur", "Alathur", "Ambalapara", "Anakkara", "Ananganadi", "Ayilur", "Chalavara", "Chalisseri",
       "Coyalammanam", "Elappully", "Elevanchery", "Erimayur", "Eruthempathy", "Kadampazhipuram", "Kanhirapuzha", "Kannadi", "Kannambra",
       "Kappur", "Karakurussi", "Karimpuzha", "Kavasseri", "Keralassery", "Kizhakkanchery", "Kodumba", "Koduvayur", "Kollengode", "Kongad",
       "Koppam", "Kottoppadam", "Kottayi", "Kozhinjampara", "Karimba", "Kulukkallur", "Kumaramputhur", "Kuthanur", "Lakkidi Perur", "Malampuzha",

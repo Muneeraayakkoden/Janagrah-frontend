@@ -7,7 +7,7 @@ function DoSurvey() {
   const [submitted, setSubmitted] = useState(false);
   const [polls, setPolls] = useState([]);
   const [errorMessages, setErrorMessages] = useState({});
-  
+
   useEffect(() => {
     const fetchSurveyData = async () => {
       try {
@@ -20,13 +20,16 @@ function DoSurvey() {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ wardmemberid, job,username }),
+          body: JSON.stringify({ wardmemberid, job, username }),
         });
 
         if (response.ok) {
           const { polls } = await response.json();
           console.log('Survey data:', polls);
-          setPolls(polls);
+
+          // Sort the polls by createdAt
+          const sortedPolls = polls.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+          setPolls(sortedPolls);
         } else {
           console.error('Failed to fetch survey data');
         }
@@ -63,7 +66,7 @@ function DoSurvey() {
         } else {
           const data = await response.json();
           console.error('Failed to submit data:', data.message);
-          setErrorMessages({ ...errorMessages, [pollIndex]: data.message }); 
+          setErrorMessages({ ...errorMessages, [pollIndex]: data.message });
         }
       } else {
         console.error('Invalid surveyId');
@@ -75,7 +78,7 @@ function DoSurvey() {
 
   return (
     <div className="SurveyContainer">
-      <Navbar className="Navbar" />
+      <Navbar />
       {polls.length === 0 ? (
         <h3>No surveys available</h3>
       ) : (
