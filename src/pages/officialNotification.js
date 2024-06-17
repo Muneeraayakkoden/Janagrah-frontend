@@ -12,11 +12,11 @@ const OfficialNotification = () => {
     
     <div className="notification-page">
       <Officialside />
-      <div className="tabs">
-        <div className={`tab ${displayUserRequests ? 'active' : ''}`} onClick={() => setDisplayUserRequests(true)}>
+      <div className="officialtabs">
+        <div className={`tabb ${displayUserRequests ? 'active' : ''}`} onClick={() => setDisplayUserRequests(true)}>
           User Requests
         </div>
-        <div className={`tab ${!displayUserRequests ? 'active' : ''}`} onClick={() => setDisplayUserRequests(false)}>
+        <div className={`tabb ${!displayUserRequests ? 'active' : ''}`} onClick={() => setDisplayUserRequests(false)}>
           Messages
         </div>
       </div>
