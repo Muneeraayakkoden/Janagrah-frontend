@@ -26,7 +26,13 @@ const Navbar = () => {
                 <img src={logo} alt="Janagrah Logo" className="logo img-fluid" />
             </div>
             <ul className="navbar-nav">
-               
+                <li className="nav-item">
+                    <a className="nav-link" href="#" onClick={() =>  handleNavigation('/residentHome')}>
+                        <i className="fas fa-home"></i> 
+                        {sidebarExpanded && <span className="nav-text">HOME</span>}
+                    </a>
+                </li>
+
                 <li className="nav-item">
                     <a className="nav-link" href="#" onClick={() =>  handleNavigation('/dosurvey')}>
                         <i className="fas fa-poll"></i> 
