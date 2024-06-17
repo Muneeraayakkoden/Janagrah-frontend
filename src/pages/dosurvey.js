@@ -7,7 +7,7 @@ function DoSurvey() {
   const [submitted, setSubmitted] = useState(false);
   const [polls, setPolls] = useState([]);
   const [errorMessages, setErrorMessages] = useState({});
-  
+
   useEffect(() => {
     const fetchSurveyData = async () => {
       try {
@@ -20,13 +20,16 @@ function DoSurvey() {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ wardmemberid, job,username }),
+          body: JSON.stringify({ wardmemberid, job, username }),
         });
 
         if (response.ok) {
           const { polls } = await response.json();
           console.log('Survey data:', polls);
-          setPolls(polls);
+
+          // Sort the polls by createdAt
+          const sortedPolls = polls.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+          setPolls(sortedPolls);
         } else {
           console.error('Failed to fetch survey data');
         }
@@ -63,7 +66,7 @@ function DoSurvey() {
         } else {
           const data = await response.json();
           console.error('Failed to submit data:', data.message);
-          setErrorMessages({ ...errorMessages, [pollIndex]: data.message }); 
+          setErrorMessages({ ...errorMessages, [pollIndex]: data.message });
         }
       } else {
         console.error('Invalid surveyId');
@@ -79,32 +82,28 @@ function DoSurvey() {
       {polls.length === 0 ? (
         <h3>No surveys available</h3>
       ) : (
-        polls.map((poll, index) => (
-          <div className="poll" key={poll._id}>
-            <h1 className='heading'><u>{index+1}: {poll.surveyName}</u></h1>
-            <h5>Description: {poll.surveyDescription}</h5>
-            <div className="options">
-              {poll.options.map((option) => (
-                <div key={option._id} className="option">
-                  <input type="radio" id={option._id} name="option" value={option.text} checked={selectedOptionId === option._id} onChange={handleOptionChange} />
-                  <label htmlFor={option._id}>{option.text}</label>
-                </div>
-              ))}
+        <div className="polls-container">
+          {polls.map((poll, index) => (
+            <div className="poll" key={poll._id}>
+              <h1 className='heading'><u>{index+1}: {poll.surveyName}</u></h1>
+              <h5>Description: {poll.surveyDescription}</h5>
+              <div className="options">
+                {poll.options.map((option) => (
+                  <div key={option._id} className="option">
+                    <input type="radio" id={option._id} name={`option-${poll._id}`} value={option.text} checked={selectedOptionId === option._id} onChange={handleOptionChange} />
+                    <label htmlFor={option._id}>{option.text}</label>
+                  </div>
+                ))}
+              </div>
+              <button className="doSurveybutton" type="button" disabled={submitted} onClick={() => handleSubmit(poll._id, index)}><i className="fas fa-paper-plane"></i> Submit </button>
+              {submitted && <div className="result">Thank you for your vote!</div>}
+              {errorMessages[index] && <div className="error">{errorMessages[index]}</div>}
             </div>
-            <button className="doSurveybutton" type="button" disabled={submitted} onClick={() => handleSubmit(poll._id, index)}><i class="fas fa-paper-plane"></i> Submit </button>
-            {submitted && <div className="result">Thank you for your vote!</div>}
-            {errorMessages[index] && <div className="error">{errorMessages[index]}</div>}
-          </div>
-        ))
-        
+          ))}
+        </div>
       )}
     </div>
   );
-  
 }
 
 export default DoSurvey;
-
-
-
-
