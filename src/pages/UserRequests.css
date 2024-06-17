@@ -11,6 +11,7 @@
 }
 
 .user-cardd {
+  margin-top: none;
   background-color:rgba(255, 255, 255, 0.605);
   color:black;
   border-radius: 20px;
@@ -24,7 +25,8 @@
   align-items: center;
   border: 1px solid #ccc; 
   display: flex;
-  
+  height: auto;
+ font-size: 12.5px; 
  
 }
 
@@ -35,8 +37,8 @@
 }
 
 .user-image {
-  width: 150px; /* Adjust as needed */
-  height: 150px; /* Adjust as needed */
+  width: 80px; /* Adjust as needed */
+  height: 80px; /* Adjust as needed */
   border-radius: 50%; /* Make the image round */
   object-fit: cover; /* Cover the container */
   

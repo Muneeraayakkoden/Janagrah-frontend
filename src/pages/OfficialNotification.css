@@ -92,11 +92,11 @@
   padding: 10px 10px; /* Reduced padding */
   cursor: pointer;
   font-size: 20px; /* Reduced font size */
-  color: white;
+  color: #fff;
   transition: background-color 0.3s ease;
   background-color: #9b9ea0; /* Ensure all tabs have the same background */
 }
 .tabb.active {
-  background-color: black;
+  background-color: #6ba8e3;
   font-weight: bold; /* Remove bold weight */
 }
