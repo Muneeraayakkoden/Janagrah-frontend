@@ -13,13 +13,7 @@
   background-position: center;
 }
 
-.navbar {
-  width: 140px; /* Fixed width for the navbar */
-  background-color: rgba(157, 169, 173, 0.477);
-  border-right: 0.5px solid #030303;
-  padding: 20px;
-  box-sizing: border-box;
-}
+
 
 .Container {
   flex: 1; /* Flex grow to take remaining space */

@@ -6,10 +6,10 @@
   transition: width 0.3s;
   position: fixed;
   top: 0;
-  left: 0;width:75px;
+  left: 0;
+  width: 120px;
   justify-content: space-around;
   align-items: center;
-  width: 140px; /* Fixed width for the navbar */
   background-color: rgba(157, 169, 173, 0.477);
   border-right: 0.5px solid #030303;
   padding: 20px;
@@ -21,7 +21,7 @@
 }
 
 .navbar .nav-text {
-  display: none; /* Hide text by default */
+  display: none;
 }
 
 .navbar.expanded .nav-text {
@@ -35,15 +35,15 @@
   margin: 0;
   padding: 0;
   width: 100%;
-  flex-grow: 1; /* Allow the nav to grow and fill available space */
+  flex-grow: 1;
 }
 
 .nav-item {
-  padding: 0 0 70px 0 ;
+  padding: 0 0 70px 0;
   cursor: pointer;
   display: flex;
   align-items: center;
-  transition: background-color 0.3s transform 0.3s ease;
+  transition: background-color 0.3s, transform 0.3s ease;
 }
 
 .nav-link {
@@ -59,23 +59,19 @@
   min-width: 30px;
 }
 
-
 .nav-link:hover {
   transform: translateX(-10px);
 }
 
 .nav-text {
   margin: 0;
-  display: none;
 }
 
-
 .navlogo-container {
-  padding: 0 5px 0 5px;
+  padding: 0 5px;
   width: 100%;
   display: flex;
 }
-
 
 .togglebtn {
   cursor: pointer;
@@ -86,10 +82,9 @@
   width: 50%;
 }
 
-
 @media (max-width: 450px) {
   .navbar {
-    width: 80px; 
+    width: 80px;
   }
 
   .navbar.expanded {
@@ -97,7 +92,7 @@
   }
 
   .togglebtn {
-    width: 30px; /* Adjust width for smaller screens */
-    font-size: 1.2em; /* Adjust font size */
+    width: 30px;
+    font-size: 1.2em;
   }
 }
