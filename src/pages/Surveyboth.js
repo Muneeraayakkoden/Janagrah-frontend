@@ -16,13 +16,13 @@ function Surveys() {
           className={`tabbs ${activeTab === 'createSurvey' ? 'active' : ''}`}
           onClick={() => setActiveTab('createSurvey')}
         >
-          Create Survey
+          CREATE SURVEY
         </div>
         <div
           className={`tabbs ${activeTab === 'surveysDone' ? 'active' : ''}`}
           onClick={() => setActiveTab('surveysDone')}
         >
-          Surveys Done
+          SURVEYS POSTED
         </div>
       </div>
 

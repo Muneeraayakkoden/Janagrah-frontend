@@ -75,7 +75,7 @@ function CreateAnnouncement() {
         <div>
             <div className="create-updates-container">
             <Officialside />
-            <h1>Create Announcement</h1>
+            <h1>ANNOUNCE AN EVENT</h1>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="title">Announcement Title:</label>
                 <input type="text" id="title" required value={formData.title} onChange={handleChange} />

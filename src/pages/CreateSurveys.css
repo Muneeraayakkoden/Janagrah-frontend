@@ -50,11 +50,11 @@
 .option-group input[type="text"] {
   width: 100%; /* Adjust width based on label size */ /* You can adjust the calculation based on your needs */
   padding: 12px 20px;  
-  border: 0.5px solid #66afd6;
+  border: 2px solid black;
   border-radius: 5px;
 }
 
-.option-group .add-option,
+.option-group ,
 .option-group .remove-option {
   padding: 5px 10px;
   border: 1px solid #ccc;
@@ -64,9 +64,10 @@
   margin-left: 10px; /* Add spacing between buttons */
 }
 
-.option-group .add-option {
-  background-color: #4CAF50; /* Green for adding options */
-  color: white;
+
+.add-option {
+  color: black;
+  border: 2px solid black;
 }
 
 .option-group .remove-option {
@@ -76,7 +77,7 @@
 
 .option-group .add-option:hover,
 .option-group .remove-option:hover {
-  background-color: #ddd; /* Button hover effect */
+  opacity: 0.8;
 }
 
 .create-survey-button {
@@ -84,14 +85,14 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  background-color: #3f51b5; /* Blue for submit button */
+  background-color: black; /* Blue for submit button */
   color: white;
   margin-top: 10px; /* Add spacing between submit button and form */
   align-self: flex-end; /* Align submit button to the right */
 }
 
 .create-survey-button:hover {
-  background-color: #283776; /* Submit button hover effect */
+  opacity: 0.8; /* Submit button hover effect */
 }
 
 .success-message {

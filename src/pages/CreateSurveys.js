@@ -89,7 +89,6 @@ const CreateSurvey = () => {
 
   return (
     <div className="create-survey-container">
-      <h1>Create Survey</h1>
       <form className="survey-form" onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="survey-number">Survey Number:</label>

@@ -269,7 +269,8 @@ const ResidentSignup = () => {
         annualIncome: '',
         image: ''
       });
-        navigate("/ResidentSignupSuccess");
+      console.log("Navigating to ResidentSignupSuccess");
+      navigate("/ResidentSignupSuccess");
     } catch (error) {
       // Handle fetch error
       console.error('There was a problem with your fetch operation:', error);
