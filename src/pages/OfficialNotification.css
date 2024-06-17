@@ -97,6 +97,6 @@
   background-color: #9b9ea0; /* Ensure all tabs have the same background */
 }
 .tabb.active {
-  background-color: #6ba8e3;
+  background-color: black;
   font-weight: bold; /* Remove bold weight */
 }
