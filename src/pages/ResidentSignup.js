@@ -354,7 +354,7 @@ const ResidentSignup = () => {
           {currentPage === 1 && (
             <div className={`form-section ${currentPage === 1 ? 'visible' : ''}`}>
              
-              <FaMapMarkerAlt />
+              < FaMapMarkerAlt />
              <div>
                 <select name="state" value={formData.state} onChange={handleStateSelection} required>
                   <option value="">Select State*</option>

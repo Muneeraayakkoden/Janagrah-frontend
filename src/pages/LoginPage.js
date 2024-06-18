@@ -83,12 +83,12 @@ function ResidentLoginForm() {
 
   return (
     <div>
-      <div className="input-group">
-        <input type="text" placeholder="Username*" className="form-control form-control-custom " value={username} onChange={(e) => setUsername(e.target.value)} required />
+      <div className="linput-group">
+        <input type="text" placeholder="Username*" className="form-control lform-control-custom " value={username} onChange={(e) => setUsername(e.target.value)} required />
       </div>
-      <div className="input-group">
+      <div className="linput-group">
         <input type={showPassword ? 'text' : 'password'} placeholder="Password*" className="form-control form-control-custom" value={password} onChange={(e) => setPassword(e.target.value)} required />
-        <span className="password-toggle" onClick={togglePasswordVisibility}> {showPassword ? <FaEyeSlash /> : <FaEye />} </span>
+        <span className="lpassword-toggle" onClick={togglePasswordVisibility}> {showPassword ? <FaEyeSlash /> : <FaEye />} </span>
       </div>
       <div><a href="#" className="forgot-password" onClick={handleForgotPasswordClick}>Forgot Password?</a></div>
       <div className="button-container">
@@ -164,12 +164,12 @@ function OfficialLoginForm() {
 
   return (
     <div className='LoginPageFull'>
-      <div className="input-group">
+      <div className="linput-group">
         <input type="text" placeholder="Username*" className="form-control form-control-custom" value={username} onChange={(e) => setUsername(e.target.value)} required/>
       </div>
-      <div className="input-group">
+      <div className="linput-group">
         <input type={showPassword ? 'text' : 'password'} placeholder="Password*" className="form-control form-control-custom" value={password} onChange={(e) => setPassword(e.target.value)} required />
-        <span className="password-toggle" onClick={togglePasswordVisibility}>
+        <span className="lpassword-toggle" onClick={togglePasswordVisibility}>
           {showPassword ? <FaEyeSlash /> : <FaEye />}
         </span>
       </div>

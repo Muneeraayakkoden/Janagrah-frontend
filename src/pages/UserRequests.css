@@ -6,10 +6,9 @@
   font-family:Georgia, 'Times New Roman', Times, serif;
   align-items: center;
   justify-content: center;
-  min-height: 100vh; /* Full height viewport */
-  text-align: center; /* Center text */
+  min-height: 100vh; 
+  text-align: center; 
 }
-
 .user-cardd {
   background-color:rgba(255, 255, 255, 0.605);
   color:black;
