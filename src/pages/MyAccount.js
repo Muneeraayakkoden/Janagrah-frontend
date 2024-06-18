@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './MyAccount.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserEdit, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'; // Import necessary FontAwesome icons
+import { faUserEdit } from '@fortawesome/free-solid-svg-icons'; // Import necessary FontAwesome icons
 import Navbar from '../components/Navbar';
 
 const MyAccount = () => {
@@ -77,11 +77,6 @@ const MyAccount = () => {
     }
   };
 
-  const handleLogout = () => {
-    localStorage.clear();
-    navigate('/LoginPage');
-  };
-
   const handleEdit = () => {
     setIsEditing(true);
   };
@@ -120,19 +115,19 @@ const MyAccount = () => {
   return (
     <div className="profile-page">
       <Navbar />
-      <div className="account">
-        <h1>PROFILE</h1>
+   
         {userData && (
-          <div>
+          <div className="account">
+            <h1>PROFILE</h1>
             <div className="ward-info">
               <p>
                 Ward ID: {userData.ward}<br />
                 Ward Name: {userData.localAuthority}<br />
               </p>
             </div>
+            <h3>Personal Details</h3>
             <div className="user-info-container"> 
               <div className="user-info">
-                <h3>Personal Details</h3>
                 {Object.entries(userData).map(([key, value]) => {
                   if (['username', 'name', 'job', 'age', 'phn', 'email', 'annualIncome', 'address','password'].includes(key)) {
                     let label = '';
@@ -169,7 +164,7 @@ const MyAccount = () => {
                     }
                     return (
                       <p key={label}>
-                        <span style={{ fontWeight: 'bold' }}>{label}:</span> 
+                        <span style={{ fontWeight: 'bold' }}>{label}: </span> 
                         {isEditing ? (
                           <input type="text" name={key} value={editedUserData[key] || ''} onChange={handleChange} />
                         ) : (
@@ -187,10 +182,9 @@ const MyAccount = () => {
                 <img className="resident-image" src={`data:image/jpeg;base64,${userrData.image}`} alt="Resident" />
               </div>
             </div>
+            {isEditedSuccessfully && <p className="success-message">Profile updated successfully!</p>}
           </div>
-        )}
-        {isEditedSuccessfully && <p className="success-message">Profile edited successfully!</p>}
-      </div>
+        )} 
     </div>
   );
   
