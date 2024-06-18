@@ -10,6 +10,7 @@ const ContactPage = () => {
   const [isAnonymous, setIsAnonymous] = useState(false);
   const [messageSent, setMessageSent] = useState(false);
   const [showSendMessage, setShowSendMessage] = useState(false);
+  const [displayUserRequests, setDisplayUserRequests] = useState(true); // Adjust based on your logic
 
   const userid = JSON.parse(localStorage.getItem('username'));
   const wardid = JSON.parse(localStorage.getItem('wardmemberid'));
@@ -99,69 +100,75 @@ const ContactPage = () => {
   return (
     <div className="contactPage">
       <Navbar />
-      {messages.length > 0 ? (
-        <div className="Container">
-          <h1 className='heading'>Message History</h1>
-          <div className="item" key={messages.length}>
-            {messages.map((msg, index) => (
-              <div key={index}>
-                <div className="message-content">
-                  <p className='chat'><b>{msg.message}</b></p>
-                  <p>{msg.anonymous ? 'Private' : 'Public'}</p>
-                  <p className='chatTime'>{msg.createdAt}</p>
-                  <p className={msg.read ? 'Seen' : 'not-seen'}>{msg.read ? 'Viewed' : 'Unread'}</p>
-                  <FaTrash onClick={() => handleDeleteMessage(msg._id)} className="trash-icon" />
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      ) : (
-        <p>No history</p>
-      )}
-      <div className="message-container">
-        <h1 className='heading'>Write a Message</h1>
-        <button id="contact"
-          className={`message-icon ${showSendMessage ? 'active' : ''}`}
-          onClick={() => setShowSendMessage(!showSendMessage)} >
-          <FaPen />
-        </button>
-        {showSendMessage && (
-          <div className="message-input">
-            <form onSubmit={handleSendMessage}>
-              <input
-                type="text"
-                value={newMessage}
-                onChange={(e) => setNewMessage(e.target.value)}
-                placeholder="Enter your message..."
-                required
-              />
-              <div className="anonymous-option">
-                <input
-                  type="radio"
-                  id="nonAnonymous"
-                  name="messageType"
-                  value="true"
-                  checked={!isAnonymous}
-                  onChange={handleAnonymousChange}
-                />
-                <label htmlFor="nonAnonymous">Non-anonymous</label>
-                <input
-                  type="radio"
-                  id="anonymous"
-                  name="messageType"
-                  value="false"
-                  checked={isAnonymous}
-                  onChange={handleAnonymousChange}
-                />
-                <label htmlFor="anonymous">Anonymous</label>
-              </div>
-              <button className="send" type="submit"><IoIosSend /> Send</button>
-            </form>
-            {messageSent && <p className="success">Message Sent Successfully</p>}
-          </div>
-        )}
+      <div className="contacttabs">
+        <div className={`tabb ${displayUserRequests ? 'active' : ''}`} onClick={() => setDisplayUserRequests(true)}>HISTORY</div>
+        <div className={`tabb ${!displayUserRequests ? 'active' : ''}`} onClick={() => setDisplayUserRequests(false)}>NEW MESSAGE</div>
       </div>
+
+      {displayUserRequests ? (
+        messages.length > 0 ? (
+          <div className="Container">
+            <h1 className='heading'>Message History</h1>
+            <div className="item">
+              {messages.map((msg) => (
+                <div key={msg._id}>
+                  <div className="message-content">
+                    <p className='chat'><b>{msg.message}</b></p>
+                    <p>{msg.anonymous ? 'Private' : 'Public'}</p>
+                    <p className='chatTime'>{msg.createdAt}</p>
+                    <p className={msg.read ? 'Seen' : 'not-seen'}>{msg.read ? 'Viewed' : 'Unread'}</p>
+                    <FaTrash onClick={() => handleDeleteMessage(msg._id)} className="trash-icon" />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ) : (
+          <p>No history</p>
+        )
+      ) : (
+        <div className="message-container">
+          <h1 className='heading'>Write a Message...</h1>
+          <button id="contact" className={`cmessage-icon ${showSendMessage ? 'active' : ''}`} onClick={() => setShowSendMessage(!showSendMessage)}>
+            <FaPen />
+          </button>
+          {showSendMessage && (
+            <div className="message-input">
+              <form onSubmit={handleSendMessage}>
+                <input
+                  type="text"
+                  value={newMessage}
+                  onChange={(e) => setNewMessage(e.target.value)}
+                  placeholder="Enter your message..."
+                  required
+                />
+                <div className="anonymous-option">
+                  <input
+                    type="radio"
+                    id="nonAnonymous"
+                    name="messageType"
+                    value="true"
+                    checked={!isAnonymous}
+                    onChange={handleAnonymousChange}
+                  />
+                  <label htmlFor="nonAnonymous">Non-anonymous</label>
+                  <input
+                    type="radio"
+                    id="anonymous"
+                    name="messageType"
+                    value="false"
+                    checked={isAnonymous}
+                    onChange={handleAnonymousChange}
+                  />
+                  <label htmlFor="anonymous">Anonymous</label>
+                </div>
+                <button className="send" type="submit"><IoIosSend /> Send</button>
+              </form>
+              {messageSent && <p className="success">Message Sent Successfully</p>}
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 };
