@@ -1,5 +1,5 @@
-import React, { useState , useEffect} from 'react';
-import './ContactPage.css'; 
+import React, { useState, useEffect } from 'react';
+import './ContactPage.css';
 import { FaPen, FaTrash } from "react-icons/fa";
 import { IoIosSend } from "react-icons/io";
 import Navbar from '../components/Navbar';
@@ -13,7 +13,7 @@ const ContactPage = () => {
 
   const userid = JSON.parse(localStorage.getItem('username'));
   const wardid = JSON.parse(localStorage.getItem('wardmemberid'));
- 
+
   useEffect(() => {
     fetchMessageHistory();
   }, []);
@@ -25,12 +25,12 @@ const ContactPage = () => {
   const fetchMessageHistory = async () => {
     try {
       console.log(userid);
-      const response = await fetch('http://localhost:4000/message/show',{
+      const response = await fetch('http://localhost:4000/message/show', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({userid}),
+        body: JSON.stringify({ userid }),
       });
       if (response.ok) {
         const data = await response.json();
@@ -70,16 +70,30 @@ const ContactPage = () => {
       setMessages([...messages, responseData.msg]);
       setNewMessage('');
       setMessageSent(true);
-      setTimeout(() => setMessageSent(false), 10000); 
-      
+      setTimeout(() => setMessageSent(false), 10000);
+
     } catch (error) {
       console.error('Error sending message:', error);
     }
   };
- 
-  const handleDeleteMessage = (indexToDelete) => {
-    const updatedMessages = messages.filter((_, index) => index !== indexToDelete);
-    setMessages(updatedMessages);
+
+  const handleDeleteMessage = async (messageId) => {
+    const backendUrl = `http://localhost:4000/message/delete`;
+    try {
+      const response = await fetch(backendUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ msgId: messageId }),
+      });
+      if (!response.ok) {
+        throw new Error('Failed to delete message');
+      }
+      setMessages(messages.filter((msg) => msg._id !== messageId));
+    } catch (error) {
+      console.error('Error deleting message:', error);
+    }
   };
 
   return (
@@ -96,7 +110,7 @@ const ContactPage = () => {
                   <p>{msg.anonymous ? 'Private' : 'Public'}</p>
                   <p className='chatTime'>{msg.createdAt}</p>
                   <p className={msg.read ? 'Seen' : 'not-seen'}>{msg.read ? 'Viewed' : 'Unread'}</p>
-                  <FaTrash onClick={() => handleDeleteMessage(index)} className="trash-icon" />
+                  <FaTrash onClick={() => handleDeleteMessage(msg._id)} className="trash-icon" />
                 </div>
               </div>
             ))}
@@ -106,13 +120,13 @@ const ContactPage = () => {
         <p>No history</p>
       )}
       <div className="message-container">
-      <h1 className='heading'>Write a Message</h1>
+        <h1 className='heading'>Write a Message</h1>
         <button id="contact"
-          className={`message-icon ${showSendMessage ? 'active' : ''}`} 
+          className={`message-icon ${showSendMessage ? 'active' : ''}`}
           onClick={() => setShowSendMessage(!showSendMessage)} >
           <FaPen />
         </button>
-        {showSendMessage && ( 
+        {showSendMessage && (
           <div className="message-input">
             <form onSubmit={handleSendMessage}>
               <input
@@ -133,12 +147,12 @@ const ContactPage = () => {
                 />
                 <label htmlFor="nonAnonymous">Non-anonymous</label>
                 <input
-                type="radio"
-                id="anonymous"
-                name="messageType"
-                value="false"
-                checked={isAnonymous}
-                onChange={handleAnonymousChange}
+                  type="radio"
+                  id="anonymous"
+                  name="messageType"
+                  value="false"
+                  checked={isAnonymous}
+                  onChange={handleAnonymousChange}
                 />
                 <label htmlFor="anonymous">Anonymous</label>
               </div>
