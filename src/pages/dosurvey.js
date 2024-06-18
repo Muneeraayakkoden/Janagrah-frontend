@@ -79,24 +79,36 @@ function DoSurvey() {
   return (
     <div className="SurveyContainer">
       <Navbar />
-      {polls.length === 0 ? (
-        <h3>No surveys available</h3>
-      ) : (
+      <h3>{polls.length === 0 ? 'No surveys available' : 'AVAILABLE SURVEYS'}</h3>
+      {polls.length > 0 && (
         <div className="polls-container">
-          <h3>AVAILABLE SURVEYS</h3>
           {polls.map((poll, index) => (
             <div className="poll" key={poll._id}>
-              <h1 className='heading'><u>{index+1}: {poll.surveyName}</u></h1>
+              <h1 className='heading'><u>{index + 1}: {poll.surveyName}</u></h1>
               <h5>Description: {poll.surveyDescription}</h5>
               <div className="options">
                 {poll.options.map((option) => (
                   <div key={option._id} className="option">
-                    <input type="radio" id={option._id} name={`option-${poll._id}`} value={option.text} checked={selectedOptionId === option._id} onChange={handleOptionChange} />
+                    <input
+                      type="radio"
+                      id={option._id}
+                      name={`option-${poll._id}`}
+                      value={option.text}
+                      checked={selectedOptionId === option._id}
+                      onChange={handleOptionChange}
+                    />
                     <label htmlFor={option._id}>{option.text}</label>
                   </div>
                 ))}
               </div>
-              <button className="doSurveybutton" type="button" disabled={submitted} onClick={() => handleSubmit(poll._id, index)}><i className="fas fa-paper-plane"></i> Submit </button>
+              <button
+                className="doSurveybutton"
+                type="button"
+                disabled={submitted}
+                onClick={() => handleSubmit(poll._id, index)}
+              >
+                <i className="fas fa-paper-plane"></i> Submit
+              </button>
               {submitted && <div className="result">Thank you for your vote!</div>}
               {errorMessages[index] && <div className="error">{errorMessages[index]}</div>}
             </div>
@@ -105,6 +117,7 @@ function DoSurvey() {
       )}
     </div>
   );
+  
 }
 
 export default DoSurvey;

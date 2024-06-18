@@ -1,18 +1,18 @@
 /* Results.css */
 
 .survey_result {
-  background-color: rgba(0, 0, 0, 0.361); /* Change background to black */
+  background-color: rgba(0, 0, 0, 0.361); 
   margin: 20px auto;
   padding: 20px;
-  width: 80%; /* Reduced width */
+  width: 80%; 
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1); /* Light shadow */
-  color: white; /* Set default text color to white */
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  color: white; 
+  font-family: 'Merriweather', serif;
 }
 
 .survey_result h3 {
-  font-family: Arial, sans-serif;
-  color: white;
+  color: black;
 }
 
 .polling-result-analysis {
@@ -26,9 +26,8 @@
   height: 40px;
   margin: 10px 0;
   position: relative;
-  font-family: Arial, sans-serif;
-  background-color: #333; /* Default background color */
-  color: white; /* Ensure text color is white */
+  background-color: #333; 
+  color: white; 
   overflow: hidden;
 }
 
@@ -40,6 +39,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   border-radius: 25px 0 0 25px;
+  padding: 10px;
 }
 
 .poll-bar.white {

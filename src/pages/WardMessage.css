@@ -54,14 +54,13 @@
    
   
 .delete-button1 {
-
   color: rgba(0, 0, 0, 0.888);
   background: none; /* Remove background */
   border: none; /* Remove border */
   cursor: pointer; /* Pointer cursor on hover */
   padding: 0;
   position: absolute;
-  top: 25%; 
+  top: 15%; 
   right: 2%; 
   transform: translateY(-50%); 
 }

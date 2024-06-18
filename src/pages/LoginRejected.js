@@ -13,7 +13,7 @@ function LoginRejected() {
   return (
     <div className="regbg">
       <div className=" reject flex min-h-screen items-center justify-center">
-        <div className="container max-w-md space-y-4 text-center">
+        <div className="container max-w-md space-y-4 py-5 text-center">
           <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-50">Login Request Rejected</h1>
           <p className="text-gray-600 dark:text-gray-400">
             Sorry, Your login is not verified. Please contact your ward member for further information.

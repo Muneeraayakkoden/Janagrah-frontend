@@ -37,7 +37,7 @@ const Announcements = () => {
           const Data = await response.json();
           console.log("All announcement:", Data);
           console.log(Data.msg);
-          setAnnouncements(Data.msg); // Set announcements state
+          setAnnouncements(Data.msg); 
         } else {
           console.error("Failed to fetch announcement");
         }

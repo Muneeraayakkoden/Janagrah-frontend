@@ -59,16 +59,14 @@ function ResidentLoginForm() {
           localStorage.setItem('voterId', JSON.stringify(data.user.voterId));
           localStorage.setItem('annualIncome', JSON.stringify(data.user.annualIncome));
 
-
-          // Login successful, navigate to ResidentHome
           navigate('/ResidentHome');
         } else {
-          // Handle other cases of successful response without a token
-          console.error('Login failed:', data.message); // Adjust based on server response
+         
+          console.error('Login failed:', data.message); 
           setError('Invalid username or password.');
         }
       } else {
-        // Login failed, handle error
+        
         console.error('Login failed:', response.statusText);
         navigate('/LoginRejected');
       }
@@ -85,17 +83,17 @@ function ResidentLoginForm() {
 
   return (
     <div>
-      <div className="input-group">
-        <input type="text" placeholder="Username*" className="form-control form-control-custom " value={username} onChange={(e) => setUsername(e.target.value)} required />
+      <div className="linput-group">
+        <input type="text" placeholder="Username*" className="form-control lform-control-custom " value={username} onChange={(e) => setUsername(e.target.value)} required />
       </div>
-      <div className="input-group">
+      <div className="linput-group">
         <input type={showPassword ? 'text' : 'password'} placeholder="Password*" className="form-control form-control-custom" value={password} onChange={(e) => setPassword(e.target.value)} required />
-        <span className="password-toggle" onClick={togglePasswordVisibility}> {showPassword ? <FaEyeSlash /> : <FaEye />} </span>
+        <span className="lpassword-toggle" onClick={togglePasswordVisibility}> {showPassword ? <FaEyeSlash /> : <FaEye />} </span>
       </div>
       <div><a href="#" className="forgot-password" onClick={handleForgotPasswordClick}>Forgot Password?</a></div>
       <div className="button-container">
-        <button className="register-btn" onClick={() => {navigate('/ResidentSignup')}}><i class="fas fa-user-plus"></i> Register</button>
-        <button className="login-buttn" onClick={handleLogin}><i class="fas fa-sign-in-alt"></i> Login </button>
+        <button className="register-btn" onClick={() => {navigate('/ResidentSignup')}}><i className="fas fa-user-plus"></i> Register</button>
+        <button className="login-buttn" onClick={handleLogin}><i className="fas fa-sign-in-alt"></i> Login </button>
         <div className="error-message">{error}</div>
       </div>
     </div>
@@ -166,18 +164,18 @@ function OfficialLoginForm() {
 
   return (
     <div className='LoginPageFull'>
-      <div className="input-group">
+      <div className="linput-group">
         <input type="text" placeholder="Username*" className="form-control form-control-custom" value={username} onChange={(e) => setUsername(e.target.value)} required/>
       </div>
-      <div className="input-group">
+      <div className="linput-group">
         <input type={showPassword ? 'text' : 'password'} placeholder="Password*" className="form-control form-control-custom" value={password} onChange={(e) => setPassword(e.target.value)} required />
-        <span className="password-toggle" onClick={togglePasswordVisibility}>
+        <span className="lpassword-toggle" onClick={togglePasswordVisibility}>
           {showPassword ? <FaEyeSlash /> : <FaEye />}
         </span>
       </div>
       <div><a href="#" className="forgot-password" onClick={handleForgotPasswordClick}>Forgot Password?</a></div>
       <div className="button-container">
-        <button  className="login-buttn" onClick={handleLogin}><i class="fas fa-sign-in-alt"></i> Login</button>
+        <button  className="login-buttn" onClick={handleLogin}><i className="fas fa-sign-in-alt"></i> Login</button>
         <div className="error-message">{error}</div>
       </div>
     </div>
@@ -201,10 +199,10 @@ function LoginPage() {
         </div>
         <div className="logintabs">
           <div className={`tab ${selectedTab === 'resident' ? 'active' : ''}`} onClick={() => setSelectedTab('resident')}>
-          <i class="fas fa-user"></i>RESIDENT
+          <i className="fas fa-user"></i>RESIDENT
           </div>
           <div className={`tab ${selectedTab === 'official' ? 'active' : ''}`} onClick={() => setSelectedTab('official')}>
-          <i class="fas fa-user-tie"></i>OFFICIAL
+          <i className="fas fa-user-tie"></i>OFFICIAL
           </div>
         </div>
         <div className="login-form">

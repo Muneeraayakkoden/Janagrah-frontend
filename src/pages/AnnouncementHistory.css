@@ -1,25 +1,24 @@
-/* General layout */
 .announcement-page-container {
   display: flex;
   min-height: 100vh;
   margin: 0;
+  font-family: 'Merriweather', serif;
 }
 
-/* Sidebar styling */
 .announcement-sidebar {
-  width: 250px; /* Fixed width for the sidebar */
+  width: 250px; 
   background-color: #f4f4f4d4;
   padding: 20px;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-  overflow-y: auto; /* Ensure scrollbar if content overflows */
+  overflow-y: auto; 
 }
 
-/* Main content styling */
+
 .announcement-main-content {
   flex-grow: 1;
   padding: 20px;
   background-color: #f9f9f9c4;
-  margin-left: 0; /* Ensure it doesn't overlap with the sidebar */
+  margin-left: 0; 
 }
 
 .announcement-main-content h1 {
@@ -28,60 +27,37 @@
   text-align: left;
 }
 
-/* Style for each announcement record */
+
 .announcement-item {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Space out the children elements */
-  border: 1px solid #ccc; /* Add border around each announcement */
-  padding: 10px; /* Add padding for spacing */
-  margin-bottom: 10px; /* Add margin at the bottom for separation */
+  justify-content: space-between; 
+  border: 1px solid #ccc; 
+  padding: 10px; 
+  margin-bottom: 10px; 
   background-color: #ffffffab;
-  position: relative; /* Make the item a positioning context */
+  position: relative; 
 }
 
-/* Style for announcement titles */
+
 .announcement-title {
-  font-weight: bold; /* Make the title bold */
+  font-weight: bold; 
 }
 
-/* Style for announcement descriptions */
-/*.announcement-description {
-  color: #666;
-  white-space: nowrap; 
-  overflow: hidden; 
-  text-overflow: ellipsis;
-  max-width: 300px; 
-  position: relative;
-}*/
+
 .announcement-description {
   position: relative;
   display: inline-block;
   cursor: pointer;
 }
 
-/*.announcement-description:hover::after {
-  content: attr(data-fulltext);
-  position: absolute;
-  white-space: nowrap;
-  background-color: #33333318;
-  color: #fff;
-  padding: 5px;
-  border-radius: 5px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1;
-}*/
 
-/* Style for announcement created date */
 .announcement-date {
-  font-style: italic; /* Make the date italic */
-  color: #999; /* Change color of date text */
+  font-style: italic; 
+  color: #999; 
 }
 
-/* Button styling */
+
 .announcement-button {
   background-color: rgba(0, 0, 0, 0.792);
   color: white;
@@ -94,10 +70,10 @@
 }
 
 .announcement-button:hover {
-  background-color: #0056b3;
+ opacity: 0.8;
 }
 
-/* Link styling */
+
 .announcement-link {
   text-decoration: none;
 }
@@ -106,17 +82,17 @@
   margin-bottom: 20px;
 }
 
-/* Delete button styling */
+
 .announcement-deletebutton {
-  background: none; /* Remove background */
-  border: none; /* Remove border */
-  cursor: pointer; /* Pointer cursor on hover */
-  padding: 0; /* Remove padding */
+  background: none; 
+  border: none; 
+  cursor: pointer; 
+  padding: 0; 
   color:black;
 }
 
 .announcement-deletebutton:hover {
-  color: red; /* Change icon color on hover */
+  color: red; 
 }
 #www{
   text-align: center;

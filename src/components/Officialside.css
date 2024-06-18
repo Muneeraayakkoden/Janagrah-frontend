@@ -1,4 +1,4 @@
-/* Layout.css */
+
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
 .official-homepage {
     display: flex;
@@ -39,7 +39,7 @@
   .nav-icon {
     display: flex;
     align-items: center;
-    padding: 10px;
+    padding: 20px 10px;
     cursor: pointer;
     transition: background-color 0.3s;
     width: 100%;
@@ -71,11 +71,10 @@
     margin-top: auto;
     cursor: pointer;
     padding: 10px;
-    background-color: grey;
+    background-color: #444;
     text-align: center;
-    width: 100%;
-    color: white;
-    font-size: 1.2em;
+    width: 90%;
+    font-size: 1.5em;
   }
   
   .content {

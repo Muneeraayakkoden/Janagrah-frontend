@@ -2,8 +2,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Arial', sans-serif;
-  background-color: #f7f7f7;
+  font-family: 'Merriweather', serif;
 }
 
 .Homepage {
@@ -81,7 +80,7 @@ body {
   font-size: 24px; /* Larger font size */
 }
 
-.logo {
+.logo2 {
   width: 100px; /* Adjust the width of the logo */
   height: auto; /* Maintain aspect ratio */
   margin-bottom: 10px; /* Add space below the logo */

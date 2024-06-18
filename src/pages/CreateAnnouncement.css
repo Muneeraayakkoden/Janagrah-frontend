@@ -1,17 +1,18 @@
 .create-updates-container {
-  max-width: 600px;
+  max-width: 800px;
   margin: 0 auto;
   padding: 20px;
   background-color:rgba(255, 255, 255, 0.025);
   border-radius: 10px;
   margin-top: 50px;
-  border: 0.5px solid #b5b6b6 ;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  border: 0.5px ;
+  font-family: 'Merriweather', serif;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .create-updates-container h1 {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   color: black;
 }
 
@@ -21,22 +22,48 @@
   align-items: center;
 }
 
-.create-updates-container label {
-  font-weight: bold;
-  margin-bottom: 5px;
+.input-container {
+  margin-bottom: 25px;
 }
 
-.create-updates-container input[type="text"],
-.create-updates-container textarea {
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 0.5px solid black ;
+.input-container fieldset {
+  border: 0.5px solid black;
   border-radius: 20px;
+  padding: 0 10px 10px;
+  margin: 0;
+  position: relative;
+  box-sizing: border-box;
+  width: 600px;
+}
+
+.input-container legend {
+  font-size: 14px;
+  padding: 0 5px;
+  color: black;
+  position: absolute;
+  top: -10px;
+  left: 10px;
+  width: fit-content;
+  background: white;
+}
+
+.input-container input,
+.input-container textarea {
+  width: 100%;
+  padding: 5px;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.input-container textarea {
+  resize: none;
 }
 
 .create-updates-container input[type="file"] {
   margin-bottom: 15px;
-  
+  font-size: 12px;
 }
 
 .create-updates-container button {

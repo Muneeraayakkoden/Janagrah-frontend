@@ -18,12 +18,12 @@
   letter-spacing: 3px;
   margin: 0;
   text-align: center; 
-  color: #020103; /* Use a darker color for better visibility */
-  background: linear-gradient(45deg, #101112, #426dad); /* Add a gradient background */
+  color: #020103; 
+  background: linear-gradient(45deg, #101112, #426dad); 
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; /* Use gradient text effect */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Add a subtle text shadow */
-  transition: transform 0.3s ease; /* Add a smooth transform transition */
+  -webkit-text-fill-color: transparent;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); 
+  transition: transform 0.3s ease; 
 }
 
 .hero-title {

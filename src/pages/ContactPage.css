@@ -3,9 +3,9 @@
 .contactPage {
   font-family: 'Merriweather', serif;
   display: flex;
-  flex-wrap: nowrap; /* Changed to nowrap for a three-column layout */
+  flex-wrap: nowrap; 
   gap: 20px;
-  justify-content: space-between; /* Changed to space-between to align items properly */
+  justify-content: space-between; 
   width: 100vw;
   height: 100vh;
   background-image: url('../assets/black-prism-concept-ai-generated.jpg');
@@ -16,7 +16,7 @@
 
 
 .Container {
-  flex: 1; /* Flex grow to take remaining space */
+  flex: 1; 
   margin: 20px 0 20px 160px;
   padding: 20px;
   border-radius: 5px;
@@ -26,7 +26,7 @@
 }
 
 .message-container {
-  flex: 1; /* Flex grow to take remaining space */
+  flex: 1;
   margin: 20px 20px 20px 0;
   padding: 20px;
   border-radius: 5px;
@@ -35,27 +35,39 @@
 }
 
 .message-content { 
+  position: relative;
   border: 1px solid;
   border-radius: 5px;
   padding: 10px;
   margin-bottom: 10px;
   background-color: white;
+  width: 90%;
+}
+
+.trash-icon {
+  position: absolute; 
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  color: black;
+  transition: color 0.3s ease;
+}
+
+.trash-icon:hover {
+  color: red;
 }
 
 .chat {
   color: black;
+  font-size: 18px;
 }
 
-.chatTime {
-  text-align: right;
-  font-size: 0.8rem; 
-  white-space: nowrap;
-}
+
 
 .heading {
   color: black;
   font-weight: bold;
-  font-size: 1.2rem; /* Increased font size */
+  font-size: 1.2rem; 
 }
 
 .message-input {
@@ -75,7 +87,7 @@
 }
 
 .anonymous-option label {
-  font-size: 1rem; /* Adjusted font size */
+  font-size: 1rem; 
   color: #555;
 }
 
@@ -103,7 +115,7 @@
 }
 
 .message-icon {
-  font-size: 1.5rem; /* Adjusted icon size */
+  font-size: 1.5rem; 
   cursor: pointer;
   transition: color 0.3s ease;
 }
@@ -135,27 +147,27 @@
   }
   .navbar {
     width: 10%;
-    margin: 0; /* Remove margin to use full width */
+    margin: 0; 
     padding: 10px 20px;
   }
   .Container, .message-container {
-    height: auto; /* Adjust height */
+    height: auto; 
     margin: 10px 10px 10px 80px;
   }
 }
 
 @media (max-width: 480px) {
   .heading {
-    font-size: 1rem; /* Smaller font size for small screens */
+    font-size: 1rem; 
   }
   .chatTime {
-    font-size: 0.7rem; /* Smaller font size for small screens */
+    font-size: 0.7rem; 
   }
   .send {
-    font-size: 1rem; /* Smaller button font size */
+    font-size: 1rem; 
     padding: 10px 15px;
   }
   .message-icon {
-    font-size: 1.2rem; /* Smaller icon size */
+    font-size: 1.2rem; 
   }
 }

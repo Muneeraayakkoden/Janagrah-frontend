@@ -63,7 +63,7 @@ const Results = () => {
 
   return (
     <div className="survey_result">
-      <h3>Survey Result</h3>
+      <h3>SURVEY RESULT</h3>
       <Officialside />
       {surveyResults ? (
         <div className="polling-result-analysis">

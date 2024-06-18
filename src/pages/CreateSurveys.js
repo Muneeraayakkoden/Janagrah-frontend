@@ -141,7 +141,7 @@ const CreateSurvey = () => {
           />
         </div>
         <div className="survey-options">
-          <h2>Survey Options</h2>
+          <h5>Survey Options</h5>
           {options.map((option, index) => (
             <div className="option-group" key={option.id}>
               <label htmlFor={`option-${option.id}`}>Option {index + 1}:</label>

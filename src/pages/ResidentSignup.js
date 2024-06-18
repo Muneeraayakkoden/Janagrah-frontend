@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import './ResidentSignup.css';
 import { useNavigate } from "react-router-dom";
-import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
-import {FaUser, FaImage, FaMapMarkerAlt, FaUserShield} from 'react-icons/fa';
+import {FaUser, FaImage, FaMapMarkerAlt, FaUserShield, FaEye, FaEyeSlash, FaArrowLeft, FaArrowRight} from 'react-icons/fa';
 
 const ResidentSignup = () => {
   const navigate = useNavigate();
+  const [validationError, setValidationError] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleLoginClick = () => {
     navigate('/LoginPage');
@@ -48,12 +49,12 @@ const ResidentSignup = () => {
     password: '',
     confirmPassword: '',
     annualIncome: '',
+    address: '',
     image: '' 
   });
 
-
-
   const handlePageChange = (pageNumber) => {
+    setValidationError('');
     if (pageNumber >= 1 && pageNumber <= totalPages) {
       setCurrentPage(pageNumber);
     }
@@ -85,6 +86,8 @@ const ResidentSignup = () => {
           age: formData.age ? '' : 'Age is required.',
           voterId: formData.voterId ? '' : 'Voter ID is required.',
           phone: formData.phone ? '' : 'Phone number is required.',
+          annualIncome: formData.annualIncome ? '' : 'Annual Income is required.',
+          address: formData.address? '' : 'Address required.',
           job: formData.job ? '' : 'Select a job type.'
         };
         break;
@@ -138,6 +141,8 @@ const ResidentSignup = () => {
       case 'annualIncome':
         if (parseInt(value) < 0) {
           error = 'Annual income must be greater than or equals 0.';
+        }else if(!value){
+          error = 'Annual income is required.'
         }
         break;
       case 'phone':
@@ -161,12 +166,21 @@ const ResidentSignup = () => {
           error = 'Invalid email format.';
         }
         break;
+      case 'address':
+        if(!value){
+          error = 'Address is required.';
+        }
+        break;
       default:
         break;
     }
   
     setFormData({ ...formData, [name]: value });
     setErrorMessage({ ...errorMessage, [name]: error });
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
   };
 
   const handleImageUpload = (event) => {
@@ -214,7 +228,6 @@ const ResidentSignup = () => {
 
 
   const registerUser = async () => {
-    try {
       const requestBody = {
         state: formData.state,
         district: formData.district,
@@ -232,7 +245,6 @@ const ResidentSignup = () => {
         address: formData.address,
         image: formData.image.split(',')[1] 
       };
-      console.log("requestBody :", requestBody); 
 
       const response = await fetch('http://localhost:4000/user/request-user', {
         method: 'POST',
@@ -242,35 +254,51 @@ const ResidentSignup = () => {
         body: JSON.stringify(requestBody),
       });
 
+      const data = await response.json();
+
       if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }   
-      const responseData = await response.json();
-      console.log("Response Data:", responseData); 
- 
-      setFormData({
-        state: '',
-        district: '',
-        localAuthority: '',
-        ward: '',
-        name: '',
-        age: '',
-        voterId: '',
-        phone: '',
-        job: '',
-        email: '',
-        username: '',
-        password: '',
-        confirmPassword: '',
-        address: '',
-        annualIncome: '',
-        image: ''
-      });
-      console.log("Navigating to ResidentSignupSuccess");
-      navigate("/ResidentSignupSuccess");
-    } catch (error) {
-      // Handle fetch error
-      console.error('There was a problem with your fetch operation:', error);
+        console.log("Error");
+        console.log(data['message']);
+        var errorMsg = data['message'];
+        setValidationError(errorMsg);
+      }else{
+        console.log("No error")
+        console.log(response);
+      }
+      console.log("Response Data:", data); 
+
+      if (data.message === 'Username or email already taken') {
+        setErrorMessage({ ...errorMessage, 
+          email: 'Username or email already taken. Please choose a different one.', 
+          username: 'Username or email already taken. Please choose a different one.'});
+        setFormData(prevFormData => ({
+          ...prevFormData,
+          email: '',
+          username: ''
+        }));
+      }else {
+        setFormData({
+          state: '',
+          district: '',
+          localAuthority: '',
+          ward: '',
+          name: '',
+          age: '',
+          voterId: '',
+          phone: '',
+          job: '',
+          email: '',
+          username: '',
+          password: '',
+          confirmPassword: '',
+          address: '',
+          annualIncome: '',
+          image: ''
+        });
+      if(response.ok){
+        console.log("Navigating to ResidentSignupSuccess");
+        navigate("/ResidentSignupSuccess");
+      }
     }
   };
 
@@ -326,7 +354,7 @@ const ResidentSignup = () => {
           {currentPage === 1 && (
             <div className={`form-section ${currentPage === 1 ? 'visible' : ''}`}>
              
-              <FaMapMarkerAlt />
+              < FaMapMarkerAlt />
              <div>
                 <select name="state" value={formData.state} onChange={handleStateSelection} required>
                   <option value="">Select State*</option>
@@ -416,12 +444,13 @@ const ResidentSignup = () => {
                 {errorMessage.job && <p className="error-message">{errorMessage.job}</p>}
               </div>
               <div>
-                <input type="number" name="annualIncome" placeholder="Annual Income" value={formData.annualIncome} onChange={handleChange} />
+                <input type="number" name="annualIncome" placeholder="Annual Income*" value={formData.annualIncome} onChange={handleChange} required/>
                 {errorMessage.annualIncome && <p className="error-message">{errorMessage.annualIncome}</p>}
               </div>
             
               <div>
-                <textarea name="address" placeholder="Address" value={formData.address} onChange={handleChange} />
+                <textarea name="address" placeholder="Address*" value={formData.address} onChange={handleChange} required/>
+                {errorMessage.address && <p className="error-message">{errorMessage.address}</p>}
               </div>
             </div>
           )}
@@ -436,7 +465,12 @@ const ResidentSignup = () => {
               <input type="text" name="username" placeholder="Username*" value={formData.username} onChange={handleChange} required />
               {errorMessage.username && <p className="error-message">{errorMessage.username}</p>}
               <div>
-                <input type="password" name="password" placeholder="Password*" value={formData.password} onChange={handleChange} required />
+                <div  className="inputPass">
+                  <input type={showPassword ? 'text' : 'password'} name="password" placeholder="Password*" value={formData.password} onChange={handleChange} required />
+                  <span className="password-toggle" onClick={togglePasswordVisibility}>
+                    {showPassword ? <FaEyeSlash /> : <FaEye />}
+                  </span>
+                </div>
                 {errorMessage.password && <p className="error-message">{errorMessage.password}</p>}
               </div>
               <div>
@@ -448,9 +482,13 @@ const ResidentSignup = () => {
                <FaImage />
                 <input type="file" id="image" name="image" accept="image/jpeg, image/png,image/jpg" onChange={handleImageUpload} />
                 {errorMessage.image && <p className="error-message">{errorMessage.image}</p>}
+               
               </div>
             </div>
           )}       
+          <p className='error-message'>
+           {validationError}
+          </p>
           <div>Already Registered? <a href="#" onClick={handleLoginClick}> Login here</a></div>      
           <div className="pagination">
           {currentPage > 1 && (
