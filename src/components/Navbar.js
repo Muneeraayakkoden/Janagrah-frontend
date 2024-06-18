@@ -9,7 +9,7 @@ const Navbar = () => {
 
   const handleLogout = () => {
     localStorage.removeItem('token');
-    navigate('/LoginPage');
+    navigate('/');
   };
 
   const handleSidebarToggle = () => {
