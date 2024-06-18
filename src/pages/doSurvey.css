@@ -1,15 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
 .SurveyContainer {
-  padding: 30px;
-  font-family: 'Merriweather', serif;
+  display: flex;
   flex-direction: column;
-  align-items: center;
-  width: 100%;
-  min-height: 100vh;
+  padding: 30px;
   background-color: rgba(255, 255, 255, 0.032);
-  min-height: 100vh;
-  display:inline-flex;
+  margin-left: 140px; /* Leave space for Navbar */
 }
 
 .SurveyContainer h3 {
@@ -24,28 +20,26 @@
 
 .polls-container {
   display: flex;
+  flex-wrap: wrap; 
   gap: 20px;
-  padding: 20px;
   margin-top: 20px;
-  width: auto;
-  height: 100%; 
+  justify-content: space-between;
 }
 
 .poll {
-  margin-bottom: 15px;
-  overflow: hidden;
-  background-color:rgba(255, 255, 255, 0.605);
-  color:black;
+  background-color: rgba(255, 255, 255, 0.605);
+  color: black;
   border-radius: 15px;
   padding: 30px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.112);
-  max-width: 350px; 
-  width: 100%; 
-  text-align: left; 
-  flex-direction: column;
-  align-items: center;
-  border: 1px solid #ccc; 
+  border: 1px solid #ccc;
   display: flex;
+  flex: 1 1 calc(33.33% - 20px);
+  flex-direction: column;
+  max-width: calc(33.33% - 20px);
+  min-width: 280px;
+  min-height: 300px;
+  justify-content: space-between;
 }
 
 .poll h1 {
@@ -60,7 +54,13 @@
   color: rgb(24, 81, 147);
 }
 
-.options .option {
+.options {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.option {
   margin-bottom: 15px;
   display: flex;
   align-items: center;
@@ -79,7 +79,7 @@
 }
 
 .doSurveybutton {
-  display: inline-block;
+  align-self: flex-end; 
   padding: 12px 25px;
   border-radius: 25px;
   cursor: pointer;
@@ -118,37 +118,24 @@
   color: red;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .poll {
-    width: 90%;
-    margin: 15px;
-  }
-
-  .SurveyContainer h3 {
-    font-size: 20px;
-  }
-
-  .poll h1 {
-    font-size: 24px;
-  }
-
-  .poll h5 {
-    font-size: 16px;
+    flex: 1 1 45%; /* Two polls in a row on smaller screens */
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
+  .poll {
+    flex: 1 1 100%; /* One poll per row on mobile screens */
+    margin-bottom: 20px;
+  }
+
   .SurveyContainer {
     padding: 15px;
   }
 
   .SurveyContainer h3 {
-    font-size: 18px;
-  }
-
-  .poll {
-    width: 100%;
-    padding: 20px;
+    font-size: 20px;
   }
 
   .poll h1 {
