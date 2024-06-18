@@ -45,36 +45,14 @@
   margin-bottom: 10px;
 }
 
-.notification-page button {
-  margin-left: 10px;
-  padding: 5px 10px;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
-}
+
 
 
 .notification-page p {
   margin-bottom: 5px;
 }
 
-.notification-page button:focus {
-  outline: none;
-}
 
-.notification-page button:hover {
-  opacity: 0.8;
-}
-
-.notification-page button.approve {
-  background-color: #28a745;
-  color: #fff;
-}
-
-.notification-page button.reject {
-  background-color: #dc3545;
-  color: #fff;
-}
 
 .officialtabs {
   display: flex;

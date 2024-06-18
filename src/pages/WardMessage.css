@@ -53,26 +53,26 @@
   
    
   
-.delete-button1 {
+.msgdelete-button11 {
   color: rgba(0, 0, 0, 0.888);
   background: none; /* Remove background */
   border: none; /* Remove border */
   cursor: pointer; /* Pointer cursor on hover */
   padding: 0;
   position: absolute;
-  top: 15%; 
-  right: 2%; 
+  top: 25%; 
+  right: 0.1%; 
   transform: translateY(-50%); 
 }
 
 
 
-.delete-button1:hover svg {
-  color:red; /* Change fill color on hover */
+.msgdelete-button11:hover svg {
+  color:red; 
 }
 
 
-.read-button {
+.msgread-button {
     /*background-color: #3cbe5a;  Green color for Read button */
     background-color: rgba(0, 128, 0, 0.637);
     color: #ffffff;
@@ -83,7 +83,7 @@
     cursor: pointer;
   }
   
-  .read-button:hover {
+  .msgread-button:hover {
     background-color: #0d4b1a; /* Darker green color on hover */
   }
   .ward-message-read{

@@ -78,10 +78,10 @@ const WardMessage = () => {
           )
         );
       } else {
-        console.error("Failed to delete message");
+        console.error("Failed to Reading message");
       }
     } catch (error) {
-      console.error('Error deleting message:', error);
+      console.error('Error reading message:', error);
     }
 
   };
@@ -108,8 +108,8 @@ const WardMessage = () => {
               )}
             </div>
             
-             <button className="delete-button1" onClick={() => handleDelete(message._id)}><MdDelete size={30} /></button>
-             <button className="read-button" onClick={() => handleRead(message._id)}>Read</button>
+             <button className="msgdelete-button11" onClick={() => handleDelete(message._id)}><MdDelete size={30} /></button>
+             <button className="msgread-button" onClick={() => handleRead(message._id)}>Read</button>
           </li>
         ))}
       </ul>
