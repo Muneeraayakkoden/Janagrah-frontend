@@ -40,7 +40,6 @@ const SurveyPage = () => {
 
   const handleStopPolling = async (surveyId) => {
     try {
-      // Implement stop polling logic here
       console.log('Stop polling for survey ID:', surveyId);
 
       const data = { surveyId };
@@ -55,7 +54,12 @@ const SurveyPage = () => {
 
       if (response.ok) {
         console.log('Polling stopped successfully');
-        // Perform any additional actions after stopping polling
+        // Update survey status to false after stopping polling
+        setSurveyDataList(prevData =>
+          prevData.map(survey =>
+            survey._id === surveyId ? { ...survey, currentstatus: false } : survey
+          )
+        );
       } else {
         console.error('Failed to stop polling');
       }
@@ -88,7 +92,11 @@ const SurveyPage = () => {
                   ))}
                 </ul>
                 <div className='survey-button'> 
-                  <button className='stop_poll' onClick={() => handleStopPolling(survey._id)}>Stop Polling</button>
+                  {survey.currentstatus ? (
+                    <button className='stop_poll' onClick={() => handleStopPolling(survey._id)}>Stop Polling</button>
+                  ) : (
+                    <p>Poll stopped</p>
+                  )}
                   <button className="poll_result" onClick={() => handleResult(survey._id)}>Result</button>
                 </div>
               </div>
