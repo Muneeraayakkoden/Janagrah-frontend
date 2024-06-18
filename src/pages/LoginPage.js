@@ -94,8 +94,8 @@ function ResidentLoginForm() {
       </div>
       <div><a href="#" className="forgot-password" onClick={handleForgotPasswordClick}>Forgot Password?</a></div>
       <div className="button-container">
-        <button className="register-btn" onClick={() => {navigate('/ResidentSignup')}}><i class="fas fa-user-plus"></i> Register</button>
-        <button className="login-buttn" onClick={handleLogin}><i class="fas fa-sign-in-alt"></i> Login </button>
+        <button className="register-btn" onClick={() => {navigate('/ResidentSignup')}}><i className="fas fa-user-plus"></i> Register</button>
+        <button className="login-buttn" onClick={handleLogin}><i className="fas fa-sign-in-alt"></i> Login </button>
         <div className="error-message">{error}</div>
       </div>
     </div>
@@ -177,7 +177,7 @@ function OfficialLoginForm() {
       </div>
       <div><a href="#" className="forgot-password" onClick={handleForgotPasswordClick}>Forgot Password?</a></div>
       <div className="button-container">
-        <button  className="login-buttn" onClick={handleLogin}><i class="fas fa-sign-in-alt"></i> Login</button>
+        <button  className="login-buttn" onClick={handleLogin}><i className="fas fa-sign-in-alt"></i> Login</button>
         <div className="error-message">{error}</div>
       </div>
     </div>
@@ -201,10 +201,10 @@ function LoginPage() {
         </div>
         <div className="logintabs">
           <div className={`tab ${selectedTab === 'resident' ? 'active' : ''}`} onClick={() => setSelectedTab('resident')}>
-          <i class="fas fa-user"></i>RESIDENT
+          <i className="fas fa-user"></i>RESIDENT
           </div>
           <div className={`tab ${selectedTab === 'official' ? 'active' : ''}`} onClick={() => setSelectedTab('official')}>
-          <i class="fas fa-user-tie"></i>OFFICIAL
+          <i className="fas fa-user-tie"></i>OFFICIAL
           </div>
         </div>
         <div className="login-form">

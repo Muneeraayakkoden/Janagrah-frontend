@@ -34,11 +34,10 @@
 }
 
 .headerr {
-    margin-top: 40px;
-    display: flex;
-    flex-direction: column; 
-    margin-bottom: 0px; 
-     
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column; 
+  margin-bottom: 0px; 
 }
 
 .headerr h1 {

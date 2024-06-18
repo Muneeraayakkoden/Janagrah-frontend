@@ -77,12 +77,35 @@ function CreateAnnouncement() {
             <Officialside />
             <h1>ANNOUNCE AN EVENT</h1>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="title">Announcement Title:</label>
-                <input type="text" id="title" required value={formData.title} onChange={handleChange} />
-                <label htmlFor="description">Description:</label>
-                <textarea id="description" required value={formData.description} onChange={handleChange}></textarea>
+                <div className="input-container">
+                    <fieldset>
+                    <legend>Title</legend>
+                    <input
+                        type="text"
+                        id="title"
+                        required
+                        value={formData.title}
+                        placeholder=" "
+                        onChange={handleChange}
+                    />
+                    </fieldset>
+                </div>
+
+                <div className="input-container">
+                    <fieldset>
+                    <legend>Description</legend>
+                    <textarea
+                        id="description"
+                        required
+                        value={formData.description}
+                        placeholder=" "
+                        onChange={handleChange}
+                    ></textarea>
+                    </fieldset>
+                </div>
+
                 <div className="upload-options">
-                    <label htmlFor="upload-event">Upload Event (optional):</label>
+                    <label htmlFor="upload-event">Upload Event (optional): </label>
                     <input type="file" id="upload-event" accept=".jpg,.jpeg,.png" onChange={handleChange} />
                 </div>
                 <button type="submit" className="publish-button">Publish</button>
