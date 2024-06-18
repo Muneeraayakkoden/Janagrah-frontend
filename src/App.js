@@ -28,18 +28,19 @@ import Homepage from './pages/Homepage.js';
 import EditProfile from './pages/EditProfile.js';
 import Officialside from './components/Officialside.js';
 import Surveyboth from './pages/Surveyboth.js';
+import ResetPassword from './pages/ResetPassword.js';
 
 function App() {
   return (
     <div>
       <BrowserRouter>
         <Routes>
-          <Route path="/" Component={Homepage} />
+          <Route path="/kk" Component={Homepage} />
           <Route path="/ContactPage" Component={ContactPage} />
           <Route path="/SurveyPage" Component={SurveyPage} />
           <Route path="/ResidentHome" Component={ResidentHome} /> 
           <Route path="/ResidentSignup" Component={ResidentSignup} />
-          <Route path="/LoginPage" Component={LoginPage} />
+          <Route path="/" Component={LoginPage} />
           <Route path="/ResidentSignupSuccess" Component={ResidentSignupSuccess} />
           <Route path="/LoginRejected" Component={LoginRejected} />
           <Route path="/OfficialHome" Component={OfficialHome} />
@@ -59,6 +60,7 @@ function App() {
           <Route path="/Homepage" Component={Homepage} />
           <Route path="/Officialside" Component={Officialside} />
           <Route path="/Surveyboth" Component={Surveyboth} />
+          <Route path="/ResetPassword" Component={ResetPassword} />
         </Routes>
       </BrowserRouter>
     </div>

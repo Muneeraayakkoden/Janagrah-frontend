@@ -44,19 +44,20 @@
   
   .ward-logout {
     display: block;
-    background-color: black;
+    background-color: rgb(250, 94, 94);
     color: #ffffff;
     padding: 10px 20px;
     margin: 20px auto;
     border: none;
-    border-radius: 4px;
+    border-radius: 120px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 19px;
     transition: background-color 0.3s;
   }
   
   .ward-logout:hover {
     opacity: 0.8;
+    background-color: red;
   }
   
   .ward-logout svg {
