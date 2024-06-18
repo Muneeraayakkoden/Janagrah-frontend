@@ -54,7 +54,8 @@ const MyAccount = () => {
       const address = JSON.parse(localStorage.getItem('address'));
       const name = JSON.parse(localStorage.getItem('name'));
       const ward = JSON.parse(localStorage.getItem('ward'));
-      const localAuthority = JSON.parse(localStorage.getItem('localAuthority'))
+      const localAuthority = JSON.parse(localStorage.getItem('localAuthority'));
+      const password = JSON.parse(localStorage.getItem('password'));
       const data = {
         username,
         name,
@@ -66,6 +67,7 @@ const MyAccount = () => {
         address,
         ward,
         localAuthority,
+        password,
       };
 
       setUserData(data);
@@ -132,7 +134,7 @@ const MyAccount = () => {
               <div className="user-info">
                 <h3>Personal Details</h3>
                 {Object.entries(userData).map(([key, value]) => {
-                  if (['username', 'name', 'job', 'age', 'phn', 'email', 'annualIncome', 'address'].includes(key)) {
+                  if (['username', 'name', 'job', 'age', 'phn', 'email', 'annualIncome', 'address','password'].includes(key)) {
                     let label = '';
                     switch (key) {
                       case 'username':
@@ -158,6 +160,9 @@ const MyAccount = () => {
                         break;
                       case 'address':
                         label = 'Address';
+                        break;
+                      case 'password':
+                        label="Password";
                         break;
                       default:
                         break;
