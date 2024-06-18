@@ -149,7 +149,10 @@ form-control-custom  {
   font-size: 14px;
 }
 
-
+.error-message {
+  color: #930206;
+  font-weight: bold;
+}
 
 @media screen and (max-width: 340px) {
   .login-container {

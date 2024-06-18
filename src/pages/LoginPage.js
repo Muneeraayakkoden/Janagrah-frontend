@@ -59,16 +59,14 @@ function ResidentLoginForm() {
           localStorage.setItem('voterId', JSON.stringify(data.user.voterId));
           localStorage.setItem('annualIncome', JSON.stringify(data.user.annualIncome));
 
-
-          // Login successful, navigate to ResidentHome
           navigate('/ResidentHome');
         } else {
-          // Handle other cases of successful response without a token
-          console.error('Login failed:', data.message); // Adjust based on server response
+         
+          console.error('Login failed:', data.message); 
           setError('Invalid username or password.');
         }
       } else {
-        // Login failed, handle error
+        
         console.error('Login failed:', response.statusText);
         navigate('/LoginRejected');
       }

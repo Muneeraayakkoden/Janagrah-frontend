@@ -63,8 +63,22 @@
   background-color: #212324;
 }
 
+
+.password-toggle {
+  position: absolute;
+  top: 40%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #080808;
+}
+.inputPass {
+  position:relative;
+}
+
 .error-message {
-  color: #a00409;
+  color: #930206;
+  font-weight: bold;
 }
 
 input[type="text"],

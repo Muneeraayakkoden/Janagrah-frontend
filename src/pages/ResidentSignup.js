@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import './ResidentSignup.css';
 import { useNavigate } from "react-router-dom";
-import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
-import {FaUser, FaImage, FaMapMarkerAlt, FaUserShield} from 'react-icons/fa';
+import {FaUser, FaImage, FaMapMarkerAlt, FaUserShield, FaEye, FaEyeSlash, FaArrowLeft, FaArrowRight} from 'react-icons/fa';
 
 const ResidentSignup = () => {
   const navigate = useNavigate();
   const [validationError, setValidationError] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleLoginClick = () => {
     navigate('/LoginPage');
@@ -179,6 +179,10 @@ const ResidentSignup = () => {
     setErrorMessage({ ...errorMessage, [name]: error });
   };
 
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
     
@@ -241,6 +245,7 @@ const ResidentSignup = () => {
         address: formData.address,
         image: formData.image.split(',')[1] 
       };
+
       const response = await fetch('http://localhost:4000/user/request-user', {
         method: 'POST',
         headers: {
@@ -248,7 +253,9 @@ const ResidentSignup = () => {
         },
         body: JSON.stringify(requestBody),
       });
+
       const data = await response.json();
+
       if (!response.ok) {
         console.log("Error");
         console.log(data['message']);
@@ -261,31 +268,38 @@ const ResidentSignup = () => {
       console.log("Response Data:", data); 
 
       if (data.message === 'Username or email already taken') {
-        setErrorMessage('Username or email already taken. Please choose a different one.');
-      } 
-
-      setFormData({
-        state: '',
-        district: '',
-        localAuthority: '',
-        ward: '',
-        name: '',
-        age: '',
-        voterId: '',
-        phone: '',
-        job: '',
-        email: '',
-        username: '',
-        password: '',
-        confirmPassword: '',
-        address: '',
-        annualIncome: 0,
-        image: ''
-      });
+        setErrorMessage({ ...errorMessage, 
+          email: 'Username or email already taken. Please choose a different one.', 
+          username: 'Username or email already taken. Please choose a different one.'});
+        setFormData(prevFormData => ({
+          ...prevFormData,
+          email: '',
+          username: ''
+        }));
+      }else {
+        setFormData({
+          state: '',
+          district: '',
+          localAuthority: '',
+          ward: '',
+          name: '',
+          age: '',
+          voterId: '',
+          phone: '',
+          job: '',
+          email: '',
+          username: '',
+          password: '',
+          confirmPassword: '',
+          address: '',
+          annualIncome: '',
+          image: ''
+        });
       if(response.ok){
         console.log("Navigating to ResidentSignupSuccess");
         navigate("/ResidentSignupSuccess");
       }
+    }
   };
 
 
@@ -430,12 +444,12 @@ const ResidentSignup = () => {
                 {errorMessage.job && <p className="error-message">{errorMessage.job}</p>}
               </div>
               <div>
-                <input type="number" name="annualIncome" placeholder="Annual Income" value={formData.annualIncome} onChange={handleChange} required/>
+                <input type="number" name="annualIncome" placeholder="Annual Income*" value={formData.annualIncome} onChange={handleChange} required/>
                 {errorMessage.annualIncome && <p className="error-message">{errorMessage.annualIncome}</p>}
               </div>
             
               <div>
-                <textarea name="address" placeholder="Address" value={formData.address} onChange={handleChange} required/>
+                <textarea name="address" placeholder="Address*" value={formData.address} onChange={handleChange} required/>
                 {errorMessage.address && <p className="error-message">{errorMessage.address}</p>}
               </div>
             </div>
@@ -451,7 +465,12 @@ const ResidentSignup = () => {
               <input type="text" name="username" placeholder="Username*" value={formData.username} onChange={handleChange} required />
               {errorMessage.username && <p className="error-message">{errorMessage.username}</p>}
               <div>
-                <input type="password" name="password" placeholder="Password*" value={formData.password} onChange={handleChange} required />
+                <div  className="inputPass">
+                  <input type={showPassword ? 'text' : 'password'} name="password" placeholder="Password*" value={formData.password} onChange={handleChange} required />
+                  <span className="password-toggle" onClick={togglePasswordVisibility}>
+                    {showPassword ? <FaEyeSlash /> : <FaEye />}
+                  </span>
+                </div>
                 {errorMessage.password && <p className="error-message">{errorMessage.password}</p>}
               </div>
               <div>

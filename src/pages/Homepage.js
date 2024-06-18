@@ -18,17 +18,17 @@ function Homepage() {
       <div className="services">
         <div className="service">
           <h2><b>Surveys</b></h2>
-          <h5>Participate in Surveys and Polls: Voice your opinions</h5>
-          <p>Participate in surveys and polls to voice your opinions and contribute to community decision-making.<br />Your engagement is key to our collective success.</p>
+          <h5>Participate in Surveys: Voice your opinions</h5>
+          <p>Participate in surveys to voice your opinions and contribute to community decision-making.<br />Your engagement is key to our collective success.</p>
         </div>
         <div className="service">
           <h2><b>Direct Communication</b></h2>
-          <h5>Send messages to your ward leader anonymously or non-anonymously.</h5>
-          <p>We provide various channels for communication, ensuring that residents can easily reach out to convey their suggestions, complaints, or feedback.</p>
+          <h5>Message your ward leader anonymously or non-anonymously.</h5>
+          <p>Residents can easily reach out to convey their suggestions, complaints, or feedback.</p>
         </div>
         <div className="service">
           <h2><b>Announcements</b></h2>
-          <h5>Stay informed about important announcements from your ward leader.</h5>
+          <h5>Stay informed about important announcements.</h5>
           <p>Stay updated on community events, meetings, and important notices from your ward leader.</p>
         </div>
       </div>

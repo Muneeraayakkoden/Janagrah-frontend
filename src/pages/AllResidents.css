@@ -1,5 +1,3 @@
-
-
 .all-residents-container {
   max-width: 900px;
   margin: 0 auto;
@@ -85,10 +83,9 @@
 }
 
 .resident-delete-buttoon{
-  background: none; /* Remove background */
-  border: 1px solid #ccc;  /* Remove border */
-  cursor: pointer; /* Pointer cursor on hover */
-  padding: 10px; /* Remove padding */
+  background: none; 
+  border: 1px solid #ccc; 
+  cursor: pointer;
   color:black;
   border-radius: 30px;
   transition: background-color 0.3s;
