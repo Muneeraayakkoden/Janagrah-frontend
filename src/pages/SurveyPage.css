@@ -151,6 +151,7 @@
 }
 .poll_result{
   background-color: rgba(0, 128, 0, 0.703);
+  margin-left: 50px;
 }
 .poll_result:hover {
   background-color: #226726; /* Darker green on hover */
@@ -174,4 +175,8 @@
 }
 .survey-button{
   display:flex;
+}
+
+.stopped {
+  color: red;
 }
