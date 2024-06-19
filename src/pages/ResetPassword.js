@@ -77,7 +77,7 @@ const ResetPassword = () => {
       <form className="reset-password-form" onSubmit={handleSubmit}>
         <h2>Reset Password</h2>
         <div className="form-group">
-          <label htmlFor="identifier">RegisteredEmail/Username/Voter ID</label>
+          <label htmlFor="identifier">Email/Username/Voter ID</label>
           <input
             type="text"
             id="identifier"
