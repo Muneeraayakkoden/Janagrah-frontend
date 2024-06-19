@@ -95,7 +95,7 @@ const SurveyPage = () => {
                   {survey.currentstatus ? (
                     <button className='stop_poll' onClick={() => handleStopPolling(survey._id)}>Stop Polling</button>
                   ) : (
-                    <p>Poll stopped</p>
+                    <p className="stopped">Poll stopped</p>
                   )}
                   <button className="poll_result" onClick={() => handleResult(survey._id)}>Result</button>
                 </div>
