@@ -5,7 +5,7 @@ function ResidentSignupSuccess() {
   const navigate = useNavigate();
 
   const handleLoginRedirect = () => {
-    navigate('/LoginPage');
+    navigate('/');
   };
 
   return (
