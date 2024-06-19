@@ -116,6 +116,7 @@ const UserRequests = () => {
               <p>Local Government: {user.localAuthority}</p>
               <p>Ward No: {user.ward}</p>
               <p>Job: {user.job}</p>
+              <p>Voter Id: {user.voterId}</p>
               <p>Address: {user.address}</p>
               <p>Username: {user.username}</p>
             </div>

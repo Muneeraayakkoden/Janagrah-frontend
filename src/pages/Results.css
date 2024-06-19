@@ -47,7 +47,7 @@
   text-overflow: ellipsis;
   border-radius: 25px 0 0 25px;
   padding: 0 10px;
-  color: yellow; /* Ensure option text inside the bar is yellow */
+  color: rgb(0, 208, 255); /* Ensure option text inside the bar is yellow */
 }
 
 .poll-item .percentage-text {
