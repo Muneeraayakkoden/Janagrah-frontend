@@ -1,4 +1,3 @@
-// NewsSection.jsx
 import React, { useState, useEffect } from 'react';
 import './Announcement.css';
 
@@ -29,7 +28,9 @@ const Announcement = () => {
         if (response.ok) {
           const responseData = await response.json();
           const newsArray = Array.isArray(responseData.msg) ? responseData.msg : [responseData.msg];
-          setNewsData(newsArray);
+          // Sort announcements by createdAt date in descending order
+          const sortedNews = newsArray.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+          setNewsData(sortedNews);
         } else {
           console.log("Failed to fetch announcement");
         }
@@ -52,7 +53,6 @@ const Announcement = () => {
     // Reset visible count to show only 3 news items
     setVisibleNewsCount(3);
   };
-  
 
   return (
     <section className="news-section">
@@ -61,7 +61,7 @@ const Announcement = () => {
         {loading && <p>Loading...</p>}
         {!loading && newsData.length === 0 && <p>No announcements</p>}
         <div className="news-container">
-        {newsData.slice(0, visibleNewsCount).map((newsItem, index) => (
+          {newsData.slice(0, visibleNewsCount).map((newsItem, index) => (
             <div key={index} className="news-item">
               <div className="news-content">
                 <h3>{newsItem.title}</h3>
@@ -71,16 +71,15 @@ const Announcement = () => {
             </div>
           ))}
         </div>
-        {newsData.length > visibleNewsCount && visibleNewsCount === 3 ?(
-            <button type="button" className="load-more" onClick={loadMoreNews}>Load More</button>
-          ) : (
-            visibleNewsCount >3 && 
-            <button type="button" className="view-less" onClick={viewLessNews}>View Less</button>
-          )}
+        {newsData.length > visibleNewsCount && visibleNewsCount === 3 ? (
+          <button type="button" className="load-more" onClick={loadMoreNews}>Load More</button>
+        ) : (
+          visibleNewsCount > 3 && 
+          <button type="button" className="view-less" onClick={viewLessNews}>View Less</button>
+        )}
       </div>
     </section>
   );
 }
 
 export default Announcement;
-

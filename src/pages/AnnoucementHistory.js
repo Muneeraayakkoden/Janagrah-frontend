@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './AnnouncementHistory.css';
@@ -37,7 +36,9 @@ const Announcements = () => {
           const Data = await response.json();
           console.log("All announcement:", Data);
           console.log(Data.msg);
-          setAnnouncements(Data.msg); 
+          // Sort announcements by createdAt date in descending order
+          const sortedAnnouncements = Data.msg.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+          setAnnouncements(sortedAnnouncements); 
         } else {
           console.error("Failed to fetch announcement");
         }
@@ -68,6 +69,7 @@ const Announcements = () => {
       console.error("Error deleting announcement:", error);
     }
   };
+
   const toggleDescription = (index) => {
     if (expandedDescription === index) {
       setExpandedDescription(null);
@@ -75,6 +77,7 @@ const Announcements = () => {
       setExpandedDescription(index);
     }
   };
+
   return (
     <div className="announcement-page-container">
       <div className="announcement-sidebar">
@@ -89,14 +92,14 @@ const Announcements = () => {
           <div>
             {announcements.map((announcement, index) => (
               <div key={index} className="announcement-item">
-                <p className="announcement-title">{index+1}. Title: {announcement.title}</p>
+                <p className="announcement-title">{index + 1}. Title: {announcement.title}</p>
                 <p className="announcement-description"
-                 data-fulltext={announcement.description}
-                 onClick={() => toggleDescription(index)}>
-                   Description: {expandedDescription === index ? announcement.description : `${announcement.description.substring(0, 40)}...`}
+                  data-fulltext={announcement.description}
+                  onClick={() => toggleDescription(index)}>
+                  Description: {expandedDescription === index ? announcement.description : `${announcement.description.substring(0, 40)}...`}
                 </p>
                 <p className="announcement-date">Date: {announcement.createdAt}</p>
-                <button className="announcement-deletebutton" onClick={() => handleDeleteAnnouncement(announcement._id)}><MdDelete size={24}/></button>
+                <button className="announcement-deletebutton" onClick={() => handleDeleteAnnouncement(announcement._id)}><MdDelete size={24} /></button>
               </div>
             ))}
           </div>

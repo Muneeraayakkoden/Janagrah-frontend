@@ -153,6 +153,7 @@
 
 .send:hover {
   opacity: 0.5;
+  background-color: rgb(21, 94, 90);
 }
 
 .success {
