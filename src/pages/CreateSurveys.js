@@ -8,7 +8,10 @@ const CreateSurvey = () => {
   const [surveyName, setSurveyName] = useState('');
   const [targetedSection, setTargetedSection] = useState('Everyone');
   const [surveyDescription, setSurveyDescription] = useState('');
-  const [options, setOptions] = useState([{ id: 1, text: '' }]);
+  const [options, setOptions] = useState([
+    { id: 1, text: '' },
+    { id: 2, text: '' }
+  ]);
   const [successMessage, setSuccessMessage] = useState('');
 
   const handleSurveyNumberChange = (event) => {
@@ -36,7 +39,11 @@ const CreateSurvey = () => {
   };
 
   const handleRemoveOption = (id) => {
-    setOptions(options.filter((option) => option.id !== id));
+    if (options.length > 2) {
+      setOptions(options.filter((option) => option.id !== id));
+    } else {
+      alert('At least two options are required!');
+    }
   };
 
   const handleOptionChange = (id, event) => {
@@ -59,8 +66,8 @@ const CreateSurvey = () => {
       options: options.map(option => option.text),
       username: username // Use the parsed username
     };
-  
-    console.log("formdata",formData);
+
+    console.log("formdata", formData);
 
     try {
       const response = await fetch('http://localhost:4000/poll/createpoll', {
@@ -81,7 +88,7 @@ const CreateSurvey = () => {
       setSurveyName('');
       setTargetedSection('Everyone');
       setSurveyDescription('');
-      setOptions([{ id: 1, text: '' }]);
+      setOptions([{ id: 1, text: '' }, { id: 2, text: '' }]);
     } catch (error) {
       console.error('Error creating survey:', error);
     }
@@ -153,18 +160,18 @@ const CreateSurvey = () => {
                 onChange={(event) => handleOptionChange(option.id, event)}
                 required
               />
-              {index < MAX_OPTIONS - 1 && (
-                <button type="button" className="add-option" onClick={handleAddOption}>
-                  Add Option
-                </button>
-              )}
-              {index === options.length - 1 && (
+              {index >= 2 && (
                 <button type="button" className="remove-option" onClick={() => handleRemoveOption(option.id)}>
                   Remove
                 </button>
               )}
             </div>
           ))}
+          {options.length < MAX_OPTIONS && (
+            <button type="button" className="add-option" onClick={handleAddOption}>
+              Add Option
+            </button>
+          )}
         </div>
         <button type="submit" className="create-survey-button">Create Survey</button>
       </form>
