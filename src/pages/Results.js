@@ -36,12 +36,22 @@ const Results = () => {
           (acc, count) => acc + count,
           0
         );
-        const percentageResults = Object.fromEntries(
-          Object.entries(data.optionCounts).map(([option, count]) => [
-            option,
-            count / totalCount,
-          ])
-        );
+        let percentageResults;
+        if (totalCount === 0) {
+          percentageResults = Object.fromEntries(
+            Object.entries(data.optionCounts).map(([option]) => [
+              option,
+              0
+            ])
+          );
+        } else {
+          percentageResults = Object.fromEntries(
+            Object.entries(data.optionCounts).map(([option, count]) => [
+              option,
+              count / totalCount
+            ])
+          );
+        }
         setSurveyResults(percentageResults);
       } else {
         console.error("Failed to fetch survey results");
@@ -71,36 +81,27 @@ const Results = () => {
           <p>Survey Results:</p>
           <div>
             {Object.entries(surveyResults).map(([option, percentage]) => (
-              <div
-                key={option}
-                className="poll-item"
-                title={`${option}: ${(percentage * 100).toFixed(2)}%`}
-              >
-                <div
-                  className="poll-bar"
-                  style={{
-                    width: getOptionWidth(percentage),
-                    backgroundColor: 'white',
-                    color: 'black' // Ensure option name is in black color
-                  }}
-                >
-                  <span className="option-text">{option}</span>
+              <div key={option} className="poll-item-wrapper">
+                <div className="option-text">
+                  {option}
                 </div>
-                {percentage === 0 ? (
-                  <div
-                    className="poll-bar"
-                    style={{
-                      width: "100%",
-                      backgroundColor: "#333",
-                      color: 'white',
-                      paddingLeft: getOptionWidth(percentage) // Shift the text to align with the white bar
-                    }}
-                  >
-                    <span className="option-text">{option}</span>
+                <div
+                  className="poll-item"
+                  title={`${option}: ${(percentage * 100).toFixed(2)}%`}
+                >
+                  {percentage > 0 ? (
+                    <div
+                      className="poll-bar"
+                      style={{
+                        width: getOptionWidth(percentage),
+                        backgroundColor: 'white',
+                        color: 'black'
+                      }}
+                    />
+                  ) : null}
+                  <div className="percentage-text">
+                    {(percentage * 100).toFixed(2)}%
                   </div>
-                ) : null}
-                <div className="percentage-text">
-                  {(percentage * 100).toFixed(2)}%
                 </div>
               </div>
             ))}

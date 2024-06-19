@@ -1,5 +1,3 @@
-/* Results.css */
-
 .survey_result {
   background-color: rgba(0, 0, 0, 0.361); 
   margin: 20px auto;
@@ -7,16 +5,27 @@
   width: 80%; 
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-  color: white; 
+  color: yellow; 
   font-family: 'Merriweather', serif;
 }
 
 .survey_result h3 {
-  color: black;
+  color: yellow;
 }
 
 .polling-result-analysis {
   margin-top: 20px;
+}
+
+.poll-item-wrapper {
+  margin: 10px 0;
+}
+
+.option-text {
+  color: rgb(255, 30, 0); /* Ensure option text is yellow */
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px; /* Add margin for spacing */
 }
 
 .poll-item {
@@ -24,10 +33,8 @@
   align-items: center;
   border-radius: 25px;
   height: 40px;
-  margin: 10px 0;
   position: relative;
   background-color: #333; 
-  color: white; 
   overflow: hidden;
 }
 
@@ -39,19 +46,14 @@
   overflow: hidden;
   text-overflow: ellipsis;
   border-radius: 25px 0 0 25px;
-  padding: 10px;
-}
-
-.poll-bar.white {
-  background-color: white;
-  color: black;
   padding: 0 10px;
+  color: yellow; /* Ensure option text inside the bar is yellow */
 }
 
 .poll-item .percentage-text {
   font-size: 16px;
   font-weight: bold;
-  color: white;
+  color: yellow; /* Set percentage text color to yellow */
   padding: 0 10px;
   position: absolute;
   right: 10px;

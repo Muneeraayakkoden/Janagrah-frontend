@@ -4,7 +4,7 @@ import Navbar from '../components/Navbar';
 
 function DoSurvey() {
   const [selectedOptionId, setSelectedOptionId] = useState(null);
-  const [submitted, setSubmitted] = useState(false);
+  const [submittedPolls, setSubmittedPolls] = useState([]);
   const [polls, setPolls] = useState([]);
   const [errorMessages, setErrorMessages] = useState({});
 
@@ -62,7 +62,7 @@ function DoSurvey() {
 
         if (response.ok) {
           console.log('Submission successful');
-          setSubmitted(true);
+          setSubmittedPolls([...submittedPolls, surveyId]);
         } else {
           const data = await response.json();
           console.error('Failed to submit data:', data.message);
@@ -104,12 +104,12 @@ function DoSurvey() {
               <button
                 className="doSurveybutton"
                 type="button"
-                disabled={submitted}
+                disabled={submittedPolls.includes(poll._id)}
                 onClick={() => handleSubmit(poll._id, index)}
               >
                 <i className="fas fa-paper-plane"></i> Submit
               </button>
-              {submitted && <div className="result">Thank you for your vote!</div>}
+              {submittedPolls.includes(poll._id) && <div className="result">Thank you for your vote!</div>}
               {errorMessages[index] && <div className="error">{errorMessages[index]}</div>}
             </div>
           ))}
@@ -117,7 +117,6 @@ function DoSurvey() {
       )}
     </div>
   );
-  
 }
 
 export default DoSurvey;
