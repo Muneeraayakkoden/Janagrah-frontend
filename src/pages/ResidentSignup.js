@@ -267,7 +267,7 @@ const ResidentSignup = () => {
       }
       console.log("Response Data:", data); 
 
-      if (data.message === 'Username or email already taken') {
+      /*if (data.message === 'Username or email already taken') {
         setErrorMessage({ ...errorMessage, 
           email: 'Username or email already taken. Please choose a different one.', 
           username: 'Username or email already taken. Please choose a different one.'});
@@ -276,7 +276,7 @@ const ResidentSignup = () => {
           email: '',
           username: ''
         }));
-      }else {
+      }else*/ 
         setFormData({
           state: '',
           district: '',
@@ -299,7 +299,7 @@ const ResidentSignup = () => {
         console.log("Navigating to ResidentSignupSuccess");
         navigate("/ResidentSignupSuccess");
       }
-    }
+    
   };
 
 
