@@ -44,7 +44,7 @@ function ResidentLoginForm() {
          
           localStorage.setItem('userId', JSON.stringify(data.user._id));
           localStorage.setItem('username', JSON.stringify(data.user.username));
-          localStorage.setItem('password', JSON.stringify(data.user.password));
+          
           localStorage.setItem('wardmemberid', JSON.stringify(data.user.wardmemberid));
           localStorage.setItem('job', JSON.stringify(data.user.job));
           localStorage.setItem('state', JSON.stringify(data.user.state));
