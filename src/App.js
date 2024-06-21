@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-// Import other page components
 
 import ResidentHome from './pages/ResidentHome';
 import LoginPage from './pages/LoginPage.js';

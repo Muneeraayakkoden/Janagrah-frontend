@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './AllResidents.css'; // Import the CSS file
+import './AllResidents.css'; 
 import Officialside from '../components/Officialside.js';
 import { MdDelete } from "react-icons/md";
 
@@ -11,11 +11,11 @@ const AllResidents = () => {
     const wardid = JSON.parse(localStorage.getItem('username'));
     console.log(wardid);
 
-    useEffect(() => {
+    useEffect(()=>{
         fetchDetails();
-    }, []);
+    },[])
 
-    const fetchDetails = async () => {
+    const fetchDetails = async() => {
         try {
             if (wardid) {
                 const response = await fetch('http://localhost:4000/login/viewUser', {
@@ -105,7 +105,7 @@ const AllResidents = () => {
             <p className="user-count">Total Users: {filteredResidents.length}</p>
             {filteredResidents.length > 0 ? (
                 <div className="user_details">
-                    {filteredResidents.map((resident, index) => (
+                    {filteredResidents.map((resident) => (
                         <div key={resident._id} className="resident-card" onClick={() => toggleDetails(resident._id)}>
                             <div className="residents-image-container">
                                 <img className="residents-image" src={`data:image/jpeg;base64,${resident.image}`} alt="Resident" />
