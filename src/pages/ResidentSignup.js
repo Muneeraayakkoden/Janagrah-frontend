@@ -9,7 +9,7 @@ const ResidentSignup = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const handleLoginClick = () => {
-    navigate('/LoginPage');
+    navigate('/');
   };
 
   const [formData, setFormData] = useState({
