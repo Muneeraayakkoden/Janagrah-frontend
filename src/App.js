@@ -59,7 +59,7 @@ function App() {
           <Route path="/Homepage" Component={Homepage} />
           <Route path="/Officialside" Component={Officialside} />
           <Route path="/Surveyboth" Component={Surveyboth} />
-          <Route path="/ResetPassword" Component={ResetPassword} />
+          <Route path="/ResetPassword/:token" Component={ResetPassword} />
         </Routes>
       </BrowserRouter>
     </div>

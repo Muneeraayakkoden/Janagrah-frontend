@@ -1,10 +1,12 @@
 // src/components/ResetPassword.js
-import React, { useState, useEffect } from 'react';
+
+import React, { useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom'; // Import useNavigate
 import './ResetPassword.css';
-import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const ResetPassword = () => {
-  const [identifier, setIdentifier] = useState('');
+  const { token } = useParams(); // Get token from URL
+  const navigate = useNavigate();  // For redirecting after successful reset
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [message, setMessage] = useState('');
@@ -47,28 +49,33 @@ const ResetPassword = () => {
     }
 
     try {
-      const response = await fetch('http://localhost:4000/login/reset', {
+      const response = await fetch(`http://localhost:4000/login/reset-password/${token}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ identifier, password }),
+        body: JSON.stringify({ password }),
       });
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.log('error');
+        throw new Error(errorData.message || 'Failed to reset password');
+        
+      }
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
         if(data.success){
           setMessage('Password reset successfully');
-        }
-        else{
+          // Redirect to login or another page after successful reset
+          navigate('/'); // Redirect to login page after successful password reset
+        } else {
           setMessage('Error resetting password');
         }
-        
       } else {
         setMessage('Error resetting password');
       }
     } catch (error) {
-      setMessage('Error resetting password');
+      setMessage('Error     resetting password');
     }
   };
 
@@ -76,16 +83,6 @@ const ResetPassword = () => {
     <div className="reset-password-container">
       <form className="reset-password-form" onSubmit={handleSubmit}>
         <h2>Reset Password</h2>
-        <div className="form-group">
-          <label htmlFor="identifier">Email/Username/Voter ID</label>
-          <input
-            type="text"
-            id="identifier"
-            value={identifier}
-            onChange={(e) => setIdentifier(e.target.value)}
-            required
-          />
-        </div>
         <div className="form-group">
           <label htmlFor="password">New Password</label>
           <input
@@ -116,3 +113,4 @@ const ResetPassword = () => {
 };
 
 export default ResetPassword;
+

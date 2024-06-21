@@ -92,7 +92,12 @@
 }
 
 .announcement-deletebutton:hover {
-  color: red; 
+  background-color: #fff;
+}
+
+.announcement-deletebuttonIcon:hover{
+  color: red;
+
 }
 #www{
   text-align: center;

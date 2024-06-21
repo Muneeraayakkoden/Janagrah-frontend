@@ -51,6 +51,11 @@ const Announcements = () => {
   };
 
   const handleDeleteAnnouncement = async (announcementId) => {
+    const userConfirmed = window.confirm("Are you sure you want to delete this announchement?");
+    if(!userConfirmed){
+      return;
+    }
+
     try {
       const response = await fetch(`http://localhost:4000/announcement/delete`, {
         method: 'POST',
@@ -99,7 +104,7 @@ const Announcements = () => {
                   Description: {expandedDescription === index ? announcement.description : `${announcement.description.substring(0, 40)}...`}
                 </p>
                 <p className="announcement-date">Date: {announcement.createdAt}</p>
-                <button className="announcement-deletebutton" onClick={() => handleDeleteAnnouncement(announcement._id)}><MdDelete size={24} /></button>
+                <button className="announcement-deletebutton" onClick={() => handleDeleteAnnouncement(announcement._id)}><MdDelete className='announcement-deletebuttonIcon' size={24} /></button>
               </div>
             ))}
           </div>

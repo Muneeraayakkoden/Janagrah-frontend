@@ -45,9 +45,16 @@ const UserRequests = () => {
     }
   };
 
-  const handleApprove = async (userId) => {
+  const handleApprove = async (userId, name) => {
     try {
       console.log('Approve user with ID:', userId);
+
+      const userConfirmed = window.confirm(`Are you sure you want to approve ${name}?`);
+      if(!userConfirmed){
+        return;
+      }
+
+
       const username = JSON.parse(localStorage.getItem('username'));
 
       const response = await fetch('http://localhost:4000/login/userapprove', {
@@ -59,6 +66,7 @@ const UserRequests = () => {
       });
 
       if (response.ok) {
+        alert("user approved successfully");
         console.log('User approved successfully');
         setResponseMessage('User approved successfully');
       } else {
@@ -72,9 +80,13 @@ const UserRequests = () => {
     }
   };
 
-  const handleReject = async (userId) => {
+  const handleReject = async (userId, name) => {
     try {
       console.log('Reject user with ID:', userId);
+      const userConfirmed = window.confirm(`Are you sure you want to reject ${name}?`);
+      if(!userConfirmed){
+        return;
+      }
 
       const response = await fetch('http://localhost:4000/login/reject', {
         method: 'POST',
@@ -85,6 +97,7 @@ const UserRequests = () => {
       });
 
       if (response.ok) {
+        alert("user rejected successfully");
         console.log('User rejected successfully');
         setResponseMessage('User rejected successfully');
       } else {
@@ -121,8 +134,8 @@ const UserRequests = () => {
               <p>Username: {user.username}</p>
             </div>
             <div className="button-container">
-              <button className="accept-button" onClick={() => handleApprove(user._id)}>Approve</button>
-              <button className="reject-button" onClick={() => handleReject(user._id)}><VscUnverified />Reject</button>
+              <button className="accept-button" onClick={() => handleApprove(user._id, user.name)}>Approve</button>
+              <button className="reject-button" onClick={() => handleReject(user._id, user.name)}><VscUnverified />Reject</button>
             </div>
           </div>
         ))

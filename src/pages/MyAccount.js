@@ -55,7 +55,7 @@ const MyAccount = () => {
       const name = JSON.parse(localStorage.getItem('name'));
       const ward = JSON.parse(localStorage.getItem('ward'));
       const localAuthority = JSON.parse(localStorage.getItem('localAuthority'));
-      const password = JSON.parse(localStorage.getItem('password'));
+      
       const data = {
         username,
         name,
@@ -67,7 +67,7 @@ const MyAccount = () => {
         address,
         ward,
         localAuthority,
-        password,
+        
       };
 
       setUserData(data);
