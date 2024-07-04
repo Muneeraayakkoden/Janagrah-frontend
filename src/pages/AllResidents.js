@@ -55,6 +55,13 @@ const AllResidents = () => {
 
     const handleDelete = async (residentId) => {
         try {
+            const userConfirmed = window.confirm('Are you sure you want to delete the user?');
+
+            if (!userConfirmed) {
+            return; // If user cancels, don't proceed with stopping the poll
+    }
+
+
             const response = await fetch('http://localhost:4000/user/delete', {
                 method: "POST",
                 headers: {

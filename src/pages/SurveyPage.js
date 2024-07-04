@@ -39,7 +39,14 @@ const SurveyPage = () => {
   }, []);
 
   const handleStopPolling = async (surveyId) => {
+    
     try {
+      const userConfirmed = window.confirm('Are you sure you want to stop the poll?');
+
+    if (!userConfirmed) {
+      return; // If user cancels, don't proceed with stopping the poll
+    }
+
       console.log('Stop polling for survey ID:', surveyId);
 
       const data = { surveyId };
