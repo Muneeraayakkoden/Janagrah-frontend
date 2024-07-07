@@ -28,6 +28,7 @@ import EditProfile from './pages/EditProfile.js';
 import Officialside from './components/Officialside.js';
 import Surveyboth from './pages/Surveyboth.js';
 import ResetPassword from './pages/ResetPassword.js';
+import AllAnnouncements from './pages/AllAnnouncements.js'
 
 function App() {
   return (
@@ -60,6 +61,7 @@ function App() {
           <Route path="/Officialside" Component={Officialside} />
           <Route path="/Surveyboth" Component={Surveyboth} />
           <Route path="/ResetPassword/:token" Component={ResetPassword} />
+          <Route path="/AllAnnouncements" Component={AllAnnouncements} />
         </Routes>
       </BrowserRouter>
     </div>

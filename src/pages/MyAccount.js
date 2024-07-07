@@ -118,7 +118,7 @@ const MyAccount = () => {
    
         {userData && (
           <div className="account">
-            <h1>PROFILE</h1>
+            <h1>RESIDENT PROFILE</h1>
             <div className="ward-info">
               <p>
                 Ward ID: {userData.ward}<br />
@@ -129,7 +129,7 @@ const MyAccount = () => {
             <div className="user-info-container"> 
               <div className="user-info">
                 {Object.entries(userData).map(([key, value]) => {
-                  if (['username', 'name', 'job', 'age', 'phn', 'email', 'annualIncome', 'address','password'].includes(key)) {
+                  if (['username', 'name', 'job', 'age', 'phn', 'email', 'annualIncome', 'address'].includes(key)) {
                     let label = '';
                     switch (key) {
                       case 'username':
@@ -156,9 +156,7 @@ const MyAccount = () => {
                       case 'address':
                         label = 'Address';
                         break;
-                      case 'password':
-                        label="Password";
-                        break;
+                      
                       default:
                         break;
                     }
