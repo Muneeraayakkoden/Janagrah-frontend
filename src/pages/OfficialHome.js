@@ -11,6 +11,7 @@ function OfficialHome() {
       <div className="content">
         <div className="containerr">
           <header className="headerr">
+           
             <h1>JANAGRAH</h1>
             <p>Empowering Our Community</p>
           </header>
