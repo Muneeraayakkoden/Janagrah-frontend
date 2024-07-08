@@ -63,6 +63,7 @@
 .chat {
   font-weight: bold;
   margin-bottom: 5px;
+  padding: 10px;
 }
 
 .chatTime {
