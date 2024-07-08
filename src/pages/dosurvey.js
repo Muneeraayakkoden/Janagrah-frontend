@@ -27,8 +27,8 @@ function DoSurvey() {
           const { polls } = await response.json();
           console.log('Survey data:', polls);
 
-          // Sort the polls by createdAt
-          const sortedPolls = polls.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+          // Sort the polls by createdAt in descending order
+          const sortedPolls = polls.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
           setPolls(sortedPolls);
         } else {
           console.error('Failed to fetch survey data');
@@ -120,3 +120,4 @@ function DoSurvey() {
 }
 
 export default DoSurvey;
+
