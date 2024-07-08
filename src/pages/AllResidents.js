@@ -58,7 +58,7 @@ const AllResidents = () => {
             const userConfirmed = window.confirm('Are you sure you want to delete the user?');
 
             if (!userConfirmed) {
-            return; // If user cancels, don't proceed with stopping the poll
+            return; 
     }
 
 
