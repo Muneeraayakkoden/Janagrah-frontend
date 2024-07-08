@@ -13,7 +13,7 @@ const features = [
   {
     icon: 'fa-newspaper',
     title: 'Stay Informed',
-    description: 'Access the latest news & announcements from your ward.',
+    description: 'Access the latest announcements from your ward.',
   },
   {
     icon: 'fa-envelope',

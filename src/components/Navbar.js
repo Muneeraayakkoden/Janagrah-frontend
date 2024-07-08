@@ -31,7 +31,7 @@ const Navbar = () => {
           <li className="nav-item">
             <a className="nav-link" href="#" onClick={() => handleNavigation('/residentHome')}>
               <i className="fas fa-home"></i>
-              {sidebarExpanded && <span className="nav-text">HOME</span>}
+              {sidebarExpanded && <span className="nav-text">HOME   </span>}
             </a>
           </li>
 
