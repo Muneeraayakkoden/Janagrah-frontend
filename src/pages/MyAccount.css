@@ -72,6 +72,7 @@
   align-items: center;
   width: 30%;
   margin-left: 20px;
+  margin-bottom: 20px;
 }
 
 .resident-image {
@@ -184,9 +185,13 @@
 }
 
 @media (max-width: 450px) {
+
+  .profile-page {
+    margin: 0;
+  }
   .account {
-    width: 100%;
     padding: 10px;
+    margin-left: 95px;
   }
 
   .account h1 {

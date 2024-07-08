@@ -80,7 +80,7 @@
 
 @media (max-width: 450px) {
   .navbar {
-    width: 80px;
+    width: 90px;
   }
 
   .navbar.expanded {

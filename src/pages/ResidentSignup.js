@@ -342,8 +342,7 @@ const ResidentSignup = () => {
   };
 
   const jobs = [
-    "Student", "Farmer", "Teacher", "Doctor", "Housewife", "Fisherman", "Engineer", "Nurse", "Sportsman", "Coach", "Business", "Sales Officer",
-    "Manager", "Bike Rider", "Receptionist", "Pharmacist", "Others"
+    "Student", "Farmer", "Teacher", "Doctor", "Housewife","Others"
   ];
 
   return (
